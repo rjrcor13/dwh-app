@@ -1,157 +1,157 @@
-'use client';
+// 'use client';
 
-import React from 'react';
+// import React from 'react';
 
-const featuredBlog = {
-	date: '03 Mar 2025',
-	title:
-		'Introducing our advanced new machine for HYSTEROSCOPY and LAPAROSCOPY',
-	excerpt:
-		'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi.',
-	tags: ['Health', 'Hysteroscopy', 'Laparoscopy'],
-	imageUrl: '/assets/featured-blog.jpg', // Replace with your image URL
-	link: '/blog/featured',
-};
+// const featuredBlog = {
+// 	date: '03 Mar 2025',
+// 	title:
+// 		'Introducing our advanced new machine for HYSTEROSCOPY and LAPAROSCOPY',
+// 	excerpt:
+// 		'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi.',
+// 	tags: ['Health', 'Hysteroscopy', 'Laparoscopy'],
+// 	imageUrl: '/assets/featured-blog.jpg', // Replace with your image URL
+// 	link: '/blog/featured',
+// };
 
-const smallerBlogs = [
-	{
-		date: '03 Mar 2025',
-		title:
-			'Introducing our advanced new machine for HYSTEROSCOPY and LAPAROSCOPY',
-		excerpt:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-		tags: ['Health', 'Technology'],
-		imageUrl: '/assets/blog-1.jpg', // Replace with your image URL
-		link: '/blog/1',
-	},
-	{
-		date: '03 Mar 2025',
-		title:
-			'Introducing our advanced new machine for HYSTEROSCOPY and LAPAROSCOPY',
-		excerpt:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-		tags: ['Health', 'Medical'],
-		imageUrl: '/assets/blog-2.jpg', // Replace with your image URL
-		link: '/blog/2',
-	},
-	{
-		date: '03 Mar 2025',
-		title:
-			'Introducing our advanced new machine for HYSTEROSCOPY and LAPAROSCOPY',
-		excerpt:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-		tags: ['Science', 'Research'],
-		imageUrl: '/assets/blog-3.jpg', // Replace with your image URL
-		link: '/blog/3',
-	},
-];
+// const smallerBlogs = [
+// 	{
+// 		date: '03 Mar 2025',
+// 		title:
+// 			'Introducing our advanced new machine for HYSTEROSCOPY and LAPAROSCOPY',
+// 		excerpt:
+// 			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+// 		tags: ['Health', 'Technology'],
+// 		imageUrl: '/assets/blog-1.jpg', // Replace with your image URL
+// 		link: '/blog/1',
+// 	},
+// 	{
+// 		date: '03 Mar 2025',
+// 		title:
+// 			'Introducing our advanced new machine for HYSTEROSCOPY and LAPAROSCOPY',
+// 		excerpt:
+// 			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+// 		tags: ['Health', 'Medical'],
+// 		imageUrl: '/assets/blog-2.jpg', // Replace with your image URL
+// 		link: '/blog/2',
+// 	},
+// 	{
+// 		date: '03 Mar 2025',
+// 		title:
+// 			'Introducing our advanced new machine for HYSTEROSCOPY and LAPAROSCOPY',
+// 		excerpt:
+// 			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+// 		tags: ['Science', 'Research'],
+// 		imageUrl: '/assets/blog-3.jpg', // Replace with your image URL
+// 		link: '/blog/3',
+// 	},
+// ];
 
-const EventsSection = () => {
-	return (
-		<div className="py-12 bg-white">
-			<div className="max-w-7xl container_ mx-auto px-4 sm:px-6 lg:px-8">
-				<div className="flex items-center justify-between mb-8">
-					<div>
-						<h5 className="text-sm text-indigo-500 font-semibold">
-							What's new?
-						</h5>
-						<h2 className="text-2xl font-bold text-gray-800">
-							Our latest blogs
-						</h2>
-						<p className="text-gray-500 text-sm">
-							Explore the latest innovations in healthcare and medical
-							technology
-						</p>
-					</div>
-					<a
-						href="/blogs"
-						className="text-indigo-500 hover:text-indigo-700 font-semibold text-sm"
-					>
-						View all blogs <span aria-hidden="true">&rarr;</span>
-					</a>
-				</div>
+// const EventsSection = () => {
+// 	return (
+// 		<div className="py-12 bg-white">
+// 			<div className="max-w-7xl container_ mx-auto px-4 sm:px-6 lg:px-8">
+// 				<div className="flex items-center justify-between mb-8">
+// 					<div>
+// 						<h5 className="text-sm text-indigo-500 font-semibold">
+// 							What's new?
+// 						</h5>
+// 						<h2 className="text-2xl font-bold text-gray-800">
+// 							Our latest blogs
+// 						</h2>
+// 						<p className="text-gray-500 text-sm">
+// 							Explore the latest innovations in healthcare and medical
+// 							technology
+// 						</p>
+// 					</div>
+// 					<a
+// 						href="/blogs"
+// 						className="text-indigo-500 hover:text-indigo-700 font-semibold text-sm"
+// 					>
+// 						View all blogs <span aria-hidden="true">&rarr;</span>
+// 					</a>
+// 				</div>
 
-				{/* Featured Blog */}
-				<div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
-					<div className="rounded-lg overflow-hidden shadow-md">
-						<img
-							src={featuredBlog.imageUrl}
-							alt={featuredBlog.title}
-							className="w-full h-auto object-cover"
-							style={{ minHeight: '200px' }}
-						/>
-					</div>
-					<div>
-						<p className="text-gray-500 text-sm mb-2">{featuredBlog.date}</p>
-						<h3 className="text-xl font-semibold text-gray-800 mb-3">
-							{featuredBlog.title}
-						</h3>
-						<p className="text-gray-600 mb-4">{featuredBlog.excerpt}</p>
-						<div className="flex items-center space-x-2 mb-4">
-							{featuredBlog.tags.map((tag) => (
-								<span
-									key={tag}
-									className="bg-gray-100 text-gray-500 text-xs rounded-full px-2 py-1"
-								>
-									{tag}
-								</span>
-							))}
-						</div>
-						<a
-							href={featuredBlog.link}
-							className="text-indigo-500 hover:text-indigo-700 font-semibold text-sm"
-						>
-							Read blog <span aria-hidden="true">&rarr;</span>
-						</a>
-					</div>
-				</div>
+// 				{/* Featured Blog */}
+// 				<div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
+// 					<div className="rounded-lg overflow-hidden shadow-md">
+// 						<img
+// 							src={featuredBlog.imageUrl}
+// 							alt={featuredBlog.title}
+// 							className="w-full h-auto object-cover"
+// 							style={{ minHeight: '200px' }}
+// 						/>
+// 					</div>
+// 					<div>
+// 						<p className="text-gray-500 text-sm mb-2">{featuredBlog.date}</p>
+// 						<h3 className="text-xl font-semibold text-gray-800 mb-3">
+// 							{featuredBlog.title}
+// 						</h3>
+// 						<p className="text-gray-600 mb-4">{featuredBlog.excerpt}</p>
+// 						<div className="flex items-center space-x-2 mb-4">
+// 							{featuredBlog.tags.map((tag) => (
+// 								<span
+// 									key={tag}
+// 									className="bg-gray-100 text-gray-500 text-xs rounded-full px-2 py-1"
+// 								>
+// 									{tag}
+// 								</span>
+// 							))}
+// 						</div>
+// 						<a
+// 							href={featuredBlog.link}
+// 							className="text-indigo-500 hover:text-indigo-700 font-semibold text-sm"
+// 						>
+// 							Read blog <span aria-hidden="true">&rarr;</span>
+// 						</a>
+// 					</div>
+// 				</div>
 
-				{/* Smaller Blogs */}
-				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-					{smallerBlogs.map((blog, index) => (
-						<div
-							key={index}
-							className="bg-white rounded-lg shadow-md overflow-hidden"
-						>
-							<img
-								src={blog.imageUrl}
-								alt={blog.title}
-								className="w-full h-40 object-cover"
-							/>
-							<div className="p-4">
-								<p className="text-gray-500 text-sm mb-2">{blog.date}</p>
-								<h4 className="text-lg font-semibold text-gray-800 mb-2">
-									{blog.title}
-								</h4>
-								<p className="text-gray-600 text-sm mb-3 line-clamp-2">
-									{blog.excerpt}
-								</p>
-								<div className="flex items-center space-x-2 mb-3">
-									{blog.tags.map((tag) => (
-										<span
-											key={tag}
-											className="bg-gray-100 text-gray-500 text-xs rounded-full px-2 py-1"
-										>
-											{tag}
-										</span>
-									))}
-								</div>
-								<a
-									href={blog.link}
-									className="text-indigo-500 hover:text-indigo-700 font-semibold text-sm"
-								>
-									Read blog <span aria-hidden="true">&rarr;</span>
-								</a>
-							</div>
-						</div>
-					))}
-				</div>
-			</div>
-		</div>
-	);
-};
+// 				{/* Smaller Blogs */}
+// 				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+// 					{smallerBlogs.map((blog, index) => (
+// 						<div
+// 							key={index}
+// 							className="bg-white rounded-lg shadow-md overflow-hidden"
+// 						>
+// 							<img
+// 								src={blog.imageUrl}
+// 								alt={blog.title}
+// 								className="w-full h-40 object-cover"
+// 							/>
+// 							<div className="p-4">
+// 								<p className="text-gray-500 text-sm mb-2">{blog.date}</p>
+// 								<h4 className="text-lg font-semibold text-gray-800 mb-2">
+// 									{blog.title}
+// 								</h4>
+// 								<p className="text-gray-600 text-sm mb-3 line-clamp-2">
+// 									{blog.excerpt}
+// 								</p>
+// 								<div className="flex items-center space-x-2 mb-3">
+// 									{blog.tags.map((tag) => (
+// 										<span
+// 											key={tag}
+// 											className="bg-gray-100 text-gray-500 text-xs rounded-full px-2 py-1"
+// 										>
+// 											{tag}
+// 										</span>
+// 									))}
+// 								</div>
+// 								<a
+// 									href={blog.link}
+// 									className="text-indigo-500 hover:text-indigo-700 font-semibold text-sm"
+// 								>
+// 									Read blog <span aria-hidden="true">&rarr;</span>
+// 								</a>
+// 							</div>
+// 						</div>
+// 					))}
+// 				</div>
+// 			</div>
+// 		</div>
+// 	);
+// };
 
-export default EventsSection;
+// export default EventsSection;
 // 'use client';
 
 // import { CalendarIcon } from '@heroicons/react/20/solid';
@@ -276,3 +276,159 @@ export default EventsSection;
 // };
 
 // export default EventsSection;
+'use client';
+
+import Image from 'next/image';
+import Link from 'next/link';
+import React from 'react';
+import { Button } from '../ui/button';
+
+const featuredEvent = {
+	date: 'March 3, 2025',
+	title: 'Medical Conference on Advanced Surgical Techniques',
+	excerpt:
+		'Join us for an insightful conference on the latest advancements in surgical procedures. Leading experts will share their knowledge and experiences.',
+	tags: ['Conference', 'Medical', 'Surgery'],
+	imageUrl: '/assets/featured-event.jpg', // Replace with your image URL
+	link: '/events/featured',
+};
+
+const smallerEvents = [
+	{
+		date: 'March 10, 2025',
+		title: 'Workshop on Minimally Invasive Procedures',
+		excerpt:
+			'Hands-on workshop focusing on the latest minimally invasive surgical techniques. Enhance your skills and learn from the best.',
+		tags: ['Workshop', 'Medical', 'Technology'],
+		imageUrl: '/assets/event-1.jpg', // Replace with your image URL
+		link: '/events/1',
+	},
+	{
+		date: 'March 17, 2025',
+		title: 'Seminar on Cardiology Innovations',
+		excerpt:
+			'Discover the groundbreaking innovations in cardiology. Renowned cardiologists will discuss the future of heart care.',
+		tags: ['Seminar', 'Cardiology', 'Health'],
+		imageUrl: '/assets/event-2.jpg', // Replace with your image URL
+		link: '/events/2',
+	},
+	{
+		date: 'March 24, 2025',
+		title: 'Symposium on Oncology Research',
+		excerpt:
+			'Explore the latest breakthroughs in oncology research and treatment. Leading researchers will present their findings.',
+		tags: ['Symposium', 'Oncology', 'Research'],
+		imageUrl: '/assets/event-3.jpg', // Replace with your image URL
+		link: '/events/3',
+	},
+];
+
+const EventsSection = () => {
+	return (
+		<div className="py-12 mb-8 bg-white">
+			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+				<div className="flex items-center justify-between mb-8 align-bottom">
+					<div className="bg-green-300_">
+						<h5 className="text-sm text-indigo-500 font-semibold mb-8 ">
+							What's new?
+						</h5>
+						<h2 className="text-2xl font-bold text-gray-800">
+							Our Latest Events
+						</h2>
+						<p className="text-gray-500 text-sm">
+							Explore upcoming events, conferences, and workshops.
+						</p>
+					</div>
+					<Link
+						href="/events"
+						className="text-indigo-500 hover:text-indigo-700 font-semibold text-sm bg-amber-400_ items-baseline"
+					>
+						View all events <span aria-hidden="true">&rarr;</span>
+					</Link>
+				</div>
+
+				{/* Featured Event */}
+				<div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
+					<div className="rounded-lg overflow-hidden shadow-md">
+						<Image
+							src={featuredEvent.imageUrl}
+							alt={featuredEvent.title}
+							className="w-full h-auto object-cover"
+							style={{ minHeight: '200px' }}
+							width={100}
+							height={40}
+						/>
+					</div>
+					<div>
+						<p className="text-gray-500 text-sm mb-2">{featuredEvent.date}</p>
+						<h3 className="text-xl font-semibold text-gray-800 mb-3">
+							{featuredEvent.title}
+						</h3>
+						<p className="text-gray-600 mb-4">{featuredEvent.excerpt}</p>
+						<div className="flex items-center space-x-2 mb-4">
+							{featuredEvent.tags.map((tag) => (
+								<span
+									key={tag}
+									className="bg-gray-100 text-gray-500 text-xs rounded-full px-2 py-1"
+								>
+									{tag}
+								</span>
+							))}
+						</div>
+						<a
+							href={featuredEvent.link}
+							className="text-indigo-500 hover:text-indigo-700 font-semibold text-sm"
+						>
+							Learn More <span aria-hidden="true">&rarr;</span>
+						</a>
+					</div>
+				</div>
+
+				{/* Smaller Events */}
+				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+					{smallerEvents.map((event, index) => (
+						<div
+							key={index}
+							className="bg-white rounded-lg shadow-md overflow-hidden"
+						>
+							<Image
+								src={event.imageUrl}
+								alt={event.title}
+								className="w-full h-40 object-cover"
+								width={100}
+								height={40}
+							/>
+							<div className="p-4">
+								<p className="text-gray-500 text-sm mb-2">{event.date}</p>
+								<h4 className="text-lg font-semibold text-gray-800 mb-2">
+									{event.title}
+								</h4>
+								<p className="text-gray-600 text-sm mb-3 line-clamp-2">
+									{event.excerpt}
+								</p>
+								<div className="flex items-center space-x-2 mb-3">
+									{event.tags.map((tag) => (
+										<span
+											key={tag}
+											className="bg-gray-100 text-gray-500 text-xs rounded-full px-2 py-1"
+										>
+											{tag}
+										</span>
+									))}
+								</div>
+								<a
+									href={event.link}
+									className="text-indigo-500 hover:text-indigo-700 font-semibold text-sm"
+								>
+									Learn More <span aria-hidden="true">&rarr;</span>
+								</a>
+							</div>
+						</div>
+					))}
+				</div>
+			</div>
+		</div>
+	);
+};
+
+export default EventsSection;

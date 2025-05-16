@@ -66,7 +66,7 @@ const Banner = () => {
 							</Link> */}
 							<Link
 								href="/about-us"
-								className="bg-secondary border border-secondary py-2 px-4 rounded-md hover:bg-secondary/80 font-semibold shadow transition duration-300 ease-in-out"
+								className="bg-secondary border-3 border-secondary py-2 px-4 rounded-md hover:bg-secondary/80 font-semibold shadow transition duration-300 ease-in-out"
 							>
 								Learn more
 							</Link>

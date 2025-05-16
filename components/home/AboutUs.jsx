@@ -67,8 +67,8 @@ const AboutUs = ({ className }) => {
 					className="w-full h-auto object-cover  " // Responsive image, rounded corners
 				/>
 			</div>
-			<div className="col-span-1 md:col-span-2 p-4 md:p-6 lg:p-8 flex flex-col justify-center items-start space-y-4 md:space-y-6">
-				<p className="text-md italic text-primary font-semibold mb-2 md:mb-4">
+			<div className="col-span-1 md:col-span-2 p-4 md:p-6 lg:p-8 flex flex-col justify-center items-start space-y-4 md:space-y-12">
+				<p className="text-sm italic_ text-indigo-500 font-semibold ">
 					Who we are?
 				</p>
 				<div>
@@ -91,7 +91,7 @@ const AboutUs = ({ className }) => {
 					// className="p-0 text-primary hover:underline flex items-center gap-2" // Consistent styling
 				>
 					<a href="/about-us" aria-label="Read more about us">
-						Read more
+						Read More <span aria-hidden="true">&rarr;</span>
 					</a>
 				</Button>
 			</div>

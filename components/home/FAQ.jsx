@@ -165,7 +165,7 @@ const faqData = [
 const FAQSectionShadcn = () => {
 	return (
 		<div className="py-16 bg-blue-50">
-			<div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+			<div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-left">
 				<h2 className="text-2xl font-bold text-gray-800 mb-2">
 					Frequently Asked Questions
 				</h2>
@@ -178,7 +178,7 @@ const FAQSectionShadcn = () => {
 							value={`item-${index}`}
 							className="bg-white rounded-lg my-2 shadow-md"
 						>
-							<AccordionTrigger className="w-full flex items-center justify-between py-3 px-4 font-semibold text-gray-700 focus:outline-none">
+							<AccordionTrigger className="w-full flex items-left justify-between py-3 px-4 font-semibold text-gray-700 focus:outline-none">
 								<span>{item.question}</span>
 
 								<span className="sr-only">Toggle</span>

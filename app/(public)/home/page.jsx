@@ -22,7 +22,6 @@ const HomePage = () => {
 
 				<EventsSection className={className} />
 
-				<EventsSection className={className} />
 				<ConnectWithUsSection className={className} />
 				<FAQSection className={className} />
 			</main>

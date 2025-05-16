@@ -339,7 +339,7 @@
 // 									'bg-white rounded-xl shadow-lg p-6 flex flex-col items-center justify-start',
 // 									'transition-all duration-300',
 // 									'hover:shadow-xl hover:scale-[1.02]',
-// 									'border border-gray-100 hover:border-blue-500/30', //Added border
+// 									'border border-gray-100 hover:border-indigo-500/30', //Added border
 // 									'group' //Added group
 // 								)}
 // 								whileHover={{ y: -5 }} // Add a slight lift on hover
@@ -388,8 +388,9 @@ import {
 	Carousel,
 	CarouselContent,
 	CarouselItem,
+	useCarousel,
 } from '@/components/ui/carousel';
-import { cn } from '@/lib/utils'; // Utility for combining class names
+import { cn } from '@/lib/utils';
 import { AnimatePresence, motion } from 'framer-motion';
 import {
 	CrossIcon,
@@ -466,19 +467,29 @@ const servicesData = [
 
 const OurServicesSection = () => {
 	const [isMobile, setIsMobile] = useState(false);
-	const containerRef = useRef < HTMLDivElement > null;
+	const carouselRef = useRef(null);
 
 	useEffect(() => {
 		const handleResize = () => {
-			setIsMobile(window.innerWidth < 768); // Use a breakpoint like 768px (md)
+			setIsMobile(window.innerWidth < 768);
 		};
-
-		handleResize(); // Check on initial load
+		handleResize();
 		window.addEventListener('resize', handleResize);
 		return () => window.removeEventListener('resize', handleResize);
 	}, []);
 
-	// Animation variants
+	// Autoplay
+	useEffect(() => {
+		if (!isMobile) return;
+		const interval = setInterval(() => {
+			if (carouselRef.current?.scrollNext) {
+				carouselRef.current.scrollNext();
+			}
+		}, 4000); // every 4 seconds
+
+		return () => clearInterval(interval);
+	}, [isMobile]);
+
 	const serviceVariants = {
 		hidden: { opacity: 0, y: 20 },
 		visible: (i) => ({
@@ -498,7 +509,7 @@ const OurServicesSection = () => {
 			<div className="relative py-16 bg-gray-50">
 				<div className="relative z-10 max-w-7xl mx-auto text-center">
 					<div className="flex flex-col p-6 space-y-8 mb-10">
-						<h2 className="text-primary font-semibold text-md mb-8 italic">
+						<h2 className="text-indigo-500 font-semibold text-sm mb-8 italic_">
 							Our Services
 						</h2>
 						<div>
@@ -511,15 +522,13 @@ const OurServicesSection = () => {
 							</p>
 						</div>
 					</div>
+
 					<Carousel
-						opts={{
-							align: 'center',
-							loop: true,
-						}}
-						className="w-full px-4 "
-						orientation="horizontal"
+						ref={carouselRef}
+						opts={{ align: 'center', loop: true }}
+						className="w-full px-4"
 					>
-						<CarouselContent className="p-8">
+						<CarouselContent className="px-12 pb-4">
 							{Array.from(
 								{ length: Math.ceil(servicesData.length / 2) },
 								(_, i) => {
@@ -528,49 +537,47 @@ const OurServicesSection = () => {
 									return (
 										<CarouselItem key={i} className="px-4">
 											<div className="flex flex-col gap-6">
-												{[first, second].map(
-													(service, indexInGroup) =>
-														service && (
-															<motion.div
-																key={indexInGroup}
-																variants={serviceVariants}
-																initial="hidden"
-																animate="visible"
-																exit="exit"
-																custom={i * 2 + indexInGroup}
+												{[first, second].map((service, indexInGroup) =>
+													service ? (
+														<motion.div
+															key={indexInGroup}
+															variants={serviceVariants}
+															initial="hidden"
+															animate="visible"
+															exit="exit"
+															custom={i * 2 + indexInGroup}
+															className={cn(
+																'bg-white rounded-xl shadow-lg p-6 flex flex-col items-center justify-start',
+																'transition-all duration-300',
+																'hover:shadow-xl hover:scale-[1.02]',
+																'border border-gray-100 hover:border-indigo-500/30',
+																'group'
+															)}
+														>
+															<div
 																className={cn(
-																	'bg-white rounded-xl shadow-lg p-6 flex flex-col items-center justify-start',
-																	'transition-all duration-300',
-																	'hover:shadow-xl hover:scale-[1.02]',
-																	'border border-gray-100 hover:border-blue-500/30',
-																	'group'
+																	'w-16 h-16 rounded-full flex items-center justify-center mb-4',
+																	'transition-colors duration-300',
+																	'group-hover:bg-indigo-500/20 bg-indigo-100',
+																	'text-indigo-500'
 																)}
 															>
-																<div
-																	className={cn(
-																		'w-16 h-16 rounded-full flex items-center justify-center mb-4',
-																		'transition-colors duration-300',
-																		'group-hover:bg-blue-500/20 bg-blue-100',
-																		'text-blue-500'
-																	)}
-																>
-																	<service.icon className="w-8 h-8" />
-																</div>
-																<h4
-																	className={cn(
-																		'text-lg font-semibold mb-2',
-																		'transition-colors duration-300',
-																		'text-gray-800 group-hover:text-blue-700',
-																		'text-center'
-																	)}
-																>
-																	{service.title}
-																</h4>
-																<p className="text-sm text-gray-600 text-center">
-																	{service.description}
-																</p>
-															</motion.div>
-														)
+																<service.icon className="w-8 h-8" />
+															</div>
+															<h4
+																className={cn(
+																	'text-lg font-semibold mb-2',
+																	'transition-colors duration-300',
+																	'text-gray-800 group-hover:text-indigo-700 text-center'
+																)}
+															>
+																{service.title}
+															</h4>
+															<p className="text-sm text-gray-600 text-center">
+																{service.description}
+															</p>
+														</motion.div>
+													) : null
 												)}
 											</div>
 										</CarouselItem>
@@ -585,11 +592,10 @@ const OurServicesSection = () => {
 	}
 
 	return (
-		<div className="relative py-16 bg-gray-50">
-			{/* Content Container */}
+		<div className="relative py-8 pb-12 bg-gray-50">
 			<div className="relative z-10 max-w-7xl mx-auto text-center">
 				<div className="flex flex-col p-6 space-y-8 mb-10">
-					<h2 className="text-primary font-semibold text-md mb-8 italic">
+					<h2 className="text-indigo-500 font-semibold text-sm mb-8 italic_">
 						Our Services
 					</h2>
 					<div>
@@ -617,7 +623,7 @@ const OurServicesSection = () => {
 									'bg-white rounded-xl shadow-lg p-6 flex flex-col items-center justify-start',
 									'transition-all duration-300',
 									'hover:shadow-xl hover:scale-[1.02]',
-									'border border-gray-100 hover:border-blue-500/30',
+									'border border-gray-100 hover:border-indigo-500/30',
 									'group h-full'
 								)}
 							>
@@ -625,8 +631,8 @@ const OurServicesSection = () => {
 									className={cn(
 										'w-16 h-16 rounded-full flex items-center justify-center mb-4',
 										'transition-colors duration-300',
-										'group-hover:bg-blue-500/20 bg-blue-100',
-										'text-blue-500'
+										'group-hover:bg-indigo-500/20 bg-indigo-100',
+										'text-indigo-500'
 									)}
 								>
 									<ServiceIcon className="w-8 h-8" />
@@ -635,8 +641,7 @@ const OurServicesSection = () => {
 									className={cn(
 										'text-lg font-semibold mb-2',
 										'transition-colors duration-300',
-										'text-gray-800 group-hover:text-blue-700',
-										'flex-grow text-center'
+										'text-gray-800 group-hover:text-indigo-700 text-center'
 									)}
 								>
 									{service.title}
