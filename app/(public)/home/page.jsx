@@ -37,7 +37,7 @@ const HomePage = () => {
 			<main>
 				<Stats />
 				{/* <AboutUs className="max-w-7xl mx-auto my-12 lg:mt-10 mt-0 " /> */}
-				<div className=" bg-[url(/assets/about-us.webp)_  bg-cover bg-center bg-no-repeat relative">
+				<div className=" relative">
 					{/* <Blob /> */}
 					{/* <Image
 						src="/assets/about-us.webp" // Use relative path for Next.js

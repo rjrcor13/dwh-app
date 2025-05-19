@@ -47,6 +47,7 @@
 // export default AboutUs;
 'use client';
 import { cn } from '@/lib/utils'; // Utility for combining class names
+import aboutusImage from '@/public/assets/about-us.webp';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import React from 'react';
@@ -65,7 +66,7 @@ const AboutUs = ({ className }) => {
 		>
 			<div className="col-span-1 md:col-span-2">
 				<Image
-					src="/assets/about-us.webp" // Use relative path for Next.js
+					src={aboutusImage} // Use relative path for Next.js
 					alt="About Us"
 					width={500} // Keep original aspect ratio, set a max width
 					height={500}

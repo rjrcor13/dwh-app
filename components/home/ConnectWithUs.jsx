@@ -27,13 +27,14 @@ const ConnectWithUsSection = () => {
 			text: 'Avenida Veteranos St., Tacloban City',
 			subText: 'Get Direction',
 			isLink: true, // New property to indicate it's a link
-			href: '#', // Add a placeholder for the link
+			href: 'ttps://www.google.com/maps/embed/v1/place?q=place_id:ChIJhc0ffdNwCDMR7Alq8Y_bEqA', // Add a placeholder for the link
 		},
 	];
 
-	const googleMapsEmbedUrl =
-		'https://www.google.com/maps/embed/v1/place?q=place_id:ChIJhc0ffdNwCDMR7Alq8Y_bEqA&key=AIzaSyBnQ-ZhjWbLfLMZCQXshmDaZ-2GjInFX78'; // Replace with your actual Google Maps embed URL
-
+	// const googleMapsEmbedUrl =
+	// 	'https://www.google.com/maps/embed/v1/place?q=place_id:ChIJhc0ffdNwCDMR7Alq8Y_bEqA&key=AIzaSyBnQ-ZhjWbLfLMZCQXshmDaZ-2GjInFX78'; // Replace with your actual Google Maps embed URL
+	const googleMapsApiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
+	const googleMapsEmbedUrl = contactInfo[2].href;
 	return (
 		<motion.div
 			initial={{ opacity: 0, y: 20 }}
