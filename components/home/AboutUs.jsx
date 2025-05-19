@@ -45,14 +45,19 @@
 // };
 
 // export default AboutUs;
+'use client';
 import { cn } from '@/lib/utils'; // Utility for combining class names
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 import React from 'react';
 import { Button } from '../ui/button';
 
 const AboutUs = ({ className }) => {
 	return (
-		<div
+		<motion.div
+			initial={{ opacity: 0, y: 20 }}
+			whileInView={{ opacity: 1, y: 0 }}
+			transition={{ duration: 0.4, delay: 0.1 }}
 			className={cn(
 				className,
 				'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-2 items-center ' // Responsive grid layout
@@ -95,7 +100,7 @@ const AboutUs = ({ className }) => {
 					</a>
 				</Button>
 			</div>
-		</div>
+		</motion.div>
 	);
 };
 

@@ -36,7 +36,7 @@ const MobileNavigation = ({ menuItems }) => {
 				</SheetTrigger>
 				<SheetContent
 					side="left"
-					className="w-full sm:w-[300px] bg-background text-foreground"
+					className="w-full sm:w-[400px] bg-background text-foreground "
 				>
 					<SheetTitle className="sr-only">Navigation</SheetTitle>
 					<div className="flex flex-col h-full">

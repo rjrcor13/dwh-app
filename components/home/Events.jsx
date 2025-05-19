@@ -278,11 +278,11 @@
 // export default EventsSection;
 'use client';
 
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import { Button } from '../ui/button';
-
 const featuredEvent = {
 	date: 'March 3, 2025',
 	title: 'Medical Conference on Advanced Surgical Techniques',
@@ -325,14 +325,19 @@ const smallerEvents = [
 
 const EventsSection = () => {
 	return (
-		<div className="py-12 mb-8 bg-white">
+		<motion.div
+			initial={{ opacity: 0, y: 20 }}
+			whileInView={{ opacity: 1, y: 0 }}
+			transition={{ duration: 0.4, delay: 0.1 }}
+			className="py-24 mb-8 bg-white"
+		>
 			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 				<div className="flex items-center justify-between mb-8 align-bottom">
 					<div className="bg-green-300_">
 						<h5 className="text-sm text-indigo-500 font-semibold mb-8 ">
 							What's new?
 						</h5>
-						<h2 className="text-2xl font-bold text-gray-800">
+						<h2 className=" text-2xl md:text-3xl font-bold text-gray-800">
 							Our Latest Events
 						</h2>
 						<p className="text-gray-500 text-sm">
@@ -427,7 +432,7 @@ const EventsSection = () => {
 					))}
 				</div>
 			</div>
-		</div>
+		</motion.div>
 	);
 };
 

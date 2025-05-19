@@ -57,7 +57,7 @@ export const menuItems = [
 				title: 'Billing & Insurance',
 				description:
 					'Access information about billing procedures, HMO coverage, PhilHealth, and medical records processing.',
-				href: '/patients-visitors-guide',
+				href: '/patients-visitors-guide/billing-insurance',
 			},
 		],
 	},

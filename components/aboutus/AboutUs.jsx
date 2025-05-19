@@ -1,83 +1,107 @@
+'use client';
+import { motion } from 'framer-motion';
+import Image from 'next/image';
 import React from 'react';
-
 const AboutUs = () => {
 	return (
 		<div className="container_ max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
-			<section className="mb-10">
-				<h2 className="text-3xl font-bold text-primary mb-6 text-center">
-					Our Story: A Legacy of Care
-				</h2>
-				<p className="text-lg text-gray-700 mb-4">
-					At Divine Word Hospital, our commitment to providing quality
-					healthcare in Eastern Visayas is deeply rooted in a history of
-					compassion and dedication.
+			<Image
+				src="/assets/about-us.webp" // Use relative path for Next.js
+				alt="About Us"
+				width={500} // Keep original aspect ratio, set a max width
+				height={200}
+				className="w-full h-70 object-cover -mt-15 " // Responsive image, rounded corners
+			/>
+			<motion.section
+				initial={{ opacity: 0, y: -20 }}
+				animate={{ opacity: 1, y: 0 }}
+				transition={{ duration: 0.5 }}
+				className="text-center mb-16"
+			>
+				<h1 className="text-4xl md:text-5xl font-bold text-primary my-4">
+					Divine Word Hospital
+				</h1>
+				<p className="text-muted-foreground text-lg">
+					A place of welcome committed to quality health care.
 				</p>
-				<div className="space-y-6 text-gray-600">
+			</motion.section>
+
+			<motion.section
+				initial={{ opacity: 0 }}
+				animate={{ opacity: 1 }}
+				transition={{ delay: 0.2 }}
+				className="mb-16 text-justify"
+			>
+				<h2 className="text-2xl font-bold text-primary mb-6 text-left">
+					Our History
+				</h2>
+				<p className=" text-gray-700 mb-4 ">
+					Divine Word Hospital is a Catholic tertiary, Level 3, 179 bed hospital
+					located in Tacloban City, Leyte. Region VIll or Eastern Visayas has a
+					population of 4,089,734 (as of year 2010) with 78% of population
+					living in the rural area and 21.8% in the cities. Of the 70% living in
+					the cities about 547,000 live below poverty line.
+				</p>
+				<div className="space-y-6 text-gray-600 ">
 					<p>
-						The vision for a Catholic hospital in Region VIII began in 1964 with
-						Father Earnest Hoerdemann, SVD, then rector of the Divine Word
-						College. His aspiration, supported by the German government, German
-						Bishops, dedicated missionaries, and numerous generous benefactors,
-						led to the establishment of a 100-bed hospital equipped with modern
-						facilities. This significant endeavor was a collaborative effort
-						between the Society of the Divine Word (SVD) Fathers and the
-						Missionary Benedictine Sisters of Tutzing (MBS), Germany.
+						In 1964, Father Earnest Hoerdemann, SVD, rector of the Divine Word
+						College took up the plan for a Catholic Hospital in Region VIII.
+						With the help of German government and German Bishops, missionaries
+						and other generous benefactors, the Society of the Divine Word (SVD)
+						Fathers in collaboration with the Missionary Benedictine Sisters of
+						Tutzing (MBS), Germany, established a 100 bed Hospital equipped with
+						modern facilities. The hospital became the training hospital for the
+						College of Nursing, Medical Technology, Medicine and other
+						paramedical courses of Divine Word College that later became Divine
+						Word University (DWU).
 					</p>
 					<p>
-						From its inception, Divine Word Hospital played a crucial role in
-						the education of future healthcare professionals, serving as the
-						training hospital for the College of Nursing, Medical Technology,
-						Medicine, and other paramedical courses of Divine Word College,
-						which later evolved into Divine Word University (DWU).
+						On February 7, 1965, the hospital was blessed and inaugurated. The
+						following day, patients were admitted. The SVD Fathers who owned the
+						DWU gave full administration of the Divine Word hospital (DWH) to
+						the Philippine Province of the MBS of Tutzing, Germany.
 					</p>
 					<p>
-						On February 7, 1965, a significant milestone was reached with the
-						blessing and inauguration of the hospital. The very next day, we
-						opened our doors to patients, marking the beginning of our enduring
-						commitment to the community. Shortly thereafter, the SVD Fathers
-						entrusted the full administration of Divine Word Hospital (DWH) to
-						the Philippine Province of the Missionary Benedictine Sisters of
-						Tutzing, Germany.
+						Divine Word Hospital has been at the forefront in offering new
+						services. It was the first to open a Dizziness, Hearing and Voice
+						Center and a Neurosciences Unit; and also, the first to offer
+						Hemodialysis, CT scan, Digital Mammography and Magnetic Resonance
+						Imaging (MRI) in Region VIII.
 					</p>
 					<p>
-						Divine Word Hospital has consistently been at the forefront of
-						healthcare innovation in Region VIII. We proudly pioneered several
-						essential services, including the first Dizziness, Hearing and Voice
-						Center, a dedicated Neurosciences Unit, and the introduction of
-						Hemodialysis, CT scan, Digital Mammography, and Magnetic Resonance
-						Imaging (MRI) to the region. Our diagnostic services continue to be
-						among the most advanced available.
+						The diagnostic services of the hospital are among the best equipped
+						in the Region.
 					</p>
 					<p>
-						Our dedication to excellence extends to medical education. The
-						Residency Training Programs in the Departments of Medicine and
-						Pediatrics have earned accreditation from their respective Specialty
-						Societies. We are currently working diligently towards the
-						accreditation of the Residency Training Programs in the Departments
-						of Obstetrics and Gynecology, and Surgery, further solidifying our
-						commitment to training highly skilled medical professionals.
+						The Residency Training Programs of the Department of Medicine and
+						the Department of Pediatrics are accredited by their respective
+						Specialty Societies. At present, the hospital is working towards the
+						accreditation of the Residency Training Program of the Department of
+						Obstetrics and Gynecology and the Department of Surgery
 					</p>
 					<p>
-						Today, Divine Word Hospital operates with a 179-bed capacity,
-						including 17 service beds specifically allocated for indigent
-						patients. Our dedicated team comprises over 400 employees, including
-						competent consultants, resident physicians, nurses, and other
-						essential personnel, all working collaboratively to provide
-						efficient and effective patient care.
+						At present the hospital with 179 bed capacity has 17 service beds
+						assigned to indigent patients. Currently it has over 400 employees.
 					</p>
-					<p className="font-semibold">
-						At the heart of our philosophy is a profound respect for every
-						individual. We believe that every patient, regardless of their
-						background or status, deserves to be treated with dignity and
-						compassion. This core value is inspired by our faith, recognizing
-						the inherent sacredness in every person, especially those who are
-						suffering. We strive to embody the healing love of Christ in all our
-						interactions.
+					<p>
+						The hospital has a competent staff with active and visiting
+						consultants, resident physicians, nurses, other personnel who are
+						responsible for efficient and effective care of patients. The
+						patient regardless of race, creed, and status in life is treated as
+						someone sacred, any person who suffers is sacred to us, because of
+						Him whom he/she resembles. Any person who nurses or helps someone to
+						his feet, who consoles or heals is even more completely the image of
+						Christ.
 					</p>
 				</div>
-			</section>
+			</motion.section>
 
-			<section className="mb-10">
+			<motion.section
+				initial={{ opacity: 0 }}
+				animate={{ opacity: 1 }}
+				transition={{ delay: 0.2 }}
+				className="mb-10 text-justify"
+			>
 				<h2 className="text-2xl font-bold text-primary mb-4 text-center">
 					Our Guiding Principles
 				</h2>
@@ -94,9 +118,14 @@ const AboutUs = () => {
 						quality healthcare.
 					</p>
 				</div>
-			</section>
+			</motion.section>
 
-			<section className="mb-10">
+			<motion.section
+				initial={{ opacity: 0 }}
+				animate={{ opacity: 1 }}
+				transition={{ delay: 0.2 }}
+				className="mb-10 text-justify"
+			>
 				<h2 className="text-2xl font-bold text-primary mb-4 text-center">
 					Our Vision & Mission
 				</h2>
@@ -132,13 +161,133 @@ const AboutUs = () => {
 						</ul>
 					</div>
 				</div>
-			</section>
-
-			<div className="text-center text-gray-500 text-sm mt-8">
-				Located in Tacloban City, Eastern Visayas, Philippines.
-			</div>
+			</motion.section>
 		</div>
 	);
 };
 
 export default AboutUs;
+
+//'use client';
+// import { Card, CardContent } from '@/components/ui/card';
+// import { Separator } from '@/components/ui/separator';
+// import { motion } from 'framer-motion';
+
+// export default function AboutUs() {
+// 	return (
+// 		<div className="max-w-6xl mx-auto px-6 py-12">
+// 			<motion.section
+// 				initial={{ opacity: 0, y: -20 }}
+// 				animate={{ opacity: 1, y: 0 }}
+// 				transition={{ duration: 0.5 }}
+// 				className="text-center mb-16"
+// 			>
+// 				<h1 className="text-4xl md:text-5xl font-bold text-primary mb-4">
+// 					About Divine Word Hospital
+// 				</h1>
+// 				<p className="text-muted-foreground text-lg">
+// 					A place of welcome committed to quality health care.
+// 				</p>
+// 			</motion.section>
+
+// 			<motion.section
+// 				initial={{ opacity: 0 }}
+// 				animate={{ opacity: 1 }}
+// 				transition={{ delay: 0.2 }}
+// 				className="mb-16"
+// 			>
+// 				<Card className="shadow-md rounded-xl overflow-hidden">
+// 					<CardContent className="prose prose-neutral lg:prose-lg px-6 py-8">
+// 						<h2 className="text-2xl font-semibold text-primary mb-4">
+// 							Our History
+// 						</h2>
+// 						<p>
+// 							Divine Word Hospital is a Catholic tertiary, Level 3, 179-bed
+// 							hospital located in Tacloban City, Leyte. Eastern Visayas, Region
+// 							VIII, has a population of over 4 million (as of 2010), with the
+// 							majority residing in rural areas. Among those in urban areas, a
+// 							significant number live below the poverty line.
+// 						</p>
+// 						<p>
+// 							In 1964, Father Earnest Hoerdemann, SVD, then rector of Divine
+// 							Word College, envisioned a Catholic hospital in the region.
+// 							Through support from the German government, bishops, missionaries,
+// 							and generous benefactors, the Society of the Divine Word partnered
+// 							with the Missionary Benedictine Sisters of Tutzing (MBS) to bring
+// 							this vision to life.
+// 						</p>
+// 						<p>
+// 							The hospital, initially with 100 beds, opened on February 7, 1965,
+// 							and served as a training center for the paramedical programs of
+// 							Divine Word College (later Divine Word University).
+// 						</p>
+// 						<p>
+// 							DWH has since pioneered medical services in Region VIII, offering
+// 							the first Hemodialysis, CT Scan, Digital Mammography, MRI, and
+// 							specialized care units. It is recognized for its excellence in
+// 							diagnostics and its accredited residency programs in Internal
+// 							Medicine and Pediatrics.
+// 						</p>
+// 						<p>
+// 							Today, with 179 beds, 17 of which serve indigent patients, the
+// 							hospital employs over 400 staff members. With dedication and
+// 							compassion, it upholds the sacredness of every patient and
+// 							reflects the healing ministry of Christ.
+// 						</p>
+// 					</CardContent>
+// 				</Card>
+// 			</motion.section>
+
+// 			<motion.section
+// 				initial={{ opacity: 0 }}
+// 				animate={{ opacity: 1 }}
+// 				transition={{ delay: 0.3 }}
+// 				className="grid gap-6 md:grid-cols-3"
+// 			>
+// 				<Card className="rounded-xl shadow-md">
+// 					<CardContent className="p-6">
+// 						<h3 className="text-lg font-bold text-primary mb-2">Vision</h3>
+// 						<p className="text-muted-foreground">
+// 							A Catholic Institution of Holistic Wellness and Quality Health
+// 							Care.
+// 						</p>
+// 					</CardContent>
+// 				</Card>
+
+// 				<Card className="rounded-xl shadow-md">
+// 					<CardContent className="p-6">
+// 						<h3 className="text-lg font-bold text-primary mb-2">Mission</h3>
+// 						<ul className="list-disc pl-5 space-y-2 text-muted-foreground text-sm">
+// 							<li>To proclaim God’s healing love to all.</li>
+// 							<li>To uphold Christian Values.</li>
+// 							<li>To provide quality tertiary health care.</li>
+// 							<li>
+// 								To train medical, nursing, and paramedical students and enhance
+// 								professional development.
+// 							</li>
+// 							<li>
+// 								To support medical and paramedical professionals in Region 8
+// 								with adequate facilities.
+// 							</li>
+// 						</ul>
+// 					</CardContent>
+// 				</Card>
+
+// 				<Card className="rounded-xl shadow-md">
+// 					<CardContent className="p-6">
+// 						<h3 className="text-lg font-bold text-primary mb-2">
+// 							Quality Policy
+// 						</h3>
+// 						<p className="text-muted-foreground text-sm">
+// 							We commit to meeting the health needs and expectations of the
+// 							people of Region 8 by delivering equitable, efficient, and
+// 							effective healthcare services. We emphasize ongoing training,
+// 							research, and continuous improvement to achieve excellence in
+// 							quality healthcare.
+// 						</p>
+// 					</CardContent>
+// 				</Card>
+// 			</motion.section>
+// 		</div>
+// 	);
+// }

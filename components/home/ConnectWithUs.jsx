@@ -5,8 +5,8 @@ import {
 	MapPinIcon,
 	PhoneIcon,
 } from '@heroicons/react/24/outline';
+import { AnimatePresence, motion } from 'framer-motion';
 import React from 'react';
-
 const ConnectWithUsSection = () => {
 	const contactInfo = [
 		{
@@ -35,10 +35,18 @@ const ConnectWithUsSection = () => {
 		'https://www.google.com/maps/embed/v1/place?q=place_id:ChIJhc0ffdNwCDMR7Alq8Y_bEqA&key=AIzaSyBnQ-ZhjWbLfLMZCQXshmDaZ-2GjInFX78'; // Replace with your actual Google Maps embed URL
 
 	return (
-		<div className="bg-primary py-12 text-white" id="connect-with-us">
+		<motion.div
+			initial={{ opacity: 0, y: 20 }}
+			whileInView={{ opacity: 1, y: 0 }}
+			transition={{ duration: 0.4, delay: 0.1 }}
+			className="bg-primary py-12 text-white"
+			id="connect-with-us"
+		>
 			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
 				<div className="text-center mb-8">
-					<h2 className="text-3xl font-bold mb-2">Connect with Us</h2>
+					<h2 className="text-2xl md:text-3xl font-bold mb-2">
+						Connect with Us
+					</h2>
 					<p className="text-lg text-indigo-200">
 						We are here to assist you. Please feel free to reach out to us for
 						any inquiries or assistance.
@@ -81,7 +89,7 @@ const ConnectWithUsSection = () => {
 					></iframe>
 				</div>
 			</div>
-		</div>
+		</motion.div>
 	);
 };
 

@@ -82,7 +82,7 @@ const TopWidget = () => {
 			<div className="max-w-7xl container py-3 mx-auto">
 				<div className="flex justify-between items-center text-white text-sm">
 					{/* Left Side: Connect With Us (Hidden on small screens) */}
-					<div className="hidden md:flex flex-row gap-4 items-center">
+					<div className="hidden md:flex flex-row gap-4 items-center px-2">
 						<span>Connect with Us:</span>
 						<div className="flex flex-row gap-4">
 							<Facebook size={18} />

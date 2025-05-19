@@ -112,8 +112,8 @@ import {
 	AccordionTrigger,
 } from '@/components/ui/accordion';
 import { MinusIcon, PlusIcon } from '@heroicons/react/24/outline';
+import { AnimatePresence, motion } from 'framer-motion';
 import React, { useState } from 'react';
-
 const faqData = [
 	{
 		question: "What are your hospital's operating hours?",
@@ -123,7 +123,7 @@ const faqData = [
 	{
 		question: 'Where is your hospital located?',
 		answer:
-			'Our hospital is located at [Your Hospital Address]. Please refer to our Contact Us page for a map and detailed directions.',
+			'Our hospital is located at Avenida Veteranos Street, Tacloban City, Leyte, 6500. Please refer to our Contact Us page for a map and detailed directions.',
 	},
 	{
 		question: 'Do I need an appointment, or do you accept walk-ins?',
@@ -164,7 +164,12 @@ const faqData = [
 
 const FAQSectionShadcn = () => {
 	return (
-		<div className="py-16 bg-blue-50">
+		<motion.div
+			initial={{ opacity: 0, y: 20 }}
+			whileInView={{ opacity: 1, y: 0 }}
+			transition={{ duration: 0.4, delay: 0.1 }}
+			className="py-16 bg-blue-50"
+		>
 			<div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-left">
 				<h2 className="text-2xl font-bold text-gray-800 mb-2">
 					Frequently Asked Questions
@@ -176,9 +181,9 @@ const FAQSectionShadcn = () => {
 						<AccordionItem
 							key={index}
 							value={`item-${index}`}
-							className="bg-white rounded-lg my-2 shadow-md"
+							className="bg-white rounded-lg my-2 shadow-md hover:cursor-pointer"
 						>
-							<AccordionTrigger className="w-full flex items-left justify-between py-3 px-4 font-semibold text-gray-700 focus:outline-none">
+							<AccordionTrigger className="w-full flex items-left justify-between py-3 px-4 font-semibold text-gray-700 focus:outline-none ">
 								<span>{item.question}</span>
 
 								<span className="sr-only">Toggle</span>
@@ -190,7 +195,7 @@ const FAQSectionShadcn = () => {
 					))}
 				</Accordion>
 			</div>
-		</div>
+		</motion.div>
 	);
 };
 

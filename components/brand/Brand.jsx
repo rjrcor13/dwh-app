@@ -8,10 +8,10 @@ const Brand = () => {
 			<div className="flex gap-4 items-center justify-center  ">
 				<Image src={logo} width={90} height={90} alt="logo" aria-label="logo" />{' '}
 				<div className="">
-					<h4 className="font-bold text-primary text-xl">
+					<h4 className="font-bold text-primary text-xl text-nowrap">
 						Divine Word Hospital
 					</h4>
-					<p className="text-sm text-gray-600 italic">
+					<p className="text-sm text-gray-600 italic text-nowrap">
 						60 years of Grace .... <br />
 						Serving, Caring & Healing.
 					</p>

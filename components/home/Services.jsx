@@ -383,7 +383,6 @@
 
 // export default OurServicesSection;
 'use client';
-
 import {
 	Carousel,
 	CarouselContent,
@@ -465,7 +464,7 @@ const servicesData = [
 	},
 ];
 
-const OurServicesSection = () => {
+const OurServicesSection = ({ classaNames }) => {
 	const [isMobile, setIsMobile] = useState(false);
 	const carouselRef = useRef(null);
 
@@ -506,14 +505,19 @@ const OurServicesSection = () => {
 
 	if (isMobile) {
 		return (
-			<div className="relative py-16 bg-gray-50">
+			<motion.div
+				initial={{ opacity: 0, y: -20 }}
+				animate={{ opacity: 1, y: 0 }}
+				transition={{ duration: 0.5 }}
+				className="relative py-16 bg-gray-50"
+			>
 				<div className="relative z-10 max-w-7xl mx-auto text-center">
 					<div className="flex flex-col p-6 space-y-8 mb-10">
 						<h2 className="text-indigo-500 font-semibold text-sm mb-8 italic_">
 							Our Services
 						</h2>
 						<div>
-							<h3 className="text-3xl font-bold text-gray-800 mb-4">
+							<h3 className="text-2xl font-bold text-gray-800 mb-4">
 								Comprehensive Care for Your Needs
 							</h3>
 							<p className="text-gray-600 text-lg">
@@ -587,12 +591,17 @@ const OurServicesSection = () => {
 						</CarouselContent>
 					</Carousel>
 				</div>
-			</div>
+			</motion.div>
 		);
 	}
 
 	return (
-		<div className="relative py-8 pb-12 bg-gray-50">
+		<motion.div
+			initial={{ opacity: 0, y: 20 }}
+			whileInView={{ opacity: 1, y: 0 }}
+			transition={{ duration: 0.4, delay: 0.1 }}
+			className="relative py-16  pb-24 bg-gray-50"
+		>
 			<div className="relative z-10 max-w-7xl mx-auto text-center">
 				<div className="flex flex-col p-6 space-y-8 mb-10">
 					<h2 className="text-indigo-500 font-semibold text-sm mb-8 italic_">
@@ -654,7 +663,7 @@ const OurServicesSection = () => {
 					})}
 				</div>
 			</div>
-		</div>
+		</motion.div>
 	);
 };
 
