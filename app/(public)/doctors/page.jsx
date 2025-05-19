@@ -1,11 +1,12 @@
+'use client';
 import FindADoctor from '@/components/doctors/FindADoctor';
-import React from 'react';
+import { Suspense } from 'react';
 
 const DoctorsPage = () => {
 	return (
-		<div>
+		<Suspense fallback={<div>Loading...</div>}>
 			<FindADoctor />
-		</div>
+		</Suspense>
 	);
 };
 
