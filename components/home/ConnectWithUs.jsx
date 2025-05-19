@@ -27,14 +27,23 @@ const ConnectWithUsSection = () => {
 			text: 'Avenida Veteranos St., Tacloban City',
 			subText: 'Get Direction',
 			isLink: true, // New property to indicate it's a link
-			href: 'ttps://www.google.com/maps/embed/v1/place?q=place_id:ChIJhc0ffdNwCDMR7Alq8Y_bEqA', // Add a placeholder for the link
+			href: 'https://www.google.com/maps/embed/v1/place?q=place_id:ChIJhc0ffdNwCDMR7Alq8Y_bEqA', // Add a placeholder for the link
 		},
 	];
 
 	// const googleMapsEmbedUrl =
 	// 	'https://www.google.com/maps/embed/v1/place?q=place_id:ChIJhc0ffdNwCDMR7Alq8Y_bEqA&key=AIzaSyBnQ-ZhjWbLfLMZCQXshmDaZ-2GjInFX78'; // Replace with your actual Google Maps embed URL
 	const googleMapsApiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
-	const googleMapsEmbedUrl = contactInfo[2].href;
+
+	let googleMapsEmbedUrl = contactInfo[2].href; // Default to the direct link
+
+	if (googleMapsApiKey) {
+		// **Example:** If you were using the Google Maps Embed API (which is different from a direct link)
+		//  and required an API key, you'd construct the URL like this:
+		//  This example assumes you want to embed a map.  For a simple link, the above is sufficient.
+		googleMapsEmbedUrl = `https://www.google.com/maps/embed/v1/place?key=${googleMapsApiKey}&q=place_id:ChIJhc0ffdNwCDMR7Alq8Y_bEqA`;
+		//  See https://developers.google.com/maps/documentation/embed/get-api-key for details on the Embed API
+	}
 	return (
 		<motion.div
 			initial={{ opacity: 0, y: 20 }}

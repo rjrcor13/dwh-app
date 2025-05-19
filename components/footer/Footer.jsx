@@ -10,8 +10,14 @@ import {
 import Image from 'next/image';
 import React from 'react';
 const Footer = () => {
-	const googleMapsEmbedUrl =
-		'https://www.google.com/maps/embed/v1/place?q=place_id:ChIJhc0ffdNwCDMR7Alq8Y_bEqA&key=AIzaSyBnQ-ZhjWbLfLMZCQXshmDaZ-2GjInFX78'; // Replace with your actual Google Maps embed URL
+	const googleMapsApiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
+
+	let googleMapsEmbedUrl =
+		'https://www.google.com/maps/embed/v1/place?q=place_id:ChIJhc0ffdNwCDMR7Alq8Y_bEqA'; // Default to the direct link
+
+	if (googleMapsApiKey) {
+		googleMapsEmbedUrl = `https://www.google.com/maps/embed/v1/place?key=${googleMapsApiKey}&q=place_id:ChIJhc0ffdNwCDMR7Alq8Y_bEqA`;
+	}
 
 	return (
 		<footer className="bg-primary text-white pt-20 pb-8">
