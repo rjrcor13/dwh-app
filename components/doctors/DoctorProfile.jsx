@@ -14,13 +14,7 @@ import {
 	Venus,
 	VenusIcon,
 } from 'lucide-react';
-// import {
-// 	CalendarIcon,
-// 	ClockIcon,
-// 	CreditCardIcon,
-// 	GenderFemale,
-// 	GenderMale,
-// } from 'lucide-react';
+
 import { useParams, useRouter } from 'next/navigation';
 import React, { useMemo } from 'react';
 
