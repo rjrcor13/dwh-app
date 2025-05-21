@@ -1,3 +1,4 @@
+import { contactInfo } from '@/app/data/contactInfo';
 import logo from '@/public/assets/logo_w.png';
 import {
 	Facebook,
@@ -9,6 +10,9 @@ import {
 } from 'lucide-react'; // For icons
 import Image from 'next/image';
 import React from 'react';
+const addressInfo = contactInfo.find((info) => info.title === 'Location');
+const phoneInfo = contactInfo.find((info) => info.title === 'Phone');
+const emailInfo = contactInfo.find((info) => info.title === 'Email');
 const Footer = () => {
 	const googleMapsApiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
 
@@ -177,15 +181,15 @@ const Footer = () => {
 						<ul className="text-sm text-indigo-200 space-y-2">
 							<li className="flex items-start">
 								<Mail className="h-4 w-4 mr-2 mt-1" />
-								<span>dwh.marketing@dwh.com</span>
+								<span>{emailInfo.text}</span>
 							</li>
 							<li className="flex items-start">
 								<Phone className="h-4 w-4 mr-2 mt-1" />
-								<span>(053) 888 8888</span>
+								<span>{phoneInfo.text}</span>
 							</li>
 							<li className="flex items-start">
 								<MapPin className="h-4 w-4 mr-2 mt-1" />
-								<span>Avenida Veteranos St., Tacloban City</span>
+								<span>{addressInfo.text}</span>
 							</li>
 						</ul>
 						{/* Map Placeholder -  */}

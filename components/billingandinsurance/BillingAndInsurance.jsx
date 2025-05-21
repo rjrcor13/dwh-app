@@ -1,6 +1,7 @@
 'use client';
 import { motion } from 'framer-motion';
 
+import { Separator } from '../ui/separator';
 import BillingSection from './BillingSection';
 import HMOsSection from './HMO';
 import PhilHealthSection from './PhilHealth';
@@ -50,7 +51,9 @@ const BillingAndInsurance = () => {
 					</p>
 
 					<BillingSection />
+					<Separator />
 					<HMOsSection />
+					<Separator />
 					<PhilHealthSection />
 				</motion.div>
 			</div>

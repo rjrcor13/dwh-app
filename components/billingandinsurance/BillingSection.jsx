@@ -37,7 +37,7 @@ const BillingSection = () => {
 					<div className=" space-y-4">
 						<div>
 							<div className="text-3xl font-semibold text-primary flex items-center">
-								<Banknote className="mr-3 h-8 w-8 text-primary/80 mt-1" />
+								{/* <Banknote className="mr-3 h-8 w-8 text-primary/80 mt-1" /> */}
 								Billing Information
 							</div>
 							<div className="text-gray-600">
@@ -50,23 +50,23 @@ const BillingSection = () => {
 								services. Our dedicated billing office is available to assist
 								you with any questions.
 							</p>
-							<div className="mt-6">
+							{/* <div className="mt-6">
 								<Button
 									variant="outline"
 									className="bg-indigo-100/50 text-primary hover:bg-indigo-100 hover:text-indigo-800 border-indigo-200"
 								>
 									View Billing Details
 								</Button>
-							</div>
+							</div> */}
 						</div>
 					</div>
 					<div className="hidden md:block pr-6">
 						<Image
-							src="/assets/HMO.png" // Use relative path for Next.js
-							alt="About Us"
+							src="/assets/billing.jpg" // Use relative path for Next.js
+							alt="Billing Information"
 							width={500} // Keep original aspect ratio, set a max width
 							height={500}
-							className="w-full h-90 object-fit " // Responsive image, rounded corners
+							className="w-full h-56 object-cover rounded-2xl " // Responsive image, rounded corners
 						/>
 					</div>
 				</div>

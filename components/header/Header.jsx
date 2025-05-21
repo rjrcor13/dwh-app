@@ -1,3 +1,4 @@
+'use client';
 import { menuItems } from '@/app/data/navigationItems';
 import MainNavigation from '../navigation/MainNavigation';
 import MobileNavigation from '../navigation/MobileNavigation';
