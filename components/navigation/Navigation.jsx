@@ -19,7 +19,7 @@ export default function MyNavigation({ menuItems, myClass }) {
 	return (
 		<>
 			<NavigationMenu
-				className={`${myClass} " hidden lg:flex space-y-4_ items-end text-primary bg-white_ align-baseline"`}
+				className={`${myClass} " hidden lg:flex space-y-4_ items-end text-primary bg-white align-baseline"`}
 			>
 				<NavigationMenuList>
 					{menuItems.map((item) => (
