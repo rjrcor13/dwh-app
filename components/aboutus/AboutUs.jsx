@@ -32,7 +32,7 @@ const AboutUs = () => {
 				transition={{ delay: 0.2 }}
 				className="mb-16 text-justify"
 			>
-				<h2 className="text-2xl font-bold text-primary mb-6 text-left">
+				<h2 className="text-2xl font-semibold text-primary mb-6 text-left">
 					Our History
 				</h2>
 				<p className=" text-gray-700 mb-4 ">
@@ -102,7 +102,7 @@ const AboutUs = () => {
 				transition={{ delay: 0.2 }}
 				className="mb-10 text-justify"
 			>
-				<h2 className="text-2xl font-bold text-primary mb-4 text-center">
+				<h2 className="text-2xl font-semibold  text-primary mb-4 text-center">
 					Our Guiding Principles
 				</h2>
 				<div className="bg-gray-50 rounded-lg p-6">

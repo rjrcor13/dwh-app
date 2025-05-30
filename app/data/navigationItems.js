@@ -21,7 +21,7 @@ export const menuItems = [
 				title: 'Servicing Units',
 				description:
 					'Explore the hospital`s medical and diagnostic services available for patient care and treatment.',
-				href: '/expertise/servicing-units',
+				href: '/expertise/services',
 			},
 			{
 				title: 'Departments',

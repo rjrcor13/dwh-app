@@ -1,3 +1,5 @@
+'use client';
+import { servicesData } from '@/app/data/services';
 import Banner from '@/components/banner/Banner';
 import Footer from '@/components/footer/Footer';
 import AboutUs from '@/components/home/AboutUs';
@@ -5,6 +7,7 @@ import ConnectWithUsSection from '@/components/home/ConnectWithUs';
 import EventsSection from '@/components/home/Events';
 import FAQSection from '@/components/home/FAQ';
 import OurServicesSection from '@/components/home/Services';
+import Services from '@/components/services/Services';
 import Stats from '@/components/stats/Stats';
 import Image from 'next/image';
 import React from 'react';
@@ -48,8 +51,14 @@ const HomePage = () => {
 					/> */}
 					<AboutUs className="relative z-10 max-w-7xl mx-auto my-12 lg:mt-12 mt-0 min-h-[500px] " />
 				</div>
-				<OurServicesSection />
+				{/* <OurServicesSection /> */}
 
+				<Services
+					label="Our Services"
+					title="	Comprehensive Care for Your Needs"
+					description="We offer a wide range of medical services to provide you and your family with the best possible care."
+					servicesData={servicesData}
+				/>
 				<EventsSection />
 
 				<ConnectWithUsSection />

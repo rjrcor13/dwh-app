@@ -226,7 +226,7 @@ export const departmentsData = [
 	{
 		name: 'Department of Anesthesiology',
 		id: 'anesthesiology', // Unique ID for tab
-		icon: Brain, // Represents anesthesia and consciousness
+		// icon: Brain, // Represents anesthesia and consciousness
 		description:
 			'The Anesthesiology Department provides anesthesia and pain management in surgery and specialized procedures provided by Obstetrics and Gynecology, Neurosurgery, Orthopedics, Otolaryngology, Ophthalmology, Interventional Radiology, Oncology, Dental Surgery and Psychiatry. Consultant staff work closely with the Pain Management Services unit.',
 		vision:
@@ -241,7 +241,7 @@ export const departmentsData = [
 	{
 		name: 'Department of Internal Medicine',
 		id: 'internal-medicine', // Unique ID for tab
-		icon: Stethoscope, // General internal medicine
+		// icon: Stethoscope, // General internal medicine
 		description:
 			'The Department of Internal Medicine provides general and specialized outpatient and inpatient care for adult patients (age 19 years old and above). It aims to provide accessible, compassionate, and integrative healthcare services through a comprehensive and integrated multidisciplinary approach.',
 		vision:
@@ -286,7 +286,7 @@ export const departmentsData = [
 	{
 		name: 'Department of Obstetrics & Gynecology',
 		id: 'ob-gyne', // Unique ID for tab
-		icon: Baby, // Represents OB-GYNE
+		// icon: Baby, // Represents OB-GYNE
 		description:
 			"The Department of Obstetrics and Gynecology at Divine Word Hospital is dedicated to delivering comprehensive, high-quality patient care across all areas of obstetrics and gynecology, leveraging advanced technology, pioneering research, and rigorous training and education. Our team consists of highly trained professionals who are committed to providing the utmost in personalized reproductive healthcare with excellence, integrity, and compassion. We offer a wide range of women’s healthcare services, including annual check-ups, prenatal care, childbirth deliveries, post-delivery maternal care, and specialized gynecologic treatments and surgeries for specific conditions. At the forefront of women’s health, our department prioritizes the well-being of female patients, ensuring they receive the best possible care for their reproductive health needs. We are equipped with advanced ultrasound machines and supported by exceptional Obstetrics and Gynecology specialists who excel in the evaluation, diagnosis, and management of each patient's unique needs. At Divine Word Hospital, we are dedicated to advancing women’s healthcare through compassionate care, advanced technology, and expertise in obstetrics and gynecology, ensuring every patient receives exceptional treatment tailored to their individual health journey.",
 		vision:
@@ -383,7 +383,7 @@ export const departmentsData = [
 	{
 		name: 'Department of Pediatrics',
 		id: 'pediatrics', // Unique ID for tab
-		icon: Users, // Represents children/family
+		// icon: Users, // Represents children/family
 		description:
 			"The Divine Word Hospital's Department of Pediatrics offers excellent care for children from birth to 18 years old. Services include general health check-ups, preventive care, treatment for sick children, developmental assessments, referrals to specialists, and family counseling. The department has modern facilities such as a pediatric unit, intensive care for newborns and children, and an emergency outpatient unit.",
 		vision:
@@ -418,7 +418,7 @@ export const departmentsData = [
 	{
 		name: 'Department of Surgery',
 		id: 'surgery', // Unique ID for tab
-		icon: Stethoscope, // Represents surgery
+		// icon: Stethoscope, // Represents surgery
 		description:
 			'Divine Word Hospital has the updated surgical facilities, staffed by highly qualified and board-certified surgeons and organized into subspecialty groups, dedicated to the advanced treatment of surgical diseases, injuries, and diverse medical conditions. Due to its consistent search for new and modern developments in surgical techniques, the Department of Surgery offers traditional and modern surgical procedures using new technologies performed by highly skilled and well-trained specialists, some of the General surgery procedures may now be done through minimally invasive techniques.',
 		vision:

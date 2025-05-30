@@ -51,17 +51,17 @@ const PatientsPage = ({ tabList, patientsData }) => {
 			return (
 				<Card className="shadow-none border-none">
 					<CardHeader className="hidden md:block">
-						<CardTitle className="text-2xl font-semibold text-left text-primary border-b pb-2">
+						<CardTitle className="text-2xl font-semibold text-left text-primary border-b pb-2 uppercase">
 							{content.title}
 						</CardTitle>
 					</CardHeader>
 					<CardContent className="space-y-4 text-gray-700">
 						{content.intro && <p className="text-justify">{content.intro}</p>}
-						<div className="space-y-6">
+						<div className="space-y-8">
 							{content.sections.map((section, index) => (
 								<div key={index} className="space-y-2">
 									<p
-										className={`font-semibold ${
+										className={`font-semibold md:text-xl text-lg normal-case  ${
 											section.isPrimaryText ? 'text-primary' : ''
 										}`}
 									>
@@ -70,7 +70,7 @@ const PatientsPage = ({ tabList, patientsData }) => {
 									{section.paragraphs.map((para, pIdx) => (
 										<p
 											key={pIdx}
-											className="flex text-justify text-sm sm:text-base"
+											className="flex text-justify text-sm sm:text-base "
 										>
 											{para}
 										</p>
@@ -167,7 +167,7 @@ const PatientsPage = ({ tabList, patientsData }) => {
 			initial="hidden"
 			animate="visible"
 			variants={sectionVariants}
-			className="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8"
+			className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8"
 		>
 			{/* Header Section */}
 			<motion.div variants={itemVariants} className="mb-8 text-center">
@@ -244,7 +244,7 @@ const PatientsPage = ({ tabList, patientsData }) => {
 									}`}
 								>
 									{tab.icon}{' '}
-									<span className="text-base sm:text-lg">{tab.label}</span>
+									<span className="text-base text-xl">{tab.label}</span>
 								</div>
 							</AccordionTrigger>
 							<AccordionContent className="p-3">

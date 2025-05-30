@@ -64,7 +64,7 @@ const VisitorsAndWatchers = () => {
 			transition={{ duration: 0.4, delay: 0.1 }}
 		>
 			<motion.div className="text-center" variants={itemVariants}>
-				<h1 className="text-4xl md:text-5xl  font-extrabold text-primary">
+				<h1 className="text-4xl md:text-5xl  font-bold text-primary">
 					Visitors & Watchers
 				</h1>
 				<p className="text-gray-600 text-lg mt-4">
