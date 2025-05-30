@@ -1,104 +1,12 @@
-// 'use client';
-
-// import { useRouter } from 'next/navigation';
-
-// export default function ServicesDetailClient({ service }) {
-// 	const router = useRouter();
-// 	const { title, fullContent, slug } = service;
-
-// 	return (
-// 		<div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
-// 			<button
-// 				onClick={() => router.back()}
-// 				className="mb-6 inline-flex items-center text-indigo-600 hover:text-indigo-800 text-sm font-medium"
-// 			>
-// 				← Back
-// 			</button>
-
-// 			<h1 className="text-4xl font-bold text-primary mb-6">{title}</h1>
-
-// 			{/* Mission & Vision */}
-// 			{fullContent.mission_vision && (
-// 				<div className="mb-8">
-// 					{fullContent.mission_vision.mission && (
-// 						<p className="text-lg text-gray-700 mb-2">
-// 							<span className="font-semibold">Mission:</span>{' '}
-// 							{fullContent.mission_vision.mission}
-// 						</p>
-// 					)}
-// 					{fullContent.mission_vision.vision && (
-// 						<p className="text-lg text-gray-700">
-// 							<span className="font-semibold">Vision:</span>{' '}
-// 							{fullContent.mission_vision.vision}
-// 						</p>
-// 					)}
-// 				</div>
-// 			)}
-
-// 			{/* Overview */}
-// 			{fullContent.overview && (
-// 				<div className="mb-8">
-// 					<h2 className="text-2xl font-semibold text-secondary mb-3">
-// 						Overview
-// 					</h2>
-// 					<p className="text-gray-700">{fullContent.overview}</p>
-// 				</div>
-// 			)}
-
-// 			{/* Services Offered */}
-// 			{fullContent.services_offered?.length > 0 && (
-// 				<div className="mb-8">
-// 					<h2 className="text-2xl font-semibold text-secondary mb-3">
-// 						Services Offered
-// 					</h2>
-// 					<ul className="list-disc list-inside space-y-2 text-gray-700">
-// 						{fullContent.services_offered.map((item, index) => (
-// 							<li key={index}>{item}</li>
-// 						))}
-// 					</ul>
-// 				</div>
-// 			)}
-
-// 			{/* Hemodialysis Admission Procedure */}
-// 			{slug === 'hemo-dialysis' && fullContent.admission_procedure && (
-// 				<div className="mb-8">
-// 					<h2 className="text-2xl font-semibold text-secondary mb-3">
-// 						{fullContent.admission_procedure.title}
-// 					</h2>
-// 					{fullContent.admission_procedure.new_out_patients && (
-// 						<>
-// 							<h3 className="text-lg font-semibold text-primary mb-2">
-// 								NEW OUT-PATIENTS:
-// 							</h3>
-// 							<ul className="list-disc list-inside space-y-1 text-gray-700">
-// 								{fullContent.admission_procedure.new_out_patients.map(
-// 									(item, index) => (
-// 										<li key={index}>{item}</li>
-// 									)
-// 								)}
-// 							</ul>
-// 						</>
-// 					)}
-// 				</div>
-// 			)}
-// 		</div>
-// 	);
-// }
-// components/services/ServicesDetailClient.jsx
 'use client';
 
 import { useRouter } from 'next/navigation';
-// No need to import Lucide icons here since they are rendered in the Server Component
-// if you choose that approach. If you change servicesData to use string names,
-// then you would import them here as per the previous suggestion.
 
 export default function ServicesDetailClient({ service }) {
 	const router = useRouter();
 	const { title, fullContent, slug } = service; // 'service' now contains only serializable data
 
 	if (!fullContent) {
-		// This should ideally not happen if data is correctly structured,
-		// but good for a fallback.
 		return (
 			<div className="container mx-auto py-16 px-4 sm:px-6 lg:px-8">
 				<button
