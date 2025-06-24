@@ -67,7 +67,7 @@ export const menuItems = [
 			title: 'Faith & Community',
 			description:
 				'Learn about our pastoral services, chapel activities, and community outreach programs that support holistic healing.',
-			href: '/faith-community',
+			href: '/events/MAKAPAWA',
 			image: '/assets/events.jpg',
 		},
 		links: [
@@ -75,19 +75,19 @@ export const menuItems = [
 				title: 'Eucharistic Celebrations',
 				description:
 					'Celebrate the Holy Eucharist through scheduled Masses and spiritual gatherings.',
-				href: '/faith-community',
+				href: '/events/eucharistic-celebrations',
 			},
 			{
 				title: 'MAKAPAWA',
 				description:
 					'Our hospital`s outreach and pastoral ministry aimed at promoting holistic care for the community.',
-				href: '/faith-community',
+				href: '/events/makapawa',
 			},
 			{
 				title: 'Hospital Celebrations',
 				description:
 					'Commemorate significant milestones and institutional events that foster community and hospital culture.',
-				href: '/faith-community',
+				href: '/events/MAKAPAWA',
 			},
 		],
 	},

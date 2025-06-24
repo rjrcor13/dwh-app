@@ -78,8 +78,8 @@ const VisitorsAndWatchers = () => {
 				whileInView={{ opacity: 1, y: 0 }}
 				transition={{ duration: 0.4, delay: 0.1 }}
 			>
-				<div className="space-y-6">
-					<h2 className="text-2xl font-semibold text-primary">
+				<div className="space-y-4">
+					<h2 className="text-3xl font-semibold text-primary">
 						Visiting Guidelines
 					</h2>
 					<p className="text-gray-700 leading-relaxed">
@@ -187,11 +187,11 @@ const VisitorsAndWatchers = () => {
 				transition={{ duration: 0.4, delay: 0.1 }}
 			>
 				<div className=" border-0 n">
-					<h1 className="text-2xl font-semibold text-red-700 flex items-center">
+					<h1 className="text-3xl font-semibold text-red-700 flex items-center">
 						<AlertCircle className="mr-2 h-6 w-6 text-red-500" />
 						COVID-19 Guidelines
 					</h1>
-					<p className="text-gray-600  my-2">
+					<p className="text-gray-600  my-2 leading-relaxed">
 						Guidelines to minimize virus transmission.
 					</p>
 

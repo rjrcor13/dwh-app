@@ -1,172 +1,172 @@
-'use client';
-import { motion } from 'framer-motion';
-import Image from 'next/image';
-import React from 'react';
-const AboutUs = () => {
-	return (
-		<div className="container_ max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
-			<Image
-				src="/assets/about-us.webp" // Use relative path for Next.js
-				alt="About Us"
-				width={500} // Keep original aspect ratio, set a max width
-				height={200}
-				className="w-full h-70 object-cover -mt-15 " // Responsive image, rounded corners
-			/>
-			<motion.section
-				initial={{ opacity: 0, y: -20 }}
-				animate={{ opacity: 1, y: 0 }}
-				transition={{ duration: 0.5 }}
-				className="text-center mb-16"
-			>
-				<h1 className="text-4xl md:text-5xl font-bold text-primary my-4">
-					Divine Word Hospital
-				</h1>
-				<p className="text-muted-foreground text-lg">
-					A place of welcome committed to quality health care.
-				</p>
-			</motion.section>
+// 'use client';
+// import { motion } from 'framer-motion';
+// import Image from 'next/image';
+// import React from 'react';
+// const AboutUs = () => {
+// 	return (
+// 		<div className="container_ max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
+// 			<Image
+// 				src="/assets/about-us.webp" // Use relative path for Next.js
+// 				alt="About Us"
+// 				width={500} // Keep original aspect ratio, set a max width
+// 				height={200}
+// 				className="w-full h-70 object-cover -mt-15 " // Responsive image, rounded corners
+// 			/>
+// 			<motion.section
+// 				initial={{ opacity: 0, y: -20 }}
+// 				animate={{ opacity: 1, y: 0 }}
+// 				transition={{ duration: 0.5 }}
+// 				className="text-center mb-16"
+// 			>
+// 				<h1 className="text-4xl md:text-5xl font-bold text-primary my-4">
+// 					Divine Word Hospital
+// 				</h1>
+// 				<p className="text-muted-foreground text-lg">
+// 					A place of welcome committed to quality health care.
+// 				</p>
+// 			</motion.section>
 
-			<motion.section
-				initial={{ opacity: 0 }}
-				animate={{ opacity: 1 }}
-				transition={{ delay: 0.2 }}
-				className="mb-16 text-justify"
-			>
-				<h2 className="text-2xl font-semibold text-primary mb-6 text-left">
-					Our History
-				</h2>
-				<p className=" text-gray-700 mb-4 ">
-					Divine Word Hospital is a Catholic tertiary, Level 3, 179 bed hospital
-					located in Tacloban City, Leyte. Region VIll or Eastern Visayas has a
-					population of 4,089,734 (as of year 2010) with 78% of population
-					living in the rural area and 21.8% in the cities. Of the 70% living in
-					the cities about 547,000 live below poverty line.
-				</p>
-				<div className="space-y-6 text-gray-600 ">
-					<p>
-						In 1964, Father Earnest Hoerdemann, SVD, rector of the Divine Word
-						College took up the plan for a Catholic Hospital in Region VIII.
-						With the help of German government and German Bishops, missionaries
-						and other generous benefactors, the Society of the Divine Word (SVD)
-						Fathers in collaboration with the Missionary Benedictine Sisters of
-						Tutzing (MBS), Germany, established a 100 bed Hospital equipped with
-						modern facilities. The hospital became the training hospital for the
-						College of Nursing, Medical Technology, Medicine and other
-						paramedical courses of Divine Word College that later became Divine
-						Word University (DWU).
-					</p>
-					<p>
-						On February 7, 1965, the hospital was blessed and inaugurated. The
-						following day, patients were admitted. The SVD Fathers who owned the
-						DWU gave full administration of the Divine Word hospital (DWH) to
-						the Philippine Province of the MBS of Tutzing, Germany.
-					</p>
-					<p>
-						Divine Word Hospital has been at the forefront in offering new
-						services. It was the first to open a Dizziness, Hearing and Voice
-						Center and a Neurosciences Unit; and also, the first to offer
-						Hemodialysis, CT scan, Digital Mammography and Magnetic Resonance
-						Imaging (MRI) in Region VIII.
-					</p>
-					<p>
-						The diagnostic services of the hospital are among the best equipped
-						in the Region.
-					</p>
-					<p>
-						The Residency Training Programs of the Department of Medicine and
-						the Department of Pediatrics are accredited by their respective
-						Specialty Societies. At present, the hospital is working towards the
-						accreditation of the Residency Training Program of the Department of
-						Obstetrics and Gynecology and the Department of Surgery
-					</p>
-					<p>
-						At present the hospital with 179 bed capacity has 17 service beds
-						assigned to indigent patients. Currently it has over 400 employees.
-					</p>
-					<p>
-						The hospital has a competent staff with active and visiting
-						consultants, resident physicians, nurses, other personnel who are
-						responsible for efficient and effective care of patients. The
-						patient regardless of race, creed, and status in life is treated as
-						someone sacred, any person who suffers is sacred to us, because of
-						Him whom he/she resembles. Any person who nurses or helps someone to
-						his feet, who consoles or heals is even more completely the image of
-						Christ.
-					</p>
-				</div>
-			</motion.section>
+// 			<motion.section
+// 				initial={{ opacity: 0 }}
+// 				animate={{ opacity: 1 }}
+// 				transition={{ delay: 0.2 }}
+// 				className="mb-16 text-justify"
+// 			>
+// 				<h2 className="text-2xl font-semibold text-primary mb-6 text-left">
+// 					Our History
+// 				</h2>
+// 				<p className=" text-gray-700 mb-4 ">
+// 					Divine Word Hospital is a Catholic tertiary, Level 3, 179 bed hospital
+// 					located in Tacloban City, Leyte. Region VIll or Eastern Visayas has a
+// 					population of 4,089,734 (as of year 2010) with 78% of population
+// 					living in the rural area and 21.8% in the cities. Of the 70% living in
+// 					the cities about 547,000 live below poverty line.
+// 				</p>
+// 				<div className="space-y-6 text-gray-600 ">
+// 					<p>
+// 						In 1964, Father Earnest Hoerdemann, SVD, rector of the Divine Word
+// 						College took up the plan for a Catholic Hospital in Region VIII.
+// 						With the help of German government and German Bishops, missionaries
+// 						and other generous benefactors, the Society of the Divine Word (SVD)
+// 						Fathers in collaboration with the Missionary Benedictine Sisters of
+// 						Tutzing (MBS), Germany, established a 100 bed Hospital equipped with
+// 						modern facilities. The hospital became the training hospital for the
+// 						College of Nursing, Medical Technology, Medicine and other
+// 						paramedical courses of Divine Word College that later became Divine
+// 						Word University (DWU).
+// 					</p>
+// 					<p>
+// 						On February 7, 1965, the hospital was blessed and inaugurated. The
+// 						following day, patients were admitted. The SVD Fathers who owned the
+// 						DWU gave full administration of the Divine Word hospital (DWH) to
+// 						the Philippine Province of the MBS of Tutzing, Germany.
+// 					</p>
+// 					<p>
+// 						Divine Word Hospital has been at the forefront in offering new
+// 						services. It was the first to open a Dizziness, Hearing and Voice
+// 						Center and a Neurosciences Unit; and also, the first to offer
+// 						Hemodialysis, CT scan, Digital Mammography and Magnetic Resonance
+// 						Imaging (MRI) in Region VIII.
+// 					</p>
+// 					<p>
+// 						The diagnostic services of the hospital are among the best equipped
+// 						in the Region.
+// 					</p>
+// 					<p>
+// 						The Residency Training Programs of the Department of Medicine and
+// 						the Department of Pediatrics are accredited by their respective
+// 						Specialty Societies. At present, the hospital is working towards the
+// 						accreditation of the Residency Training Program of the Department of
+// 						Obstetrics and Gynecology and the Department of Surgery
+// 					</p>
+// 					<p>
+// 						At present the hospital with 179 bed capacity has 17 service beds
+// 						assigned to indigent patients. Currently it has over 400 employees.
+// 					</p>
+// 					<p>
+// 						The hospital has a competent staff with active and visiting
+// 						consultants, resident physicians, nurses, other personnel who are
+// 						responsible for efficient and effective care of patients. The
+// 						patient regardless of race, creed, and status in life is treated as
+// 						someone sacred, any person who suffers is sacred to us, because of
+// 						Him whom he/she resembles. Any person who nurses or helps someone to
+// 						his feet, who consoles or heals is even more completely the image of
+// 						Christ.
+// 					</p>
+// 				</div>
+// 			</motion.section>
 
-			<motion.section
-				initial={{ opacity: 0 }}
-				animate={{ opacity: 1 }}
-				transition={{ delay: 0.2 }}
-				className="mb-10 text-justify"
-			>
-				<h2 className="text-2xl font-semibold  text-primary mb-4 text-center">
-					Our Guiding Principles
-				</h2>
-				<div className="bg-gray-50 rounded-lg p-6">
-					<h3 className="text-xl font-semibold text-secondary mb-2">
-						Quality Policy
-					</h3>
-					<p className="text-gray-600">
-						Divine Word Hospital is committed to meeting the health needs and
-						expectations of the people in Region 8 by providing equitable,
-						efficient, and effective healthcare services, training, and
-						research. We strive for professional and caring personnel and the
-						continual improvement of our services to achieve excellence in
-						quality healthcare.
-					</p>
-				</div>
-			</motion.section>
+// 			<motion.section
+// 				initial={{ opacity: 0 }}
+// 				animate={{ opacity: 1 }}
+// 				transition={{ delay: 0.2 }}
+// 				className="mb-10 text-justify"
+// 			>
+// 				<h2 className="text-2xl font-semibold  text-primary mb-4 text-center">
+// 					Our Guiding Principles
+// 				</h2>
+// 				<div className="bg-gray-50 rounded-lg p-6">
+// 					<h3 className="text-xl font-semibold text-secondary mb-2">
+// 						Quality Policy
+// 					</h3>
+// 					<p className="text-gray-600">
+// 						Divine Word Hospital is committed to meeting the health needs and
+// 						expectations of the people in Region 8 by providing equitable,
+// 						efficient, and effective healthcare services, training, and
+// 						research. We strive for professional and caring personnel and the
+// 						continual improvement of our services to achieve excellence in
+// 						quality healthcare.
+// 					</p>
+// 				</div>
+// 			</motion.section>
 
-			<motion.section
-				initial={{ opacity: 0 }}
-				animate={{ opacity: 1 }}
-				transition={{ delay: 0.2 }}
-				className="mb-10 text-justify"
-			>
-				<h2 className="text-2xl font-bold text-primary mb-4 text-center">
-					Our Vision & Mission
-				</h2>
-				<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-					<div className="bg-gray-50 rounded-lg p-6">
-						<h3 className="text-xl font-semibold text-secondary mb-2">
-							Vision
-						</h3>
-						<ul className="list-disc list-inside text-gray-600">
-							<li>
-								A Catholic Institution of Holistic Wellness and Quality Health
-								Care.
-							</li>
-						</ul>
-					</div>
-					<div className="bg-gray-50 rounded-lg p-6">
-						<h3 className="text-xl font-semibold text-secondary mb-2">
-							Mission
-						</h3>
-						<ul className="list-disc list-inside text-gray-600 space-y-2">
-							<li>To proclaim God’s healing love to all.</li>
-							<li>To uphold Christian Values.</li>
-							<li>To provide quality tertiary health care.</li>
-							<li>
-								To train medical, nursing, and paramedical students and organize
-								activities for practitioners to improve the quality of health
-								service.
-							</li>
-							<li>
-								To provide adequate facilities to support the practice of
-								medical and paramedical professionals in Region 8.
-							</li>
-						</ul>
-					</div>
-				</div>
-			</motion.section>
-		</div>
-	);
-};
+// 			<motion.section
+// 				initial={{ opacity: 0 }}
+// 				animate={{ opacity: 1 }}
+// 				transition={{ delay: 0.2 }}
+// 				className="mb-10 text-justify"
+// 			>
+// 				<h2 className="text-2xl font-bold text-primary mb-4 text-center">
+// 					Our Vision & Mission
+// 				</h2>
+// 				<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+// 					<div className="bg-gray-50 rounded-lg p-6">
+// 						<h3 className="text-xl font-semibold text-secondary mb-2">
+// 							Vision
+// 						</h3>
+// 						<ul className="list-disc list-inside text-gray-600">
+// 							<li>
+// 								A Catholic Institution of Holistic Wellness and Quality Health
+// 								Care.
+// 							</li>
+// 						</ul>
+// 					</div>
+// 					<div className="bg-gray-50 rounded-lg p-6">
+// 						<h3 className="text-xl font-semibold text-secondary mb-2">
+// 							Mission
+// 						</h3>
+// 						<ul className="list-disc list-inside text-gray-600 space-y-2">
+// 							<li>To proclaim God’s healing love to all.</li>
+// 							<li>To uphold Christian Values.</li>
+// 							<li>To provide quality tertiary health care.</li>
+// 							<li>
+// 								To train medical, nursing, and paramedical students and organize
+// 								activities for practitioners to improve the quality of health
+// 								service.
+// 							</li>
+// 							<li>
+// 								To provide adequate facilities to support the practice of
+// 								medical and paramedical professionals in Region 8.
+// 							</li>
+// 						</ul>
+// 					</div>
+// 				</div>
+// 			</motion.section>
+// 		</div>
+// 	);
+// };
 
-export default AboutUs;
+// export default AboutUs;
 
 //'use client';
 // import { Card, CardContent } from '@/components/ui/card';
@@ -291,3 +291,106 @@ export default AboutUs;
 // 		</div>
 // 	);
 // }
+// components/about/AboutUs.jsx (or wherever your component resides)
+
+// No 'use client' directive here, making it a Server Component
+
+'use client';
+import { motion } from 'framer-motion'; // Framer Motion will still work due to its nature
+import Image from 'next/image';
+
+const AboutUs = ({ data }) => {
+	const { hero, history, qualityPolicy, visionMission } = data;
+
+	return (
+		<div className="container_ max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
+			<Image
+				src={hero.imageSrc}
+				alt={hero.imageAlt}
+				width={1200} // Increased width for better responsiveness on large screens
+				height={400} // Adjusted height to maintain aspect ratio and fit common hero images
+				className="w-full h-[300px] md:h-[400px] object-cover rounded-lg shadow-md mb-8" // Adjusted height, added shadow/rounding
+				priority // Preload the hero image for better LCP
+			/>
+			<motion.section
+				initial={{ opacity: 0, y: -20 }}
+				animate={{ opacity: 1, y: 0 }}
+				transition={{ duration: 0.5 }}
+				className="text-center mb-16"
+			>
+				<h1 className="text-4xl md:text-5xl font-bold text-primary my-4">
+					{hero.title}
+				</h1>
+				<p className="text-muted-foreground text-lg">{hero.tagline}</p>
+			</motion.section>
+
+			<motion.section
+				initial={{ opacity: 0 }}
+				animate={{ opacity: 1 }}
+				transition={{ delay: 0.2 }}
+				className="mb-16 text-justify"
+			>
+				<h2 className="text-2xl font-semibold text-primary mb-6 text-left">
+					{history.title}
+				</h2>
+				<div className="space-y-6 text-gray-600 ">
+					{history.paragraphs.map((paragraph, index) => (
+						<p key={index}>{paragraph}</p>
+					))}
+				</div>
+			</motion.section>
+
+			<motion.section
+				initial={{ opacity: 0 }}
+				animate={{ opacity: 1 }}
+				transition={{ delay: 0.2 }}
+				className="mb-10 text-justify"
+			>
+				<h2 className="text-2xl font-semibold text-primary mb-4 text-center">
+					Our Guiding Principles
+				</h2>
+				<div className="bg-gray-50 rounded-lg p-6">
+					<h2 className="text-xl font-semibold text-secondary mb-2">
+						{qualityPolicy.title}
+					</h2>
+					<p className="text-gray-600">{qualityPolicy.content}</p>
+				</div>
+			</motion.section>
+
+			<motion.section
+				initial={{ opacity: 0 }}
+				animate={{ opacity: 1 }}
+				transition={{ delay: 0.2 }}
+				className="mb-10 text-justify"
+			>
+				<h2 className="text-2xl font-semibold text-primary mb-4 text-center">
+					{visionMission.title}
+				</h2>
+				<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+					<div className="bg-gray-50 rounded-lg p-6">
+						<h3 className="text-xl font-semibold text-secondary mb-2">
+							{visionMission.vision.title}
+						</h3>
+						<ul className="list-disc list-inside text-gray-600">
+							{visionMission.vision.points.map((point, index) => (
+								<li key={index}>{point}</li>
+							))}
+						</ul>
+					</div>
+					<div className="bg-gray-50 rounded-lg p-6">
+						<h3 className="text-xl font-semibold text-secondary mb-2">
+							{visionMission.mission.title}
+						</h3>
+						<ul className="list-disc list-inside text-gray-600 space-y-2">
+							{visionMission.mission.points.map((point, index) => (
+								<li key={index}>{point}</li>
+							))}
+						</ul>
+					</div>
+				</div>
+			</motion.section>
+		</div>
+	);
+};
+
+export default AboutUs;

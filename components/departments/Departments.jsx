@@ -108,7 +108,7 @@ const DepartmentsPage = () => {
 
 				{department.objectives && (
 					<div>
-						<h3 className="text-xl font-semibold text-primary mb-2 ">
+						<h3 className="text-xl font-semibold  mb-2 text-primary">
 							Objectives
 						</h3>
 						{department.objectives.qualityPatientCare && (
@@ -205,7 +205,7 @@ const DepartmentsPage = () => {
 
 				{department.specialties && (
 					<div>
-						<h3 className="text-xl font-semibold text-gray-800 mb-2">
+						<h3 className="text-xl font-semibold text-primary	 mb-2">
 							Specialties
 						</h3>
 						<ul className="list-disc list-inside space-y-1 leading-relaxed text-base grid grid-cols-1 sm:grid-cols-2">

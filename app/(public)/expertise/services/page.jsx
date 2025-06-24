@@ -1,4 +1,3 @@
-'use client';
 import { servicesData } from '@/app/data/services';
 import OurServicesSection from '@/components/home/Services';
 import Services from '@/components/services/Services';

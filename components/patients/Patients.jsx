@@ -50,12 +50,12 @@ const PatientsPage = ({ tabList, patientsData }) => {
 		if (contentKey === 'admission' || contentKey === 'discharge') {
 			return (
 				<Card className="shadow-none border-none">
-					<CardHeader className="hidden md:block">
-						<CardTitle className="text-2xl font-semibold text-left text-primary border-b pb-2 uppercase">
+					<CardHeader className="hidden md:block  p-4 ">
+						<CardTitle className="text-3xl font-bold text-left text-primary border-b pb-2 ">
 							{content.title}
 						</CardTitle>
 					</CardHeader>
-					<CardContent className="space-y-4 text-gray-700">
+					<CardContent className="space-y-4 text-gray-700  p-4 rounded-md -mt-8 ">
 						{content.intro && <p className="text-justify">{content.intro}</p>}
 						<div className="space-y-8">
 							{content.sections.map((section, index) => (
@@ -83,13 +83,13 @@ const PatientsPage = ({ tabList, patientsData }) => {
 			);
 		} else if (contentKey === 'rooms') {
 			return (
-				<Card className="shadow-none border-none rounded-md">
-					<CardHeader className="hidden md:block">
-						<CardTitle className="text-2xl font-semibold text-left text-primary border-b pb-2">
+				<Card className="shadow-none border-none">
+					<CardHeader className="hidden md:block  p-4 ">
+						<CardTitle className="text-3xl font-bold text-left text-primary border-b pb-2 ">
 							{content.title}
 						</CardTitle>
 					</CardHeader>
-					<CardContent className="py-4 text-gray-700">
+					<CardContent className="space-y-4 text-gray-700  p-4 rounded-md -mt-4 ">
 						<p className="mb-2 text-sm sm:text-base">{content.intro}</p>
 						<ul className="list-disc list-inside space-y-2 text-sm sm:text-base">
 							{content.listItems.map((item, index) => (
@@ -112,12 +112,12 @@ const PatientsPage = ({ tabList, patientsData }) => {
 		} else if (contentKey === 'rights') {
 			return (
 				<Card className="shadow-none border-none">
-					<CardHeader className="hidden md:block">
-						<CardTitle className="text-2xl font-semibold text-left text-primary border-b pb-2">
+					<CardHeader className="hidden md:block  p-4 ">
+						<CardTitle className="text-3xl font-bold text-left text-primary border-b pb-2 ">
 							{content.title}
 						</CardTitle>
 					</CardHeader>
-					<CardContent className="space-y-6 text-gray-700">
+					<CardContent className="space-y-4 text-gray-700  p-4 rounded-md -mt-4 ">
 						{content.sections.map((section, sIdx) => (
 							<div key={sIdx}>
 								<h3 className="font-semibold text-primary mb-2 text-lg sm:text-xl">
@@ -172,11 +172,11 @@ const PatientsPage = ({ tabList, patientsData }) => {
 			{/* Header Section */}
 			<motion.div variants={itemVariants} className="mb-8 text-center">
 				<h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-primary mb-3 sm:mb-4">
-					Patients & Visitors Guide
+					Patients Guide
 				</h1>
-				<h2 className="text-xl sm:text-2xl font-semibold text-secondary mb-2">
+				{/* <h2 className="text-xl sm:text-2xl font-semibold text-secondary mb-2">
 					Patients
-				</h2>
+				</h2> */}
 				<p className="text-base sm:text-lg text-gray-600 px-4 max-w-3xl mx-auto">
 					Information and guidelines for our patients at Divine Word Hospital.
 				</p>
@@ -244,7 +244,7 @@ const PatientsPage = ({ tabList, patientsData }) => {
 									}`}
 								>
 									{tab.icon}{' '}
-									<span className="text-base text-xl">{tab.label}</span>
+									<span className="text-base_ text-xl">{tab.label}</span>
 								</div>
 							</AccordionTrigger>
 							<AccordionContent className="p-3">

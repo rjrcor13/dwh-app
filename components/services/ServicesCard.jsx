@@ -3,6 +3,7 @@
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import { default as DynamicIcons } from '../dynamicIcons/DynamicIcons';
 
 const serviceVariants = {
 	hidden: { opacity: 0, y: 20 },
@@ -38,19 +39,36 @@ const ServiceCard = ({ service, index }) => {
 			>
 				<div
 					className={cn(
-						'w-16 h-16 rounded-full flex items-center justify-center mb-4',
+						'w-20 h-20 rounded-full flex items-center justify-center mb-4',
 						'transition-colors duration-300',
-						'group-hover:bg-indigo-500/20 bg-indigo-100',
-						'text-indigo-500'
+						'group-hover:bg-indigo-500/20 bg-indigo-50',
+						'text-primary'
 					)}
+					// className={cn(
+					// 	'w-16 h-16 rounded-full flex items-center justify-center mb-4',
+					// 	'transition-colors duration-300',
+
+					// 	'text-indigo-500'
+					// )}
 				>
-					<ServiceIcon className="w-8 h-8" />
+					{/* <ServiceIcon className="w-8 h-8" /> */}
+					{/* <DynamicHealthIcon
+						name={service.icon}
+						size={64}
+						className="text-primary mx-auto mb-4"
+					/> */}
+					<DynamicIcons
+						name={service.icon}
+						width={32}
+						height={32}
+						className="w-16 h-16"
+					/>
 				</div>
 				<h4
 					className={cn(
 						'text-lg font-semibold mb-2',
 						'transition-colors duration-300',
-						'text-gray-800 group-hover:text-indigo-700 text-center'
+						'text-gray-800 group-hover:text-primary text-center'
 					)}
 				>
 					{service.title}

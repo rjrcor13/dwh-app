@@ -126,7 +126,7 @@ const Services = ({
 					<div>
 						{title && (
 							<h3
-								className={`text-3xl sm:text-4xl lg:text-5xl  font-bold mb-4 ${
+								className={`text-5xl  font-bold mb-4 ${
 									titleColor || 'text-gray-800'
 								}`}
 							>

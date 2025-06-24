@@ -72,7 +72,7 @@
 // 	},
 // ];
 
-// export default function CareersPage() {
+// export default function Careers() {
 // 	const [jobs, setJobs] = useState([]);
 // 	const [selectedJob, setSelectedJob] = useState(null);
 
@@ -231,114 +231,8 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { ScrollArea } from '../ui/scroll-area';
 
-const CareersPage = () => {
+const Careers = ({ jobListings }) => {
 	const [selectedJob, setSelectedJob] = useState(null);
-
-	const jobListings = [
-		{
-			title: 'Apply to be DWH Consultant',
-			description: 'List of requirements for consultant application.',
-			image: '/assets/job-listing.webp', // Added image path
-			requirements: [
-				'Application Letter Addressed to: Sister Sarah R. Gocela, Hospital Administrator',
-				'Curriculum Vitae',
-				'Letter of Recommendation (training institution or place of work)',
-				'Transcript of Records',
-				'Photocopy of Diploma as a Medical Doctor',
-				'Photocopy of Certificate of Internship',
-				'Photocopy of PRC Certificate of Registration as a Doctor',
-				'Photocopy of Certificate of Completion of Residency Training',
-				'Photocopy of Certificate of Diplomate/ Fellow (authenticated by the issuing agency)',
-				'Photocopy of updated PRC License',
-				'Photocopy of BIR TIN Card',
-				'Photocopy of Certificate of Registration for BIR',
-				'Photocopy of PhilHealth Membership card as a Professional Health Care Provider',
-			],
-			contact: {
-				office: 'DWH Admin Office',
-				landline: '(053) 832-7287',
-				email: 'divinewordhospitaltacloban@gmail.com',
-			},
-		},
-		{
-			title: 'Residency Training Application',
-			description: 'List of requirements for residency training application.',
-			image: '/assets/job-listing.webp', // Added image path
-			requirements: [
-				'Application Letter Addressed to: Sister Sarah R. Gocela, OSB, Hospital Administrator; Dr. Corazon A. Rubio MD, FPCP, Medical Director',
-				'For Department of Internal Medicine: Thru: Gemma R. Udtujan, MD, FPCP, FPSHBT, FPCHTM, Chairperson - Internal Medicine',
-				'For Department of Surgery: Thru: Sherlito T. Siao, MD, DBPS, FPCS, FPSGS, FPALES, FICS, FPAHNS, Chairperson - Department of Surgery',
-				'For Department of Obstetrics and Gynecology: Thru: Chicanee M. Alvarina, MD, FPOGS, FSGOP, FPSCPC Chairperson, Department of OB-GYNE',
-				'For Department of Pediatrics: Thru: Agueda Fe B. Barredo, MD, FPPS Department of Pediatrics',
-				'2x2 Colored ID Picture',
-				'Curriculum Vitae',
-				'Transcript of Records',
-				'Photocopy of Diploma as a Medical Doctor',
-				'Photocopy of Certificate of Internship',
-				'Photocopy of PRC Certificate of Registration as a Doctor',
-				'Photocopy of BIR TIN Card',
-				'Photocopy of SSS Number',
-				'Photocopy of PAG-IBIG Number',
-				'Photocopy of PhilHealth Membership card as a Professional Health Care Provider',
-				'Photocopy Birth Certificate',
-				'Marriage Contract (if Married)',
-			],
-			contact: {
-				office: 'DWH Admin Office',
-				landline: '(053) 832-7287',
-				email: 'divinewordhospitaltacloban@gmail.com',
-			},
-		},
-		{
-			title: 'Nurses',
-			description: 'Benefits Upon Hiring and Regularization',
-			image: '/assets/job-listing.webp', // Added image path
-			benefits: {
-				hiring: [
-					'Basic Salary - ₱19,000',
-					'Hazard Pay - ₱1,000',
-					'Monthly Rice Allowance - ₱2,000',
-					'Uniform Allowance - ₱2,000',
-					'Free Medical Exam for the Applicants',
-					'Free X-ray & Laboratories (For Parents/Guardian)',
-					'Free Training (In-Service/With Service Agreement)',
-					'Discounted Hospitalization Benefits',
-					'Holiday Pay',
-					'Night Differential',
-					'Overtime Pay (Hourly)',
-					'Special Area Incentives',
-					'Qualified to join the association of employees wherein you can avail loans, discounts and dividends.',
-					'Mortuary Aid',
-					'Staff Development',
-				],
-				regularization: [
-					'Salary increase after 2 years',
-					'Uniform Allowance Increase',
-					'Bonuses Increases',
-					'Vacation Leave for 15 days w/pay',
-					'Upgraded bonuses after 1 year of regularization',
-					'New Year Bonus',
-					'Foundation Anniversary Bonus',
-					'Educational Bonus',
-					'St. Benedict Bonus',
-					'13th Month Pay',
-					'Christmas Bonus + Gift Cheque',
-				],
-				mandated: [
-					'Maternity Leave',
-					'Paternity Leave',
-					'Parental Leave for Solo Parent',
-					'Leave for Victims of VAWC',
-					'Special Leave Benefit for Women and Children',
-					'Employment Compensation',
-					'SSS',
-					'PHIC',
-					'Pag-ibig (HDMF)',
-					'Retirement Benefit',
-				],
-			},
-		},
-	];
 
 	return (
 		<main className="px-4 md:px-10 py-16 max-w-7xl mx-auto">
@@ -492,4 +386,4 @@ const CareersPage = () => {
 	);
 };
 
-export default CareersPage;
+export default Careers;

@@ -8,7 +8,7 @@ export default function ServicesDetailClient({ service }) {
 
 	if (!fullContent) {
 		return (
-			<div className="container mx-auto py-16 px-4 sm:px-6 lg:px-8">
+			<div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
 				<button
 					onClick={() => router.back()}
 					className="mb-6 inline-flex items-center text-indigo-600 hover:text-indigo-800 text-sm font-medium"
@@ -24,7 +24,7 @@ export default function ServicesDetailClient({ service }) {
 	}
 
 	return (
-		<div className="container mx-auto py-16 px-4 sm:px-6 lg:px-8">
+		<div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
 			<button
 				onClick={() => router.back()}
 				className="mb-6 inline-flex items-center text-indigo-600 hover:text-indigo-800 text-sm font-medium"
@@ -32,14 +32,14 @@ export default function ServicesDetailClient({ service }) {
 				← Back
 			</button>
 
-			<h1 className="text-4xl font-bold text-primary mb-6">{title}</h1>
+			<h1 className="text-5xl font-bold text-primary mb-6 justify-center items-center justify-self-center">
+				{title}
+			</h1>
 
 			{/* General Overview */}
 			{fullContent.overview && (
 				<section className="mb-8 p-6 ">
-					<h2 className="text-2xl font-semibold text-secondary mb-3">
-						Overview
-					</h2>
+					<h2 className="text-2xl font-semibold text-primary mb-3">Overview</h2>
 					<p className="text-gray-700 leading-relaxed">
 						{fullContent.overview}
 					</p>
@@ -49,7 +49,7 @@ export default function ServicesDetailClient({ service }) {
 			{/* Mission & Vision */}
 			{fullContent.mission_vision && (
 				<section className="mb-8 p-6 ">
-					<h2 className="text-2xl font-semibold text-secondary mb-3">
+					<h2 className="text-2xl font-semibold text-primary mb-3">
 						Mission & Vision
 					</h2>
 					{fullContent.mission_vision.mission && (
@@ -70,7 +70,7 @@ export default function ServicesDetailClient({ service }) {
 			{/* Leadership/Staff (Radiology specific) */}
 			{fullContent.leadership_staff && (
 				<section className="mb-8 p-6 ">
-					<h2 className="text-2xl font-semibold text-secondary mb-3">
+					<h2 className="text-2xl font-semibold text-primary mb-3">
 						Leadership & Staff
 					</h2>
 					<p className="text-gray-700 leading-relaxed">
@@ -82,7 +82,7 @@ export default function ServicesDetailClient({ service }) {
 			{/* Advanced Equipment (Radiology specific) */}
 			{fullContent.advanced_equipment?.length > 0 && (
 				<section className="mb-8 p-6 ">
-					<h2 className="text-2xl font-semibold text-secondary mb-3">
+					<h2 className="text-2xl font-semibold text-primary mb-3">
 						Advanced Imaging Equipment
 					</h2>
 					<ul className="list-disc list-inside space-y-2 text-gray-700">
@@ -96,7 +96,7 @@ export default function ServicesDetailClient({ service }) {
 			{/* General Radiography (Radiology specific) */}
 			{fullContent.general_radiography && (
 				<section className="mb-8 p-6 ">
-					<h2 className="text-2xl font-semibold text-secondary mb-3">
+					<h2 className="text-2xl font-semibold text-primary mb-3">
 						General Radiography
 					</h2>
 					{fullContent.general_radiography.non_contrast?.length > 0 && (
@@ -134,7 +134,7 @@ export default function ServicesDetailClient({ service }) {
 			{/* Invasive Procedures (Radiology specific) */}
 			{fullContent.invasive_procedures?.length > 0 && (
 				<section className="mb-8 p-6 ">
-					<h2 className="text-2xl font-semibold text-secondary mb-3">
+					<h2 className="text-2xl font-semibold text-primary mb-3">
 						Invasive Procedures
 					</h2>
 					<ul className="list-disc list-inside space-y-2 text-gray-700">
@@ -148,7 +148,7 @@ export default function ServicesDetailClient({ service }) {
 			{/* Specialized Diagnostic & Interventional X-Ray Services (Radiology specific) */}
 			{fullContent.specialized_services?.length > 0 && (
 				<section className="mb-8 p-6 ">
-					<h2 className="text-2xl font-semibold text-secondary mb-3">
+					<h2 className="text-2xl font-semibold text-primary mb-3">
 						Specialized Diagnostic & Interventional X-Ray Services
 					</h2>
 					<ul className="list-disc list-inside space-y-2 text-gray-700">
@@ -162,7 +162,7 @@ export default function ServicesDetailClient({ service }) {
 			{/* Dental Panoramic / Cephalometric (Radiology specific) */}
 			{fullContent.dental_panoramic_cephalometric?.length > 0 && (
 				<section className="mb-8 p-6 ">
-					<h2 className="text-2xl font-semibold text-secondary mb-3">
+					<h2 className="text-2xl font-semibold text-primary mb-3">
 						Dental Panoramic / Cephalometric
 					</h2>
 					<ul className="list-disc list-inside space-y-2 text-gray-700">
@@ -176,7 +176,7 @@ export default function ServicesDetailClient({ service }) {
 			{/* Services Offered (General for lists of services) */}
 			{fullContent.services_offered?.length > 0 && (
 				<section className="mb-8 p-6 ">
-					<h2 className="text-2xl font-semibold text-secondary mb-3">
+					<h2 className="text-2xl font-semibold text-primary mb-3">
 						Services Offered
 					</h2>
 					<ul className="list-disc list-inside space-y-2 text-gray-700">
@@ -190,7 +190,7 @@ export default function ServicesDetailClient({ service }) {
 			{/* Body Composition Monitor (BCM) (Hemodialysis specific) */}
 			{fullContent.bcm_info && (
 				<section className="mb-8 p-6 ">
-					<h2 className="text-2xl font-semibold text-secondary mb-3">
+					<h2 className="text-2xl font-semibold text-primary mb-3">
 						{fullContent.bcm_info.title}
 					</h2>
 					<p className="text-gray-700 leading-relaxed">
@@ -202,7 +202,7 @@ export default function ServicesDetailClient({ service }) {
 			{/* Hemodialysis Admission Procedure */}
 			{fullContent.admission_procedure && (
 				<section className="mb-8 p-6 ">
-					<h2 className="text-2xl font-semibold text-secondary mb-3">
+					<h2 className="text-2xl font-semibold text-primary mb-3">
 						{fullContent.admission_procedure.title}
 					</h2>
 					{fullContent.admission_procedure.new_out_patients?.length > 0 && (
@@ -239,7 +239,7 @@ export default function ServicesDetailClient({ service }) {
 			{/* Hemodialysis Session Schedule */}
 			{fullContent.session_schedule && (
 				<section className="mb-8 p-6 ">
-					<h2 className="text-2xl font-semibold text-secondary mb-3">
+					<h2 className="text-2xl font-semibold text-primary mb-3">
 						{fullContent.session_schedule.title}
 					</h2>
 					<ul className="list-disc list-inside space-y-2 text-gray-700 mb-2">
@@ -256,7 +256,7 @@ export default function ServicesDetailClient({ service }) {
 			{/* Patient Support & Team (Pharmacy specific) */}
 			{(fullContent.patient_support || fullContent.team) && (
 				<section className="mb-8 p-6 ">
-					<h2 className="text-2xl font-semibold text-secondary mb-3">
+					<h2 className="text-2xl font-semibold text-primary mb-3">
 						About Our Pharmacy
 					</h2>
 					{fullContent.patient_support && (
@@ -273,7 +273,7 @@ export default function ServicesDetailClient({ service }) {
 			{/* Medication Management Services (Pharmacy specific) */}
 			{fullContent.medication_management_services?.length > 0 && (
 				<section className="mb-8 p-6 ">
-					<h2 className="text-2xl font-semibold text-secondary mb-3">
+					<h2 className="text-2xl font-semibold text-primary mb-3">
 						Medication Management Services
 					</h2>
 					<div className="space-y-6">
@@ -296,7 +296,7 @@ export default function ServicesDetailClient({ service }) {
 			{/* Role in Institution & Location/Hours (Pharmacy specific) */}
 			{(fullContent.role_in_institution || fullContent.location_hours) && (
 				<section className="mb-8 p-6 ">
-					<h2 className="text-2xl font-semibold text-secondary mb-3">
+					<h2 className="text-2xl font-semibold text-primary mb-3">
 						Institutional Role & Accessibility
 					</h2>
 					{fullContent.role_in_institution && (
@@ -315,7 +315,7 @@ export default function ServicesDetailClient({ service }) {
 			{/* Specialized Tests (Cardio-pulmonary specific) */}
 			{fullContent.specialized_tests && (
 				<section className="mb-8 p-6 ">
-					<h2 className="text-2xl font-semibold text-secondary mb-3">
+					<h2 className="text-2xl font-semibold text-primary mb-3">
 						Specialized Tests
 					</h2>
 					{fullContent.specialized_tests.cardiopulmonary_unit?.length > 0 && (
@@ -353,7 +353,7 @@ export default function ServicesDetailClient({ service }) {
 			{/* Capabilities (Emergency Care specific) */}
 			{fullContent.capabilities && (
 				<section className="mb-8 p-6 ">
-					<h2 className="text-2xl font-semibold text-secondary mb-3">
+					<h2 className="text-2xl font-semibold text-primary mb-3">
 						Capabilities
 					</h2>
 					<p className="text-gray-700 leading-relaxed">
@@ -365,7 +365,7 @@ export default function ServicesDetailClient({ service }) {
 			{/* Availability (Emergency Care specific) */}
 			{fullContent.availability && (
 				<section className="mb-8 p-6 ">
-					<h2 className="text-2xl font-semibold text-secondary mb-3">
+					<h2 className="text-2xl font-semibold text-primary mb-3">
 						Availability
 					</h2>
 					<p className="text-gray-700 leading-relaxed">
@@ -377,9 +377,7 @@ export default function ServicesDetailClient({ service }) {
 			{/* Staff (Physical Therapy specific) */}
 			{fullContent.staff && (
 				<section className="mb-8 p-6 ">
-					<h2 className="text-2xl font-semibold text-secondary mb-3">
-						Our Team
-					</h2>
+					<h2 className="text-2xl font-semibold text-primary mb-3">Our Team</h2>
 					<p className="text-gray-700 leading-relaxed">{fullContent.staff}</p>
 				</section>
 			)}
@@ -387,7 +385,7 @@ export default function ServicesDetailClient({ service }) {
 			{/* Benefits (Physical Therapy specific) */}
 			{fullContent.benefits?.length > 0 && (
 				<section className="mb-8 p-6 ">
-					<h2 className="text-2xl font-semibold text-secondary mb-3">
+					<h2 className="text-2xl font-semibold text-primary mb-3">
 						Benefits of Physical Therapy
 					</h2>
 					<ul className="list-disc list-inside space-y-2 text-gray-700">
@@ -401,7 +399,7 @@ export default function ServicesDetailClient({ service }) {
 			{/* Sections (Pathology & Laboratory specific) */}
 			{fullContent.sections?.length > 0 && (
 				<section className="mb-8 p-6 ">
-					<h2 className="text-2xl font-semibold text-secondary mb-3">
+					<h2 className="text-2xl font-semibold text-primary mb-3">
 						Specialized Sections
 					</h2>
 					<div className="space-y-6">
@@ -424,7 +422,7 @@ export default function ServicesDetailClient({ service }) {
 			{/* Mission/Goal (TB DOTS specific) */}
 			{fullContent.mission_goal && (
 				<section className="mb-8 p-6 ">
-					<h2 className="text-2xl font-semibold text-secondary mb-3">
+					<h2 className="text-2xl font-semibold text-primary mb-3">
 						Mission & Goal
 					</h2>
 					<p className="text-gray-700 leading-relaxed">
@@ -436,7 +434,7 @@ export default function ServicesDetailClient({ service }) {
 			{/* Free Services (TB DOTS specific) */}
 			{fullContent.free_services?.length > 0 && (
 				<section className="mb-8 p-6 ">
-					<h2 className="text-2xl font-semibold text-secondary mb-3">
+					<h2 className="text-2xl font-semibold text-primary mb-3">
 						Provision of FREE Services
 					</h2>
 					<ul className="list-disc list-inside space-y-2 text-gray-700">
@@ -450,7 +448,7 @@ export default function ServicesDetailClient({ service }) {
 			{/* Needs Addressed (NICU specific) */}
 			{fullContent.needs_addressed?.length > 0 && (
 				<section className="mb-8 p-6 ">
-					<h2 className="text-2xl font-semibold text-secondary mb-3">
+					<h2 className="text-2xl font-semibold text-primary mb-3">
 						Needs Addressed by NICU
 					</h2>
 					<ul className="list-disc list-inside space-y-2 text-gray-700">
@@ -464,7 +462,7 @@ export default function ServicesDetailClient({ service }) {
 			{/* Staffing (NICU specific) */}
 			{fullContent.staffing && (
 				<section className="mb-8 p-6 ">
-					<h2 className="text-2xl font-semibold text-secondary mb-3">
+					<h2 className="text-2xl font-semibold text-primary mb-3">
 						Our Dedicated Team
 					</h2>
 					<p className="text-gray-700 leading-relaxed">
@@ -476,7 +474,7 @@ export default function ServicesDetailClient({ service }) {
 			{/* Mother-Baby Friendly (NICU specific) */}
 			{fullContent.mother_baby_friendly && (
 				<section className="mb-8 p-6 ">
-					<h2 className="text-2xl font-semibold text-secondary mb-3">
+					<h2 className="text-2xl font-semibold text-primary mb-3">
 						Mother-Baby Friendly Initiatives
 					</h2>
 					<p className="text-gray-700 leading-relaxed">
@@ -488,7 +486,7 @@ export default function ServicesDetailClient({ service }) {
 			{/* Newborn Services Areas (NICU specific) */}
 			{fullContent.newborn_services_areas?.length > 0 && (
 				<section className="mb-8 p-6 ">
-					<h2 className="text-2xl font-semibold text-secondary mb-3">
+					<h2 className="text-2xl font-semibold text-primary mb-3">
 						Newborn Services Areas
 					</h2>
 					<ul className="list-disc list-inside space-y-2 text-gray-700">
@@ -502,7 +500,7 @@ export default function ServicesDetailClient({ service }) {
 			{/* Staffing Ratio & Bed Capacity (ICU specific) */}
 			{(fullContent.staffing_ratio || fullContent.bed_capacity_types) && (
 				<section className="mb-8 p-6 ">
-					<h2 className="text-2xl font-semibold text-secondary mb-3">
+					<h2 className="text-2xl font-semibold text-primary mb-3">
 						ICU Facilities & Staffing
 					</h2>
 					{fullContent.staffing_ratio && (
@@ -521,7 +519,7 @@ export default function ServicesDetailClient({ service }) {
 			{/* Equipment Monitoring (ICU specific) */}
 			{fullContent.equipment_monitoring && (
 				<section className="mb-8 p-6 ">
-					<h2 className="text-2xl font-semibold text-secondary mb-3">
+					<h2 className="text-2xl font-semibold text-primary mb-3">
 						Monitoring Equipment
 					</h2>
 					<p className="text-gray-700 leading-relaxed">
@@ -533,7 +531,7 @@ export default function ServicesDetailClient({ service }) {
 			{/* Internal Areas (ICU specific) */}
 			{fullContent.internal_areas?.length > 0 && (
 				<section className="mb-8 p-6 ">
-					<h2 className="text-2xl font-semibold text-secondary mb-3">
+					<h2 className="text-2xl font-semibold text-primary mb-3">
 						Internal Areas
 					</h2>
 					<ul className="list-disc list-inside space-y-2 text-gray-700">
@@ -547,9 +545,7 @@ export default function ServicesDetailClient({ service }) {
 			{/* ICU Services (General & Special) */}
 			{fullContent.services && (
 				<section className="mb-8 p-6 ">
-					<h2 className="text-2xl font-semibold text-secondary mb-3">
-						ICU Services
-					</h2>
+					<h2 className="text-2xl font-semibold text-primary mb-3">Services</h2>
 					{fullContent.services.general_services?.length > 0 && (
 						<div className="mb-4">
 							<h3 className="text-xl font-semibold text-primary-dark mb-2">
@@ -574,13 +570,25 @@ export default function ServicesDetailClient({ service }) {
 							</ul>
 						</div>
 					)}
+					{fullContent.services?.length > 0 && (
+						<div>
+							<h3 className="text-xl font-semibold text-primary-dark mb-2">
+								Special Services
+							</h3>
+							<ul className="list-disc list-inside space-y-2 text-gray-700">
+								{fullContent.services.map((item, index) => (
+									<li key={index}>{item}</li>
+								))}
+							</ul>
+						</div>
+					)}
 				</section>
 			)}
 
 			{/* Contact Information (General for all services) */}
 			{fullContent.contact && (
 				<section className="mb-8 p-6 ">
-					<h2 className="text-2xl font-semibold text-secondary mb-3">
+					<h2 className="text-2xl font-semibold text-primary mb-3">
 						Contact Information
 					</h2>
 					{fullContent.contact.inquiries && (

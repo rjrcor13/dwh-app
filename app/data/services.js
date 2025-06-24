@@ -102,7 +102,7 @@ import {
 
 export const servicesData = [
 	{
-		icon: Radiation,
+		icon: 'Radiology',
 		title: 'Radiology',
 		description:
 			'Precise, high-quality diagnostic imaging & interventional radiology services.',
@@ -197,7 +197,7 @@ export const servicesData = [
 	// 	},
 	// },
 	{
-		icon: Syringe,
+		icon: 'Syringe',
 		title: 'Ambulatory Infusion',
 		description:
 			'Dedicated facilities for adult & pediatric chemotherapy and outpatient infusions.',
@@ -218,7 +218,7 @@ export const servicesData = [
 		},
 	},
 	{
-		icon: Filter,
+		icon: 'BloodTransfusion',
 		title: 'Hemo-dialysis',
 		description:
 			'Comprehensive inpatient & outpatient dialysis services for end-stage kidney disease.',
@@ -270,7 +270,7 @@ export const servicesData = [
 		},
 	},
 	{
-		icon: ShoppingCart,
+		icon: 'Pharmacy',
 		title: 'Pharmacy Service',
 		description:
 			'Comprehensive medication solutions ensuring safe practices and convenient access to essential drug therapies.',
@@ -340,7 +340,7 @@ export const servicesData = [
 		},
 	},
 	{
-		icon: Heart,
+		icon: 'HeartCardiogram',
 		title: 'Cardio-pulmonary',
 		description:
 			'Exceptional diagnostic services for cardiovascular and pulmonary health.',
@@ -380,7 +380,7 @@ export const servicesData = [
 		},
 	},
 	{
-		icon: X, // Using X for CrossIcon
+		icon: 'AccidentAndEmergency', // Using X for CrossIcon
 		title: 'Emergency Care',
 		description:
 			'24/7 comprehensive emergency care for medical, surgical, toxicologic, and obstetric needs.',
@@ -395,7 +395,7 @@ export const servicesData = [
 		},
 	},
 	{
-		icon: X, // Using X for CrossIcon
+		icon: 'PhysicalTherapy', // Using X for CrossIcon
 		title: 'Physical Therapy',
 		description:
 			'Aiding individuals to regain mobility and function through tailored physical therapy programs.',
@@ -452,7 +452,7 @@ export const servicesData = [
 	// 	},
 	// },
 	{
-		icon: Microscope,
+		icon: 'MicroscopeWithSpecimen',
 		title: 'Pathology & Laboratory',
 		description:
 			'Routine & advanced laboratory tests with highly qualified medical technologists and sophisticated machines.',
@@ -517,7 +517,7 @@ export const servicesData = [
 		},
 	},
 	{
-		icon: Microscope, // Keeping Microscope for TB DOTS
+		icon: 'Tb', // Keeping Microscope for TB DOTS
 		title: 'TB DOTS',
 		description:
 			'DOH-partnered center for TB screening, diagnosis, treatment, and adherence.',
@@ -547,7 +547,7 @@ export const servicesData = [
 		},
 	},
 	{
-		icon: ShieldCheck, // Keeping ShieldCheck for Infection Prevention
+		icon: 'VirusShield', // Keeping ShieldCheck for Infection Prevention
 		title: 'Infection Prevention',
 		description:
 			'Control Unit dedicated to maintaining a safe and healthy environment.',
@@ -560,7 +560,7 @@ export const servicesData = [
 	},
 	// NEW SERVICES ADDED:
 	{
-		icon: HeartPulse, // Using HeartPulse for NICU
+		icon: 'ChildCare', // Using HeartPulse for NICU
 		title: 'Neonatal Intensive Care Unit (NICU)',
 		description:
 			'Highest quality, family-focused neonatal medical care for newborns requiring close monitoring or specialized procedures.',
@@ -604,7 +604,7 @@ export const servicesData = [
 		},
 	},
 	{
-		icon: HeartPulse, // Using HeartPulse for ICU as well, considering it's critical care
+		icon: 'IntensiveCareUnit', // Using HeartPulse for ICU as well, considering it's critical care
 		title: 'Intensive Care Unit (ICU)',
 		description:
 			'24-hour critical care & life support for severely ill and injured patients requiring constant monitoring.',
