@@ -6,8 +6,10 @@
 @theme inline {
 	--color-background: var(--background);
 	--color-foreground: var(--foreground);
-	--font-sans: var(--font-geist-sans);
-	--font-mono: var(--font-geist-mono);
+	--font-sans: var(--font-poppins);
+	--font-heading: var(--font-playfair);
+	--font-mono: var(--font-poppins);
+	
 	--color-sidebar-ring: var(--sidebar-ring);
 	--color-sidebar-border: var(--sidebar-border);
 	--color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -37,83 +39,104 @@
 	--color-popover: var(--popover);
 	--color-card-foreground: var(--card-foreground);
 	--color-card: var(--card);
+	
 	--radius-sm: calc(var(--radius) - 4px);
 	--radius-md: calc(var(--radius) - 2px);
 	--radius-lg: var(--radius);
 	--radius-xl: calc(var(--radius) + 4px);
 }
+
 :root {
-	/* --radius: 1rem; */
-	--radius: 7px;
-	--background: oklch(1 0 0);
-	--foreground: oklch(0.141 0.005 285.823);
-	--card: oklch(1 0 0);
-	--card-foreground: oklch(0.141 0.005 285.823);
-	--popover: oklch(1 0 0);
-	--popover-foreground: oklch(0.141 0.005 285.823);
-	/* --primary: oklch(0.379 0.146 265.522); */
-	/*--primary: oklch(0.27 0.1426 271.4);  Your #1C1D98 #1D409C*/
-	/* --primary: oklch(0.41 0.1556 264.53);  */
-	--primary: oklch(0.35 0.191 270.24); /* ligher*/
-	/*--primary: oklch(0.34 0.1833 269.67);  Your #1C1D98 #1D409C*/
-	--primary-foreground: oklch(0.97 0.014 254.604);
-	--secondary: oklch(0.64 0.1751 146.74);
-	--secondary-foreground: oklch(0.21 0.006 285.885);
-	--muted: oklch(0.967 0.001 286.375);
-	--muted-foreground: oklch(0.552 0.016 285.938);
-	--accent: oklch(0.967 0.001 286.375);
-	--accent-foreground: oklch(0.21 0.006 285.885);
-	--destructive: oklch(0.577 0.245 27.325);
-	--border: oklch(0.92 0.004 286.32);
-	--input: oklch(0.92 0.004 286.32);
-	--ring: oklch(0.379 0.146 265.522); /* Match primary for consistency */
-	--chart-1: oklch(0.646 0.222 41.116);
-	--chart-2: oklch(0.6 0.118 184.704);
-	--chart-3: oklch(0.398 0.07 227.392);
-	--chart-4: oklch(0.828 0.189 84.429);
-	--chart-5: oklch(0.769 0.188 70.08);
-	--sidebar: oklch(0.985 0 0);
-	--sidebar-foreground: oklch(0.141 0.005 285.823);
-	--sidebar-primary: oklch(0.623 0.214 259.815);
-	--sidebar-primary-foreground: oklch(0.97 0.014 254.604);
-	--sidebar-accent: oklch(0.967 0.001 286.375);
-	--sidebar-accent-foreground: oklch(0.21 0.006 285.885);
-	--sidebar-border: oklch(0.92 0.004 286.32);
-	--sidebar-ring: oklch(0.623 0.214 259.815);
+	--radius: 0.5rem;
+	
+	/* Neutral Base */
+	--background: #F8FAFC; /* Slate 50 - Cleaner than generic white/grey */
+    --foreground: #0F172A; /* Slate 900 */
+
+	/* Cards & Surfaces */
+	--card: #FFFFFF;
+	--card-foreground: #0F172A;
+	--popover: #FFFFFF;
+	--popover-foreground: #0F172A;
+
+	/* Brand Colors - Premium Medical Palette */
+	/* Primary: Deep Royal/Navy Blue - Authoritative, Trustworthy */
+	--primary: #0F3D87; /* A deep, rich blue */
+	--primary-foreground: #FFFFFF;
+
+	/* Secondary: Soft Teal/Cyan - Healing, Calm */
+	--secondary: #E0F2F1; /* Very light teal for backgrounds */
+	--secondary-foreground: #00695C; /* Darker teal for text */
+	
+	/* Accent: Gold/Amber - Excellence, Premium Highlights */
+	--accent: #F59E0B; 
+	--accent-foreground: #FFFFFFF;
+
+	/* Functional Colors */
+	--muted: #F1F5F9; /* Slate 100 */
+	--muted-foreground: #64748B; /* Slate 500 */
+	
+	--destructive: #EF4444;
+	--destructive-foreground: #FFFFFF;
+
+	--border: #E2E8F0; /* Slate 200 */
+	--input: #E2E8F0;
+	--ring: #0F3D87; /* Match Primary */
+
+	/* Charts (Keep as is or adjust to palette) */
+	--chart-1: #0F3D87;
+	--chart-2: #00695C;
+	--chart-3: #F59E0B;
+	--chart-4: #64748B;
+	--chart-5: #E2E8F0;
+
+	/* Sidebar */
+	--sidebar: #FFFFFF;
+	--sidebar-foreground: #0F172A;
+	--sidebar-primary: #0F3D87;
+	--sidebar-primary-foreground: #FFFFFF;
+	--sidebar-accent: #F1F5F9;
+	--sidebar-accent-foreground: #0F172A;
+	--sidebar-border: #E2E8F0;
+	--sidebar-ring: #0F3D87;
 }
 
 .dark {
-	--background: oklch(0.141 0.005 285.823);
-	--foreground: oklch(0.985 0 0);
-	--card: oklch(0.21 0.006 285.885);
-	--card-foreground: oklch(0.985 0 0);
-	--popover: oklch(0.21 0.006 285.885);
-	--popover-foreground: oklch(0.985 0 0);
-	--primary: oklch(0.379 0.146 265.522); /* Your #1C1D98 */
-	--primary-foreground: oklch(0.985 0 0); /* Adjust for dark theme */
-	--secondary: oklch(0.274 0.006 286.033);
-	--secondary-foreground: oklch(0.985 0 0);
-	--muted: oklch(0.274 0.006 286.033);
-	--muted-foreground: oklch(0.705 0.015 286.067);
-	--accent: oklch(0.274 0.006 286.033);
-	--accent-foreground: oklch(0.985 0 0);
-	--destructive: oklch(0.704 0.191 22.216);
-	--border: oklch(1 0 0 / 10%);
-	--input: oklch(1 0 0 / 15%);
-	--ring: oklch(0.379 0.146 265.522); /* Match primary for consistency */
-	--chart-1: oklch(0.488 0.243 264.376);
-	--chart-2: oklch(0.696 0.17 162.48);
-	--chart-3: oklch(0.769 0.188 70.08);
-	--chart-4: oklch(0.627 0.265 303.9);
-	--chart-5: oklch(0.645 0.246 16.439);
-	--sidebar: oklch(0.21 0.006 285.885);
-	--sidebar-foreground: oklch(0.985 0 0);
-	--sidebar-primary: oklch(0.546 0.245 262.881);
-	--sidebar-primary-foreground: oklch(0.379 0.146 265.522);
-	--sidebar-accent: oklch(0.274 0.006 286.033);
-	--sidebar-accent-foreground: oklch(0.985 0 0);
-	--sidebar-border: oklch(1 0 0 / 10%);
-	--sidebar-ring: oklch(0.488 0.243 264.376);
+	--background: #020617; /* Slate 950 */
+	--foreground: #F8FAFC;
+
+	--card: #0F172A; /* Slate 900 */
+	--card-foreground: #F8FAFC;
+	--popover: #0F172A;
+	--popover-foreground: #F8FAFC;
+
+	--primary: #3B82F6; /* Lighter blue for dark mode */
+	--primary-foreground: #FFFFFF;
+
+	--secondary: #1E293B; /* Slate 800 */
+	--secondary-foreground: #F8FAFC;
+
+	--muted: #1E293B;
+	--muted-foreground: #94A3B8;
+
+	--accent: #F59E0B;
+	--accent-foreground: #FFFFFF;
+
+	--destructive: #EF4444;
+	--destructive-foreground: #FFFFFF;
+
+	--border: #1E293B;
+	--input: #1E293B;
+	--ring: #3B82F6;
+
+    --sidebar: #020617;
+	--sidebar-foreground: #F8FAFC;
+	--sidebar-primary: #3B82F6;
+	--sidebar-primary-foreground: #FFFFFF;
+	--sidebar-accent: #1E293B;
+	--sidebar-accent-foreground: #F8FAFC;
+	--sidebar-border: #1E293B;
+	--sidebar-ring: #3B82F6;
 }
 
 @layer base {
@@ -122,9 +145,44 @@
 	}
 	body {
 		@apply bg-background text-foreground;
+		font-family: var(--font-poppins);
+	}
+	h1, h2, h3, h4, h5, h6 {
+		font-family: var(--font-heading);
+	}
+}
+
+/* Glassmorphism Utility */
+@layer utilities {
+	.glass {
+		@apply bg-white/70 dark:bg-slate-900/70 backdrop-blur-md border border-white/20 shadow-lg;
+	}
+	.glass-hover {
+		@apply hover:bg-white/80 dark:hover:bg-slate-900/80 transition-colors duration-300;
 	}
 }
 
 button {
 	cursor: pointer;
+}
+@keyframes marquee {
+    /* Starts from 0, moving the entire row leftwards by 100% of the single list's width */
+    from {
+        transform: translateX(0);
+    }
+    /* Ends at 100%, moving the entire row leftwards by the width of the original logo set */
+    to {
+        /* NOTE: You need to translate by -50% because the total list is duplicated (2x width) */
+        transform: translateX(-50%);
+    }
+}
+
+/* Define the custom utility class used in the component */
+.animate-marquee {
+    animation: marquee 30s linear infinite; /* Adjust '30s' for speed */
+}
+
+/* Optional: Utility to pause the animation on hover */
+.group-hover\:\!animation-play-state\:paused:hover {
+    animation-play-state: paused !important;
 }

@@ -1,439 +1,135 @@
-// 'use client';
-
-// import React from 'react';
-
-// const featuredBlog = {
-// 	date: '03 Mar 2025',
-// 	title:
-// 		'Introducing our advanced new machine for HYSTEROSCOPY and LAPAROSCOPY',
-// 	excerpt:
-// 		'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi.',
-// 	tags: ['Health', 'Hysteroscopy', 'Laparoscopy'],
-// 	imageUrl: '/assets/featured-blog.jpg', // Replace with your image URL
-// 	link: '/blog/featured',
-// };
-
-// const smallerBlogs = [
-// 	{
-// 		date: '03 Mar 2025',
-// 		title:
-// 			'Introducing our advanced new machine for HYSTEROSCOPY and LAPAROSCOPY',
-// 		excerpt:
-// 			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-// 		tags: ['Health', 'Technology'],
-// 		imageUrl: '/assets/blog-1.jpg', // Replace with your image URL
-// 		link: '/blog/1',
-// 	},
-// 	{
-// 		date: '03 Mar 2025',
-// 		title:
-// 			'Introducing our advanced new machine for HYSTEROSCOPY and LAPAROSCOPY',
-// 		excerpt:
-// 			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-// 		tags: ['Health', 'Medical'],
-// 		imageUrl: '/assets/blog-2.jpg', // Replace with your image URL
-// 		link: '/blog/2',
-// 	},
-// 	{
-// 		date: '03 Mar 2025',
-// 		title:
-// 			'Introducing our advanced new machine for HYSTEROSCOPY and LAPAROSCOPY',
-// 		excerpt:
-// 			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-// 		tags: ['Science', 'Research'],
-// 		imageUrl: '/assets/blog-3.jpg', // Replace with your image URL
-// 		link: '/blog/3',
-// 	},
-// ];
-
-// const EventsSection = () => {
-// 	return (
-// 		<div className="py-12 bg-white">
-// 			<div className="max-w-7xl container_ mx-auto px-4 sm:px-6 lg:px-8">
-// 				<div className="flex items-center justify-between mb-8">
-// 					<div>
-// 						<h5 className="text-sm text-indigo-500 font-semibold">
-// 							What's new?
-// 						</h5>
-// 						<h2 className="text-2xl font-bold text-gray-800">
-// 							Our latest blogs
-// 						</h2>
-// 						<p className="text-gray-500 text-sm">
-// 							Explore the latest innovations in healthcare and medical
-// 							technology
-// 						</p>
-// 					</div>
-// 					<a
-// 						href="/blogs"
-// 						className="text-indigo-500 hover:text-indigo-700 font-semibold text-sm"
-// 					>
-// 						View all blogs <span aria-hidden="true">&rarr;</span>
-// 					</a>
-// 				</div>
-
-// 				{/* Featured Blog */}
-// 				<div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
-// 					<div className="rounded-lg overflow-hidden shadow-md">
-// 						<img
-// 							src={featuredBlog.imageUrl}
-// 							alt={featuredBlog.title}
-// 							className="w-full h-auto object-cover"
-// 							style={{ minHeight: '200px' }}
-// 						/>
-// 					</div>
-// 					<div>
-// 						<p className="text-gray-500 text-sm mb-2">{featuredBlog.date}</p>
-// 						<h3 className="text-xl font-semibold text-gray-800 mb-3">
-// 							{featuredBlog.title}
-// 						</h3>
-// 						<p className="text-gray-600 mb-4">{featuredBlog.excerpt}</p>
-// 						<div className="flex items-center space-x-2 mb-4">
-// 							{featuredBlog.tags.map((tag) => (
-// 								<span
-// 									key={tag}
-// 									className="bg-gray-100 text-gray-500 text-xs rounded-full px-2 py-1"
-// 								>
-// 									{tag}
-// 								</span>
-// 							))}
-// 						</div>
-// 						<a
-// 							href={featuredBlog.link}
-// 							className="text-indigo-500 hover:text-indigo-700 font-semibold text-sm"
-// 						>
-// 							Read blog <span aria-hidden="true">&rarr;</span>
-// 						</a>
-// 					</div>
-// 				</div>
-
-// 				{/* Smaller Blogs */}
-// 				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-// 					{smallerBlogs.map((blog, index) => (
-// 						<div
-// 							key={index}
-// 							className="bg-white rounded-lg shadow-md overflow-hidden"
-// 						>
-// 							<img
-// 								src={blog.imageUrl}
-// 								alt={blog.title}
-// 								className="w-full h-40 object-cover"
-// 							/>
-// 							<div className="p-4">
-// 								<p className="text-gray-500 text-sm mb-2">{blog.date}</p>
-// 								<h4 className="text-lg font-semibold text-gray-800 mb-2">
-// 									{blog.title}
-// 								</h4>
-// 								<p className="text-gray-600 text-sm mb-3 line-clamp-2">
-// 									{blog.excerpt}
-// 								</p>
-// 								<div className="flex items-center space-x-2 mb-3">
-// 									{blog.tags.map((tag) => (
-// 										<span
-// 											key={tag}
-// 											className="bg-gray-100 text-gray-500 text-xs rounded-full px-2 py-1"
-// 										>
-// 											{tag}
-// 										</span>
-// 									))}
-// 								</div>
-// 								<a
-// 									href={blog.link}
-// 									className="text-indigo-500 hover:text-indigo-700 font-semibold text-sm"
-// 								>
-// 									Read blog <span aria-hidden="true">&rarr;</span>
-// 								</a>
-// 							</div>
-// 						</div>
-// 					))}
-// 				</div>
-// 			</div>
-// 		</div>
-// 	);
-// };
-
-// export default EventsSection;
-// 'use client';
-
-// import { CalendarIcon } from '@heroicons/react/20/solid';
-// import React from 'react';
-
-// const EventsSection = () => {
-// 	const featuredEvent = {
-// 		title: 'Annual Health Awareness Week',
-// 		date: 'July 10 - July 14, 2025',
-// 		description:
-// 			'Participate in our annual Health Awareness Week, featuring workshops on disease prevention, mental health sessions, fitness demos, and expert talks. Empower yourself with knowledge for a healthier life!',
-// 		link: '/events/health-awareness-2025',
-// 		imageUrl: '/assets/featured-awareness.jpg', // Replace with your image URL
-// 	};
-
-// 	const eventCategories = [
-// 		{
-// 			title: 'Eucharistic Celebrations',
-// 			events: ['Daily Holy Mass Schedule', 'Makapawa'],
-// 		},
-// 		{
-// 			title: 'Hospital Celebrations',
-// 			events: [
-// 				'Outreach Programs',
-// 				'Catechetical Formation',
-// 				'Socio Pastoral Apostolate',
-// 				'Community Health Workers (BSHT)',
-// 			],
-// 		},
-// 		// Add more categories and events as needed
-// 	];
-
-// 	const primaryColor = 'text-[#1E409C]';
-// 	const primaryBg = 'bg-[#1E409C]';
-// 	const textPrimary = 'text-gray-900';
-// 	const textSecondary = 'text-gray-700';
-// 	const categoryBg = 'bg-white';
-// 	const categoryBorder = 'border-gray-200';
-
-// 	return (
-// 		<div className="bg-gray-100 py-24">
-// 			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-// 				<h2
-// 					className={`text-4xl font-bold ${textPrimary} tracking-tight text-center mb-12`}
-// 				>
-// 					Explore Our Events & Services
-// 				</h2>
-
-// 				{/* Featured Event Section */}
-// 				<div className="mb-16 rounded-xl shadow-lg overflow-hidden">
-// 					<div className="md:grid md:grid-cols-2 md:gap-8">
-// 						<div className="relative">
-// 							<img
-// 								src={featuredEvent.imageUrl}
-// 								alt={featuredEvent.title}
-// 								className="w-full h-full object-cover"
-// 								style={{ minHeight: '350px' }}
-// 							/>
-// 							<div
-// 								className={`absolute top-6 left-6 ${primaryBg} text-white text-sm font-semibold rounded-full px-3 py-1`}
-// 							>
-// 								Spotlight
-// 							</div>
-// 						</div>
-// 						<div className="p-8 flex flex-col justify-center">
-// 							<h3 className={`text-xl font-semibold ${textPrimary} mb-4`}>
-// 								{featuredEvent.title}
-// 							</h3>
-// 							<p
-// 								className={`text-sm ${primaryColor} font-medium mb-3 flex items-center`}
-// 							>
-// 								<CalendarIcon className="h-5 w-5 mr-2" /> {featuredEvent.date}
-// 							</p>
-// 							<p className={`text-gray-600 text-sm mb-6`}>
-// 								{featuredEvent.description}
-// 							</p>
-// 							<a
-// 								href={featuredEvent.link}
-// 								className={`inline-block ${primaryBg} text-white font-semibold rounded-md px-5 py-3 hover:bg-[#153172]`}
-// 							>
-// 								Discover More
-// 							</a>
-// 						</div>
-// 					</div>
-// 				</div>
-
-// 				{/* Event Categories Section */}
-// 				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
-// 					{eventCategories.map((category) => (
-// 						<div
-// 							key={category.title}
-// 							className={`${categoryBg} rounded-xl shadow-md border ${categoryBorder}`}
-// 						>
-// 							<div className="p-8">
-// 								<h3 className={`text-xl font-semibold ${textPrimary} mb-4`}>
-// 									{category.title}
-// 								</h3>
-// 								<ul className="list-none space-y-3 text-gray-600">
-// 									{category.events.map((event, index) => (
-// 										<li key={index} className={`pb-2`}>
-// 											{event}
-// 										</li>
-// 									))}
-// 								</ul>
-// 								{category.events.length > 3 && (
-// 									<a
-// 										href={`/events/category/${category.title
-// 											.toLowerCase()
-// 											.replace(/ /g, '-')}`}
-// 										className={`inline-block mt-4 ${primaryColor} font-semibold hover:underline`}
-// 									>
-// 										View All {category.title}
-// 									</a>
-// 								)}
-// 							</div>
-// 						</div>
-// 					))}
-// 				</div>
-// 			</div>
-// 		</div>
-// 	);
-// };
-
-// export default EventsSection;
 'use client';
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from '../ui/button';
-const featuredEvent = {
-	date: 'March 3, 2025',
-	title: 'Medical Conference on Advanced Surgical Techniques',
-	excerpt:
-		'Join us for an insightful conference on the latest advancements in surgical procedures. Leading experts will share their knowledge and experiences.',
-	tags: ['Conference', 'Medical', 'Surgery'],
-	imageUrl: '/assets/featured-event.jpg', // Replace with your image URL
-	link: '/events/featured',
-};
+import { ArrowRight } from 'lucide-react';
 
-const smallerEvents = [
+const events = [
 	{
-		date: 'March 10, 2025',
-		title: 'Workshop on Minimally Invasive Procedures',
+		id: 1,
+		title: 'Annual Free Medical Mission 2024',
+		date: 'Oct 15, 2024',
+		day: '15',
+		month: 'OCT',
+		image: '/assets/events.jpg',
+		category: 'Community',
 		excerpt:
-			'Hands-on workshop focusing on the latest minimally invasive surgical techniques. Enhance your skills and learn from the best.',
-		tags: ['Workshop', 'Medical', 'Technology'],
-		imageUrl: '/assets/event-1.jpg', // Replace with your image URL
-		link: '/events/1',
+			'Providing free consultations, dental services, and minor surgeries to over 500 beneficiaries in Tacloban.',
+		slug: 'medical-mission-2024',
 	},
 	{
-		date: 'March 17, 2025',
-		title: 'Seminar on Cardiology Innovations',
+		id: 2,
+		title: 'Blood Donation Drive: Give Blood, Save Lives',
+		date: 'Nov 02, 2024',
+		day: '02',
+		month: 'NOV',
+		image: '/assets/events.jpg', // Using placeholder if specific one not available
+		category: 'Health Campaign',
 		excerpt:
-			'Discover the groundbreaking innovations in cardiology. Renowned cardiologists will discuss the future of heart care.',
-		tags: ['Seminar', 'Cardiology', 'Health'],
-		imageUrl: '/assets/event-2.jpg', // Replace with your image URL
-		link: '/events/2',
+			'Join us in our quarterly blood letting activity in partnership with the Red Cross.',
+		slug: 'blood-donation-drive',
 	},
 	{
-		date: 'March 24, 2025',
-		title: 'Symposium on Oncology Research',
+		id: 3,
+		title: 'Mental Health Awareness Seminar',
+		date: 'Nov 10, 2024',
+		day: '10',
+		month: 'NOV',
+		image: '/assets/events.jpg',
+		category: 'Education',
 		excerpt:
-			'Explore the latest breakthroughs in oncology research and treatment. Leading researchers will present their findings.',
-		tags: ['Symposium', 'Oncology', 'Research'],
-		imageUrl: '/assets/event-3.jpg', // Replace with your image URL
-		link: '/events/3',
+			'A seminar focusing on workplace mental health and stress management for healthcare professionals.',
+		slug: 'mental-health-seminar',
 	},
 ];
 
-const EventsSection = () => {
+const Events = () => {
+
+	const [visibleEvents, setVisibleEvents] = useState(3);
+
+	const loadMore = () => {
+		setVisibleEvents((prev) => prev + 3);
+	};
+
 	return (
-		<motion.div
-			initial={{ opacity: 0, y: 20 }}
-			whileInView={{ opacity: 1, y: 0 }}
-			transition={{ duration: 0.4, delay: 0.1 }}
-			className="py-24 mb-8 bg-white"
-		>
+		<section className="py-24 bg-white border-t border-slate-100">
 			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-				<div className="flex items-center justify-between mb-8 align-bottom">
-					<div className="bg-green-300_">
-						<h5 className="text-sm text-indigo-500 font-semibold mb-8 ">
-							What's new?
-						</h5>
-						<h2 className=" text-2xl md:text-3xl font-bold text-gray-800">
-							Our Latest Events
-						</h2>
-						<p className="text-gray-500 text-sm">
-							Explore upcoming events, conferences, and workshops.
-						</p>
-					</div>
-					<Link
-						href="/events"
-						className="text-indigo-500 hover:text-indigo-700 font-semibold text-sm bg-amber-400_ items-baseline"
-					>
-						View all events <span aria-hidden="true">&rarr;</span>
-					</Link>
-				</div>
 
-				{/* Featured Event */}
-				<div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
-					<div className="rounded-lg overflow-hidden shadow-md">
-						<Image
-							src={featuredEvent.imageUrl}
-							alt={featuredEvent.title}
-							className="w-full h-auto object-cover"
-							style={{ minHeight: '200px' }}
-							width={100}
-							height={40}
-						/>
-					</div>
+				<div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
 					<div>
-						<p className="text-gray-500 text-sm mb-2">{featuredEvent.date}</p>
-						<h3 className="text-xl font-semibold text-gray-800 mb-3">
-							{featuredEvent.title}
-						</h3>
-						<p className="text-gray-600 mb-4">{featuredEvent.excerpt}</p>
-						<div className="flex items-center space-x-2 mb-4">
-							{featuredEvent.tags.map((tag) => (
-								<span
-									key={tag}
-									className="bg-gray-100 text-gray-500 text-xs rounded-full px-2 py-1"
-								>
-									{tag}
-								</span>
-							))}
-						</div>
-						<a
-							href={featuredEvent.link}
-							className="text-indigo-500 hover:text-indigo-700 font-semibold text-sm"
-						>
-							Learn More <span aria-hidden="true">&rarr;</span>
-						</a>
+						<h2 className="text-secondary font-bold tracking-widest uppercase text-sm mb-3">
+							Hospital News
+						</h2>
+						<h2 className="text-3xl md:text-4xl font-bold font-heading text-slate-900">
+							Latest Events & Updates
+						</h2>
 					</div>
+					<Button variant="outline" asChild className="hidden md:flex">
+						<Link href="/events">View All News</Link>
+					</Button>
 				</div>
 
-				{/* Smaller Events */}
-				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-					{smallerEvents.map((event, index) => (
-						<div
-							key={index}
-							className="bg-white rounded-lg shadow-md overflow-hidden"
+				<div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
+					{events.slice(0, visibleEvents).map((event, idx) => (
+						<motion.article
+							key={event.id}
+							initial={{ opacity: 0, y: 20 }}
+							whileInView={{ opacity: 1, y: 0 }}
+							transition={{ duration: 0.5, delay: idx * 0.1 }}
+							viewport={{ once: true }}
+							className="group flex flex-col h-full bg-white"
 						>
-							<Image
-								src={event.imageUrl}
-								alt={event.title}
-								className="w-full h-40 object-cover"
-								width={100}
-								height={40}
-							/>
-							<div className="p-4">
-								<p className="text-gray-500 text-sm mb-2">{event.date}</p>
-								<h4 className="text-lg font-semibold text-gray-800 mb-2">
-									{event.title}
-								</h4>
-								<p className="text-gray-600 text-sm mb-3 line-clamp-2">
+							<div className="relative overflow-hidden rounded-2xl mb-6 aspect-[4/3] shadow-md group-hover:shadow-xl transition-all duration-300">
+								<Image
+									src={event.image}
+									alt={event.title}
+									fill
+									className="object-cover transition-transform duration-700 group-hover:scale-110"
+								/>
+								<div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60" />
+
+								{/* Date Block */}
+								<div className="absolute top-4 left-4 bg-white/95 backdrop-blur text-slate-900 rounded-xl p-3 text-center min-w-[70px] shadow-lg">
+									<span className="block text-xs font-bold uppercase tracking-wider text-slate-500">{event.month}</span>
+									<span className="block text-2xl font-bold font-heading text-primary leading-none">{event.day}</span>
+								</div>
+
+								<div className="absolute top-4 right-4 bg-secondary/90 backdrop-blur text-primary text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
+									{event.category}
+								</div>
+							</div>
+
+							<div className="flex flex-col flex-grow">
+								<h3 className="text-xl font-bold font-heading text-slate-900 mb-3 group-hover:text-primary transition-colors leading-tight">
+									<Link href={`/events/${event.slug}`}>
+										{event.title}
+									</Link>
+								</h3>
+								<p className="text-slate-500 line-clamp-3 mb-4 flex-grow leading-relaxed">
 									{event.excerpt}
 								</p>
-								<div className="flex items-center space-x-2 mb-3">
-									{event.tags.map((tag) => (
-										<span
-											key={tag}
-											className="bg-gray-100 text-gray-500 text-xs rounded-full px-2 py-1"
-										>
-											{tag}
-										</span>
-									))}
-								</div>
-								<a
-									href={event.link}
-									className="text-indigo-500 hover:text-indigo-700 font-semibold text-sm"
+								<Link
+									href={`/events/${event.slug}`}
+									className="inline-flex items-center text-sm font-bold text-primary hover:text-secondary transition-colors mt-auto group/link"
 								>
-									Learn More <span aria-hidden="true">&rarr;</span>
-								</a>
+									Read Full Story <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover/link:translate-x-1" />
+								</Link>
 							</div>
-						</div>
+						</motion.article>
 					))}
 				</div>
+
+				<div className="mt-12 text-center md:hidden">
+					<Button variant="outline" asChild className="w-full">
+						<Link href="/events">View All News</Link>
+					</Button>
+				</div>
 			</div>
-		</motion.div>
+		</section>
 	);
 };
 
-export default EventsSection;
+export default Events;

@@ -7,17 +7,21 @@ import MobileNavigation from './MobileNavigation';
 import MyNavigation from './Navigation';
 
 export default function MainNavigation({ menuItems }) {
+	// Simplified for now: Fixed styling with glass effect
 	return (
-		<div className=" bg-white p-4">
-			<div className="max-w-7xl container_  mx-auto flex w-full h-32_ items-center_ lg:justify-between justify-start p-2_  lg:flex-row flex-col">
-				<div className="flex justify-left align-middle items-center">
+		<div className="sticky top-0 z-50 w-full glass border-b border-white/20">
+			<div className="max-w-7xl container mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 h-20">
+				<div className="flex-shrink-0">
 					<Brand />
 				</div>
-				<MyNavigation menuItems={menuItems} />
-				{/* <div classNames="hidden lg:block bg-green-200 items-baseline align-baseline justify-baseline align-bottom"></div> */}
-				{/* <div className=""></div> */}
 
-				<MobileNavigation menuItems={menuItems} />
+				<div className="hidden lg:block ml-auto">
+					<MyNavigation menuItems={menuItems} />
+				</div>
+
+				<div className="lg:hidden ml-auto">
+					<MobileNavigation menuItems={menuItems} />
+				</div>
 			</div>
 		</div>
 	);

@@ -30,26 +30,20 @@ const ServiceCard = ({ service, index }) => {
 				exit="exit"
 				custom={index}
 				className={cn(
-					'bg-white rounded-xl shadow-lg p-6 flex flex-col items-center justify-start',
+					'bg-white rounded-xl shadow-sm p-6 flex flex-col items-center justify-start',
 					'transition-all duration-300',
-					'hover:shadow-xl hover:scale-[1.02]',
-					'border border-gray-100 hover:border-indigo-500/30',
+					'hover:shadow-xl hover:-translate-y-1',
+					'border border-slate-100 hover:border-primary/20',
 					'group h-full cursor-pointer'
 				)}
 			>
 				<div
 					className={cn(
-						'w-20 h-20 rounded-full flex items-center justify-center mb-4',
-						'transition-colors duration-300',
-						'group-hover:bg-indigo-500/20 bg-indigo-50',
-						'text-primary'
+						'w-20 h-20 rounded-2xl flex items-center justify-center mb-6',
+						'transition-all duration-300',
+						'bg-slate-50 group-hover:bg-primary',
+						'text-primary group-hover:text-white'
 					)}
-					// className={cn(
-					// 	'w-16 h-16 rounded-full flex items-center justify-center mb-4',
-					// 	'transition-colors duration-300',
-
-					// 	'text-indigo-500'
-					// )}
 				>
 					{/* <ServiceIcon className="w-8 h-8" /> */}
 					{/* <DynamicHealthIcon
@@ -59,21 +53,21 @@ const ServiceCard = ({ service, index }) => {
 					/> */}
 					<DynamicIcons
 						name={service.icon}
-						width={32}
-						height={32}
-						className="w-16 h-16"
+						width={36}
+						height={36}
+						className="w-9 h-9"
 					/>
 				</div>
 				<h4
 					className={cn(
-						'text-lg font-semibold mb-2',
+						'text-lg font-bold font-heading mb-3',
 						'transition-colors duration-300',
-						'text-gray-800 group-hover:text-primary text-center'
+						'text-slate-800 group-hover:text-primary text-center'
 					)}
 				>
 					{service.title}
 				</h4>
-				<p className="text-sm text-gray-600 text-center">
+				<p className="text-sm text-slate-500 text-center leading-relaxed">
 					{service.description}
 				</p>
 			</motion.div>

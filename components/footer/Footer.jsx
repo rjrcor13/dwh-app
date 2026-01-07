@@ -259,44 +259,45 @@ const Footer = () => {
 	}, []); // Empty dependency array ensures this runs once on mount
 
 	return (
-		<footer className="bg-primary pt-20 pb-8 text-white">
-			<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-				<div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+		<footer className="bg-slate-900 pt-20 pb-8 text-slate-200 border-t border-slate-800">
+			<div className="mx-auto max-w-7xl container px-4 sm:px-6 lg:px-8">
+				<div className="grid grid-cols-1 gap-12 md:grid-cols-3 lg:gap-16">
 					{/* Logo and Description */}
-					<div className="flex flex-col items-start">
-						<div className="mb-4 flex items-center gap-2">
+					<div className="flex flex-col items-start space-y-4">
+						<div className="flex items-center gap-3">
 							<Image
 								width={60}
 								height={60}
 								src={logo}
 								alt="Divine Word Hospital Logo"
+								className="brightness-0 invert"
 							/>
-							<h2 className="text-xl font-bold">
+							<h2 className="text-xl font-bold font-heading text-white tracking-wide">
 								Divine Word <br /> Hospital
 							</h2>
 						</div>
-						<p className="mb-4 text-sm text-indigo-200">
-							Providing compassionate care and healing for all since 1965.
+						<p className="text-sm text-slate-400 max-w-sm leading-relaxed">
+							Providing compassionate care and healing for all since 1965. A trusted partner in your health journey.
 						</p>
-						<div className="flex space-x-4">
+						<div className="flex space-x-5 pt-2">
 							<a
 								href="#"
 								aria-label="Facebook"
-								className="hover:text-indigo-300"
+								className="text-slate-400 hover:text-white transition-colors transform hover:scale-110"
 							>
 								<Facebook className="h-6 w-6" />
 							</a>
 							<a
 								href="#"
 								aria-label="Twitter"
-								className="hover:text-indigo-300"
+								className="text-slate-400 hover:text-white transition-colors transform hover:scale-110"
 							>
 								<Twitter className="h-6 w-6" />
 							</a>
 							<a
 								href="#"
 								aria-label="Instagram"
-								className="hover:text-indigo-300"
+								className="text-slate-400 hover:text-white transition-colors transform hover:scale-110"
 							>
 								<Instagram className="h-6 w-6" />
 							</a>
@@ -304,150 +305,70 @@ const Footer = () => {
 					</div>
 
 					{/* Company and Our Services */}
-					<div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+					<div className="grid grid-cols-2 gap-8 md:gap-12">
 						<div>
-							<h4 className="mb-4 text-lg font-semibold">Company</h4>
-							<ul className="space-y-2 text-sm text-indigo-200">
-								<li>
-									<a href="#" className="hover:text-indigo-300">
-										Home
-									</a>
-								</li>
-								<li>
-									<a href="#" className="hover:text-indigo-300">
-										About Us
-									</a>
-								</li>
-								<li>
-									<a href="#" className="hover:text-indigo-300">
-										Find a Doctor
-									</a>
-								</li>
-								<li>
-									<a href="#" className="hover:text-indigo-300">
-										Expertise
-									</a>
-								</li>
-								<li>
-									<a href="#" className="hover:text-indigo-300">
-										Patient & Visitor's Guide
-									</a>
-								</li>
-								<li>
-									<a href="#" className="hover:text-indigo-300">
-										Religious & Hospital Events
-									</a>
-								</li>
-								<li>
-									<a href="#" className="hover:text-indigo-300">
-										Career
-									</a>
-								</li>
-								<li>
-									<a href="#" className="hover:text-indigo-300">
-										Contact Us
-									</a>
-								</li>
+							<h4 className="mb-6 text-lg font-bold font-heading text-white">Company</h4>
+							<ul className="space-y-3 text-sm text-slate-400">
+								{['Home', 'About Us', 'Find a Doctor', 'Expertise', "Patient & Visitor's Guide", 'Religious & Hospital Events', 'Career', 'Contact Us'].map((item) => (
+									<li key={item}>
+										<a href="#" className="hover:text-secondary transition-colors hover:translate-x-1 inline-block">
+											{item}
+										</a>
+									</li>
+								))}
 							</ul>
 						</div>
 						<div>
-							<h4 className="mb-4 text-lg font-semibold">Our Services</h4>
-							<ul className="space-y-2 text-sm text-indigo-200">
-								<li>
-									<a href="#" className="hover:text-indigo-300">
-										Radiology
-									</a>
-								</li>
-								<li>
-									<a href="#" className="hover:text-indigo-300">
-										Ambulatory Infusion Unit
-									</a>
-								</li>
-								<li>
-									<a href="#" className="hover:text-indigo-300">
-										Cardiopulmonary Unit
-									</a>
-								</li>
-								<li>
-									<a href="#" className="hover:text-indigo-300">
-										Physical Therapy
-									</a>
-								</li>
-								<li>
-									<a href="#" className="hover:text-indigo-300">
-										Hemodialysis Unit
-									</a>
-								</li>
-								<li>
-									<a href="#" className="hover:text-indigo-300">
-										Pathology & Laboratory
-									</a>
-								</li>
-								<li>
-									<a href="#" className="hover:text-indigo-300">
-										Pharmacy Services
-									</a>
-								</li>
-								<li>
-									<a href="#" className="hover:text-indigo-300">
-										TB DOTS
-									</a>
-								</li>
-								<li>
-									<a href="#" className="hover:text-indigo-300">
-										IPCU
-									</a>
-								</li>
-								<li>
-									<a href="#" className="hover:text-indigo-300">
-										Emergency Care Service
-									</a>
-								</li>
+							<h4 className="mb-6 text-lg font-bold font-heading text-white">Our Services</h4>
+							<ul className="space-y-3 text-sm text-slate-400">
+								{['Radiology', 'Ambulatory Infusion', 'Cardiopulmonary', 'Physical Therapy', 'Hemodialysis', 'Pathology', 'Pharmacy', 'Emergency Care'].map((item) => (
+									<li key={item}>
+										<a href="#" className="hover:text-secondary transition-colors hover:translate-x-1 inline-block">
+											{item}
+										</a>
+									</li>
+								))}
 							</ul>
 						</div>
 					</div>
 
 					{/* Get In Touch */}
 					<div>
-						<h4 className="mb-4 text-lg font-semibold">Get In Touch</h4>
-						<ul className="space-y-2 text-sm text-indigo-200">
-							<li className="flex items-start">
-								<Mail className="mr-2 mt-1 h-4 w-4" />
-								<span>{emailInfo.text}</span>
+						<h4 className="mb-6 text-lg font-bold font-heading text-white">Get In Touch</h4>
+						<ul className="space-y-4 text-sm text-slate-300">
+							<li className="flex items-start group">
+								<Mail className="mr-3 mt-1 h-5 w-5 text-secondary group-hover:text-white transition-colors" />
+								<span className="group-hover:text-white transition-colors">{emailInfo.text}</span>
 							</li>
-							<li className="flex items-start">
-								<Phone className="mr-2 mt-1 h-4 w-4" />
-								<span>{phoneInfo.text}</span>
+							<li className="flex items-start group">
+								<Phone className="mr-3 mt-1 h-5 w-5 text-secondary group-hover:text-white transition-colors" />
+								<span className="group-hover:text-white transition-colors">{phoneInfo.text}</span>
 							</li>
-							<li className="flex items-start">
-								<MapPin className="mr-2 mt-1 h-4 w-4" />
-								<span>{addressInfo.text}</span>
+							<li className="flex items-start group">
+								<MapPin className="mr-3 mt-1 h-5 w-5 text-secondary group-hover:text-white transition-colors" />
+								<span className="group-hover:text-white transition-colors leading-relaxed">{addressInfo.text}</span>
 							</li>
 						</ul>
 						{/* Map Placeholder */}
-						<div className="mt-4 overflow-hidden rounded-md">
-							<div className="overflow-hidden rounded-lg shadow-lg">
-								{/* Only render iframe if googleMapsEmbedUrl is available */}
-								{googleMapsEmbedUrl && (
-									<iframe
-										src={googleMapsEmbedUrl}
-										width="100%"
-										height="200"
-										style={{ border: 0 }}
-										allowFullScreen=""
-										loading="lazy"
-										referrerPolicy="no-referrer-when-downgrade"
-									></iframe>
-								)}
-							</div>
+						<div className="mt-6 overflow-hidden rounded-xl border border-slate-700/50 shadow-2xl">
+							{googleMapsEmbedUrl && (
+								<iframe
+									src={googleMapsEmbedUrl}
+									width="100%"
+									height="180"
+									style={{ border: 0, filter: 'grayscale(0.8) contrast(1.2)' }}
+									allowFullScreen=""
+									loading="lazy"
+									referrerPolicy="no-referrer-when-downgrade"
+								></iframe>
+							)}
 						</div>
 					</div>
 				</div>
 
 				{/* Copyright */}
-				<hr className="mt-8 border border-blue-800 shadow" />
-				<div className="mt-8 text-center text-sm text-indigo-300">
-					© 2025 Divine Word Hospital. All Rights Reserved.
+				<div className="mt-12 border-t border-slate-800 pt-8 text-center text-sm text-slate-500">
+					© 2025 Divine Word Hospital. Finding God in all things. All Rights Reserved.
 				</div>
 			</div>
 		</footer>

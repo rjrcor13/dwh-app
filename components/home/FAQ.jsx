@@ -111,9 +111,10 @@ import {
 	AccordionItem,
 	AccordionTrigger,
 } from '@/components/ui/accordion';
-import { MinusIcon, PlusIcon } from '@heroicons/react/24/outline';
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
+import { Search, MessageCircleQuestion } from 'lucide-react';
 import React, { useState } from 'react';
+
 const faqData = [
 	{
 		question: "What are your hospital's operating hours?",
@@ -163,39 +164,90 @@ const faqData = [
 ];
 
 const FAQSectionShadcn = () => {
+	const [searchQuery, setSearchQuery] = useState('');
+
+	const filteredFaqs = faqData.filter(item =>
+		item.question.toLowerCase().includes(searchQuery.toLowerCase()) ||
+		item.answer.toLowerCase().includes(searchQuery.toLowerCase())
+	);
+
 	return (
-		<motion.div
-			initial={{ opacity: 0, y: 20 }}
-			whileInView={{ opacity: 1, y: 0 }}
-			transition={{ duration: 0.4, delay: 0.1 }}
-			className="py-16 bg-blue-50"
-		>
-			<div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-left">
-				<h2 className="text-2xl font-bold text-gray-800 mb-2">
-					Frequently Asked Questions
-				</h2>
-				<p className="text-gray-600 mb-8">Quick Answers to Your Questions.</p>
+		<section className="py-24 bg-slate-50" id="faq">
+			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+				<div className="flex flex-col lg:flex-row gap-12 lg:gap-24">
+					{/* Left Sticky Side - Header & Search */}
+					<div className="lg:w-1/3 lg:sticky lg:top-32 h-fit space-y-8">
+						<div>
+							<div className="flex items-center gap-2 mb-4">
+								<span className="p-2 bg-secondary/20 rounded-lg text-primary">
+									<MessageCircleQuestion className="w-6 h-6" />
+								</span>
+								<h2 className="text-secondary font-bold tracking-wide uppercase text-sm">
+									FAQ
+								</h2>
+							</div>
+							<h2 className="text-3xl md:text-4xl font-bold font-heading text-slate-900 mb-4 leading-tight">
+								Common Questions & Answers
+							</h2>
+							<p className="text-slate-600 text-lg leading-relaxed">
+								Can't find what you're looking for? Use the search bar or contact our support team.
+							</p>
+						</div>
 
-				<Accordion type="single" collapsible>
-					{faqData.map((item, index) => (
-						<AccordionItem
-							key={index}
-							value={`item-${index}`}
-							className="bg-white rounded-lg my-2 shadow-md hover:cursor-pointer"
+						{/* Search Bar */}
+						<div className="relative">
+							<Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400" />
+							<input
+								type="text"
+								placeholder="Search questions..."
+								value={searchQuery}
+								onChange={(e) => setSearchQuery(e.target.value)}
+								className="w-full pl-12 pr-4 py-4 rounded-xl border border-slate-200 bg-white shadow-sm focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all placeholder:text-slate-400 text-slate-700"
+							/>
+						</div>
+					</div>
+
+					{/* Right Side - Accordion List */}
+					<div className="lg:w-2/3">
+						<motion.div
+							initial={{ opacity: 0 }}
+							animate={{ opacity: 1 }}
+							transition={{ duration: 0.3 }}
 						>
-							<AccordionTrigger className="w-full flex items-left justify-between py-3 px-4 font-semibold text-gray-700 focus:outline-none ">
-								<span>{item.question}</span>
-
-								<span className="sr-only">Toggle</span>
-							</AccordionTrigger>
-							<AccordionContent className="px-4 py-3 text-gray-600">
-								{item.answer}
-							</AccordionContent>
-						</AccordionItem>
-					))}
-				</Accordion>
+							{filteredFaqs.length > 0 ? (
+								<Accordion type="single" collapsible className="space-y-4">
+									{filteredFaqs.map((item, index) => (
+										<AccordionItem
+											key={index}
+											value={`item-${index}`}
+											className="bg-white rounded-xl border border-slate-200 px-2 overflow-hidden"
+										>
+											<AccordionTrigger className="px-4 py-5 font-semibold text-slate-800 hover:text-primary text-lg text-left hover:no-underline [&[data-state=open]]:text-primary active:text-primary transition-colors">
+												{item.question}
+											</AccordionTrigger>
+											<AccordionContent className="px-4 pb-5 text-slate-600 leading-relaxed text-base border-t border-slate-50 pt-4">
+												{item.answer}
+											</AccordionContent>
+										</AccordionItem>
+									))}
+								</Accordion>
+							) : (
+								<div className="text-center py-12 bg-white rounded-xl border border-slate-200 border-dashed">
+									<MessageCircleQuestion className="mx-auto h-12 w-12 text-slate-300 mb-3" />
+									<p className="text-slate-500 text-lg">No matching questions found.</p>
+									<button
+										onClick={() => setSearchQuery('')}
+										className="text-primary font-semibold mt-2 hover:underline"
+									>
+										Clear search
+									</button>
+								</div>
+							)}
+						</motion.div>
+					</div>
+				</div>
 			</div>
-		</motion.div>
+		</section>
 	);
 };
 

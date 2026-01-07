@@ -114,6 +114,7 @@
 // export default HMOsSection;
 'use client';
 
+import { hmoLogos } from '@/app/data/hmo';
 import { Button } from '@/components/ui/button';
 import {
 	Card,
@@ -126,21 +127,6 @@ import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
 import { LifeBuoy, Phone } from 'lucide-react';
 import Image from 'next/image';
-
-const hmoLogos = [
-	'HMO1.png',
-	'HMO2.png',
-	'HMO3.png',
-	'HMO4.jpg',
-	'HMO5.png',
-	'HMO6.png',
-	'HMO7.png',
-	'HMO8.png',
-	'HMO9.png',
-	'HMO10.png',
-	'HMO11.webp',
-	'HMO12.png',
-];
 
 const HMOsSection = () => (
 	<motion.section

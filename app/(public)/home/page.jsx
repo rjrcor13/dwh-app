@@ -2,6 +2,7 @@
 import { servicesData } from '@/app/data/services';
 import Banner from '@/components/banner/Banner';
 import Footer from '@/components/footer/Footer';
+import HMOLogos from '@/components/hmologos/HMOLogos';
 import AboutUs from '@/components/home/AboutUs';
 import ConnectWithUsSection from '@/components/home/ConnectWithUs';
 import EventsSection from '@/components/home/Events';
@@ -9,6 +10,7 @@ import FAQSection from '@/components/home/FAQ';
 import OurServicesSection from '@/components/home/Services';
 import Services from '@/components/services/Services';
 import Stats from '@/components/stats/Stats';
+import WhyChooseUs from '@/components/whychooseus/WhyChooseUs';
 import Image from 'next/image';
 import React from 'react';
 const classNames = 'my-24';
@@ -30,39 +32,40 @@ export const Blob = () => {
 		</svg>
 	);
 };
+import FeaturedDoctors from '@/components/home/FeaturedDoctors';
+import Testimonials from '@/components/home/Testimonials';
+
 const HomePage = () => {
 	return (
-		<div>
+		<div className="overflow-x-hidden">
 			<div>
 				<Banner />
 			</div>
 
 			<main>
-				<Stats />
-				{/* <AboutUs className="max-w-7xl mx-auto my-12 lg:mt-10 mt-0 " /> */}
-				<div className=" relative">
-					{/* <Blob /> */}
-					{/* <Image
-						src="/assets/about-us.webp" // Use relative path for Next.js
-						alt="About Us"
-						width={500} // Keep original aspect ratio, set a max width
-						height={500}
-						className="object-cover  absolute -top-20 right-0 w-full h-auto -z-10 opacity-20" // Responsive image, rounded corners
-					/> */}
-					<AboutUs className="relative z-10 max-w-7xl mx-auto my-12 lg:mt-12 mt-0 min-h-[500px] " />
-				</div>
-				{/* <OurServicesSection /> */}
+
+				<FeaturedDoctors />
 
 				<Services
-					label="Our Services"
-					title="	Comprehensive Care for Your Needs"
+					label="What we Offer"
+					title="Our Services"
 					description="We offer a wide range of medical services to provide you and your family with the best possible care."
 					servicesData={servicesData}
 				/>
+
+				<Testimonials />
+
+				<WhyChooseUs />
+
+				<AboutUs className="relative z-10 max-w-7xl mx-auto my-12 lg:mt-12 mt-0 min-h-[500px]" />
+
+				<HMOLogos />
+
+				<FAQSection />
+
 				<EventsSection />
 
 				<ConnectWithUsSection />
-				<FAQSection />
 			</main>
 		</div>
 	);
