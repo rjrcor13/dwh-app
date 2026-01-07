@@ -6,6 +6,7 @@ import { doctorsData } from '@/app/data/dummyDoctors';
 import debounce from 'lodash.debounce';
 import { useRouter, useSearchParams } from 'next/navigation';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import { Stethoscope } from 'lucide-react';
 import DoctorCard from './DoctorCard';
 import FilterDoctor from './FilterDoctor';
 
@@ -64,10 +65,10 @@ const FindADoctor = () => {
 						doctor.name.toLowerCase().includes(lowerCaseQuery) ||
 						(Array.isArray(doctor.specialties)
 							? doctor.specialties.some((spec) =>
-									spec.toLowerCase().includes(lowerCaseQuery)
-							  )
+								spec.toLowerCase().includes(lowerCaseQuery)
+							)
 							: doctor.specialty &&
-							  doctor.specialty.toLowerCase().includes(lowerCaseQuery)) ||
+							doctor.specialty.toLowerCase().includes(lowerCaseQuery)) ||
 						doctor.hospital.toLowerCase().includes(lowerCaseQuery)
 				);
 			}
@@ -303,43 +304,70 @@ const FindADoctor = () => {
 	}, [searchParams, filterDoctors]);
 
 	return (
-		<div className="bg-gray-100 py-12">
-			<div className="container_ max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-				<h1 className="text-3xl font-bold text-gray-900 mb-6">Find a Doctor</h1>
+		<div className="min-h-screen bg-slate-50/50 py-16 lg:py-24">
+			<div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+				{/* Section Header */}
+				<div className="text-center mb-16 space-y-4">
+					<h2 className="text-secondary font-bold tracking-widest uppercase text-sm">
+						Our Medical Experts
+					</h2>
+					<h1 className="text-4xl lg:text-5xl font-bold font-heading text-slate-900">
+						Find Your Specialist
+					</h1>
+					<p className="text-slate-600 max-w-2xl mx-auto text-lg">
+						Meet our team of dedicated doctors and healthcare professionals committed to providing you with world-class care.
+					</p>
+				</div>
 
 				{/* Filter Section */}
-				<FilterDoctor
-					searchQuery={searchQuery}
-					selectedSpecialties={selectedSpecialties}
-					selectedDays={selectedDays}
-					selectedGenders={selectedGenders}
-					selectedHMOs={selectedHMOs}
-					specialtyOptions={specialtyOptions}
-					dayOptions={dayOptions}
-					genderOptions={genderOptions}
-					hmoOptions={hmoOptions}
-					onSearchChange={handleSearchChange} // Use the new handleSearchChange
-					onSpecialtyChange={handleSpecialtyChange}
-					onDayChange={handleDayChange}
-					onGenderChange={handleGenderChange}
-					onHMOChange={handleHMOChange}
-				/>
+				<div className="bg-white rounded-3xl p-6 lg:p-8 shadow-xl shadow-slate-200/50 border border-slate-100 mb-12">
+					<FilterDoctor
+						searchQuery={searchQuery}
+						selectedSpecialties={selectedSpecialties}
+						selectedDays={selectedDays}
+						selectedGenders={selectedGenders}
+						selectedHMOs={selectedHMOs}
+						specialtyOptions={specialtyOptions}
+						dayOptions={dayOptions}
+						genderOptions={genderOptions}
+						hmoOptions={hmoOptions}
+						onSearchChange={handleSearchChange}
+						onSpecialtyChange={handleSpecialtyChange}
+						onDayChange={handleDayChange}
+						onGenderChange={handleGenderChange}
+						onHMOChange={handleHMOChange}
+					/>
+				</div>
 
 				{/* Doctors List */}
-				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
+				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
 					{filteredDoctors.map((doctor) => (
 						<DoctorCard key={doctor.id} doctor={doctor} />
 					))}
 				</div>
 
+				{/* Empty State */}
+				{filteredDoctors.length === 0 && (
+					<div className="text-center py-24">
+						<div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-slate-100 mb-4">
+							<Stethoscope className="w-8 h-8 text-slate-400" />
+						</div>
+						<h3 className="text-xl font-bold text-slate-900 mb-2">No doctors found</h3>
+						<p className="text-slate-500">
+							Try adjusting your filters or search terms.
+						</p>
+					</div>
+				)}
+
 				{/* Pagination (Example - Adapt to your needs with Shadcn UI components) */}
 				{filteredDoctors.length > 9 && (
-					<div className="mt-8 flex justify-center space-x-2">
-						<Button variant="outline">Previous</Button>
-						<span className="text-sm text-gray-500">
+					<div className="mt-16 flex justify-center space-x-2">
+						<Button variant="outline" className="rounded-xl">Previous</Button>
+						<span className="flex items-center px-4 text-sm font-semibold text-slate-600 bg-white rounded-xl border">
 							1-9 of {doctorsData.length}
 						</span>
-						<Button variant="outline">Next</Button>
+						<Button variant="outline" className="rounded-xl">Next</Button>
 					</div>
 				)}
 			</div>
