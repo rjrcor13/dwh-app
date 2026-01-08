@@ -18,7 +18,7 @@ const emailInfo = contactInfo.find((info) => info.title === 'Email');
 
 const TopWidget = () => {
 	return (
-		<div className="bg-slate-900 text-blue-50 border-b border-white/10 relative z-50">
+		<div className="bg-primary text-blue-50 border-b border-white/10 relative z-50">
 			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-10 flex justify-between items-center text-xs font-medium tracking-wide">
 
 				{/* Left Side: Socials */}
