@@ -6,7 +6,6 @@ import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react';
-import { Button } from '../ui/button';
 
 const FeaturedDoctors = () => {
     // Select top 3 or 4 doctors to feature
@@ -29,11 +28,12 @@ const FeaturedDoctors = () => {
                             to providing you with the highest quality of care.
                         </p>
                     </div>
-                    <Button asChild variant="default" size="lg" className="shrink-0 bg-primary hover:bg-primary/90">
-                        <Link href="/doctors">
-                            View All Doctors <ArrowRight className="ml-2 h-4 w-4" />
-                        </Link>
-                    </Button>
+                    <Link
+                        href="/doctors"
+                        className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white border border-slate-200 text-slate-700 font-semibold hover:border-primary hover:text-primary hover:shadow-lg transition-all duration-300 group"
+                    >
+                        View All Doctors <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                    </Link>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

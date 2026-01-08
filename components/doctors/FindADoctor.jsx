@@ -312,7 +312,7 @@ const FindADoctor = () => {
 					<h2 className="text-secondary font-bold tracking-widest uppercase text-sm">
 						Our Medical Experts
 					</h2>
-					<h1 className="text-4xl lg:text-5xl font-bold font-heading text-slate-900">
+					<h1 className="text-4xl lg:text-5xl font-bold font-heading text-primary">
 						Find Your Specialist
 					</h1>
 					<p className="text-slate-600 max-w-2xl mx-auto text-lg">

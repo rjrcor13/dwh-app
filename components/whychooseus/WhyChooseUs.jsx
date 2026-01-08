@@ -1,59 +1,62 @@
 'use client';
-import { motion } from 'framer-motion';
-import React from 'react';
-import {
-	AcademicCapIcon,
-	BeakerIcon,
-	HeartIcon,
-	ShieldCheckIcon,
-	SparklesIcon
-} from '@heroicons/react/24/solid';
 
-const WhyChooseUsLight = () => {
+import { cn } from '@/lib/utils';
+import { motion } from 'framer-motion';
+import {
+	GraduationCap,
+	Heart,
+	Microscope,
+	ShieldCheck,
+	Sparkles
+} from 'lucide-react';
+
+const WhyChooseUs = () => {
 	// Bento-style features with span hints
 	const features = [
 		{
-			icon: BeakerIcon,
+			icon: Microscope,
 			title: 'Advanced Innovation',
 			description: 'First in Region VIII with Hemodialysis, MRI, and Digital Mammography.',
-			color: 'bg-blue-500',
 			span: 'md:col-span-2'
 		},
 		{
-			icon: ShieldCheckIcon,
+			icon: ShieldCheck,
 			title: 'Certified Quality',
 			description: 'Level 3 Tertiary Institution adhering to global safety protocols.',
-			color: 'bg-teal-500',
 			span: 'md:col-span-1'
 		},
 		{
-			icon: HeartIcon,
+			icon: Heart,
 			title: 'Compassionate Care',
 			description: 'We treat every patient as sacred, upholding inclusive and dignified service.',
-			color: 'bg-rose-500',
 			span: 'md:col-span-1'
 		},
 		{
-			icon: AcademicCapIcon,
+			icon: GraduationCap,
 			title: 'Accredited Training',
 			description: 'Home to top-tier Residency Training Programs in Medicine & Pediatrics.',
-			color: 'bg-indigo-500',
 			span: 'md:col-span-2'
 		},
 	];
 
 	return (
-		<section className="py-24 bg-slate-50">
-			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+		<section className="py-24 bg-slate-50 relative overflow-hidden">
+			{/* Subtle Background Blobs for Depth */}
+			<div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl pointer-events-none">
+				<div className="absolute  top-[20%] right-[10%] w-[600px] h-[600px] bg-primary/3 rounded-full blur-3xl" />
+				<div className="absolute bottom-[10%] left-[10%] w-[500px] h-[500px] bg-secondary/5 rounded-full blur-3xl" />
+			</div>
 
-				<div className="text-center mb-16">
+			<div className="relative z-10 max-w-7xl mx-auto px-6">
+				{/* Section Header */}
+				<div className="text-center mb-16 max-w-3xl mx-auto">
 					<h2 className="text-secondary font-bold tracking-widest uppercase text-sm mb-3">
 						Our Distinction
 					</h2>
-					<h2 className="text-3xl md:text-5xl font-bold font-heading text-slate-900 mb-6">
+					<h2 className="text-4xl lg:text-5xl font-bold font-heading text-slate-900 mb-6">
 						Why Choose Divine Word?
 					</h2>
-					<p className="text-slate-500 text-xl max-w-2xl mx-auto">
+					<p className="text-slate-500 text-xl leading-relaxed">
 						Leading the region with advanced solutions, certified expertise, and mission-driven service.
 					</p>
 				</div>
@@ -66,24 +69,38 @@ const WhyChooseUsLight = () => {
 							whileInView={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.5, delay: idx * 0.1 }}
 							viewport={{ once: true }}
-							className={`relative group overflow-hidden rounded-3xl bg-white p-8 shadow-sm hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 border border-slate-100 ${feature.span}`}
+							className={cn(
+								"group relative overflow-hidden rounded-[2rem] bg-white p-10 h-full flex flex-col items-start",
+								"border border-slate-100 transition-all duration-300 ease-out",
+								"hover:border-primary/20 hover:shadow-2xl hover:shadow-primary/5 hover:-translate-y-2",
+								"cursor-pointer",
+								feature.span
+							)}
 						>
-							{/* Background decoration */}
-							<div className={`absolute top-0 right-0 w-32 h-32 opacity-10 rounded-bl-full ${feature.color} transition-transform group-hover:scale-150 duration-500`} />
+							{/* Hover Gradient Overlay */}
+							<div className="absolute inset-0 bg-gradient-to-br from-transparent to-primary/0 group-hover:to-primary/5 transition-colors duration-500 pointer-events-none" />
 
-							<div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 text-white shadow-lg ${feature.color}`}>
-								<feature.icon className="h-7 w-7" />
+							{/* Icon */}
+							<div className={cn(
+								"w-16 h-16 rounded-2xl flex items-center justify-center mb-6",
+								"bg-primary/5 text-primary transition-transform duration-500 group-hover:scale-110 relative z-10"
+							)}>
+								<feature.icon className="h-8 w-8" strokeWidth={1.5} />
 							</div>
 
-							<h3 className="text-2xl font-bold font-heading text-slate-900 mb-3 group-hover:text-primary transition-colors">
-								{feature.title}
-							</h3>
-							<p className="text-slate-500 text-lg leading-relaxed mb-6">
-								{feature.description}
-							</p>
+							{/* Content */}
+							<div className="relative z-10">
+								<h3 className="text-2xl font-bold font-heading text-slate-900 mb-4 group-hover:text-primary transition-colors">
+									{feature.title}
+								</h3>
+								<p className="text-slate-500 text-lg leading-relaxed font-medium">
+									{feature.description}
+								</p>
+							</div>
 
-							<div className="absolute bottom-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity transform translate-x-4 group-hover:translate-x-0">
-								<SparklesIcon className={`w-6 h-6 ${feature.color.replace('bg-', 'text-')}`} />
+							{/* Decorative Sparkle (Subtle) */}
+							<div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-all duration-500 transform rotate-45 group-hover:rotate-0">
+								<Sparkles className="w-6 h-6 text-secondary/40" />
 							</div>
 						</motion.div>
 					))}
@@ -93,4 +110,4 @@ const WhyChooseUsLight = () => {
 	);
 };
 
-export default WhyChooseUsLight;
+export default WhyChooseUs;

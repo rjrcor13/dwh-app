@@ -27,9 +27,9 @@ const Banner = () => {
 					fill
 					priority
 				/>
-				{/* Modern Gradient Overlay: Darker at bottom/left for text readability */}
-				<div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-slate-900/70 to-slate-900/20" />
-				<div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-90" />
+				{/* Modern Gradient Overlay: Uses Brand Primary Color */}
+				<div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/80 to-primary/30" />
+				<div className="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent opacity-90" />
 			</div>
 
 			{/* Main Content */}
@@ -50,12 +50,12 @@ const Banner = () => {
 
 						<h1 className="text-5xl sm:text-6xl lg:text-8xl font-bold font-heading text-white leading-[1.1] tracking-tight">
 							Your health, <br />
-							<span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-teal-200">
+							<span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-amber-200">
 								our calling.
 							</span>
 						</h1>
 
-						<p className="text-xl lg:text-2xl text-slate-300 leading-relaxed max-w-xl font-light">
+						<p className="text-xl lg:text-2xl text-slate-100 leading-relaxed max-w-xl font-light opacity-90">
 							Experience world-class medical care with a compassionate touch.
 							Serving the community with innovation and integrity since 1965.
 						</p>
@@ -102,7 +102,7 @@ const Banner = () => {
 				initial={{ opacity: 0, y: 50 }}
 				animate={{ opacity: 1, y: 0 }}
 				transition={{ duration: 0.8, delay: 0.4 }}
-				className="absolute bottom-0 left-0 right-0 z-20 border-t border-white/10 bg-slate-900/60 backdrop-blur-xl"
+				className="absolute bottom-0 left-0 right-0 z-20 border-t border-white/10 bg-primary/80 backdrop-blur-xl"
 			>
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="grid grid-cols-3 divide-x divide-white/10">

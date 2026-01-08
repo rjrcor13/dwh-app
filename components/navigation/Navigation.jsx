@@ -105,7 +105,7 @@
 // }
 'use client';
 
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import {
 	ChevronDown,
 	CircleCheckIcon,
@@ -150,7 +150,7 @@ export default function NavigationMenuDemo({ menuItems, myClass }) {
 		<nav
 			className={`${myClass} hidden lg:flex items-center space-x-1`}
 		>
-			<ul className="flex items-center space-x-2">
+			<ul className="flex items-center space-x-1">
 				{menuItems.map((item) => (
 					<li
 						key={item.label}
@@ -161,44 +161,50 @@ export default function NavigationMenuDemo({ menuItems, myClass }) {
 						{item.links ? (
 							<>
 								<div
-									className={`group inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-bold font-heading transition-colors hover:text-primary focus:outline-none cursor-pointer text-slate-700 ${openMenu === item.label ? 'text-primary bg-primary/5' : ''}`}
+									className={`group inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-semibold font-heading transition-all duration-300 cursor-pointer ${openMenu === item.label
+										? 'text-primary bg-slate-100/60'
+										: 'text-slate-600 hover:text-primary hover:bg-slate-50'
+										}`}
 								>
 									{item.label}
 									<motion.div
 										variants={caretVariants}
 										animate={openMenu === item.label ? 'hover' : 'rest'}
-										className="ml-1 text-primary/70"
+										className={`ml-1.5 w-4 h-4 transition-colors ${openMenu === item.label ? 'text-primary' : 'text-slate-400 group-hover:text-primary'
+											}`}
 									>
-										<ChevronDown className="h-4 w-4" />
+										<ChevronDown className="w-full h-full opacity-60 group-hover:opacity-100" strokeWidth={2} />
 									</motion.div>
 								</div>
-								{openMenu === item.label && (
-									<motion.div
-										initial={{ opacity: 0, y: 10 }}
-										animate={{ opacity: 1, y: 0 }}
-										exit={{ opacity: 0, y: 10 }}
-										transition={{ duration: 0.2 }}
-										className="absolute left-0 top-full pt-2"
-									>
-										<div className="w-[350px] rounded-xl border border-slate-200/60 bg-white/95 backdrop-blur-xl p-4 shadow-xl ring-1 ring-black/5">
-											<ul className="grid gap-2">
-												{item.links.map((link) => (
-													<ListItem
-														key={link.title}
-														href={link.href}
-														title={link.title}
-													>
-														<span className="text-sm">{link.description}</span>
-													</ListItem>
-												))}
-											</ul>
-										</div>
-									</motion.div>
-								)}
+								<AnimatePresence>
+									{openMenu === item.label && (
+										<motion.div
+											initial={{ opacity: 0, y: 8, scale: 0.98 }}
+											animate={{ opacity: 1, y: 0, scale: 1 }}
+											exit={{ opacity: 0, y: 8, scale: 0.98 }}
+											transition={{ duration: 0.2, ease: "circOut" }}
+											className="absolute left-0 top-full pt-3 z-50"
+										>
+											<div className="w-[340px] rounded-xl border border-slate-200/60 bg-white/95 backdrop-blur-3xl p-3 shadow-xl ring-1 ring-slate-900/5">
+												<ul className="grid gap-1">
+													{item.links.map((link) => (
+														<ListItem
+															key={link.title}
+															href={link.href}
+															title={link.title}
+														>
+															<span className="text-xs text-slate-500 font-medium tracking-wide">{link.description}</span>
+														</ListItem>
+													))}
+												</ul>
+											</div>
+										</motion.div>
+									)}
+								</AnimatePresence>
 							</>
 						) : (
 							<Link href={item.featured?.href || '#'} passHref>
-								<span className="inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-bold font-heading text-slate-700 transition-colors hover:bg-primary/5 hover:text-primary">
+								<span className="inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-semibold font-heading text-slate-600 transition-all duration-300 hover:text-primary hover:bg-slate-50">
 									{item.label}
 								</span>
 							</Link>
@@ -214,9 +220,9 @@ function ListItem({ title, children, href, ...props }) {
 	return (
 		<li {...props}>
 			<Link href={href} passHref>
-				<div className={`${listItemStyle} flex flex-col`}>
-					<div className="text-sm font-semibold leading-none">{title}</div>
-					<p className="text-sm leading-snug text-gray-600 line-clamp-5">
+				<div className="group block select-none space-y-1 rounded-lg p-3 leading-none no-underline outline-none transition-colors hover:bg-slate-50 hover:text-primary">
+					<div className="text-sm font-bold leading-none text-slate-800 group-hover:text-primary transition-colors">{title}</div>
+					<p className="line-clamp-2 text-xs leading-snug text-slate-500 group-hover:text-slate-600">
 						{children}
 					</p>
 				</div>

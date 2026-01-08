@@ -132,40 +132,43 @@ const MobileNavigation = ({ menuItems }) => {
 		<>
 			<Sheet open={isOpen} onOpenChange={setIsOpen}>
 				<SheetTrigger asChild>
-					<div className="lg:hidden absolute top-6 right-4 cursor-pointer text-slate-900 hover:text-primary transition-colors p-2 glass rounded-full">
-						<Menu size={24} />
+					<div className="lg:hidden cursor-pointer text-slate-700 hover:text-primary transition-all duration-300 p-2">
+						<Menu className="w-6 h-6" strokeWidth={1.5} />
 					</div>
 				</SheetTrigger>
 				<SheetContent
 					side="left"
-					className="w-full sm:max-w-xs bg-slate-900/95 backdrop-blur-xl text-white border-r border-slate-700/50 p-0"
+					className="w-full sm:max-w-xs bg-white/95 backdrop-blur-3xl border-r border-slate-200/50 p-0 shadow-2xl"
 				>
 					<SheetTitle className="sr-only">Mobile Navigation</SheetTitle>
 					<div className="flex flex-col h-full">
 						{/* Header with Brand and Close Button */}
-						<div className="flex items-center justify-between p-6 border-b border-gray-700">
+						<div className="flex items-center justify-between p-6 border-b border-slate-100">
 							<Brand />
 							<button
 								onClick={() => setIsOpen(false)}
-								className="text-gray-400 hover:text-white transition-colors"
+								className="text-slate-400 hover:text-slate-900 transition-colors p-1 hover:bg-slate-100 rounded-full"
 							>
-								{/* <X className="h-6 w-6" /> */}
+								<X className="h-5 w-5" />
 								<span className="sr-only">Close menu</span>
 							</button>
 						</div>
 
 						{/* Navigation Links */}
 						<div className="flex-1 overflow-y-auto p-6 space-y-2">
-							<ul className="space-y-2">
+							<ul className="space-y-1">
 								{menuItems.map((item) => (
 									<li key={item.label}>
 										{item.links ? (
-											<div>
+											<div className="space-y-1">
 												<div
 													onClick={() => handleSubmenuToggle(item.label)}
-													className="flex items-center justify-between py-2 px-4 rounded-md cursor-pointer hover:bg-accent transition-colors"
+													className={`flex items-center justify-between py-3 px-4 rounded-xl cursor-pointer transition-all duration-200 ${openSubmenu === item.label
+														? 'bg-primary/5 text-primary'
+														: 'text-slate-700 hover:bg-slate-50 hover:text-slate-900'
+														}`}
 												>
-													<span className="text-lg font-medium">
+													<span className="text-base font-bold font-heading">
 														{item.label}
 													</span>
 													<motion.div
@@ -173,6 +176,7 @@ const MobileNavigation = ({ menuItems }) => {
 															rotate: openSubmenu === item.label ? -180 : 0,
 														}}
 														transition={{ duration: 0.3 }}
+														className={openSubmenu === item.label ? 'text-primary' : 'text-slate-400'}
 													>
 														<ChevronDown className="h-5 w-5" />
 													</motion.div>
@@ -183,15 +187,15 @@ const MobileNavigation = ({ menuItems }) => {
 															initial={{ height: 0, opacity: 0 }}
 															animate={{ height: 'auto', opacity: 1 }}
 															exit={{ height: 0, opacity: 0 }}
-															transition={{ duration: 0.3 }}
-															className="overflow-hidden mt-2"
+															transition={{ duration: 0.3, ease: "circOut" }}
+															className="overflow-hidden"
 														>
-															<ul className="space-y-1 pl-6 border-l border-white/20 ml-4">
+															<ul className="space-y-1 pl-4 pt-1 pb-2">
 																{item.links.map((link) => (
 																	<li key={link.title}>
 																		<Link
 																			href={link.href}
-																			className="block py-2 px-4 text-sm text-gray-300 hover:text-white hover:bg-accent rounded-md transition-colors"
+																			className="block py-2.5 px-4 text-sm font-medium text-slate-500 hover:text-primary hover:bg-primary/5 rounded-lg transition-colors"
 																			onClick={handleLinkClick}
 																		>
 																			{link.title}
@@ -206,7 +210,7 @@ const MobileNavigation = ({ menuItems }) => {
 										) : (
 											<Link
 												href={item.featured?.href || '/'}
-												className="block py-2 px-4 text-lg font-medium rounded-md hover:bg-accent transition-colors"
+												className="block py-3 px-4 text-base font-bold font-heading text-slate-700 hover:text-primary hover:bg-slate-50 rounded-xl transition-all duration-200"
 												onClick={handleLinkClick}
 											>
 												{item.label}

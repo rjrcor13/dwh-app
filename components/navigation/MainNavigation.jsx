@@ -9,8 +9,8 @@ import MyNavigation from './Navigation';
 export default function MainNavigation({ menuItems }) {
 	// Simplified for now: Fixed styling with glass effect
 	return (
-		<div className="sticky top-0 z-50 w-full glass border-b border-white/20">
-			<div className="max-w-7xl container mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 h-20">
+		<div className="sticky top-0 z-50 w-full bg-white/80 backdrop-blur-md border-b border-slate-200/50 transition-all duration-300">
+			<div className="max-w-7xl container mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 h-[4.5rem]">
 				<div className="flex-shrink-0">
 					<Brand />
 				</div>

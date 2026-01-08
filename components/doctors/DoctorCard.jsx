@@ -2,9 +2,10 @@
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
+
 import { motion } from 'framer-motion';
 import {
+	ArrowRight,
 	CalendarIcon,
 	ClockIcon,
 	CreditCardIcon,
@@ -27,34 +28,33 @@ const DoctorCard = ({ doctor }) => {
 			initial={{ opacity: 0, y: 20 }}
 			whileInView={{ opacity: 1, y: 0 }}
 			viewport={{ once: true }}
-			whileHover={{ y: -5 }}
+			whileHover={{ y: -4 }}
 			transition={{ duration: 0.3 }}
-			className="group relative bg-white rounded-3xl p-6 shadow-sm hover:shadow-2xl border border-slate-100 transition-all duration-300"
+			className="group relative bg-white rounded-[2rem] p-8 transition-all duration-300 ease-out border border-slate-100 hover:border-primary/20 hover:shadow-2xl hover:shadow-primary/5 hover:-translate-y-2 cursor-pointer overflow-hidden"
+			onClick={handleViewProfile}
 		>
-			{/* Decorative accent */}
-			<div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-secondary/10 to-transparent rounded-bl-full -mr-1 -mt-1" />
+			{/* Hover Gradient Overlay */}
+			<div className="absolute inset-0 bg-gradient-to-br from-transparent to-primary/0 group-hover:to-primary/5 transition-colors duration-500 pointer-events-none" />
 
-			<div className="flex flex-col items-center text-center">
-				{/* Avatar with Ring */}
-				<div className="relative mb-6">
-					<div className="w-32 h-32 rounded-full p-1 bg-gradient-to-br from-secondary to-teal-100 shadow-lg">
-						<Avatar className="w-full h-full rounded-full border-4 border-white bg-white">
-							<AvatarImage
-								src={doctor.image}
-								alt={doctor.name}
-								className="object-cover"
-							/>
-							<AvatarFallback className="bg-slate-100 text-slate-400 text-3xl font-heading">
-								{doctor.name.substring(0, 2).toUpperCase()}
-							</AvatarFallback>
-						</Avatar>
-					</div>
-					{/* Status Indicator */}
-					<div className="absolute bottom-1 right-2 w-6 h-6 bg-green-500 border-4 border-white rounded-full" title="Available" />
+			<div className="relative z-10 flex flex-col items-center text-center">
+				{/* Minimalist Avatar */}
+				<div className="relative mb-5">
+					<Avatar className="w-24 h-24 rounded-full border border-slate-100 shadow-sm group-hover:shadow-md transition-all duration-300">
+						<AvatarImage
+							src={doctor.image}
+							alt={doctor.name}
+							className="object-cover"
+						/>
+						<AvatarFallback className="bg-slate-50 text-slate-400 text-xl font-heading">
+							{doctor.name.substring(0, 2).toUpperCase()}
+						</AvatarFallback>
+					</Avatar>
+					{/* Status Dot */}
+					<div className="absolute bottom-1 right-2 w-5 h-5 bg-green-500 border-4 border-white rounded-full" />
 				</div>
 
 				{/* Name & Specialty */}
-				<h3 className="text-xl font-bold font-heading text-slate-900 mb-2 group-hover:text-primary transition-colors">
+				<h3 className="text-xl font-bold font-heading text-primary mb-2">
 					{doctor.name}
 				</h3>
 
@@ -64,53 +64,42 @@ const DoctorCard = ({ doctor }) => {
 							<Badge
 								key={i}
 								variant="secondary"
-								className="bg-slate-100 text-slate-600 hover:bg-secondary/20 hover:text-secondary border-transparent"
+								className="bg-primary/5 text-primary hover:bg-primary/10 border-transparent font-medium px-3 py-1 rounded-lg transition-colors"
 							>
 								{spec}
 							</Badge>
 						))
 					) : (
-						<Badge variant="secondary" className="bg-slate-100 text-slate-600">
+						<Badge variant="secondary" className="bg-primary/5 text-primary hover:bg-primary/10 border-transparent px-3 py-1 rounded-lg transition-colors">
 							{doctor.specialties}
 						</Badge>
 					)}
 				</div>
 
-				{/* Info Grid */}
-				<div className="w-full grid grid-cols-2 gap-3 text-left mb-6 bg-slate-50/50 p-4 rounded-2xl border border-slate-100">
-					<div className="col-span-2 flex items-center gap-2 text-sm text-slate-600">
-						<ClockIcon className="w-4 h-4 text-secondary shrink-0" />
-						<span className="truncate">{doctor.clinicHours}</span>
+				{/* Minimal Info List */}
+				<div className="w-full space-y-3 mb-6">
+					<div className="flex items-center justify-center gap-2 text-sm text-slate-500">
+						<ClockIcon className="w-4 h-4 text-secondary" />
+						<span>{doctor.clinicHours}</span>
 					</div>
-					<div className="flex items-center gap-2 text-sm text-slate-600">
-						<CalendarIcon className="w-4 h-4 text-secondary shrink-0" />
-						<span className="truncate">{doctor.clinicDays.join(', ')}</span>
+					<div className="flex items-center justify-center gap-2 text-sm text-slate-500">
+						<CalendarIcon className="w-4 h-4 text-secondary" />
+						<span>{doctor.clinicDays.join(', ')}</span>
 					</div>
-					<div className="flex items-center gap-2 text-sm text-slate-600">
-						{doctor.gender === 'Male' ? (
-							<MarsIcon className="w-4 h-4 text-blue-500 shrink-0" />
-						) : (
-							<VenusIcon className="w-4 h-4 text-pink-500 shrink-0" />
-						)}
-						<span>{doctor.gender}</span>
-					</div>
-					{doctor.hmo && doctor.hmo.length > 0 && (
-						<div className="col-span-2 flex items-start gap-2 text-sm text-slate-600">
-							<CreditCardIcon className="w-4 h-4 text-secondary shrink-0 mt-0.5" />
-							<span className="line-clamp-1 text-xs">
-								HMO: {doctor.hmo.join(', ')}
-							</span>
-						</div>
-					)}
 				</div>
 
-				{/* Action */}
-				<Button
-					className="w-full bg-slate-900 text-white hover:bg-secondary hover:text-primary transition-all shadow-lg shadow-slate-900/10 group-hover:shadow-secondary/20 font-bold rounded-xl h-12"
-					onClick={handleViewProfile}
+				{/* Full Width Action */}
+				{/* Minimalist Link Action */}
+				<div
+					className="mt-2 inline-flex items-center gap-1 text-sm font-semibold text-primary hover:text-primary/80 transition-colors cursor-pointer group/link"
+					onClick={(e) => {
+						e.stopPropagation();
+						handleViewProfile();
+					}}
 				>
 					View Profile
-				</Button>
+					<ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-1" />
+				</div>
 			</div>
 		</motion.div>
 	);

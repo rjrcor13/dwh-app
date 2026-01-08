@@ -30,46 +30,46 @@ const ServiceCard = ({ service, index }) => {
 				exit="exit"
 				custom={index}
 				className={cn(
-					'bg-white rounded-xl shadow-sm p-6 flex flex-col items-center justify-start',
-					'transition-all duration-300',
-					'hover:shadow-xl hover:-translate-y-1',
-					'border border-slate-100 hover:border-primary/20',
-					'group h-full cursor-pointer'
+					'bg-white rounded-[2rem] p-8 flex flex-col items-center justify-start h-full',
+					'transition-all duration-300 ease-out',
+					'hover:shadow-2xl hover:-translate-y-2 hover:shadow-primary/5',
+					'border border-slate-100',
+					'group cursor-pointer relative overflow-hidden'
 				)}
 			>
+				{/* Hover Gradient Overlay */}
+				<div className="absolute inset-0 bg-gradient-to-br from-transparent to-primary/0 group-hover:to-primary/5 transition-colors duration-500" />
+
 				<div
 					className={cn(
 						'w-20 h-20 rounded-2xl flex items-center justify-center mb-6',
-						'transition-all duration-300',
-						'bg-slate-50 group-hover:bg-primary',
-						'text-primary group-hover:text-white'
+						'transition-transform duration-500 ease-out group-hover:scale-110',
+						'bg-primary/5 text-primary',
+						'relative z-10'
 					)}
 				>
-					{/* <ServiceIcon className="w-8 h-8" /> */}
-					{/* <DynamicHealthIcon
-						name={service.icon}
-						size={64}
-						className="text-primary mx-auto mb-4"
-					/> */}
 					<DynamicIcons
 						name={service.icon}
-						width={36}
-						height={36}
-						className="w-9 h-9"
+						width={40}
+						height={40}
+						className="w-10 h-10"
 					/>
 				</div>
-				<h4
-					className={cn(
-						'text-lg font-bold font-heading mb-3',
-						'transition-colors duration-300',
-						'text-slate-800 group-hover:text-primary text-center'
-					)}
-				>
-					{service.title}
-				</h4>
-				<p className="text-sm text-slate-500 text-center leading-relaxed">
-					{service.description}
-				</p>
+
+				<div className="relative z-10 flex flex-col items-center">
+					<h4
+						className={cn(
+							'text-xl font-bold font-heading mb-3',
+							'text-slate-900 group-hover:text-primary transition-colors duration-300',
+							'text-center tracking-tight'
+						)}
+					>
+						{service.title}
+					</h4>
+					<p className="text-slate-500 text-center leading-relaxed font-medium">
+						{service.description}
+					</p>
+				</div>
 			</motion.div>
 		</Link>
 	);
