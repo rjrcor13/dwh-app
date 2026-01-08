@@ -33,7 +33,7 @@ const ServiceCard = ({ service, index }) => {
 					'bg-white rounded-[2rem] p-8 flex flex-col items-center justify-start h-full',
 					'transition-all duration-300 ease-out',
 					'hover:shadow-2xl hover:-translate-y-2 hover:shadow-primary/5',
-					'border border-slate-100',
+					'border border-slate-100 hover:border-primary/20',
 					'group cursor-pointer relative overflow-hidden'
 				)}
 			>
@@ -66,7 +66,7 @@ const ServiceCard = ({ service, index }) => {
 					>
 						{service.title}
 					</h4>
-					<p className="text-slate-500 text-center leading-relaxed font-medium">
+					<p className="text-slate-500 text-center leading-relaxed font-base">
 						{service.description}
 					</p>
 				</div>

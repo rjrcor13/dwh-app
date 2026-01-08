@@ -21,9 +21,9 @@ const Services = ({
 				<div className="absolute bottom-[10%] right-[10%] w-[400px] h-[400px] bg-secondary/5 rounded-full blur-3xl" />
 			</div> */}
 
-			<div className="relative z-10 max-w-7xl mx-auto px-6">
+			<div className="relative z-10 max-w-7xl mx-auto px-6 ">
 				{/* Section Header - Centered */}
-				<div className="flex flex-col items-center text-center mb-16 max-w-3xl mx-auto">
+				<div className="flex flex-col  items-center text-center mb-16 max-w-3xl mx-auto">
 					{label && (
 						<h2 className="text-secondary font-bold tracking-widest uppercase text-sm mb-3">
 							{label}
