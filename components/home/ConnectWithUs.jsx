@@ -14,20 +14,22 @@ const ConnectWithUsSection = () => {
 	}
 
 	return (
-		<section className="relative bg-white" id="connect-with-us">
-			<div className="flex flex-col lg:flex-row min-h-[600px]">
+		<section className="relative bg-slate-50 py-24 overflow-hidden" id="connect-with-us">
+			{/* Background Blobs for Atmosphere */}
+			<div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl pointer-events-none">
+				<div className="absolute top-[10%] right-[5%] w-[500px] h-[500px] bg-primary/3 rounded-full blur-3xl" />
+				<div className="absolute bottom-[10%] left-[5%] w-[500px] h-[500px] bg-secondary/5 rounded-full blur-3xl" />
+			</div>
 
-				{/* Left Panel - Information */}
-				<div className="w-full lg:w-[45%] bg-slate-900 text-white relative overflow-hidden flex flex-col justify-center px-8 sm:px-12 lg:px-16 py-20">
-					{/* Decorative Gradients */}
-					<div className="absolute top-0 right-0 w-96 h-96 bg-primary/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-					<div className="absolute bottom-0 left-0 w-64 h-64 bg-secondary/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/3 pointer-events-none" />
+			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+				<div className="flex flex-col lg:flex-row gap-8 lg:gap-16">
 
-					<div className="relative z-10">
+					{/* Left Panel - Information */}
+					<div className="w-full lg:w-1/2 flex flex-col justify-center">
 						<motion.div
-							initial={{ opacity: 0, y: 20 }}
-							whileInView={{ opacity: 1, y: 0 }}
-							transition={{ duration: 0.5 }}
+							initial={{ opacity: 0, x: -20 }}
+							whileInView={{ opacity: 1, x: 0 }}
+							transition={{ duration: 0.6 }}
 							viewport={{ once: true }}
 						>
 							<div className="flex items-center gap-2 mb-6">
@@ -37,39 +39,51 @@ const ConnectWithUsSection = () => {
 								</span>
 							</div>
 
-							<h2 className="text-4xl md:text-5xl font-bold font-heading mb-8 leading-tight">
-								Get in touch with <br className="hidden lg:block" />
-								<span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400">
+							<h2 className="text-4xl md:text-5xl font-bold font-heading text-slate-900 mb-6 leading-tight">
+								Get in touch with <br />
+								<span className="text-primary">
 									Divine Word
 								</span>
 							</h2>
 
-							<p className="text-slate-400 text-lg leading-relaxed mb-12 max-w-md">
+							<p className="text-slate-500 text-lg leading-relaxed mb-10 max-w-md">
 								Expert care is just a call or visit away. Reach out to us for emergencies, appointments, or general inquiries.
 							</p>
 
-							<div className="space-y-8">
+							<div className="grid grid-cols-1 gap-4">
 								{contactInfo.map((item, index) => (
-									<div key={index} className="group flex items-start">
-										<div className="w-12 h-12 rounded-full border border-white/10 bg-white/5 flex items-center justify-center mr-6 group-hover:bg-primary group-hover:border-primary transition-all duration-300">
-											<item.icon className="h-5 w-5 text-slate-300 group-hover:text-white" />
+									<div
+										key={index}
+										className={`group p-6 rounded-[2rem] bg-white border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-primary/5 hover:border-primary/20 transition-all duration-300 flex items-center gap-6 cursor-default`}
+									>
+										<div className="w-14 h-14 rounded-2xl bg-primary/5 text-primary flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shrink-0">
+											<item.icon className="h-6 w-6" />
 										</div>
-										<div>
-											<h5 className="font-semibold text-white text-lg mb-1 group-hover:text-secondary transition-colors">{item.title}</h5>
-											<p className="text-slate-400 text-base mb-1">{item.text}</p>
-
+										<div className="flex-grow">
+											<h5 className="font-bold text-slate-900 text-lg mb-1 group-hover:text-primary transition-colors">
+												{item.title}
+											</h5>
+											<p className="text-slate-500 text-sm font-medium">
+												{item.text}
+											</p>
 											{item.isLink && (
 												<a
 													href={item.href}
-													className="inline-flex items-center text-sm font-medium text-secondary hover:text-white transition-colors mt-1"
+													className="inline-flex items-center text-sm font-bold text-primary hover:text-secondary transition-colors mt-1 group/link"
 													target="_blank"
 													rel="noopener noreferrer"
 												>
-													{item.subText} <ArrowRight className="ml-1 h-3 w-3" />
+													{item.subText} <ArrowRight className="ml-1 h-3 w-3 transition-transform group-hover/link:translate-x-1" />
 												</a>
 											)}
 											{!item.isLink && (
-												<span className="text-xs text-slate-500 uppercase tracking-wide">{item.subText}</span>
+												<div className="mt-2 flex items-center gap-2">
+													<span className="relative flex h-2 w-2">
+														<span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+														<span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+													</span>
+													<span className="text-xs text-green-600 font-bold uppercase tracking-wider">Open 24/7</span>
+												</div>
 											)}
 										</div>
 									</div>
@@ -77,30 +91,33 @@ const ConnectWithUsSection = () => {
 							</div>
 						</motion.div>
 					</div>
-				</div>
 
-				{/* Right Panel - Map */}
-				<div className="w-full lg:w-[55%] h-[400px] lg:h-auto relative bg-slate-100">
-					<iframe
-						src={googleMapsEmbedUrl}
-						width="100%"
-						height="100%"
-						className="absolute inset-0 w-full h-full grayscale-[0.5] hover:grayscale-0 transition-all duration-700"
-						style={{ border: 0 }}
-						allowFullScreen=""
-						loading="lazy"
-						referrerPolicy="no-referrer-when-downgrade"
-					></iframe>
+					{/* Right Panel - Map */}
+					<div className="w-full lg:w-1/2 min-h-[500px] lg:min-h-full">
+						{/* Map Container */}
+						<div className="h-full w-full rounded-[2.5rem] overflow-hidden shadow-2xl border border-slate-200 bg-white relative group">
+							<iframe
+								src={googleMapsEmbedUrl}
+								width="100%"
+								height="100%"
+								className="absolute inset-0 w-full h-full grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700 hover:opacity-100"
+								style={{ border: 0 }}
+								allowFullScreen=""
+								loading="lazy"
+								referrerPolicy="no-referrer-when-downgrade"
+							></iframe>
 
-					{/* Location Overlay Badge */}
-					<div className="absolute bottom-8 left-8 bg-white/90 backdrop-blur-md p-4 rounded-xl shadow-lg border border-slate-200 max-w-xs hidden sm:block">
-						<div className="flex items-center gap-3">
-							<div className="bg-primary/10 p-2 rounded-lg text-primary">
-								<MapPin className="h-5 w-5" />
-							</div>
-							<div>
-								<p className="text-xs font-bold text-slate-400 uppercase tracking-wider">Located at</p>
-								<p className="text-sm font-semibold text-slate-900 leading-tight">Tacloban City, Leyte</p>
+							{/* Location Overlay Badge */}
+							<div className="absolute bottom-6 left-6 bg-white/95 backdrop-blur-md p-4 rounded-3xl shadow-lg border border-slate-100 max-w-xs hidden sm:block">
+								<div className="flex items-center gap-4">
+									<div className="bg-primary/5 p-3 rounded-2xl text-primary">
+										<MapPin className="h-6 w-6" />
+									</div>
+									<div>
+										<p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-0.5">Visit Us</p>
+										<p className="text-base font-bold text-slate-900 leading-tight">Tacloban City, Leyte</p>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>

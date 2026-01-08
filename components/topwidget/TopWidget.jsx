@@ -1,159 +1,68 @@
-// import {
-// 	Facebook,
-// 	Instagram,
-// 	LocateIcon,
-// 	Mail,
-// 	Map,
-// 	MapPin,
-// 	MapPinCheckInside,
-// 	Phone,
-// 	Twitter,
-// 	Youtube,
-// } from 'lucide-react';
-// import Link from 'next/link';
-// import React from 'react';
-
-// const TopWidget = () => {
-// 	return (
-// 		<div className="bg-[#1A429B]_ bg-primary ">
-// 			<div className="max-w-7xl container py-3 mx-auto">
-// 				<div className="flex justify-between items-center text-white text-sm">
-// 					{/* Left Side: Connect With Us (Hidden on small screens) */}
-// 					<div className="hidden md:flex flex-row gap-4 items-center  ">
-// 						<span>Connect with Us:</span>
-// 						<div className="flex flex-row gap-4">
-// 							<Facebook size={18} />
-// 							<Twitter size={18} />
-// 							<Instagram size={18} />
-// 							<Youtube size={18} />
-// 							<Mail size={20} />
-// 						</div>
-// 					</div>
-
-// 					{/* Right Side: Location and Phone */}
-// 					<div className="hidden md:flex flex-row gap-4 items-center sm:text-right  px-2 justify-self-end">
-// 						<div className="flex flex-row gap-1 items-center">
-// 							<MapPin size={18} />
-// 							<span className="whitespace-nowrap">
-// 								Avenida Veteranos Street, Tacloban City, Leyte, 6500, PH
-// 							</span>
-// 						</div>
-// 						<div className="flex flex-row gap-1 items-center">
-// 							<Phone size={18} />
-// 							<span>+653 888 8888</span>
-// 						</div>
-// 					</div>
-// 					<div className="md:hidden flex flex-row gap-4 items-center sm:text-right  px-2 justify-end w-full">
-// 						<div className="flex flex-row gap-1 items-center">
-// 							<MapPin size={18} />
-// 							<span className="whitespace-nowrap">
-// 								<Link href="#connect-with-us" className="underline">
-// 									Get Direction
-// 								</Link>
-// 							</span>
-// 						</div>
-// 						<div className="flex flex-row gap-1 items-center">
-// 							<Phone size={18} />
-// 							<span>+653 888 8888</span>
-// 						</div>
-// 					</div>
-// 				</div>
-// 			</div>
-// 		</div>
-// 	);
-// };
-
-// export default TopWidget;
+'use client';
 import { contactInfo } from '@/app/data/contactInfo';
 import {
 	Facebook,
 	Instagram,
-	InstagramIcon,
 	Mail,
 	MapPin,
 	Phone,
 	Twitter,
 	Youtube,
-	YoutubeIcon,
 } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react';
+
 const addressInfo = contactInfo.find((info) => info.title === 'Location');
 const phoneInfo = contactInfo.find((info) => info.title === 'Phone');
+const emailInfo = contactInfo.find((info) => info.title === 'Email');
+
 const TopWidget = () => {
 	return (
-		<div className="bg-background border-b border-b-gray-200 font-regular">
-			<div className="max-w-7xl_ container py-2 mx-auto">
-				<div className="flex justify-between items-center text-gray-700 text-sm">
-					{/* Left Side: Connect With Us (Hidden on small screens) */}
-					<div className="hidden md:flex flex-row gap-4 items-center px-2">
-						{/* <span>Connect with Us:</span> */}
-						<div className="flex flex-row gap-1">
-							<Link
-								href="https://www.facebook.com/dwhtofficial"
-								target="_blank"
-								aria-label="Facebook"
-								className="  p-2 rounded-full"
-							>
-								<Facebook size={18} />{' '}
-							</Link>
-							<Link
-								href="https://www.facebook.com/dwhtofficial"
-								target="_blank"
-								aria-label="instagram"
-								className=" p-2 rounded-full"
-							>
-								<InstagramIcon size={20} />
-							</Link>
-							<Link
-								href="https://www.facebook.com/dwhtofficial"
-								target="_blank"
-								aria-label="Youtube"
-								className=" p-2 rounded-full"
-							>
-								<YoutubeIcon size={20} />
-							</Link>
-							<Link
-								href="mailto:divinewordhosp.marketing@gmail.com"
-								target="_blank"
-								aria-label="Email"
-								className=" p-2 rounded-full"
-							>
-								<Mail size={20} />
-							</Link>
-						</div>
-					</div>
+		<div className="bg-slate-900 text-blue-50 border-b border-white/10 relative z-50">
+			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-10 flex justify-between items-center text-xs font-medium tracking-wide">
 
-					{/* Right Side: Location and Phone */}
-					<div className="hidden md:flex flex-row gap-4 items-center sm:text-right px-2 justify-self-end">
-						<div className="flex flex-row gap-1 items-center">
-							<MapPin size={15} />
-
-							<span className="whitespace-nowrap">{addressInfo.text}</span>
-						</div>
-						<span className="text-gray-300">|</span>
-						<div className="flex flex-row gap-1 items-center">
-							<Phone size={15} />
-							<span>{phoneInfo.text}</span>
-						</div>
-					</div>
-
-					{/* Right Side (Mobile): Location and Phone as Link */}
-					<div className="md:hidden flex flex-row gap-4 items-center sm:text-right px-2 justify-end w-full">
-						<div className="flex flex-row gap-1 items-center">
-							<MapPin size={18} />
-							<span className="whitespace-nowrap">
-								<Link href="#connect-with-us" className="underline">
-									Get Direction
-								</Link>
-							</span>
-						</div>
-						<div className="flex flex-row gap-1 items-center">
-							<Phone size={18} />
-							<span>{phoneInfo.text}</span>
-						</div>
+				{/* Left Side: Socials */}
+				<div className="flex items-center gap-6">
+					<span className="hidden md:inline opacity-70">Connect with us:</span>
+					<div className="flex items-center gap-3">
+						{[
+							{ icon: Facebook, href: "https://www.facebook.com/dwhtofficial" },
+							{ icon: Instagram, href: "https://www.instagram.com/dwhtofficial" },
+							{ icon: Youtube, href: "https://www.youtube.com/@divinewordhospital" },
+							{ icon: Mail, href: `mailto:${emailInfo.text}` }
+						].map((item, index) => (
+							<Link
+								key={index}
+								href={item.href}
+								target="_blank"
+								className="opacity-80 hover:opacity-100 hover:text-white transition-all duration-300 hover:-translate-y-0.5"
+							>
+								<item.icon className="w-3.5 h-3.5" />
+							</Link>
+						))}
 					</div>
 				</div>
+
+				{/* Right Side: Contact Info */}
+				<div className="flex items-center gap-6">
+					<div className="hidden md:flex items-center gap-2 group cursor-default">
+						<MapPin className="w-3.5 h-3.5 text-secondary transition-transform group-hover:scale-110" />
+						<span className="opacity-90 group-hover:opacity-100 transition-opacity line-clamp-1 max-w-[200px] lg:max-w-none">
+							{addressInfo.text}
+						</span>
+					</div>
+
+					{/* Divider */}
+					<div className="hidden md:block w-px h-3 bg-white/20" />
+
+					<div className="flex items-center gap-2 group cursor-default">
+						<Phone className="w-3.5 h-3.5 text-secondary transition-transform group-hover:scale-110" />
+						<span className="opacity-90 group-hover:opacity-100 transition-opacity">
+							{phoneInfo.text}
+						</span>
+					</div>
+				</div>
+
 			</div>
 		</div>
 	);
