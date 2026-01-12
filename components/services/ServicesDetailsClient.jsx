@@ -1,640 +1,275 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
+import { motion } from 'framer-motion';
+import { ArrowLeft, CheckCircle2, ChevronRight, Phone, Mail, Facebook, Globe } from 'lucide-react';
+import { default as DynamicIcons } from '../dynamicIcons/DynamicIcons';
+import { Stethoscope } from 'lucide-react'; // Fallback icon
+import { cn } from '@/lib/utils';
+// We implement manual scroll below, so no external dependency needed.
+import { useEffect, useState } from 'react';
+
+// For simplicity and no external deps dependency if possible, let's implement basic id scrolling.
+// But `react-scroll` is standard. If not installed, I'll use standard anchor tags with offset logic or simple `document.getElementById`.
+// Let's stick to standard `a href="#id"` with CSS `scroll-margin-top` for now to avoid install errors if not present, 
+// OR simpler: `element.scrollIntoView`.
+
+const Section = ({ id, title, children, className }) => (
+	<section id={id} className={cn("scroll-mt-32 mb-16", className)}>
+		{title && (
+			<h2 className="text-2xl md:text-3xl font-bold font-heading text-white mb-6 border-l-4 border-secondary pl-4">
+				{title}
+			</h2>
+		)}
+		<div className="text-lg text-blue-100/80 leading-relaxed font-light space-y-4">
+			{children}
+		</div>
+	</section>
+);
+
+const ListItem = ({ children }) => (
+	<li className="flex items-start gap-3">
+		<CheckCircle2 className="w-5 h-5 text-secondary mt-1 shrink-0" />
+		<span>{children}</span>
+	</li>
+);
 
 export default function ServicesDetailClient({ service }) {
 	const router = useRouter();
-	const { title, fullContent, slug } = service; // 'service' now contains only serializable data
+	const { title, fullContent, icon } = service;
+	const [activeSection, setActiveSection] = useState('overview');
 
-	if (!fullContent) {
-		return (
-			<div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
-				<button
-					onClick={() => router.back()}
-					className="mb-6 inline-flex items-center text-indigo-600 hover:text-indigo-800 text-sm font-medium"
-				>
-					← Back
-				</button>
-				<h1 className="text-4xl font-bold text-primary mb-6">{title}</h1>
-				<p className="text-gray-700">
-					No detailed content available for this service.
-				</p>
-			</div>
-		);
-	}
+	// Scroll Spy Logic
+	useEffect(() => {
+		const handleScroll = () => {
+			const sections = ['overview', 'mission', 'team', 'services', 'equipment', 'specialized', 'contact'];
+			for (const section of sections) {
+				const element = document.getElementById(section);
+				if (element) {
+					const rect = element.getBoundingClientRect();
+					if (rect.top >= 0 && rect.top <= 300) {
+						setActiveSection(section);
+						break;
+					}
+				}
+			}
+		};
+		window.addEventListener('scroll', handleScroll);
+		return () => window.removeEventListener('scroll', handleScroll);
+	}, []);
+
+	const scrollToSection = (id) => {
+		const element = document.getElementById(id);
+		if (element) {
+			const offset = 120; // sticky header height
+			const bodyRect = document.body.getBoundingClientRect().top;
+			const elementRect = element.getBoundingClientRect().top;
+			const elementPosition = elementRect - bodyRect;
+			const offsetPosition = elementPosition - offset;
+
+			window.scrollTo({
+				top: offsetPosition,
+				behavior: 'smooth'
+			});
+			setActiveSection(id);
+		}
+	};
+
+	if (!fullContent) return null;
 
 	return (
-		<div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
-			<button
-				onClick={() => router.back()}
-				className="mb-6 inline-flex items-center text-indigo-600 hover:text-indigo-800 text-sm font-medium"
-			>
-				← Back
-			</button>
+		<div className="bg-primary min-h-screen relative overflow-hidden font-sans pb-32">
+			{/* Simple Background */}
+			<div className="absolute inset-0 bg-gradient-to-b from-primary to-[#0f0c29] pointer-events-none" />
 
-			<h1 className="text-5xl font-bold text-primary mb-6 justify-center items-center justify-self-center">
-				{title}
-			</h1>
+			<div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12">
 
-			{/* General Overview */}
-			{fullContent.overview && (
-				<section className="mb-8 p-6 ">
-					<h2 className="text-2xl font-semibold text-primary mb-3">Overview</h2>
-					<p className="text-gray-700 leading-relaxed">
-						{fullContent.overview}
-					</p>
-				</section>
-			)}
+				{/* Header / Breadcrumb */}
+				<div className="flex items-center gap-4 mb-12">
+					<button
+						onClick={() => router.back()}
+						className="p-2 rounded-full bg-white/5 hover:bg-white/10 text-white transition-colors"
+					>
+						<ArrowLeft className="w-6 h-6" />
+					</button>
+					<nav className="flex items-center gap-2 text-sm font-medium text-blue-200/60">
+						<span>Expertise</span>
+						<ChevronRight className="w-4 h-4" />
+						<span>Services</span>
+						<ChevronRight className="w-4 h-4" />
+						<span className="text-white">{title}</span>
+					</nav>
+				</div>
 
-			{/* Mission & Vision */}
-			{fullContent.mission_vision && (
-				<section className="mb-8 p-6 ">
-					<h2 className="text-2xl font-semibold text-primary mb-3">
-						Mission & Vision
-					</h2>
-					{fullContent.mission_vision.mission && (
-						<p className="text-lg text-gray-700 mb-2 leading-relaxed">
-							<span className="font-semibold text-primary-dark">Mission:</span>{' '}
-							{fullContent.mission_vision.mission}
-						</p>
-					)}
-					{fullContent.mission_vision.vision && (
-						<p className="text-lg text-gray-700 leading-relaxed">
-							<span className="font-semibold text-primary-dark">Vision:</span>{' '}
-							{fullContent.mission_vision.vision}
-						</p>
-					)}
-				</section>
-			)}
+				<div className="grid lg:grid-cols-12 gap-12">
 
-			{/* Leadership/Staff (Radiology specific) */}
-			{fullContent.leadership_staff && (
-				<section className="mb-8 p-6 ">
-					<h2 className="text-2xl font-semibold text-primary mb-3">
-						Leadership & Staff
-					</h2>
-					<p className="text-gray-700 leading-relaxed">
-						{fullContent.leadership_staff}
-					</p>
-				</section>
-			)}
+					{/* LEFT: MAIN CONTENT (8 cols) */}
+					<div className="lg:col-span-8">
 
-			{/* Advanced Equipment (Radiology specific) */}
-			{fullContent.advanced_equipment?.length > 0 && (
-				<section className="mb-8 p-6 ">
-					<h2 className="text-2xl font-semibold text-primary mb-3">
-						Advanced Imaging Equipment
-					</h2>
-					<ul className="list-disc list-inside space-y-2 text-gray-700">
-						{fullContent.advanced_equipment.map((item, index) => (
-							<li key={index}>{item}</li>
-						))}
-					</ul>
-				</section>
-			)}
-
-			{/* General Radiography (Radiology specific) */}
-			{fullContent.general_radiography && (
-				<section className="mb-8 p-6 ">
-					<h2 className="text-2xl font-semibold text-primary mb-3">
-						General Radiography
-					</h2>
-					{fullContent.general_radiography.non_contrast?.length > 0 && (
-						<div className="mb-4">
-							<h3 className="text-xl font-semibold text-primary-dark mb-2">
-								Non-Contrast
-							</h3>
-							<ul className="list-disc list-inside space-y-2 text-gray-700">
-								{fullContent.general_radiography.non_contrast.map(
-									(item, index) => (
-										<li key={index}>{item}</li>
-									)
+						{/* Title Block */}
+						<div className="mb-12 flex items-center gap-6">
+							<div className="w-20 h-20 rounded-2xl bg-secondary/10 flex items-center justify-center border border-secondary/20 shrink-0">
+								{icon ? (
+									<DynamicIcons name={icon} className="w-10 h-10 text-secondary" />
+								) : (
+									<Stethoscope className="w-10 h-10 text-secondary" />
 								)}
-							</ul>
+							</div>
+							<h1 className="text-4xl md:text-5xl font-bold font-heading text-white leading-tight">
+								{title}
+							</h1>
 						</div>
-					)}
-					{fullContent.general_radiography.non_contrast_and_contrast?.length >
-						0 && (
-						<div>
-							<h3 className="text-xl font-semibold text-primary-dark mb-2">
-								Non-Contrast & Contrast
-							</h3>
-							<ul className="list-disc list-inside space-y-2 text-gray-700">
-								{fullContent.general_radiography.non_contrast_and_contrast.map(
-									(item, index) => (
-										<li key={index}>{item}</li>
-									)
-								)}
-							</ul>
-						</div>
-					)}
-				</section>
-			)}
 
-			{/* Invasive Procedures (Radiology specific) */}
-			{fullContent.invasive_procedures?.length > 0 && (
-				<section className="mb-8 p-6 ">
-					<h2 className="text-2xl font-semibold text-primary mb-3">
-						Invasive Procedures
-					</h2>
-					<ul className="list-disc list-inside space-y-2 text-gray-700">
-						{fullContent.invasive_procedures.map((item, index) => (
-							<li key={index}>{item}</li>
-						))}
-					</ul>
-				</section>
-			)}
-
-			{/* Specialized Diagnostic & Interventional X-Ray Services (Radiology specific) */}
-			{fullContent.specialized_services?.length > 0 && (
-				<section className="mb-8 p-6 ">
-					<h2 className="text-2xl font-semibold text-primary mb-3">
-						Specialized Diagnostic & Interventional X-Ray Services
-					</h2>
-					<ul className="list-disc list-inside space-y-2 text-gray-700">
-						{fullContent.specialized_services.map((item, index) => (
-							<li key={index}>{item}</li>
-						))}
-					</ul>
-				</section>
-			)}
-
-			{/* Dental Panoramic / Cephalometric (Radiology specific) */}
-			{fullContent.dental_panoramic_cephalometric?.length > 0 && (
-				<section className="mb-8 p-6 ">
-					<h2 className="text-2xl font-semibold text-primary mb-3">
-						Dental Panoramic / Cephalometric
-					</h2>
-					<ul className="list-disc list-inside space-y-2 text-gray-700">
-						{fullContent.dental_panoramic_cephalometric.map((item, index) => (
-							<li key={index}>{item}</li>
-						))}
-					</ul>
-				</section>
-			)}
-
-			{/* Services Offered (General for lists of services) */}
-			{fullContent.services_offered?.length > 0 && (
-				<section className="mb-8 p-6 ">
-					<h2 className="text-2xl font-semibold text-primary mb-3">
-						Services Offered
-					</h2>
-					<ul className="list-disc list-inside space-y-2 text-gray-700">
-						{fullContent.services_offered.map((item, index) => (
-							<li key={index}>{item}</li>
-						))}
-					</ul>
-				</section>
-			)}
-
-			{/* Body Composition Monitor (BCM) (Hemodialysis specific) */}
-			{fullContent.bcm_info && (
-				<section className="mb-8 p-6 ">
-					<h2 className="text-2xl font-semibold text-primary mb-3">
-						{fullContent.bcm_info.title}
-					</h2>
-					<p className="text-gray-700 leading-relaxed">
-						{fullContent.bcm_info.description}
-					</p>
-				</section>
-			)}
-
-			{/* Hemodialysis Admission Procedure */}
-			{fullContent.admission_procedure && (
-				<section className="mb-8 p-6 ">
-					<h2 className="text-2xl font-semibold text-primary mb-3">
-						{fullContent.admission_procedure.title}
-					</h2>
-					{fullContent.admission_procedure.new_out_patients?.length > 0 && (
-						<div className="mb-4">
-							<h3 className="text-xl font-semibold text-primary-dark mb-2">
-								NEW OUT-PATIENTS:
-							</h3>
-							<ul className="list-disc list-inside space-y-1 text-gray-700">
-								{fullContent.admission_procedure.new_out_patients.map(
-									(item, index) => (
-										<li key={index}>{item}</li>
-									)
-								)}
-							</ul>
-						</div>
-					)}
-					{fullContent.admission_procedure.regular_patients?.length > 0 && (
-						<div>
-							<h3 className="text-xl font-semibold text-primary-dark mb-2">
-								REGULAR PATIENTS:
-							</h3>
-							<ul className="list-disc list-inside space-y-1 text-gray-700">
-								{fullContent.admission_procedure.regular_patients.map(
-									(item, index) => (
-										<li key={index}>{item}</li>
-									)
-								)}
-							</ul>
-						</div>
-					)}
-				</section>
-			)}
-
-			{/* Hemodialysis Session Schedule */}
-			{fullContent.session_schedule && (
-				<section className="mb-8 p-6 ">
-					<h2 className="text-2xl font-semibold text-primary mb-3">
-						{fullContent.session_schedule.title}
-					</h2>
-					<ul className="list-disc list-inside space-y-2 text-gray-700 mb-2">
-						{fullContent.session_schedule.times.map((item, index) => (
-							<li key={index}>{item}</li>
-						))}
-					</ul>
-					<p className="text-sm text-gray-600">
-						{fullContent.session_schedule.note}
-					</p>
-				</section>
-			)}
-
-			{/* Patient Support & Team (Pharmacy specific) */}
-			{(fullContent.patient_support || fullContent.team) && (
-				<section className="mb-8 p-6 ">
-					<h2 className="text-2xl font-semibold text-primary mb-3">
-						About Our Pharmacy
-					</h2>
-					{fullContent.patient_support && (
-						<p className="text-gray-700 mb-3 leading-relaxed">
-							{fullContent.patient_support}
-						</p>
-					)}
-					{fullContent.team && (
-						<p className="text-gray-700 leading-relaxed">{fullContent.team}</p>
-					)}
-				</section>
-			)}
-
-			{/* Medication Management Services (Pharmacy specific) */}
-			{fullContent.medication_management_services?.length > 0 && (
-				<section className="mb-8 p-6 ">
-					<h2 className="text-2xl font-semibold text-primary mb-3">
-						Medication Management Services
-					</h2>
-					<div className="space-y-6">
-						{fullContent.medication_management_services.map(
-							(serviceItem, index) => (
-								<div key={index} className="border-b pb-4 last:border-b-0">
-									<h3 className="text-xl font-semibold text-primary-dark mb-2">
-										{serviceItem.title}
-									</h3>
-									<p className="text-gray-700 leading-relaxed">
-										{serviceItem.description}
-									</p>
-								</div>
-							)
+						{/* 1. Overview */}
+						{fullContent.overview && (
+							<Section id="overview" title="Overview">
+								<p>{fullContent.overview}</p>
+							</Section>
 						)}
-					</div>
-				</section>
-			)}
 
-			{/* Role in Institution & Location/Hours (Pharmacy specific) */}
-			{(fullContent.role_in_institution || fullContent.location_hours) && (
-				<section className="mb-8 p-6 ">
-					<h2 className="text-2xl font-semibold text-primary mb-3">
-						Institutional Role & Accessibility
-					</h2>
-					{fullContent.role_in_institution && (
-						<p className="text-gray-700 mb-3 leading-relaxed">
-							{fullContent.role_in_institution}
-						</p>
-					)}
-					{fullContent.location_hours && (
-						<p className="text-gray-700 leading-relaxed">
-							{fullContent.location_hours}
-						</p>
-					)}
-				</section>
-			)}
+						{/* 2. Mission & Vision */}
+						{fullContent.mission_vision && (
+							<Section id="mission" title="Mission & Vision">
+								<div className="grid md:grid-cols-2 gap-6">
+									{fullContent.mission_vision.mission && (
+										<div className="bg-white/5 p-6 rounded-2xl border border-white/5">
+											<h4 className="text-secondary font-bold text-sm uppercase mb-3 tracking-wider">Our Mission</h4>
+											<p className="italic">&quot;{fullContent.mission_vision.mission}&quot;</p>
+										</div>
+									)}
+									{fullContent.mission_vision.vision && (
+										<div className="bg-white/5 p-6 rounded-2xl border border-white/5">
+											<h4 className="text-secondary font-bold text-sm uppercase mb-3 tracking-wider">Our Vision</h4>
+											<p className="italic">&quot;{fullContent.mission_vision.vision}&quot;</p>
+										</div>
+									)}
+								</div>
+							</Section>
+						)}
 
-			{/* Specialized Tests (Cardio-pulmonary specific) */}
-			{fullContent.specialized_tests && (
-				<section className="mb-8 p-6 ">
-					<h2 className="text-2xl font-semibold text-primary mb-3">
-						Specialized Tests
-					</h2>
-					{fullContent.specialized_tests.cardiopulmonary_unit?.length > 0 && (
-						<div className="mb-4">
-							<h3 className="text-xl font-semibold text-primary-dark mb-2">
-								Cardiopulmonary Unit
-							</h3>
-							<ul className="list-disc list-inside space-y-2 text-gray-700">
-								{fullContent.specialized_tests.cardiopulmonary_unit.map(
-									(item, index) => (
-										<li key={index}>{item}</li>
-									)
-								)}
-							</ul>
-						</div>
-					)}
-					{fullContent.specialized_tests.pulmonary_function_test?.length >
-						0 && (
-						<div>
-							<h3 className="text-xl font-semibold text-primary-dark mb-2">
-								Pulmonary Function Test
-							</h3>
-							<ul className="list-disc list-inside space-y-2 text-gray-700">
-								{fullContent.specialized_tests.pulmonary_function_test.map(
-									(item, index) => (
-										<li key={index}>{item}</li>
-									)
-								)}
-							</ul>
-						</div>
-					)}
-				</section>
-			)}
+						{/* 3. Team */}
+						{(fullContent.leadership_staff || fullContent.staff || fullContent.team || fullContent.staffing) && (
+							<Section id="team" title="Our Team">
+								<p>{fullContent.leadership_staff || fullContent.staff || fullContent.team || fullContent.staffing}</p>
+							</Section>
+						)}
 
-			{/* Capabilities (Emergency Care specific) */}
-			{fullContent.capabilities && (
-				<section className="mb-8 p-6 ">
-					<h2 className="text-2xl font-semibold text-primary mb-3">
-						Capabilities
-					</h2>
-					<p className="text-gray-700 leading-relaxed">
-						{fullContent.capabilities}
-					</p>
-				</section>
-			)}
-
-			{/* Availability (Emergency Care specific) */}
-			{fullContent.availability && (
-				<section className="mb-8 p-6 ">
-					<h2 className="text-2xl font-semibold text-primary mb-3">
-						Availability
-					</h2>
-					<p className="text-gray-700 leading-relaxed">
-						{fullContent.availability}
-					</p>
-				</section>
-			)}
-
-			{/* Staff (Physical Therapy specific) */}
-			{fullContent.staff && (
-				<section className="mb-8 p-6 ">
-					<h2 className="text-2xl font-semibold text-primary mb-3">Our Team</h2>
-					<p className="text-gray-700 leading-relaxed">{fullContent.staff}</p>
-				</section>
-			)}
-
-			{/* Benefits (Physical Therapy specific) */}
-			{fullContent.benefits?.length > 0 && (
-				<section className="mb-8 p-6 ">
-					<h2 className="text-2xl font-semibold text-primary mb-3">
-						Benefits of Physical Therapy
-					</h2>
-					<ul className="list-disc list-inside space-y-2 text-gray-700">
-						{fullContent.benefits.map((item, index) => (
-							<li key={index}>{item}</li>
-						))}
-					</ul>
-				</section>
-			)}
-
-			{/* Sections (Pathology & Laboratory specific) */}
-			{fullContent.sections?.length > 0 && (
-				<section className="mb-8 p-6 ">
-					<h2 className="text-2xl font-semibold text-primary mb-3">
-						Specialized Sections
-					</h2>
-					<div className="space-y-6">
-						{fullContent.sections.map((sectionItem, index) => (
-							<div key={index} className="border-b pb-4 last:border-b-0">
-								<h3 className="text-xl font-semibold text-primary-dark mb-2">
-									{sectionItem.title}
-								</h3>
-								<ul className="list-disc list-inside space-y-1 text-gray-700">
-									{sectionItem.details.map((detail, detailIndex) => (
-										<li key={detailIndex}>{detail}</li>
+						{/* 4. Services Offered */}
+						{(fullContent.services_offered || fullContent.services) && (
+							<Section id="services" title="Services Offered">
+								<ul className="grid sm:grid-cols-2 gap-4">
+									{(fullContent.services_offered || []).map((item, i) => (
+										<ListItem key={i}>{item}</ListItem>
+									))}
+									{/* Handle nested services object if simple array not present */}
+									{fullContent.services?.general_services?.map((item, i) => (
+										<ListItem key={`gen-${i}`}>{item}</ListItem>
 									))}
 								</ul>
+							</Section>
+						)}
+
+						{/* 5. Equipment */}
+						{fullContent.advanced_equipment && (
+							<Section id="equipment" title="Technology">
+								<p className="mb-4">We utilize state-of-the-art technology to ensure precision and safety.</p>
+								<ul className="grid sm:grid-cols-2 gap-4">
+									{fullContent.advanced_equipment.map((item, i) => (
+										<ListItem key={i}>{item}</ListItem>
+									))}
+								</ul>
+							</Section>
+						)}
+
+						{/* 6. Specialized / Other */}
+						{/* Catch-all for specialized lists not covered above */}
+						{fullContent.specialized_tests && (
+							<Section id="specialized" title="Specialized Procedures">
+								{Object.entries(fullContent.specialized_tests).map(([key, items]) => (
+									<div key={key} className="mb-6">
+										<h4 className="text-lg font-bold text-white mb-3 capitalize">{key.replace(/_/g, ' ')}</h4>
+										<ul className="grid sm:grid-cols-2 gap-4">
+											{items.map((item, i) => <ListItem key={i}>{item}</ListItem>)}
+										</ul>
+									</div>
+								))}
+							</Section>
+						)}
+
+
+						{/* 7. Contact Info (Main Body version) */}
+						<Section id="contact" title="Contact Us">
+							<div className="bg-secondary/10 border border-secondary/20 rounded-2xl p-8 flex flex-col md:flex-row gap-8 items-start md:items-center justify-between">
+								<div className="space-y-2">
+									<h4 className="text-xl font-bold text-white">Get in Touch</h4>
+									<p className="text-blue-100/70">Reach out to our {title} department directly.</p>
+								</div>
+								<div className="flex flex-col gap-3">
+									{fullContent.contact?.number && (
+										<a href={`tel:${fullContent.contact.number}`} className="flex items-center gap-3 text-white hover:text-secondary transition-colors">
+											<div className="p-2 bg-white/10 rounded-full"><Phone className="w-4 h-4" /></div>
+											<span className="font-medium">{fullContent.contact.number}</span>
+										</a>
+									)}
+									{fullContent.contact?.email && (
+										<a href={`mailto:${fullContent.contact.email}`} className="flex items-center gap-3 text-white hover:text-secondary transition-colors">
+											<div className="p-2 bg-white/10 rounded-full"><Mail className="w-4 h-4" /></div>
+											<span className="font-medium">{fullContent.contact.email}</span>
+										</a>
+									)}
+								</div>
 							</div>
-						))}
+						</Section>
+
 					</div>
-				</section>
-			)}
 
-			{/* Mission/Goal (TB DOTS specific) */}
-			{fullContent.mission_goal && (
-				<section className="mb-8 p-6 ">
-					<h2 className="text-2xl font-semibold text-primary mb-3">
-						Mission & Goal
-					</h2>
-					<p className="text-gray-700 leading-relaxed">
-						{fullContent.mission_goal}
-					</p>
-				</section>
-			)}
 
-			{/* Free Services (TB DOTS specific) */}
-			{fullContent.free_services?.length > 0 && (
-				<section className="mb-8 p-6 ">
-					<h2 className="text-2xl font-semibold text-primary mb-3">
-						Provision of FREE Services
-					</h2>
-					<ul className="list-disc list-inside space-y-2 text-gray-700">
-						{fullContent.free_services.map((item, index) => (
-							<li key={index}>{item}</li>
-						))}
-					</ul>
-				</section>
-			)}
-
-			{/* Needs Addressed (NICU specific) */}
-			{fullContent.needs_addressed?.length > 0 && (
-				<section className="mb-8 p-6 ">
-					<h2 className="text-2xl font-semibold text-primary mb-3">
-						Needs Addressed by NICU
-					</h2>
-					<ul className="list-disc list-inside space-y-2 text-gray-700">
-						{fullContent.needs_addressed.map((item, index) => (
-							<li key={index}>{item}</li>
-						))}
-					</ul>
-				</section>
-			)}
-
-			{/* Staffing (NICU specific) */}
-			{fullContent.staffing && (
-				<section className="mb-8 p-6 ">
-					<h2 className="text-2xl font-semibold text-primary mb-3">
-						Our Dedicated Team
-					</h2>
-					<p className="text-gray-700 leading-relaxed">
-						{fullContent.staffing}
-					</p>
-				</section>
-			)}
-
-			{/* Mother-Baby Friendly (NICU specific) */}
-			{fullContent.mother_baby_friendly && (
-				<section className="mb-8 p-6 ">
-					<h2 className="text-2xl font-semibold text-primary mb-3">
-						Mother-Baby Friendly Initiatives
-					</h2>
-					<p className="text-gray-700 leading-relaxed">
-						{fullContent.mother_baby_friendly}
-					</p>
-				</section>
-			)}
-
-			{/* Newborn Services Areas (NICU specific) */}
-			{fullContent.newborn_services_areas?.length > 0 && (
-				<section className="mb-8 p-6 ">
-					<h2 className="text-2xl font-semibold text-primary mb-3">
-						Newborn Services Areas
-					</h2>
-					<ul className="list-disc list-inside space-y-2 text-gray-700">
-						{fullContent.newborn_services_areas.map((item, index) => (
-							<li key={index}>{item}</li>
-						))}
-					</ul>
-				</section>
-			)}
-
-			{/* Staffing Ratio & Bed Capacity (ICU specific) */}
-			{(fullContent.staffing_ratio || fullContent.bed_capacity_types) && (
-				<section className="mb-8 p-6 ">
-					<h2 className="text-2xl font-semibold text-primary mb-3">
-						ICU Facilities & Staffing
-					</h2>
-					{fullContent.staffing_ratio && (
-						<p className="text-gray-700 mb-3 leading-relaxed">
-							{fullContent.staffing_ratio}
-						</p>
-					)}
-					{fullContent.bed_capacity_types && (
-						<p className="text-gray-700 leading-relaxed">
-							{fullContent.bed_capacity_types}
-						</p>
-					)}
-				</section>
-			)}
-
-			{/* Equipment Monitoring (ICU specific) */}
-			{fullContent.equipment_monitoring && (
-				<section className="mb-8 p-6 ">
-					<h2 className="text-2xl font-semibold text-primary mb-3">
-						Monitoring Equipment
-					</h2>
-					<p className="text-gray-700 leading-relaxed">
-						{fullContent.equipment_monitoring}
-					</p>
-				</section>
-			)}
-
-			{/* Internal Areas (ICU specific) */}
-			{fullContent.internal_areas?.length > 0 && (
-				<section className="mb-8 p-6 ">
-					<h2 className="text-2xl font-semibold text-primary mb-3">
-						Internal Areas
-					</h2>
-					<ul className="list-disc list-inside space-y-2 text-gray-700">
-						{fullContent.internal_areas.map((item, index) => (
-							<li key={index}>{item}</li>
-						))}
-					</ul>
-				</section>
-			)}
-
-			{/* ICU Services (General & Special) */}
-			{fullContent.services && (
-				<section className="mb-8 p-6 ">
-					<h2 className="text-2xl font-semibold text-primary mb-3">Services</h2>
-					{fullContent.services.general_services?.length > 0 && (
-						<div className="mb-4">
-							<h3 className="text-xl font-semibold text-primary-dark mb-2">
-								General Services
+					{/* RIGHT: STICKY NAVIGATION (4 cols) */}
+					<div className="hidden lg:block lg:col-span-4 relative">
+						<div className="sticky top-32 p-8 rounded-3xl bg-white/5 border border-white/5 backdrop-blur-md">
+							<h3 className="text-sm font-bold text-blue-200/50 uppercase tracking-widest mb-6 border-b border-white/10 pb-4">
+								On This Page
 							</h3>
-							<ul className="list-disc list-inside space-y-2 text-gray-700">
-								{fullContent.services.general_services.map((item, index) => (
-									<li key={index}>{item}</li>
+							<nav className="space-y-1">
+								{[
+									{ id: 'overview', label: 'Overview', show: !!fullContent.overview },
+									{ id: 'mission', label: 'Mission & Vision', show: !!fullContent.mission_vision },
+									{ id: 'team', label: 'Leadership & Team', show: !!(fullContent.leadership_staff || fullContent.staff || fullContent.team) },
+									{ id: 'services', label: 'Services Offered', show: !!(fullContent.services_offered || fullContent.services) },
+									{ id: 'equipment', label: 'Technology', show: !!fullContent.advanced_equipment },
+									{ id: 'specialized', label: 'Specialized Procedures', show: !!fullContent.specialized_tests },
+									{ id: 'contact', label: 'Contact Info', show: true },
+								].map((item) => (
+									item.show && (
+										<button
+											key={item.id}
+											onClick={() => scrollToSection(item.id)}
+											className={cn(
+												"w-full text-left py-2 px-4 rounded-lg transition-all text-sm font-medium border-l-2",
+												activeSection === item.id
+													? "bg-secondary/10 text-secondary border-secondary"
+													: "text-blue-200/60 hover:text-white hover:bg-white/5 border-transparent"
+											)}
+										>
+											{item.label}
+										</button>
+									)
 								))}
-							</ul>
-						</div>
-					)}
-					{fullContent.services.special_services?.length > 0 && (
-						<div>
-							<h3 className="text-xl font-semibold text-primary-dark mb-2">
-								Special Services
-							</h3>
-							<ul className="list-disc list-inside space-y-2 text-gray-700">
-								{fullContent.services.special_services.map((item, index) => (
-									<li key={index}>{item}</li>
-								))}
-							</ul>
-						</div>
-					)}
-					{fullContent.services?.length > 0 && (
-						<div>
-							<h3 className="text-xl font-semibold text-primary-dark mb-2">
-								Special Services
-							</h3>
-							<ul className="list-disc list-inside space-y-2 text-gray-700">
-								{fullContent.services.map((item, index) => (
-									<li key={index}>{item}</li>
-								))}
-							</ul>
-						</div>
-					)}
-				</section>
-			)}
+							</nav>
 
-			{/* Contact Information (General for all services) */}
-			{fullContent.contact && (
-				<section className="mb-8 p-6 ">
-					<h2 className="text-2xl font-semibold text-primary mb-3">
-						Contact Information
-					</h2>
-					{fullContent.contact.inquiries && (
-						<p className="text-gray-700 mb-2">
-							{fullContent.contact.inquiries}
-						</p>
-					)}
-					{fullContent.contact.number && (
-						<p className="text-gray-700 mb-1">
-							<span className="font-semibold">Phone:</span>{' '}
-							{fullContent.contact.number}
-						</p>
-					)}
-					{fullContent.contact.email && (
-						<p className="text-gray-700 mb-1">
-							<span className="font-semibold">Email:</span>{' '}
-							<a
-								href={`mailto:${fullContent.contact.email}`}
-								className="text-blue-600 hover:underline"
-							>
-								{fullContent.contact.email}
-							</a>
-						</p>
-					)}
-					{fullContent.contact.facebook && (
-						<p className="text-gray-700 mb-1">
-							<span className="font-semibold">Facebook:</span>{' '}
-							<a
-								href={`https://facebook.com/${fullContent.contact.facebook.replace(
-									/\s/g,
-									''
-								)}`}
-								target="_blank"
-								rel="noopener noreferrer"
-								className="text-blue-600 hover:underline"
-							>
-								{fullContent.contact.facebook}
-							</a>
-						</p>
-					)}
-				</section>
-			)}
+							{/* Call to Action Box */}
+							<div className="mt-10 p-6 rounded-2xl bg-gradient-to-br from-secondary to-blue-600 text-white shadow-xl">
+								<h4 className="font-bold text-lg mb-2">Need Assistance?</h4>
+								<p className="text-sm text-blue-100 mb-4">Our team is ready to help you with your health needs.</p>
+								<button className="w-full py-3 rounded-xl bg-white text-primary font-bold text-sm hover:shadow-lg transition-shadow">
+									Book Appointment
+								</button>
+							</div>
+						</div>
+					</div>
 
-			{/* Add more sections here as needed, following the pattern of
-                conditional rendering and iterating through arrays or nested objects.
-            */}
+				</div>
+			</div>
 		</div>
 	);
 }

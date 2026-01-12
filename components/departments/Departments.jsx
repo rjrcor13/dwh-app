@@ -1,324 +1,101 @@
 'use client';
 
 import { departmentsData } from '@/app/data/departments';
-import {
-	Accordion,
-	AccordionContent,
-	AccordionItem,
-	AccordionTrigger,
-} from '@/components/ui/accordion';
-import {
-	Card,
-	CardContent,
-	CardDescription,
-	CardHeader,
-	CardTitle,
-} from '@/components/ui/card';
-import { Separator } from '@/components/ui/separator';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'; // Import Tabs components
+import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
-import {
-	Baby,
-	Bone,
-	Brain,
-	Dna,
-	Ear,
-	Eye,
-	Heart,
-	Hospital,
-	Kidney,
-	Lungs,
-	Microscope,
-	Stethoscope,
-	Syringe,
-	Users,
-	X,
-} from 'lucide-react'; // More specific icons
-import { useState } from 'react';
+import { ArrowUpRight, Stethoscope } from 'lucide-react';
+import Link from 'next/link';
 
-// Data for all departments
-
-// Framer Motion variants for section animation
-const sectionVariants = {
-	hidden: { opacity: 0, y: 50 },
+// Animation Variants
+const containerVariants = {
+	hidden: { opacity: 0 },
 	visible: {
 		opacity: 1,
-		y: 0,
-		transition: {
-			duration: 0.8,
-			ease: 'easeOut',
-			staggerChildren: 0.2,
-			when: 'beforeChildren',
-		},
-	},
+		transition: { staggerChildren: 0.1 }
+	}
 };
 
-const itemVariants = {
-	hidden: { opacity: 0, y: 20 },
-	visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
+const cardVariants = {
+	hidden: { opacity: 0, y: 30 },
+	visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } }
 };
 
-const DepartmentsPage = () => {
-	// Set the default tab to the first department's ID
-	const [activeTab, setActiveTab] = useState(
-		departmentsData[0]?.id || 'anesthesiology'
-	);
-
-	// Component to render the content of a single department
-	const DepartmentContent = ({ department }) => (
-		<Card className="shadow-none border-none h-full flex flex-col ">
-			<CardHeader className="">
-				<CardTitle className="md:text-3xl text-xl font-bold text-primary flex items-center gap-3">
-					{department.icon && (
-						<department.icon className="md:w-9 md:h-9 text-primary" />
-					)}
-					{department.name}
-				</CardTitle>
-				{department.chairperson && (
-					<p className="text-gray-600 mt-2 text-base  ">
-						{department.chairperson.title}:{' '}
-						<span className="font-medium">{department.chairperson.name}</span>
-					</p>
-				)}
-			</CardHeader>
-			<CardContent className="flex-grow space-y-6 text-gray-700 text-justify">
-				<p className="leading-relaxed text-base">{department.description}</p>
-
-				{department.vision && (
-					<div>
-						<h3 className="text-xl font-semibold mb-2 text-primary">Vision</h3>
-						<p className="leading-relaxed text-base">{department.vision}</p>
-					</div>
-				)}
-
-				{department.mission && (
-					<div>
-						<h3 className="text-xl font-semibold  mb-2 text-primary">
-							Mission
-						</h3>
-						<ul className="list-disc list-inside space-y-1 leading-relaxed text-base">
-							{Array.isArray(department.mission) ? (
-								department.mission.map((item, i) => <li key={i}>{item}</li>)
-							) : (
-								<li>{department.mission}</li>
-							)}
-						</ul>
-					</div>
-				)}
-
-				{department.objectives && (
-					<div>
-						<h3 className="text-xl font-semibold  mb-2 text-primary">
-							Objectives
-						</h3>
-						{department.objectives.qualityPatientCare && (
-							<div className="mb-4">
-								<h4 className="font-medium text-gray-700 mb-1 text-base">
-									A. Quality Patient Care
-								</h4>
-								<ul className="list-disc list-inside space-y-1 leading-relaxed text-base">
-									{department.objectives.qualityPatientCare.map((obj, i) => (
-										<li key={i}>{obj}</li>
-									))}
-								</ul>
-							</div>
-						)}
-						{department.objectives.teachingTrainingResearch && (
-							<div>
-								<h4 className="font-medium text-gray-700 mb-1 text-base">
-									B. Teaching, Training and Research
-								</h4>
-								<ul className="list-disc list-inside space-y-1 leading-relaxed text-base">
-									{department.objectives.teachingTrainingResearch.map(
-										(obj, i) => (
-											<li key={i}>{obj}</li>
-										)
-									)}
-								</ul>
-							</div>
-						)}
-					</div>
-				)}
-
-				{department.sections && (
-					<div>
-						<h3 className="text-xl font-semibold text-primary mb-2">
-							Sections
-						</h3>
-						<ul className="list-disc list-inside space-y-1 leading-relaxed text-base grid grid-cols-1 sm:grid-cols-2">
-							{department.sections.map((section, i) => (
-								<li key={i}>{section}</li>
-							))}
-						</ul>
-					</div>
-				)}
-
-				{department.subspecialties && (
-					<div>
-						<h3 className="text-xl font-semibold text-primary mb-2">
-							Subspecialties
-						</h3>
-						<ul className="list-disc list-inside space-y-1 leading-relaxed text-base grid grid-cols-1 sm:grid-cols-2">
-							{department.subspecialties.map((specialty, i) => (
-								<li key={i}>{specialty}</li>
-							))}
-						</ul>
-					</div>
-				)}
-
-				{department.services && (
-					<div>
-						<h3 className="text-xl font-semibold text-primary mb-2">
-							Services
-						</h3>
-						<ul className="list-disc list-inside space-y-1 leading-relaxed text-base">
-							{department.services.map((service, i) => (
-								<li key={i}>{service}</li>
-							))}
-						</ul>
-					</div>
-				)}
-
-				{department.procedures && (
-					<div>
-						<h3 className="text-xl font-semibold text-primary mb-2">
-							Procedures
-						</h3>
-						<div className="grid grid-cols-2 gap-8">
-							{Object.entries(department.procedures).map(
-								([category, procs]) => (
-									<div key={category} className="mb-4">
-										<h4 className="font-medium text-gray-700 capitalize mb-1 text-base">
-											{category.replace(/([A-Z])/g, ' $1').trim()}
-										</h4>
-										<ul className="list-disc list-inside space-y-1 leading-relaxed text-base">
-											{procs.map((proc, i) => (
-												<li key={i}>{proc}</li>
-											))}
-										</ul>
-									</div>
-								)
-							)}
-						</div>
-					</div>
-				)}
-
-				{department.specialties && (
-					<div>
-						<h3 className="text-xl font-semibold text-primary	 mb-2">
-							Specialties
-						</h3>
-						<ul className="list-disc list-inside space-y-1 leading-relaxed text-base grid grid-cols-1 sm:grid-cols-2">
-							{department.specialties.map((specialty, i) => (
-								<li key={i}>{specialty}</li>
-							))}
-						</ul>
-					</div>
-				)}
-
-				{department.concludingStatement && (
-					<p className="leading-relaxed mt-4 text-base">
-						{department.concludingStatement}
-					</p>
-				)}
-			</CardContent>
-		</Card>
-	);
-
+export default function DepartmentsLanding() {
 	return (
-		<div className="min-h-screen  py-16 px-4 sm:px-6 lg:px-8_ mt-12_">
-			<motion.div
-				initial="hidden"
-				animate="visible"
-				variants={sectionVariants}
-				className="max-w-7xl mx-auto"
-			>
-				{/* Header Section */}
-				<motion.div variants={itemVariants} className="text-center mb-12">
-					<h1 className="text-4xl sm:text-5xl font-bold text-primary tracking-tight mb-4">
-						Our Specialized Departments
+		<div className="bg-primary min-h-screen relative overflow-hidden font-sans">
+			{/* Background Ambience */}
+			<div className="absolute inset-0 bg-gradient-to-br from-primary via-[#161270] to-[#0f0c50] pointer-events-none" />
+			<div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-secondary/5 rounded-full blur-[120px] mix-blend-screen opacity-30 pointer-events-none" />
+
+			<div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
+
+				{/* Header */}
+				<motion.div
+					initial={{ opacity: 0, y: 20 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{ duration: 0.6 }}
+					className="text-center mb-20 max-w-4xl mx-auto"
+				>
+					<div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-blue-200 text-xs font-bold tracking-widest uppercase mb-6 backdrop-blur-md">
+						<Stethoscope className="w-4 h-4 text-secondary" />
+						<span>Centers of Excellence</span>
+					</div>
+					<h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-heading text-white mb-6 leading-tight">
+						Specialized Departments
 					</h1>
-					<p className="text-lg text-gray-600 max-w-3xl mx-auto">
-						Divine Word Hospital is home to a diverse range of specialized
-						departments, each committed to providing exceptional patient care,
+					<p className="text-blue-100/70 text-lg leading-relaxed font-light">
+						A diverse range of specialized departments committed to exceptional patient care,
 						advanced medical training, and innovative research.
 					</p>
 				</motion.div>
 
-				{/* Desktop Tabbed Departments Section */}
-				<div className="hidden md:flex gap-8">
-					<aside className="w-64 flex-shrink-0 mt-5">
-						<div className="flex flex-col">
-							{departmentsData.map((department) => (
-								<button
-									key={department.id}
-									onClick={() => setActiveTab(department.id)}
-									className={`py-3 px-4 text-left flex items-center rtransition gap-2 ${
-										activeTab === department.id
-											? 'bg-primary text-white font-semibold rounded-md'
-											: 'hover:bg-muted'
-									}`}
-								>
-									{department.icon && <department.icon className="w-8 h-8" />}
-									{department.name}
-								</button>
-							))}
-						</div>
-					</aside>
-
-					{/* Right Content Area (TabsContent equivalent) */}
-					<div className="flex-1">
-						{departmentsData.map(
-							(department) =>
-								activeTab === department.id && (
-									<motion.div
-										key={department.id} // Key for motion.div when conditionally rendered
-										initial={{ opacity: 0, y: 20 }}
-										animate={{ opacity: 1, y: 0 }}
-										transition={{ duration: 0.5, ease: 'easeOut' }}
-									>
-										<DepartmentContent department={department} />
-									</motion.div>
-								)
-						)}
-					</div>
-				</div>
-
-				{/* Mobile Accordion Section */}
-				<div className="block lg:hidden">
-					<Accordion
-						type="single"
-						collapsible
-						className="w-full"
-						value={activeTab}
-						onValueChange={setActiveTab}
-					>
-						{departmentsData.map((department) => (
-							<AccordionItem
-								key={department.id}
-								value={department.id}
-								className="px-4 border-none"
+				{/* Grid Layout */}
+				<motion.div
+					variants={containerVariants}
+					initial="hidden"
+					animate="visible"
+					className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+				>
+					{departmentsData.map((dept) => (
+						<Link key={dept.id} href={`/expertise/departments/${dept.id}`} className="group">
+							<motion.div
+								variants={cardVariants}
+								className={cn(
+									"bg-white/5 backdrop-blur-xl border border-white/10 rounded-[2rem] p-8 h-full flex flex-col relative overflow-hidden transition-all duration-300",
+									"hover:bg-white/10 hover:border-white/20 hover:shadow-2xl hover:shadow-black/20 hover:-translate-y-1"
+								)}
 							>
-								<AccordionTrigger className="text-left border-b text-md">
-									<div
-										className={`flex flex-row items-center gap-2 font-semibold text-primary pb-2 transition-all ${
-											department.value === activeTab ? 'pl-4' : ''
-										}`}
-									>
-										{department.icon && <department.icon className="w-6 h-6" />}
-										{department.name}
-									</div>
-								</AccordionTrigger>
-								<AccordionContent className="p-0">
-									<DepartmentContent department={department} />
-								</AccordionContent>
-							</AccordionItem>
-						))}
-					</Accordion>
-				</div>
-			</motion.div>
+								{/* Hover Glow */}
+								<div className="absolute -top-20 -right-20 w-40 h-40 bg-secondary/20 rounded-full blur-[60px] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+								{/* Icon Area */}
+								<div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-white/10 to-white/5 border border-white/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
+									{/* Since we can't reliably render the icon component from server data in this client context without props, 
+									    we'll use a visual placeholder or rely on Static imports if mapped. 
+										Using Stethoscope fallback for grid visuals for now to prevent errors.
+									 */}
+									<Stethoscope className="w-8 h-8 text-secondary group-hover:text-white transition-colors" />
+								</div>
+
+								{/* Content */}
+								<h3 className="text-2xl font-bold font-heading text-white mb-4 group-hover:text-secondary transition-colors">
+									{dept.name.replace('Department of ', '')}
+								</h3>
+								<p className="text-blue-100/70 text-sm leading-relaxed line-clamp-3 mb-8 flex-grow font-light">
+									{dept.description}
+								</p>
+
+								{/* View More */}
+								<div className="flex items-center gap-2 text-sm font-bold text-blue-200 mt-auto group-hover:text-white transition-colors">
+									Explore Department <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+								</div>
+
+							</motion.div>
+						</Link>
+					))}
+				</motion.div>
+
+			</div>
 		</div>
 	);
-};
-
-export default DepartmentsPage;
+}

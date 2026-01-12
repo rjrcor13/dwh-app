@@ -1,28 +1,7 @@
 import { Button } from '@/components/ui/button';
-import {
-	Card,
-	CardContent,
-	CardDescription,
-	CardHeader,
-	CardTitle,
-} from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
-import {
-	Banknote,
-	CheckCircle,
-	ClipboardList,
-	Clock,
-	CreditCard,
-	FileText,
-	Hospital,
-	LifeBuoy,
-	ListChecks,
-	Mail,
-	MapPin,
-	Phone,
-	Users,
-} from 'lucide-react';
+import { Banknote, CreditCard } from 'lucide-react';
 import Image from 'next/image';
 
 const BillingSection = () => {
@@ -30,48 +9,59 @@ const BillingSection = () => {
 		<motion.section
 			initial={{ opacity: 0, y: 20 }}
 			whileInView={{ opacity: 1, y: 0 }}
-			transition={{ duration: 0.4, delay: 0.1 }}
+			transition={{ duration: 0.5 }}
+			className="scroll-mt-32"
+			id="billing"
 		>
-			<div className="shadow-none border-0 p-6 ">
-				<div className="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
-					<div className=" space-y-4">
-						<div>
-							<div className="text-3xl font-semibold text-primary flex items-center">
-								{/* <Banknote className="mr-3 h-8 w-8 text-primary/80 mt-1" /> */}
-								Billing Information
-							</div>
-							<div className="text-gray-600">
-								Your guide to hospital billing and payments.
-							</div>
+			<div className="grid lg:grid-cols-2 gap-12 items-center">
+
+				{/* Text Content */}
+				<div className="order-2 lg:order-1 space-y-8">
+					<div className="flex items-center gap-3">
+						<div className="w-12 h-12 rounded-2xl bg-secondary/20 flex items-center justify-center border border-secondary/20">
+							<Banknote className="w-6 h-6 text-secondary" />
 						</div>
-						<div>
-							<p className="text-gray-800 leading-relaxed">
-								We are committed to providing transparent and efficient billing
-								services. Our dedicated billing office is available to assist
-								you with any questions.
-							</p>
-							{/* <div className="mt-6">
-								<Button
-									variant="outline"
-									className="bg-indigo-100/50 text-primary hover:bg-indigo-100 hover:text-indigo-800 border-indigo-200"
-								>
-									View Billing Details
-								</Button>
-							</div> */}
-						</div>
+						<h2 className="text-3xl md:text-4xl font-bold text-white">Billing Information</h2>
 					</div>
-					<div className="hidden md:block pr-6">
-						<Image
-							src="/assets/billing.jpg" // Use relative path for Next.js
-							alt="Billing Information"
-							width={500} // Keep original aspect ratio, set a max width
-							height={500}
-							className="w-full h-56 object-cover rounded-2xl " // Responsive image, rounded corners
-						/>
+
+					<div className="bg-white/5 border border-white/10 rounded-[2rem] p-8 md:p-10 space-y-6 backdrop-blur-sm">
+						<p className="text-blue-100/80 leading-relaxed text-lg font-light">
+							We are committed to providing transparent and efficient billing services. Our dedicated billing office
+							is available to assist you with any questions regarding your statement of account or payment options.
+						</p>
+
+						<div className="flex flex-col sm:flex-row gap-4">
+							<div className="flex items-center gap-3 bg-white/5 rounded-xl p-4 border border-white/5">
+								<CreditCard className="w-5 h-5 text-secondary" />
+								<span className="text-white text-sm font-medium">Multiple Payment Options</span>
+							</div>
+							<div className="flex items-center gap-3 bg-white/5 rounded-xl p-4 border border-white/5">
+								<Banknote className="w-5 h-5 text-secondary" />
+								<span className="text-white text-sm font-medium">Transparent Pricing</span>
+							</div>
+						</div>
 					</div>
 				</div>
+
+				{/* Visual */}
+				<div className="order-1 lg:order-2 relative group">
+					<div className="absolute inset-0 bg-secondary/20 blur-[60px] opacity-40 rounded-full group-hover:opacity-60 transition-opacity" />
+					<div className="relative rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl">
+						<Image
+							src="/assets/billing.jpg"
+							alt="Billing Information"
+							width={600}
+							height={400}
+							className="w-full h-auto object-cover hover:scale-105 transition-transform duration-700"
+						/>
+						{/* Overlay for depth */}
+						<div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent pointer-events-none" />
+					</div>
+				</div>
+
 			</div>
 		</motion.section>
 	);
 };
+
 export default BillingSection;

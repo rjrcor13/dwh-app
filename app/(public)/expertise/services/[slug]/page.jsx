@@ -129,6 +129,27 @@ export default async function ServiceDetail({ params }) {
 	);
 }
 
+export async function generateMetadata({ params }) {
+	const resolvedParams = await params;
+	const service = servicesData.find((s) => s.slug === resolvedParams.slug);
+
+	if (!service) {
+		return {
+			title: 'Service Not Found',
+			description: 'The requested service could not be found.',
+		};
+	}
+
+	return {
+		title: `${service.title} | Divine Word Hospital`,
+		description: service.description,
+		openGraph: {
+			title: `${service.title} - Divine Word Hospital Expertise`,
+			description: service.fullContent?.overview || service.description,
+		},
+	};
+}
+
 export async function generateStaticParams() {
 	return servicesData.map((service) => ({
 		slug: service.slug,

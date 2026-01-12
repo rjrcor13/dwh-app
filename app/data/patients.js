@@ -1,5 +1,3 @@
-import { BedIcon, FileTextIcon, ShieldAlertIcon } from 'lucide-react';
-
 export const patientsData = {
 	admission: {
 		title: 'Admission',
@@ -233,21 +231,21 @@ export const tabList = [
 	{
 		value: 'admission',
 		label: 'Admission',
-		icon: <FileTextIcon className="mr-2 h-4 w-4" />,
+		icon: 'FileText',
 	},
 	{
 		value: 'discharge',
 		label: 'Discharge Procedure',
-		icon: <FileTextIcon className="mr-2 h-4 w-4" />,
+		icon: 'FileText',
 	},
 	{
 		value: 'rooms',
 		label: 'Rooms & Facilities',
-		icon: <BedIcon className="mr-2 h-4 w-4" />,
+		icon: 'BedDouble',
 	},
 	{
 		value: 'rights',
 		label: "Patient's Rights & Responsibilities",
-		icon: <ShieldAlertIcon className="mr-2 h-4 w-4" />,
+		icon: 'ShieldAlert',
 	},
 ];

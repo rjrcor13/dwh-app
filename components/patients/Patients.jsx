@@ -1,273 +1,273 @@
 'use client';
+
+import { cn } from '@/lib/utils';
+import { motion, useScroll, useSpring } from 'framer-motion';
 import {
-	Accordion,
-	AccordionContent,
-	AccordionItem,
-	AccordionTrigger,
-} from '@/components/ui/accordion';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Separator } from '@/components/ui/separator';
-import { AnimatePresence, motion } from 'framer-motion'; // Import AnimatePresence
+	BedDouble,
+	CheckCircle2,
+	ChevronRight,
+	FileText,
+	ShieldAlert,
+	AlignLeft,
+	ArrowRight
+} from 'lucide-react';
+import React, { useState, useEffect } from 'react';
 
-import React, { useState } from 'react';
+// --- Editorial Components ---
 
-const sectionVariants = {
-	hidden: { opacity: 0, y: 20 },
-	visible: {
-		opacity: 1,
-		y: 0,
-		transition: {
-			duration: 0.5,
-			ease: 'easeOut',
-			staggerChildren: 0.2,
-			when: 'beforeChildren',
-		},
-	},
-};
+const SectionHeader = ({ title, icon: Icon, id }) => (
+	<div id={id} className="scroll-mt-32 mb-8 items-center gap-4 border-b border-white/10 pb-6">
+		<div className="flex items-center gap-4 mb-2">
+			<div className="w-10 h-10 rounded-full bg-secondary text-white flex items-center justify-center font-bold font-heading shadow-lg shadow-secondary/20">
+				<Icon className="w-5 h-5" />
+			</div>
+			<h2 className="text-3xl md:text-4xl font-bold font-heading text-white">{title}</h2>
+		</div>
+	</div>
+);
 
-const itemVariants = {
-	hidden: { opacity: 0, y: 20 },
-	visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
-};
+const ArticleCard = ({ children, className }) => (
+	<div className={cn("bg-white/5 border border-white/10 p-8 rounded-[2rem] mb-8", className)}>
+		{children}
+	</div>
+);
 
-// New variants for tab content transition
-const contentVariants = {
-	initial: { opacity: 0, y: 10 },
-	animate: { opacity: 1, y: 0, transition: { duration: 0.3 } },
-	exit: { opacity: 0, y: -10, transition: { duration: 0.2 } },
-};
+const BulletList = ({ items }) => (
+	<ul className="space-y-4">
+		{items.map((item, i) => (
+			<li key={i} className="flex items-start gap-3">
+				<div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-secondary shrink-0" />
+				<span className="text-blue-100/70 leading-relaxed text-lg">{item}</span>
+			</li>
+		))}
+	</ul>
+);
 
-const PatientsPage = ({ tabList, patientsData }) => {
-	const [activeTab, setActiveTab] = useState(tabList[0].value);
+// --- Main Page ---
 
-	const renderContent = (contentKey) => {
-		const content = patientsData[contentKey];
+const PatientsPage = ({ patientsData }) => {
+	const [activeId, setActiveId] = useState('admission');
+	const { scrollYProgress } = useScroll();
+	const scaleX = useSpring(scrollYProgress, {
+		stiffness: 100,
+		damping: 30,
+		restDelta: 0.001
+	});
 
-		if (!content) {
-			return <p>Content not found for this section.</p>;
+	// toc scroll spy
+	useEffect(() => {
+		const handleScroll = () => {
+			const sections = ['admission', 'discharge', 'rooms', 'rights'];
+			const scrollPos = window.scrollY + 200;
+
+			for (const section of sections) {
+				const element = document.getElementById(section);
+				if (element && element.offsetTop <= scrollPos && (element.offsetTop + element.offsetHeight) > scrollPos) {
+					setActiveId(section);
+				}
+			}
+		};
+		window.addEventListener('scroll', handleScroll, { passive: true });
+		return () => window.removeEventListener('scroll', handleScroll);
+	}, []);
+
+	const scrollTo = (id) => {
+		const el = document.getElementById(id);
+		if (el) {
+			window.scrollTo({
+				top: el.offsetTop - 120,
+				behavior: 'smooth'
+			});
 		}
-
-		if (contentKey === 'admission' || contentKey === 'discharge') {
-			return (
-				<Card className="shadow-none border-none">
-					<CardHeader className="hidden md:block  p-4 ">
-						<CardTitle className="text-3xl font-bold text-left text-primary border-b pb-2 ">
-							{content.title}
-						</CardTitle>
-					</CardHeader>
-					<CardContent className="space-y-4 text-gray-700  p-4 rounded-md -mt-8 ">
-						{content.intro && <p className="text-justify">{content.intro}</p>}
-						<div className="space-y-8">
-							{content.sections.map((section, index) => (
-								<div key={index} className="space-y-2">
-									<p
-										className={`font-semibold md:text-xl text-lg normal-case  ${
-											section.isPrimaryText ? 'text-primary' : ''
-										}`}
-									>
-										{section.heading}
-									</p>
-									{section.paragraphs.map((para, pIdx) => (
-										<p
-											key={pIdx}
-											className="flex text-justify text-sm sm:text-base "
-										>
-											{para}
-										</p>
-									))}
-								</div>
-							))}
-						</div>
-					</CardContent>
-				</Card>
-			);
-		} else if (contentKey === 'rooms') {
-			return (
-				<Card className="shadow-none border-none">
-					<CardHeader className="hidden md:block  p-4 ">
-						<CardTitle className="text-3xl font-bold text-left text-primary border-b pb-2 ">
-							{content.title}
-						</CardTitle>
-					</CardHeader>
-					<CardContent className="space-y-4 text-gray-700  p-4 rounded-md -mt-4 ">
-						<p className="mb-2 text-sm sm:text-base">{content.intro}</p>
-						<ul className="list-disc list-inside space-y-2 text-sm sm:text-base">
-							{content.listItems.map((item, index) => (
-								<li key={index}>
-									<span className="font-semibold text-primary">
-										{item.term}
-									</span>{' '}
-									{item.description}
-								</li>
-							))}
-						</ul>
-						{content.concludingParagraph && (
-							<p className="mt-4 text-sm sm:text-base">
-								{content.concludingParagraph}
-							</p>
-						)}
-					</CardContent>
-				</Card>
-			);
-		} else if (contentKey === 'rights') {
-			return (
-				<Card className="shadow-none border-none">
-					<CardHeader className="hidden md:block  p-4 ">
-						<CardTitle className="text-3xl font-bold text-left text-primary border-b pb-2 ">
-							{content.title}
-						</CardTitle>
-					</CardHeader>
-					<CardContent className="space-y-4 text-gray-700  p-4 rounded-md -mt-4 ">
-						{content.sections.map((section, sIdx) => (
-							<div key={sIdx}>
-								<h3 className="font-semibold text-primary mb-2 text-lg sm:text-xl">
-									{section.heading}
-								</h3>
-								{section.intro && (
-									<div className="space-y-4">
-										<p className="text-justify text-sm sm:text-base">
-											{section.intro}
-										</p>
-										<div className="bg-gray-50 rounded p-2">
-											<span className="italic text-xs sm:text-sm text-gray-500">
-												{section.introTagalog}
-											</span>
-										</div>
-									</div>
-								)}
-								<ol className="list-decimal list-outside space-y-6 sm:space-y-8 mt-4 sm:mt-8 pl-5">
-									{section.items.map((item, itemIdx) => (
-										<li
-											key={itemIdx}
-											className="text-justify text-sm sm:text-base"
-										>
-											{item.text} <br />
-											<div className="bg-gray-50 rounded p-2 mt-2">
-												<span className="italic text-xs sm:text-sm text-gray-500">
-													{item.tagalog}
-												</span>
-											</div>
-										</li>
-									))}
-								</ol>
-								{sIdx < content.sections.length - 1 && (
-									<Separator className="my-6" />
-								)}
-							</div>
-						))}
-					</CardContent>
-				</Card>
-			);
-		}
-		return null;
 	};
 
-	return (
-		<motion.div
-			initial="hidden"
-			animate="visible"
-			variants={sectionVariants}
-			className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8"
-		>
-			{/* Header Section */}
-			<motion.div variants={itemVariants} className="mb-8 text-center">
-				<h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-primary mb-3 sm:mb-4">
-					Patients Guide
-				</h1>
-				{/* <h2 className="text-xl sm:text-2xl font-semibold text-secondary mb-2">
-					Patients
-				</h2> */}
-				<p className="text-base sm:text-lg text-gray-600 px-4 max-w-3xl mx-auto">
-					Information and guidelines for our patients at Divine Word Hospital.
-				</p>
-			</motion.div>
+	const toc = [
+		{ id: 'admission', label: 'Admission Protocol', icon: FileText },
+		{ id: 'discharge', label: 'Discharge Process', icon: CheckCircle2 },
+		{ id: 'rooms', label: 'Rooms & Rates', icon: BedDouble },
+		{ id: 'rights', label: 'Patient Rights', icon: ShieldAlert },
+	];
 
-			{/* Desktop Sidebar (Tabs-like navigation) */}
-			<div className="hidden md:flex gap-6 lg:gap-8">
-				<aside className="w-56 lg:w-64 flex-shrink-0 mt-5">
-					<div className="flex flex-col">
-						{tabList.map((tab) => (
-							<motion.button // Apply motion to the button for subtle hover/active effects if desired
-								key={tab.value}
-								className={`py-3 px-4 text-left flex items-center rounded-md transition text-base lg:text-lg ${
-									activeTab === tab.value
-										? 'bg-primary text-white font-semibold'
-										: 'hover:bg-muted'
-								}`}
-								onClick={() => setActiveTab(tab.value)}
-								whileHover={{ scale: 1.02 }} // Example hover effect
-								whileTap={{ scale: 0.98 }} // Example tap effect
-							>
-								{tab.icon} {tab.label}
-							</motion.button>
-						))}
-					</div>
-				</aside>
-				{/* Content next to sidebar */}
-				<div className="flex-grow">
-					{/* Use AnimatePresence to animate components leaving and entering */}
-					<AnimatePresence mode="wait">
-						{' '}
-						{/* 'wait' mode waits for exit animation to complete before new component mounts */}
-						<motion.div
-							key={activeTab} // Crucial: change key to trigger re-render and animation
-							variants={contentVariants}
-							initial="initial"
-							animate="animate"
-							exit="exit"
-						>
-							{renderContent(activeTab)}
-						</motion.div>
-					</AnimatePresence>
+	if (!patientsData) return null;
+
+	return (
+		<div className="bg-primary min-h-screen relative font-sans selection:bg-secondary/30 selection:text-white pb-32 pt-24">
+
+			{/* Progress Bar (Reading Indicator) */}
+			<motion.div
+				className="fixed top-20 left-0 right-0 h-1 bg-secondary origin-left z-40"
+				style={{ scaleX }}
+			/>
+
+			{/* Background */}
+			<div className="fixed inset-0 bg-primary pointer-events-none" />
+			<div className="fixed right-0 top-0 w-1/3 h-full bg-white/5 pointer-events-none hidden lg:block border-l border-white/5" />
+
+			<div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+				<div className="grid lg:grid-cols-12 gap-12 lg:gap-24">
+
+					{/* LEFT COLUMN: Main Content (8 cols) */}
+					<article className="lg:col-span-8 space-y-20 pt-16">
+
+						{/* Title Block */}
+						<div className="space-y-6 mb-20">
+							<span className="text-secondary font-bold tracking-[0.2em] uppercase text-sm flex items-center gap-2">
+								<AlignLeft className="w-4 h-4" />
+								Official Guide
+							</span>
+							<h1 className="text-5xl md:text-7xl font-bold font-heading text-white leading-tight">
+								Patient<br />Handbook.
+							</h1>
+							<p className="text-xl md:text-2xl text-blue-100/60 font-light max-w-2xl leading-relaxed border-l-4 border-secondary pl-6">
+								Your comprehensive resource for a comfortable and informed stay at Divine Word Hospital.
+							</p>
+						</div>
+
+						{/* 1. Admission Content */}
+						<section>
+							<SectionHeader id="admission" title="Admission" icon={FileText} />
+							<div className="prose prose-invert prose-lg max-w-none text-blue-100/70">
+								<p className="lead text-xl text-white font-medium mb-8 block">
+									{patientsData.admission.sections[0].paragraphs[0]}
+								</p>
+
+								<div className="grid gap-8">
+									{patientsData.admission.sections.slice(1).map((sec, idx) => (
+										<div key={idx}>
+											<h3 className="text-white font-bold text-xl mb-3 flex items-center gap-3">
+												{sec.heading}
+											</h3>
+											<ArticleCard className="bg-gradient-to-br from-white/5 to-transparent">
+												{sec.paragraphs.map((p, i) => (
+													<p key={i} className="mb-4 last:mb-0 leading-relaxed">{p}</p>
+												))}
+											</ArticleCard>
+										</div>
+									))}
+								</div>
+							</div>
+						</section>
+
+						{/* 2. Discharge Content */}
+						<section>
+							<SectionHeader id="discharge" title="Discharge" icon={CheckCircle2} />
+							<ArticleCard className="border-secondary/20 bg-gradient-to-br from-secondary/10 to-blue-900/10">
+								<h3 className="text-2xl font-bold text-white mb-6">Process Overview</h3>
+								<div className="space-y-8">
+									{patientsData.discharge.sections.map((sec, idx) => (
+										<div key={idx} className="flex gap-4">
+											<div className="w-8 h-8 rounded-full bg-secondary text-white font-bold flex items-center justify-center shrink-0 mt-1">
+												{idx + 1}
+											</div>
+											<div>
+												<h4 className="text-white font-bold text-lg mb-2">{sec.heading}</h4>
+												<p className="text-blue-100/70">{sec.paragraphs[0]}</p>
+											</div>
+										</div>
+									))}
+								</div>
+							</ArticleCard>
+						</section>
+
+						{/* 3. Rooms Content */}
+						<section>
+							<SectionHeader id="rooms" title="Accommodations" icon={BedDouble} />
+							<p className="text-xl text-blue-100/60 mb-8">{patientsData.rooms.intro}</p>
+
+							<div className="grid md:grid-cols-2 gap-4">
+								{patientsData.rooms.listItems.map((item, idx) => (
+									<div key={idx} className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-secondary/30 transition-colors group">
+										<h4 className="text-white font-bold text-lg mb-2 group-hover:text-secondary transition-colors">
+											{item.term.replace(':', '')}
+										</h4>
+										<p className="text-blue-100/60 leading-relaxed text-sm">
+											{item.description}
+										</p>
+									</div>
+								))}
+							</div>
+						</section>
+
+						{/* 4. Rights Content */}
+						<section>
+							<SectionHeader id="rights" title="Rights & Responsibilities" icon={ShieldAlert} />
+
+							<div className="space-y-12">
+								{patientsData.rights.sections.map((sec, sIdx) => (
+									<div key={sIdx}>
+										<div className="flex items-center gap-3 mb-6">
+											<h3 className="text-2xl font-bold text-white uppercase tracking-wide">
+												{sec.heading}
+											</h3>
+											<div className="h-px flex-1 bg-white/10" />
+										</div>
+
+										<div className="space-y-6">
+											{sec.items.map((item, i) => (
+												<div key={i} className="pl-6 border-l-2 border-white/10 hover:border-secondary transition-colors">
+													<p className="text-white text-lg leading-relaxed mb-2 font-medium">
+														{item.text}
+													</p>
+													<p className="text-blue-200/40 italic">
+														{item.tagalog}
+													</p>
+												</div>
+											))}
+										</div>
+									</div>
+								))}
+							</div>
+						</section>
+
+					</article>
+
+
+					{/* RIGHT COLUMN: Sticky Sidebar (4 cols) */}
+					<aside className="hidden lg:block lg:col-span-4 relative">
+						<div className="sticky top-32">
+							<div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8">
+								<h3 className="text-xs font-bold text-secondary uppercase tracking-[0.2em] mb-6">
+									On This Page
+								</h3>
+								<nav className="space-y-1">
+									{toc.map((item) => {
+										const isActive = activeId === item.id;
+										const Icon = item.icon;
+										return (
+											<button
+												key={item.id}
+												onClick={() => scrollTo(item.id)}
+												className={cn(
+													"w-full flex items-center gap-4 p-3 rounded-xl transition-all duration-300 group",
+													isActive
+														? "bg-secondary text-white shadow-lg shadow-secondary/25"
+														: "text-blue-200/50 hover:bg-white/5 hover:text-white"
+												)}
+											>
+												<Icon className={cn("w-5 h-5", isActive ? "text-white" : "text-white/40 group-hover:text-white")} />
+												<span className="font-bold text-sm tracking-wide">{item.label}</span>
+												{isActive && <ChevronRight className="w-4 h-4 ml-auto" />}
+											</button>
+										);
+									})}
+								</nav>
+
+								<div className="mt-8 pt-6 border-t border-white/10">
+									<p className="text-blue-200/40 text-xs leading-relaxed mb-4">
+										Need assistance? Our admission desk is open 24/7.
+									</p>
+									<button className="flex items-center gap-2 text-white font-bold text-sm hover:text-secondary transition-colors">
+										Contact Support <ArrowRight className="w-4 h-4" />
+									</button>
+								</div>
+							</div>
+						</div>
+					</aside>
+
 				</div>
 			</div>
-
-			{/* Mobile View Accordion */}
-			<div className="block md:hidden">
-				<Accordion
-					type="single"
-					collapsible
-					className="w-full"
-					value={activeTab}
-					onValueChange={(val) => setActiveTab(val)}
-				>
-					{tabList.map((tab) => (
-						<AccordionItem
-							key={tab.value}
-							value={tab.value}
-							className="border-b border-gray-200"
-						>
-							<AccordionTrigger className="flex items-center justify-between gap-3 p-3 text-base font-medium text-gray-700 hover:bg-gray-100 transition-colors duration-200">
-								<div
-									className={`flex flex-row items-center font-semibold text-primary pb-1 transition-all ${
-										tab.value === activeTab ? 'pl-2 font-bold' : ''
-									}`}
-								>
-									{tab.icon}{' '}
-									<span className="text-base_ text-xl">{tab.label}</span>
-								</div>
-							</AccordionTrigger>
-							<AccordionContent className="p-3">
-								{/* For AccordionContent, Framer Motion transitions are often handled by the Accordion component itself if it's built with motion, or by wrapping the content inside it. */}
-								{/* Since AccordionContent is usually not directly a motion.div for simple animations,
-                                    we'll apply the transition directly to the rendered content. */}
-								<AnimatePresence mode="wait">
-									<motion.div
-										key={tab.value + '-accordion-content'} // Unique key for accordion content
-										variants={contentVariants}
-										initial="initial"
-										animate="animate"
-										exit="exit"
-									>
-										{renderContent(tab.value)}
-									</motion.div>
-								</AnimatePresence>
-							</AccordionContent>
-						</AccordionItem>
-					))}
-				</Accordion>
-			</div>
-		</motion.div>
+		</div>
 	);
 };
 

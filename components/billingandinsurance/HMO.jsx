@@ -1,253 +1,105 @@
-// import { Button } from '@/components/ui/button';
-// import {
-// 	Card,
-// 	CardContent,
-// 	CardDescription,
-// 	CardHeader,
-// 	CardTitle,
-// } from '@/components/ui/card';
-// import { cn } from '@/lib/utils';
-// import { motion } from 'framer-motion';
-// import {
-// 	CheckCircle,
-// 	ClipboardList,
-// 	Clock,
-// 	CreditCard,
-// 	FileText,
-// 	Hospital,
-// 	LifeBuoy,
-// 	ListChecks,
-// 	Mail,
-// 	MapPin,
-// 	Phone,
-// 	Users,
-// } from 'lucide-react';
-// import Image from 'next/image';
-
-// const HMOsSection = () => (
-// 	<motion.section
-// 		initial={{ opacity: 0, y: 20 }}
-// 		whileInView={{ opacity: 1, y: 0 }}
-// 		transition={{ duration: 0.4, delay: 0.1 }}
-// 	>
-// 		<div className="shadow-none border-0">
-// 			<div className="grid grid-cols-1 md:grid-cols-1 items-center gap-8">
-// 				{/* <div className="hidden md:block pr-6">
-// 					<Image
-// 						src="/assets/HMO.png" // Use relative path for Next.js
-// 						alt="About Us"
-// 						width={1000} // Keep original aspect ratio, set a max width
-// 						height={1000}
-// 						className="w-full h-90 object-fit " // Responsive image, rounded corners
-// 					/>
-// 				</div> */}
-// 				<div className="p-6 space-y-4">
-// 					<div>
-// 						<div className="text-2xl font-semibold text-primary flex items-center">
-// 							<LifeBuoy className="mr-2 h-6 w-6" />
-// 							Health Maintenance Organizations (HMOs)
-// 						</div>
-// 						<CardDescription className="text-gray-500">
-// 							Information regarding accredited HMOs.
-// 						</CardDescription>
-// 					</div>
-// 					<div className="space-y-4 grid grid-cols-1 text-justify items-center gap-4_">
-// 						<p className="text-gray-700">
-// 							To select a doctor through your Health Maintenance Organization
-// 							(HMO), please refer to the list of accredited doctors in our
-// 							Doctor's Directory. If you are a member of an HMO, check below to
-// 							see if your HMO is accredited by Divine Word Hospital.
-// 						</p>
-// 						<p className="text-gray-700">
-// 							Before admission, ensure you coordinate with your HMO provider to
-// 							prepare all necessary pre-authorization documents in advance,
-// 							preventing unnecessary delays and inconvenience at the hospital's
-// 							admitting office.
-// 						</p>
-// 						<div className="bg-gray-50 rounded-md p-4">
-// 							<h3 className="text-lg font-semibold text-blue-700 mb-2 flex items-center">
-// 								<Phone className="mr-2 h-5 w-5" />
-// 								Contact Details
-// 							</h3>
-// 							<ul className="list-disc list-inside space-y-2">
-// 								<li>
-// 									<span className="font-medium">Email:</span>
-// 									<a
-// 										href="mailto:hmodivinewordhospital2023@gmail.com"
-// 										className="text-blue-500 hover:underline ml-1"
-// 									>
-// 										hmodivinewordhospital2023@gmail.com
-// 									</a>
-// 								</li>
-// 								<li>
-// 									<span className="font-medium">Telephone Number:</span>
-// 									<span className="ml-1">
-// 										0919-0672673 / 053-888-7287 local 147
-// 									</span>
-// 								</li>
-// 								<li className="flex items-start">
-// 									<span className="font-medium">Office Hours:</span>
-// 									<span className="ml-1">
-// 										8:00 AM - 12:00 NN to 1:00 PM - 5:00 PM (Monday - Saturday)
-// 									</span>
-// 								</li>
-// 							</ul>
-// 						</div>
-// 						<p className="text-gray-700">
-// 							Please contact your HMO for inquiries regarding coverage and
-// 							requirements.
-// 						</p>{' '}
-// 					</div>
-// 				</div>
-// 			</div>
-// 			<Image
-// 				src="/assets/HMO.png" // Use relative path for Next.js
-// 				alt="About Us"
-// 				width={500} // Keep original aspect ratio, set a max width
-// 				height={500}
-// 				className="w-full h-90 object-fit " // Responsive image, rounded corners
-// 			/>
-// 		</div>
-// 	</motion.section>
-// );
-
-// export default HMOsSection;
 'use client';
 
-import { hmoLogos } from '@/app/data/hmo';
-import { Button } from '@/components/ui/button';
-import {
-	Card,
-	CardContent,
-	CardDescription,
-	CardHeader,
-	CardTitle,
-} from '@/components/ui/card';
-import { cn } from '@/lib/utils';
+import { hmoLogos } from '@/app/data/hmo'; // Ensure this data exists
 import { motion } from 'framer-motion';
-import { LifeBuoy, Phone } from 'lucide-react';
+import { Building2, Phone, Mail, Clock } from 'lucide-react';
 import Image from 'next/image';
 
 const HMOsSection = () => (
 	<motion.section
 		initial={{ opacity: 0, y: 20 }}
 		whileInView={{ opacity: 1, y: 0 }}
-		transition={{ duration: 0.4, delay: 0.1 }}
+		transition={{ duration: 0.5 }}
+		className="scroll-mt-32"
+		id="hmo"
 	>
-		<div className="shadow-none border-0">
-			<div className="grid grid-cols-1 md:grid-cols-1 items-center gap-8">
-				<div className="p-6 space-y-4">
-					<div>
-						<div className="text-3xl font-semibold text-primary flex items-center">
-							{/* <LifeBuoy className="mr-2 h-6 w-6" /> */}
-							Health Maintenance Organizations (HMOs)
-						</div>
-						<CardDescription className="text-md text-gray-600">
-							Information regarding accredited HMOs.
-						</CardDescription>
-					</div>
-					<div className="space-y-4 grid grid-cols-1 text-justify items-center gap-4_">
-						<p className="text-gray-800">
-							To select a doctor through your Health Maintenance Organization
-							(HMO), please refer to the list of accredited doctors in our
-							Doctor's Directory. If you are a member of an HMO, check below to
-							see if your HMO is accredited by Divine Word Hospital.
-						</p>
-						<p className="text-gray-700">
-							Before admission, ensure you coordinate with your HMO provider to
-							prepare all necessary pre-authorization documents in advance,
-							preventing unnecessary delays and inconvenience at the hospital's
-							admitting office.
-						</p>
+		<div className="space-y-12">
 
-						{/* HMO LOGO GRID */}
-						<div>
-							<h3 className="text-lg font-semibold text-gray-800 mt-6 mb-4">
-								Accredited HMOs
-							</h3>
-							<div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-								{/* {hmoLogos.map((logo, idx) => (
-									<motion.div
-										key={idx}
-										initial={{ opacity: 0, scale: 0.8 }}
-										whileInView={{ opacity: 1, scale: 1 }}
-										transition={{ duration: 0.3, delay: idx * 0.05 }}
-										viewport={{ once: true }}
-										className="bg-white p-2 rounded-lg shadow-sm flex items-center justify-center"
-									>
-										<Image
-											src={`/assets/hmos/${logo}`}
-											alt={`HMO ${idx + 1}`}
-											width={100}
-											height={100}
-											className="object-contain max-h-16"
-										/>
-									</motion.div>
-								))} */}
-
-								{hmoLogos.map((logo, idx) => (
-									<motion.div
-										key={idx}
-										initial={{ opacity: 0, scale: 0.9 }}
-										whileInView={{ opacity: 1, scale: 1 }}
-										whileHover={{
-											scale: 1.05,
-											boxShadow: '0px 8px 20px rgba(0,0,0,0.1)',
-										}}
-										whileTap={{ scale: 0.97 }}
-										transition={{ duration: 0.3, delay: idx * 0.05 }}
-										viewport={{ once: true }}
-										className="bg-white p-2 rounded-lg shadow-sm flex items-center justify-center"
-									>
-										<Image
-											src={`/assets/hmos/${logo}`}
-											alt={`HMO ${idx + 1}`}
-											width={120}
-											height={80}
-											className="object-contain max-h-[60px]"
-										/>
-									</motion.div>
-								))}
-							</div>
-							<div className="bg-gray-50 rounded-md p-4 space-y-4 mt-6">
-								<h3 className="text-lg font-semibold text-primary mb-2 flex items-center">
-									<Phone className="mr-2 h-5 w-5" />
-									Contact Details
-								</h3>
-								<ul className="list-disc list-inside space-y-2 text-gray-800">
-									<li>
-										<span className="font-medium">Email:</span>
-										<a
-											href="mailto:hmodivinewordhospital2023@gmail.com"
-											className="text-primary hover:underline ml-1"
-										>
-											hmodivinewordhospital2023@gmail.com
-										</a>
-									</li>
-									<li>
-										<span className="font-medium">Telephone Number:</span>
-										<span className="ml-1">
-											0919-0672673 / 053-888-7287 local 147
-										</span>
-									</li>
-									<li className="flex items-start">
-										<span className="font-medium">Office Hours:</span>
-										<span className="ml-1">
-											8:00 AM - 12:00 NN to 1:00 PM - 5:00 PM (Monday -
-											Saturday)
-										</span>
-									</li>
-								</ul>
-							</div>
-							<p className="text-gray-700">
-								Please contact your HMO for inquiries regarding coverage and
-								requirements.
-							</p>
-						</div>
-						{/* END GRID */}
+			{/* Header */}
+			<div className="max-w-3xl">
+				<div className="flex items-center gap-3 mb-6">
+					<div className="w-12 h-12 rounded-2xl bg-secondary/20 flex items-center justify-center border border-secondary/20">
+						<Building2 className="w-6 h-6 text-secondary" />
 					</div>
+					<h2 className="text-3xl md:text-4xl font-bold text-white">Accredited HMOs</h2>
+				</div>
+				<p className="text-blue-100/80 leading-relaxed text-lg font-light">
+					To use your Health Maintenance Organization (HMO) card, please ensure your provider is accredited with us.
+					Coordinate with your provider for pre-authorization documents to ensure a smooth admission process.
+				</p>
+			</div>
+
+			{/* HMO Grid */}
+			<div className="bg-white/5 border border-white/10 rounded-[2rem] p-8 md:p-10 backdrop-blur-sm">
+				<h3 className="text-xl font-bold text-white mb-8 border-l-4 border-secondary pl-4">Our Partners</h3>
+
+				<div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+					{hmoLogos.map((logo, idx) => (
+						<motion.div
+							key={idx}
+							initial={{ opacity: 0, scale: 0.9 }}
+							whileInView={{ opacity: 1, scale: 1 }}
+							whileHover={{ scale: 1.05, backgroundColor: 'rgba(255, 255, 255, 0.9)' }}
+							viewport={{ once: true }}
+							transition={{ duration: 0.2 }}
+							className="bg-white/80 p-4 rounded-xl flex items-center justify-center h-24 hover:shadow-lg transition-all duration-300 cursor-pointer"
+						>
+							<Image
+								src={`/assets/hmos/${logo}`}
+								alt={`HMO Partner ${idx + 1}`}
+								width={120}
+								height={60}
+								className="object-contain max-h-12 w-auto grayscale0 transition-all" // Removed grayscale to show brand colors properly as requested typically
+							/>
+						</motion.div>
+					))}
 				</div>
 			</div>
+
+			{/* Contact Info */}
+			<div className="grid md:grid-cols-2 gap-6">
+				<div className="bg-gradient-to-br from-secondary/10 to-blue-900/20 border border-secondary/20 p-8 rounded-[2rem]">
+					<h3 className="text-lg font-bold text-white mb-6 flex items-center gap-2">
+						<Phone className="w-5 h-5 text-secondary" /> Contact Industrial Office
+					</h3>
+					<div className="space-y-4">
+						<div className="flex items-start gap-4">
+							<Mail className="w-5 h-5 text-blue-300 mt-1" />
+							<div>
+								<span className="block text-xs text-blue-300 uppercase tracking-widest">Email</span>
+								<a href="mailto:hmodivinewordhospital2023@gmail.com" className="text-white hover:text-secondary transition-colors font-medium break-all">
+									hmodivinewordhospital2023@gmail.com
+								</a>
+							</div>
+						</div>
+						<div className="flex items-start gap-4">
+							<Phone className="w-5 h-5 text-blue-300 mt-1" />
+							<div>
+								<span className="block text-xs text-blue-300 uppercase tracking-widest">Phone</span>
+								<p className="text-white font-medium">0919-067-2673</p>
+								<p className="text-blue-100/60 text-sm">053-888-7287 loc 147</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div className="bg-white/5 border border-white/10 p-8 rounded-[2rem] flex flex-col justify-center">
+					<h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
+						<Clock className="w-5 h-5 text-secondary" /> Office Hours
+					</h3>
+					<ul className="space-y-3">
+						<li className="flex justify-between text-blue-100/80 border-b border-white/5 pb-2">
+							<span>Monday - Saturday</span>
+							<span className="text-white font-medium">8:00 AM - 5:00 PM</span>
+						</li>
+						<li className="flex justify-between text-blue-100/80 pt-2">
+							<span>Break Time</span>
+							<span className="text-white font-medium">12:00 PM - 1:00 PM</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+
 		</div>
 	</motion.section>
 );
