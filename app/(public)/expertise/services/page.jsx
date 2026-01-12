@@ -3,6 +3,15 @@ import OurServicesSection from '@/components/home/Services';
 import Services from '@/components/services/Services';
 import React from 'react';
 
+export const metadata = {
+	title: 'Servicing Units',
+	description: 'Explore our wide range of medical services including Radiology, ICU, NICU, Dialysis, and more. Committed to quality healthcare in Region VIII.',
+	openGraph: {
+		title: 'Our Medical Services | Divine Word Hospital',
+		description: 'Comprehensive healthcare services for you and your family. From Critical Care into Diagnostic Imaging.',
+	},
+};
+
 const ServicingUnitsPage = () => {
 	return (
 		<div>

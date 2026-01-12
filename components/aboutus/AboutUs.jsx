@@ -1,394 +1,214 @@
-// 'use client';
-// import { motion } from 'framer-motion';
-// import Image from 'next/image';
-// import React from 'react';
-// const AboutUs = () => {
-// 	return (
-// 		<div className="container_ max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
-// 			<Image
-// 				src="/assets/about-us.webp" // Use relative path for Next.js
-// 				alt="About Us"
-// 				width={500} // Keep original aspect ratio, set a max width
-// 				height={200}
-// 				className="w-full h-70 object-cover -mt-15 " // Responsive image, rounded corners
-// 			/>
-// 			<motion.section
-// 				initial={{ opacity: 0, y: -20 }}
-// 				animate={{ opacity: 1, y: 0 }}
-// 				transition={{ duration: 0.5 }}
-// 				className="text-center mb-16"
-// 			>
-// 				<h1 className="text-4xl md:text-5xl font-bold text-primary my-4">
-// 					Divine Word Hospital
-// 				</h1>
-// 				<p className="text-muted-foreground text-lg">
-// 					A place of welcome committed to quality health care.
-// 				</p>
-// 			</motion.section>
-
-// 			<motion.section
-// 				initial={{ opacity: 0 }}
-// 				animate={{ opacity: 1 }}
-// 				transition={{ delay: 0.2 }}
-// 				className="mb-16 text-justify"
-// 			>
-// 				<h2 className="text-2xl font-semibold text-primary mb-6 text-left">
-// 					Our History
-// 				</h2>
-// 				<p className=" text-gray-700 mb-4 ">
-// 					Divine Word Hospital is a Catholic tertiary, Level 3, 179 bed hospital
-// 					located in Tacloban City, Leyte. Region VIll or Eastern Visayas has a
-// 					population of 4,089,734 (as of year 2010) with 78% of population
-// 					living in the rural area and 21.8% in the cities. Of the 70% living in
-// 					the cities about 547,000 live below poverty line.
-// 				</p>
-// 				<div className="space-y-6 text-gray-600 ">
-// 					<p>
-// 						In 1964, Father Earnest Hoerdemann, SVD, rector of the Divine Word
-// 						College took up the plan for a Catholic Hospital in Region VIII.
-// 						With the help of German government and German Bishops, missionaries
-// 						and other generous benefactors, the Society of the Divine Word (SVD)
-// 						Fathers in collaboration with the Missionary Benedictine Sisters of
-// 						Tutzing (MBS), Germany, established a 100 bed Hospital equipped with
-// 						modern facilities. The hospital became the training hospital for the
-// 						College of Nursing, Medical Technology, Medicine and other
-// 						paramedical courses of Divine Word College that later became Divine
-// 						Word University (DWU).
-// 					</p>
-// 					<p>
-// 						On February 7, 1965, the hospital was blessed and inaugurated. The
-// 						following day, patients were admitted. The SVD Fathers who owned the
-// 						DWU gave full administration of the Divine Word hospital (DWH) to
-// 						the Philippine Province of the MBS of Tutzing, Germany.
-// 					</p>
-// 					<p>
-// 						Divine Word Hospital has been at the forefront in offering new
-// 						services. It was the first to open a Dizziness, Hearing and Voice
-// 						Center and a Neurosciences Unit; and also, the first to offer
-// 						Hemodialysis, CT scan, Digital Mammography and Magnetic Resonance
-// 						Imaging (MRI) in Region VIII.
-// 					</p>
-// 					<p>
-// 						The diagnostic services of the hospital are among the best equipped
-// 						in the Region.
-// 					</p>
-// 					<p>
-// 						The Residency Training Programs of the Department of Medicine and
-// 						the Department of Pediatrics are accredited by their respective
-// 						Specialty Societies. At present, the hospital is working towards the
-// 						accreditation of the Residency Training Program of the Department of
-// 						Obstetrics and Gynecology and the Department of Surgery
-// 					</p>
-// 					<p>
-// 						At present the hospital with 179 bed capacity has 17 service beds
-// 						assigned to indigent patients. Currently it has over 400 employees.
-// 					</p>
-// 					<p>
-// 						The hospital has a competent staff with active and visiting
-// 						consultants, resident physicians, nurses, other personnel who are
-// 						responsible for efficient and effective care of patients. The
-// 						patient regardless of race, creed, and status in life is treated as
-// 						someone sacred, any person who suffers is sacred to us, because of
-// 						Him whom he/she resembles. Any person who nurses or helps someone to
-// 						his feet, who consoles or heals is even more completely the image of
-// 						Christ.
-// 					</p>
-// 				</div>
-// 			</motion.section>
-
-// 			<motion.section
-// 				initial={{ opacity: 0 }}
-// 				animate={{ opacity: 1 }}
-// 				transition={{ delay: 0.2 }}
-// 				className="mb-10 text-justify"
-// 			>
-// 				<h2 className="text-2xl font-semibold  text-primary mb-4 text-center">
-// 					Our Guiding Principles
-// 				</h2>
-// 				<div className="bg-gray-50 rounded-lg p-6">
-// 					<h3 className="text-xl font-semibold text-secondary mb-2">
-// 						Quality Policy
-// 					</h3>
-// 					<p className="text-gray-600">
-// 						Divine Word Hospital is committed to meeting the health needs and
-// 						expectations of the people in Region 8 by providing equitable,
-// 						efficient, and effective healthcare services, training, and
-// 						research. We strive for professional and caring personnel and the
-// 						continual improvement of our services to achieve excellence in
-// 						quality healthcare.
-// 					</p>
-// 				</div>
-// 			</motion.section>
-
-// 			<motion.section
-// 				initial={{ opacity: 0 }}
-// 				animate={{ opacity: 1 }}
-// 				transition={{ delay: 0.2 }}
-// 				className="mb-10 text-justify"
-// 			>
-// 				<h2 className="text-2xl font-bold text-primary mb-4 text-center">
-// 					Our Vision & Mission
-// 				</h2>
-// 				<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-// 					<div className="bg-gray-50 rounded-lg p-6">
-// 						<h3 className="text-xl font-semibold text-secondary mb-2">
-// 							Vision
-// 						</h3>
-// 						<ul className="list-disc list-inside text-gray-600">
-// 							<li>
-// 								A Catholic Institution of Holistic Wellness and Quality Health
-// 								Care.
-// 							</li>
-// 						</ul>
-// 					</div>
-// 					<div className="bg-gray-50 rounded-lg p-6">
-// 						<h3 className="text-xl font-semibold text-secondary mb-2">
-// 							Mission
-// 						</h3>
-// 						<ul className="list-disc list-inside text-gray-600 space-y-2">
-// 							<li>To proclaim God’s healing love to all.</li>
-// 							<li>To uphold Christian Values.</li>
-// 							<li>To provide quality tertiary health care.</li>
-// 							<li>
-// 								To train medical, nursing, and paramedical students and organize
-// 								activities for practitioners to improve the quality of health
-// 								service.
-// 							</li>
-// 							<li>
-// 								To provide adequate facilities to support the practice of
-// 								medical and paramedical professionals in Region 8.
-// 							</li>
-// 						</ul>
-// 					</div>
-// 				</div>
-// 			</motion.section>
-// 		</div>
-// 	);
-// };
-
-// export default AboutUs;
-
-//'use client';
-// import { Card, CardContent } from '@/components/ui/card';
-// import { Separator } from '@/components/ui/separator';
-// import { motion } from 'framer-motion';
-
-// export default function AboutUs() {
-// 	return (
-// 		<div className="max-w-6xl mx-auto px-6 py-12">
-// 			<motion.section
-// 				initial={{ opacity: 0, y: -20 }}
-// 				animate={{ opacity: 1, y: 0 }}
-// 				transition={{ duration: 0.5 }}
-// 				className="text-center mb-16"
-// 			>
-// 				<h1 className="text-4xl md:text-5xl font-bold text-primary mb-4">
-// 					About Divine Word Hospital
-// 				</h1>
-// 				<p className="text-muted-foreground text-lg">
-// 					A place of welcome committed to quality health care.
-// 				</p>
-// 			</motion.section>
-
-// 			<motion.section
-// 				initial={{ opacity: 0 }}
-// 				animate={{ opacity: 1 }}
-// 				transition={{ delay: 0.2 }}
-// 				className="mb-16"
-// 			>
-// 				<Card className="shadow-md rounded-xl overflow-hidden">
-// 					<CardContent className="prose prose-neutral lg:prose-lg px-6 py-8">
-// 						<h2 className="text-2xl font-semibold text-primary mb-4">
-// 							Our History
-// 						</h2>
-// 						<p>
-// 							Divine Word Hospital is a Catholic tertiary, Level 3, 179-bed
-// 							hospital located in Tacloban City, Leyte. Eastern Visayas, Region
-// 							VIII, has a population of over 4 million (as of 2010), with the
-// 							majority residing in rural areas. Among those in urban areas, a
-// 							significant number live below the poverty line.
-// 						</p>
-// 						<p>
-// 							In 1964, Father Earnest Hoerdemann, SVD, then rector of Divine
-// 							Word College, envisioned a Catholic hospital in the region.
-// 							Through support from the German government, bishops, missionaries,
-// 							and generous benefactors, the Society of the Divine Word partnered
-// 							with the Missionary Benedictine Sisters of Tutzing (MBS) to bring
-// 							this vision to life.
-// 						</p>
-// 						<p>
-// 							The hospital, initially with 100 beds, opened on February 7, 1965,
-// 							and served as a training center for the paramedical programs of
-// 							Divine Word College (later Divine Word University).
-// 						</p>
-// 						<p>
-// 							DWH has since pioneered medical services in Region VIII, offering
-// 							the first Hemodialysis, CT Scan, Digital Mammography, MRI, and
-// 							specialized care units. It is recognized for its excellence in
-// 							diagnostics and its accredited residency programs in Internal
-// 							Medicine and Pediatrics.
-// 						</p>
-// 						<p>
-// 							Today, with 179 beds, 17 of which serve indigent patients, the
-// 							hospital employs over 400 staff members. With dedication and
-// 							compassion, it upholds the sacredness of every patient and
-// 							reflects the healing ministry of Christ.
-// 						</p>
-// 					</CardContent>
-// 				</Card>
-// 			</motion.section>
-
-// 			<motion.section
-// 				initial={{ opacity: 0 }}
-// 				animate={{ opacity: 1 }}
-// 				transition={{ delay: 0.3 }}
-// 				className="grid gap-6 md:grid-cols-3"
-// 			>
-// 				<Card className="rounded-xl shadow-md">
-// 					<CardContent className="p-6">
-// 						<h3 className="text-lg font-bold text-primary mb-2">Vision</h3>
-// 						<p className="text-muted-foreground">
-// 							A Catholic Institution of Holistic Wellness and Quality Health
-// 							Care.
-// 						</p>
-// 					</CardContent>
-// 				</Card>
-
-// 				<Card className="rounded-xl shadow-md">
-// 					<CardContent className="p-6">
-// 						<h3 className="text-lg font-bold text-primary mb-2">Mission</h3>
-// 						<ul className="list-disc pl-5 space-y-2 text-muted-foreground text-sm">
-// 							<li>To proclaim God’s healing love to all.</li>
-// 							<li>To uphold Christian Values.</li>
-// 							<li>To provide quality tertiary health care.</li>
-// 							<li>
-// 								To train medical, nursing, and paramedical students and enhance
-// 								professional development.
-// 							</li>
-// 							<li>
-// 								To support medical and paramedical professionals in Region 8
-// 								with adequate facilities.
-// 							</li>
-// 						</ul>
-// 					</CardContent>
-// 				</Card>
-
-// 				<Card className="rounded-xl shadow-md">
-// 					<CardContent className="p-6">
-// 						<h3 className="text-lg font-bold text-primary mb-2">
-// 							Quality Policy
-// 						</h3>
-// 						<p className="text-muted-foreground text-sm">
-// 							We commit to meeting the health needs and expectations of the
-// 							people of Region 8 by delivering equitable, efficient, and
-// 							effective healthcare services. We emphasize ongoing training,
-// 							research, and continuous improvement to achieve excellence in
-// 							quality healthcare.
-// 						</p>
-// 					</CardContent>
-// 				</Card>
-// 			</motion.section>
-// 		</div>
-// 	);
-// }
-// components/about/AboutUs.jsx (or wherever your component resides)
-
-// No 'use client' directive here, making it a Server Component
-
 'use client';
-import { motion } from 'framer-motion'; // Framer Motion will still work due to its nature
+import { motion } from 'framer-motion';
+import { Award, CheckCircle2, Heart, ShieldCheck, Target, TrendingUp } from 'lucide-react';
 import Image from 'next/image';
 
 const AboutUs = ({ data }) => {
 	const { hero, history, qualityPolicy, visionMission } = data;
 
+	// Helper for timeline animation
+	const fadeInUp = {
+		initial: { opacity: 0, y: 60 },
+		whileInView: { opacity: 1, y: 0 },
+		viewport: { once: true, margin: "-100px" },
+		transition: { duration: 0.6, ease: "easeOut" }
+	};
+
 	return (
-		<div className="container_ max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
-			<Image
-				src={hero.imageSrc}
-				alt={hero.imageAlt}
-				width={1200} // Increased width for better responsiveness on large screens
-				height={400} // Adjusted height to maintain aspect ratio and fit common hero images
-				className="w-full h-[300px] md:h-[400px] object-cover rounded-lg shadow-md mb-8" // Adjusted height, added shadow/rounding
-				priority // Preload the hero image for better LCP
-			/>
-			<motion.section
-				initial={{ opacity: 0, y: -20 }}
-				animate={{ opacity: 1, y: 0 }}
-				transition={{ duration: 0.5 }}
-				className="text-center mb-16"
-			>
-				<h1 className="text-4xl md:text-5xl font-bold text-primary my-4">
-					{hero.title}
-				</h1>
-				<p className="text-muted-foreground text-lg">{hero.tagline}</p>
-			</motion.section>
+		<div className="bg-primary min-h-screen relative overflow-hidden font-sans">
+			{/* Dynamic Background Gradient */}
+			<div className="absolute inset-0 bg-gradient-to-br from-primary via-[#161270] to-[#0f0c50] pointer-events-none" />
 
-			<motion.section
-				initial={{ opacity: 0 }}
-				animate={{ opacity: 1 }}
-				transition={{ delay: 0.2 }}
-				className="mb-16 text-justify"
-			>
-				<h2 className="text-2xl font-semibold text-primary mb-6 text-left">
-					{history.title}
-				</h2>
-				<div className="space-y-6 text-gray-600 ">
-					{history.paragraphs.map((paragraph, index) => (
-						<p key={index}>{paragraph}</p>
-					))}
-				</div>
-			</motion.section>
+			{/* Background Noise/Texture Overlay (Optional for 'Editorial' feel) */}
+			<div className="absolute inset-0 bg-[url('/assets/noise.png')] opacity-[0.03] mix-blend-overlay pointer-events-none" />
 
-			<motion.section
-				initial={{ opacity: 0 }}
-				animate={{ opacity: 1 }}
-				transition={{ delay: 0.2 }}
-				className="mb-10 text-justify"
-			>
-				<h2 className="text-2xl font-semibold text-primary mb-4 text-center">
-					Our Guiding Principles
-				</h2>
-				<div className="bg-gray-50 rounded-lg p-6">
-					<h2 className="text-xl font-semibold text-secondary mb-2">
-						{qualityPolicy.title}
-					</h2>
-					<p className="text-gray-600">{qualityPolicy.content}</p>
-				</div>
-			</motion.section>
+			{/* Decor Blobs */}
+			<div className="absolute top-[-10%] right-[-5%] w-[800px] h-[800px] bg-secondary/10 rounded-full blur-[120px] mix-blend-screen opacity-40 pointer-events-none" />
+			<div className="absolute bottom-[20%] left-[-10%] w-[600px] h-[600px] bg-blue-400/10 rounded-full blur-[100px] mix-blend-screen opacity-30 pointer-events-none" />
 
-			<motion.section
-				initial={{ opacity: 0 }}
-				animate={{ opacity: 1 }}
-				transition={{ delay: 0.2 }}
-				className="mb-10 text-justify"
-			>
-				<h2 className="text-2xl font-semibold text-primary mb-4 text-center">
-					{visionMission.title}
-				</h2>
-				<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-					<div className="bg-gray-50 rounded-lg p-6">
-						<h3 className="text-xl font-semibold text-secondary mb-2">
-							{visionMission.vision.title}
-						</h3>
-						<ul className="list-disc list-inside text-gray-600">
-							{visionMission.vision.points.map((point, index) => (
-								<li key={index}>{point}</li>
-							))}
-						</ul>
+
+			<div className="relative z-10 max-w-7xl mx-auto py-16 md:py-24 px-4 sm:px-6 lg:px-8">
+
+				{/* 1. EDITORIAL HERO (Split Layout) */}
+				<section className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center mb-32">
+					<motion.div
+						initial={{ opacity: 0, x: -50 }}
+						animate={{ opacity: 1, x: 0 }}
+						transition={{ duration: 0.8, ease: "circOut" }}
+					>
+						<div className="inline-flex items-center gap-3 mb-8">
+							<span className="w-12 h-[1px] bg-secondary"></span>
+							<span className="text-secondary font-bold tracking-widest uppercase text-xs">Since 1964</span>
+						</div>
+						<h1 className="text-5xl md:text-7xl font-bold font-heading text-white mb-8 leading-[1.1]">
+							Healing with <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-white">Compassion</span>
+						</h1>
+						<p className="text-blue-100/80 text-lg md:text-xl leading-relaxed font-light max-w-lg">
+							{hero.tagline}
+						</p>
+					</motion.div>
+
+					<motion.div
+						initial={{ opacity: 0, scale: 0.9 }}
+						animate={{ opacity: 1, scale: 1 }}
+						transition={{ duration: 0.8, delay: 0.2 }}
+						className="relative"
+					>
+						<div className="relative rounded-[2rem] overflow-hidden aspect-[4/5] md:aspect-square shadow-2xl border border-white/10 group">
+							<Image
+								src={hero.imageSrc}
+								alt={hero.imageAlt}
+								fill
+								className="object-cover transition-transform duration-700 group-hover:scale-105"
+								priority
+							/>
+							<div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent opacity-60" />
+
+							{/* Floating Badge */}
+							<div className="absolute bottom-8 left-8 bg-white/10 backdrop-blur-xl border border-white/20 p-6 rounded-2xl max-w-xs transform group-hover:-translate-y-2 transition-transform duration-500">
+								<p className="text-sm text-blue-100/90 font-light leading-relaxed">
+									&quot;A place of welcome committed to quality health care.&quot;
+								</p>
+							</div>
+						</div>
+						{/* Decor Ring */}
+						<div className="absolute -inset-4 border border-white/5 rounded-[2.5rem] -z-10 rotate-3" />
+					</motion.div>
+				</section>
+
+
+				{/* 2. ZIG-ZAG TIMELINE HISTORY */}
+				<section className="mb-32 relative">
+					<div className="text-center mb-20">
+						<h2 className="text-3xl md:text-4xl font-bold font-heading text-white">Our Journey</h2>
+						<p className="text-blue-100/60 mt-4">Six decades of service and innovation</p>
 					</div>
-					<div className="bg-gray-50 rounded-lg p-6">
-						<h3 className="text-xl font-semibold text-secondary mb-2">
-							{visionMission.mission.title}
-						</h3>
-						<ul className="list-disc list-inside text-gray-600 space-y-2">
-							{visionMission.mission.points.map((point, index) => (
-								<li key={index}>{point}</li>
-							))}
-						</ul>
+
+					{/* Center Line */}
+					<div className="absolute left-[20px] md:left-1/2 top-40 bottom-20 w-px bg-gradient-to-b from-transparent via-white/10 to-transparent md:-translate-x-1/2" />
+
+					<div className="space-y-12 relative">
+						{history.paragraphs.map((para, index) => (
+							<motion.div
+								key={index}
+								{...fadeInUp}
+								className={`flex flex-col md:flex-row items-start ${index % 2 === 0 ? 'md:flex-row-reverse' : ''} gap-8 md:gap-0 group`}
+							>
+								{/* Content Card */}
+								<div className="w-full md:w-1/2 pl-12 md:pl-0 md:px-16">
+									<div className={`
+                                        bg-white/5 backdrop-blur-sm border border-white/5 p-8 rounded-3xl 
+                                        hover:bg-white/10 hover:border-white/10 transition-all duration-300
+                                        relative
+                                    `}>
+										{/* Triangle Indicator (Desktop) */}
+										<div className={`hidden md:block absolute top-8 w-4 h-4 bg-white/5 rotate-45 border-b border-l border-white/5 
+                                            ${index % 2 === 0 ? '-left-2 border-r-0 border-t-0' : '-right-2 border-l-0 border-b-0 rotate-[225deg]'}
+                                        `} />
+
+										<p className="text-blue-100/80 leading-relaxed">
+											{para}
+										</p>
+									</div>
+								</div>
+
+								{/* Timeline Dot */}
+								<div className="absolute left-[20px] md:left-1/2 md:-translate-x-1/2 w-10 h-10 flex items-center justify-center">
+									<div className="w-3 h-3 bg-secondary rounded-full ring-4 ring-primary relative z-10 group-hover:scale-125 transition-transform duration-300" />
+									<div className="absolute w-10 h-10 bg-secondary/20 rounded-full animate-ping opacity-20" />
+								</div>
+
+								{/* Empty Spacer for Layout Balance */}
+								<div className="w-full md:w-1/2" />
+							</motion.div>
+						))}
 					</div>
-				</div>
-			</motion.section>
+				</section>
+
+
+				{/* 3. BENTO GRID VALUES (Vision/Mission) */}
+				<section>
+					<div className="text-center mb-16">
+						<h2 className="text-3xl md:text-4xl font-bold font-heading text-white">Our Foundations</h2>
+					</div>
+
+					<div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-min">
+
+						{/* Card 1: Vision (Large) */}
+						<motion.div
+							{...fadeInUp}
+							className="md:col-span-2 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-[2.5rem] p-10 border border-white/10 hover:border-white/20 transition-all"
+						>
+							<div className="w-14 h-14 bg-secondary/20 rounded-2xl flex items-center justify-center text-secondary mb-8">
+								<Target className="w-7 h-7" />
+							</div>
+							<h3 className="text-2xl font-bold text-white mb-4 font-heading">{visionMission.vision.title}</h3>
+							<ul className="space-y-4">
+								{visionMission.vision.points.map((pt, i) => (
+									<li key={i} className="text-xl text-blue-100/90 leading-relaxed font-light">{pt}</li>
+								))}
+							</ul>
+						</motion.div>
+
+						{/* Card 2: Stat/Highlight (Tall) */}
+						<motion.div
+							{...fadeInUp}
+							transition={{ delay: 0.1 }}
+							className="md:row-span-2 bg-primary/40 backdrop-blur-md rounded-[2.5rem] p-10 border border-white/10 flex flex-col justify-between overflow-hidden relative group"
+						>
+							<div className="absolute top-0 right-0 p-8 opacity-10 transition-opacity group-hover:opacity-20">
+								<Award className="w-40 h-40 text-white" />
+							</div>
+							<div>
+								<h3 className="text-lg font-bold text-secondary uppercase tracking-widest mb-2">Excellence</h3>
+								<h4 className="text-4xl font-bold text-white mb-6">Level 3</h4>
+								<p className="text-blue-200/70 text-sm">Tertiary Hospital Accredited by DOH</p>
+							</div>
+							<div className="mt-8 pt-8 border-t border-white/10">
+								<div className="flex items-center gap-3 text-white mb-2">
+									<CheckCircle2 className="text-green-400 w-5 h-5" />
+									<span>PhilHealth Accredited</span>
+								</div>
+								<div className="flex items-center gap-3 text-white">
+									<CheckCircle2 className="text-green-400 w-5 h-5" />
+									<span>DOH Licensed</span>
+								</div>
+							</div>
+						</motion.div>
+
+						{/* Card 3: Quality Policy */}
+						<motion.div
+							{...fadeInUp}
+							transition={{ delay: 0.2 }}
+							className="bg-white/5 backdrop-blur-lg rounded-[2.5rem] p-10 border border-white/5 hover:bg-white/10 transition-colors"
+						>
+							<ShieldCheck className="w-10 h-10 text-blue-300 mb-6" />
+							<h3 className="text-xl font-bold text-white mb-4 font-heading">{qualityPolicy.title}</h3>
+							<p className="text-blue-100/70 text-sm leading-relaxed">&quot;{qualityPolicy.content}&quot;</p>
+						</motion.div>
+
+						{/* Card 4: Mission */}
+						<motion.div
+							{...fadeInUp}
+							transition={{ delay: 0.3 }}
+							className="bg-white/5 backdrop-blur-lg rounded-[2.5rem] p-10 border border-white/5 hover:bg-white/10 transition-colors"
+						>
+							<Heart className="w-10 h-10 text-pink-400 mb-6" />
+							<h3 className="text-xl font-bold text-white mb-4 font-heading">{visionMission.mission.title}</h3>
+							<ul className="space-y-2">
+								{visionMission.mission.points.slice(0, 3).map((pt, i) => (
+									<li key={i} className="flex items-center gap-2 text-blue-100/80 text-sm">
+										<span className="w-1 h-1 bg-pink-400 rounded-full" />
+										<span className="line-clamp-1">{pt}</span>
+									</li>
+								))}
+							</ul>
+						</motion.div>
+
+					</div>
+				</section>
+
+			</div>
 		</div>
 	);
 };

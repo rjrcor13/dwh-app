@@ -4,71 +4,62 @@ import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { default as DynamicIcons } from '../dynamicIcons/DynamicIcons';
+import { ArrowRight } from 'lucide-react';
 
 const serviceVariants = {
 	hidden: { opacity: 0, y: 20 },
-	visible: (i) => ({
+	visible: {
 		opacity: 1,
 		y: 0,
 		transition: {
-			delay: i * 0.1,
-			duration: 0.4,
-			ease: 'easeInOut',
+			duration: 0.5,
+			ease: 'circOut',
 		},
-	}),
-	exit: { opacity: 0, y: -20 },
+	},
 };
 
 const ServiceCard = ({ service, index }) => {
-	const ServiceIcon = service.icon;
 	return (
-		<Link href={`/expertise/services/${service.slug}`} passHref>
+		<Link href={`/expertise/services/${service.slug}`} passHref className="h-full block">
 			<motion.div
 				variants={serviceVariants}
-				initial="hidden"
-				animate="visible"
-				exit="exit"
-				custom={index}
 				className={cn(
-					'bg-white rounded-[2rem] p-8 flex flex-col items-center justify-start h-full',
-					'transition-all duration-300 ease-out',
-					'hover:shadow-2xl hover:-translate-y-2 hover:shadow-primary/5',
-					'border border-slate-100 hover:border-primary/20',
-					'group cursor-pointer relative overflow-hidden'
+					'bg-white/5 backdrop-blur-md rounded-[2rem] p-8 flex flex-col items-start h-full',
+					'border border-white/5 hover:bg-white/10 hover:border-white/20',
+					'transition-all duration-300 group cursor-pointer relative overflow-hidden',
+					'hover:shadow-2xl hover:shadow-black/20 hover:-translate-y-1'
 				)}
 			>
-				{/* Hover Gradient Overlay */}
-				<div className="absolute inset-0 bg-gradient-to-br from-transparent to-primary/0 group-hover:to-primary/5 transition-colors duration-500" />
-
+				{/* Icon */}
 				<div
 					className={cn(
-						'w-20 h-20 rounded-2xl flex items-center justify-center mb-6',
-						'transition-transform duration-500 ease-out group-hover:scale-110',
-						'bg-primary/5 text-primary',
-						'relative z-10'
+						'w-14 h-14 rounded-2xl flex items-center justify-center mb-6',
+						'bg-white/5 text-secondary border border-white/10',
+						'group-hover:scale-110 group-hover:bg-secondary group-hover:text-white',
+						'transition-all duration-300'
 					)}
 				>
 					<DynamicIcons
 						name={service.icon}
-						width={40}
-						height={40}
-						className="w-10 h-10"
+						width={28}
+						height={28}
+						className="w-7 h-7"
 					/>
 				</div>
 
-				<div className="relative z-10 flex flex-col items-center">
-					<h4
-						className={cn(
-							'text-xl font-bold font-heading mb-3',
-							'text-slate-900 group-hover:text-primary transition-colors duration-300',
-							'text-center tracking-tight'
-						)}
-					>
+				{/* Content */}
+				<div className="flex-grow">
+					<h4 className="text-xl font-bold font-heading text-white mb-3 group-hover:text-secondary transition-colors">
 						{service.title}
 					</h4>
-					<p className="text-slate-500 text-center leading-relaxed font-base">
+					<p className="text-blue-100/70 text-sm leading-relaxed mb-6 font-light line-clamp-3">
 						{service.description}
 					</p>
+				</div>
+
+				{/* Action Indicator */}
+				<div className="flex items-center text-sm font-bold text-secondary gap-2 mt-auto group-hover:translate-x-1 transition-transform">
+					Explore <ArrowRight className="w-4 h-4" />
 				</div>
 			</motion.div>
 		</Link>
