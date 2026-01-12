@@ -59,7 +59,7 @@ const Testimonials = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: idx * 0.1 }}
                             viewport={{ once: true }}
-                            className="bg-white/10 backdrop-blur-md border border-white/10 rounded-2xl p-8 flex flex-col relative"
+                            className="bg-white/10 backdrop-blur-md border border-white/10 rounded-[2rem] p-8 flex flex-col relative"
                         >
                             <Quote className="absolute top-6 right-6 text-secondary/20 h-10 w-10 rotate-180" />
 

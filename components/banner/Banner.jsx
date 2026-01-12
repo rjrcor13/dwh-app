@@ -1,6 +1,6 @@
 'use client';
 
-import dwh from '@/public/assets/events.jpg';
+import dwh from '@/public/assets/dwh.jpg';
 import { ChevronDown, Phone, UserRoundSearch, Clock, Users, Award } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -16,7 +16,7 @@ const Banner = () => {
 	];
 
 	return (
-		<section className="relative min-h-[90vh] lg:min-h-screen flex flex-col justify-center items-center overflow-hidden">
+		<section className="relative min-h-[87vh] flex flex-col justify-center items-center overflow-hidden">
 
 			{/* Background Image */}
 			<div className="absolute inset-0">
@@ -27,35 +27,35 @@ const Banner = () => {
 					fill
 					priority
 				/>
-				{/* Modern Gradient Overlay: Uses Brand Primary Color */}
-				<div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/80 to-primary/30" />
-				<div className="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent opacity-90" />
+				{/* Dark Premium Gradient Overlay - Matches Footer/Contact */}
+				<div className="absolute inset-0 bg-gradient-to-br from-primary/95 via-[#161270]/90 to-[#0f0c50]/90 mix-blend-multiply" />
+				<div className="absolute inset-0 bg-gradient-to-t from-[#0f0c50] via-transparent to-transparent opacity-80" />
 			</div>
 
 			{/* Main Content */}
-			<div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-32">
-				<div className="grid lg:grid-cols-2 gap-12 items-center">
+			<div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 md:pt-20 pb-20 md:pb-32">
+				<div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
 
 					{/* Text Content */}
 					<motion.div
 						initial={{ opacity: 0, y: 30 }}
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.8, ease: "circOut" }}
-						className="space-y-8"
+						className="space-y-6 md:space-y-8"
 					>
-						<div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary/10 border border-secondary/20 text-secondary text-sm font-semibold tracking-wide uppercase">
+						<div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-blue-100 text-xs md:text-sm font-semibold tracking-wide uppercase backdrop-blur-md">
 							<span className="w-2 h-2 rounded-full bg-secondary animate-pulse" />
 							Premier Healthcare
 						</div>
 
-						<h1 className="text-5xl sm:text-6xl lg:text-8xl font-bold font-heading text-white leading-[1.1] tracking-tight">
+						<h1 className="text-4xl sm:text-6xl lg:text-8xl font-bold font-heading text-white leading-[1.1] tracking-tight">
 							Your health, <br />
-							<span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-amber-200">
+							<span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-amber-100">
 								our calling.
 							</span>
 						</h1>
 
-						<p className="text-xl lg:text-2xl text-slate-100 leading-relaxed max-w-xl font-light opacity-90">
+						<p className="text-lg lg:text-2xl text-blue-100/90 leading-relaxed max-w-xl font-light">
 							Experience world-class medical care with a compassionate touch.
 							Serving the community with innovation and integrity since 1965.
 						</p>
@@ -64,7 +64,7 @@ const Banner = () => {
 							<Button
 								asChild
 								size="lg"
-								className="h-14 px-8 text-lg font-bold bg-secondary text-primary hover:bg-white transition-all shadow-xl shadow-secondary/20 hover:translate-y-[-2px]"
+								className="h-14 px-8 text-lg font-bold bg-secondary text-primary hover:bg-white hover:text-primary transition-all shadow-xl shadow-secondary/20 hover:shadow-white/20 hover:translate-y-[-2px]"
 							>
 								<Link href="/find-care" className="flex items-center">
 									<UserRoundSearch size={20} className="mr-2" />
@@ -75,7 +75,7 @@ const Banner = () => {
 								asChild
 								variant="outline"
 								size="lg"
-								className="h-14 px-8 text-lg font-bold border-2 border-white/20 bg-transparent text-white hover:bg-white hover:text-primary transition-all backdrop-blur-sm"
+								className="h-14 px-8 text-lg font-bold border border-white/20 bg-white/5 text-white hover:bg-white hover:text-primary transition-all backdrop-blur-md"
 							>
 								<Link href="/emergency">Emergency Services</Link>
 							</Button>
@@ -83,7 +83,7 @@ const Banner = () => {
 					</motion.div>
 
 					{/* Mobile Emergency Card (Visible only on small screens) */}
-					<div className="lg:hidden block mt-8">
+					{/* <div className="lg:hidden block mt-8">
 						<div className="bg-red-600/90 backdrop-blur text-white p-6 rounded-2xl shadow-2xl border border-red-500/50 flex items-center justify-between">
 							<div>
 								<h3 className="font-bold text-xl mb-1">Emergency?</h3>
@@ -93,7 +93,7 @@ const Banner = () => {
 								<Link href="tel:911">Call 911</Link>
 							</Button>
 						</div>
-					</div>
+					</div> */}
 				</div>
 			</div>
 
@@ -102,18 +102,18 @@ const Banner = () => {
 				initial={{ opacity: 0, y: 50 }}
 				animate={{ opacity: 1, y: 0 }}
 				transition={{ duration: 0.8, delay: 0.4 }}
-				className="absolute bottom-0 left-0 right-0 z-20 border-t border-white/10 bg-primary/80 backdrop-blur-xl"
+				className="absolute bottom-0 left-0 right-0 z-20 border-t border-white/10 bg-white/5 backdrop-blur-xl"
 			>
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-					<div className="grid grid-cols-3 divide-x divide-white/10">
+					<div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/10">
 						{stats.map((stat, index) => (
-							<div key={index} className="py-8 md:py-10 px-4 flex flex-col md:flex-row items-center justify-center gap-4 text-center md:text-left group cursor-default hover:bg-white/5 transition-colors">
-								<div className="p-3 rounded-full bg-white/5 text-secondary group-hover:scale-110 transition-transform duration-300">
-									<stat.icon className="h-6 w-6 md:h-8 md:w-8" />
+							<div key={index} className="py-6 md:py-10 px-4 flex flex-row items-center justify-start md:justify-center gap-4 text-left group cursor-default hover:bg-white/5 transition-colors">
+								<div className="p-3 rounded-full bg-white/5 text-secondary group-hover:scale-110 transition-transform duration-300 border border-white/10 shrink-0">
+									<stat.icon className="h-5 w-5 md:h-8 md:w-8" aria-hidden="true" />
 								</div>
 								<div>
 									<div className="text-2xl md:text-4xl font-bold font-heading text-white">{stat.value}</div>
-									<div className="text-xs md:text-sm font-medium text-slate-400 uppercase tracking-widest">{stat.label}</div>
+									<div className="text-xs md:text-sm font-medium text-blue-200 uppercase tracking-widest">{stat.label}</div>
 								</div>
 							</div>
 						))}

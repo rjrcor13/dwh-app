@@ -24,8 +24,20 @@ const playfair = Playfair_Display({
 });
 
 export const metadata = {
-	title: 'Divine Word Hospital',
-	description: 'Divine Word Hospital - Serving, Caring & Healing',
+	title: {
+		template: '%s | Divine Word Hospital',
+		default: 'Divine Word Hospital - Premier Healthcare in Tacloban',
+	},
+	description: 'Divine Word Hospital provides world-class medical care with a compassionate Christian touch in Tacloban City. Offering 24/7 emergency services, specialized centers, and holistic healing since 1965.',
+	keywords: ['hospital tacloban', 'healthcare leyte', 'emergency room tacloban', 'divine word hospital', 'medical specialists', 'compassionate care'],
+	openGraph: {
+		title: 'Divine Word Hospital - Premier Healthcare in Tacloban',
+		description: 'World-class medical care with a compassionate touch. Serving Region VIII since 1965.',
+		url: 'https://dwh.ph',
+		siteName: 'Divine Word Hospital',
+		locale: 'en_US',
+		type: 'website',
+	},
 };
 
 export default function RootLayout({ children }) {
@@ -33,6 +45,7 @@ export default function RootLayout({ children }) {
 		<html lang="en" suppressHydrationWarning>
 			<body
 				className={`${lato.variable} ${poppins.variable} ${playfair.variable} antialiased font-sans`}
+				suppressHydrationWarning={true}
 			>
 				{children}
 			</body>

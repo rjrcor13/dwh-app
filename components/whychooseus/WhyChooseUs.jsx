@@ -3,104 +3,122 @@
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
 import {
+	Activity,
+	ArrowUpRight,
 	GraduationCap,
 	Heart,
 	Microscope,
-	ShieldCheck,
-	Sparkles
+	ShieldCheck
 } from 'lucide-react';
 
 const WhyChooseUs = () => {
-	// Bento-style features with span hints
+	// Linear features for a clean, professional grid
 	const features = [
 		{
 			icon: Microscope,
 			title: 'Advanced Innovation',
-			description: 'First in Region VIII with Hemodialysis, MRI, and Digital Mammography.',
-			span: 'md:col-span-2'
+			description: 'Region VIII’s first MRI & Digital Mammography.',
 		},
 		{
 			icon: ShieldCheck,
-			title: 'Certified Quality',
-			description: 'Level 3 Tertiary Institution adhering to global safety protocols.',
-			span: 'md:col-span-1'
+			title: 'Certified Safety',
+			description: 'Level 3 Tertiary care adhering to global protocols.',
 		},
 		{
 			icon: Heart,
 			title: 'Compassionate Care',
-			description: 'We treat every patient as sacred, upholding inclusive and dignified service.',
-			span: 'md:col-span-1'
+			description: 'Inclusive service treating every patient as sacred.',
 		},
 		{
 			icon: GraduationCap,
-			title: 'Accredited Training',
-			description: 'Home to top-tier Residency Training Programs in Medicine & Pediatrics.',
-			span: 'md:col-span-2'
+			title: 'Top Tier Training',
+			description: 'Accredited Residency in Medicine & Pediatrics.',
 		},
 	];
 
 	return (
-		<section className="py-24 bg-slate-50 relative overflow-hidden">
-			{/* Subtle Background Blobs for Depth */}
-			<div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl pointer-events-none">
-				<div className="absolute  top-[20%] right-[10%] w-[600px] h-[600px] bg-primary/3 rounded-full blur-3xl" />
-				<div className="absolute bottom-[10%] left-[10%] w-[500px] h-[500px] bg-secondary/5 rounded-full blur-3xl" />
+		<section className="py-24 bg-primary relative overflow-hidden">
+			{/* Dynamic Background Gradient */}
+			<div className="absolute inset-0 bg-gradient-to-br from-primary via-[#161270] to-[#0f0c50] pointer-events-none" />
+
+			{/* Luxury Atmosphere Elements */}
+			<div className="absolute inset-0 pointer-events-none">
+				<div className="absolute top-0 right-0 w-[800px] h-[800px] bg-secondary/10 rounded-full blur-[120px] mix-blend-screen opacity-50" />
+				<div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-400/10 rounded-full blur-[100px] mix-blend-screen opacity-30" />
 			</div>
 
 			<div className="relative z-10 max-w-7xl mx-auto px-6">
-				{/* Section Header */}
-				<div className="text-center mb-16 max-w-3xl mx-auto">
-					<h2 className="text-secondary font-bold tracking-widest uppercase text-sm mb-3">
-						Our Distinction
-					</h2>
-					<h2 className="text-4xl lg:text-5xl font-bold font-heading text-slate-900 mb-6">
-						Why Choose Divine Word?
-					</h2>
-					<p className="text-slate-500 text-xl leading-relaxed">
-						Leading the region with advanced solutions, certified expertise, and mission-driven service.
-					</p>
+				<div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
+					<div className="max-w-2xl">
+						<motion.h2
+							initial={{ opacity: 0, y: 20 }}
+							whileInView={{ opacity: 1, y: 0 }}
+							className="text-secondary font-bold tracking-widest uppercase text-sm mb-4"
+						>
+							Our Distinction
+						</motion.h2>
+						<motion.h2
+							initial={{ opacity: 0, y: 20 }}
+							whileInView={{ opacity: 1, y: 0 }}
+							transition={{ delay: 0.1 }}
+							className="text-4xl lg:text-5xl font-bold font-heading text-white leading-tight"
+						>
+							World-Class Care, <br />
+							<span className="text-blue-200">Right Here in Leyte.</span>
+						</motion.h2>
+					</div>
+
+					<motion.p
+						initial={{ opacity: 0, x: 20 }}
+						whileInView={{ opacity: 1, x: 0 }}
+						transition={{ delay: 0.2 }}
+						className="text-blue-100 text-lg max-w-sm border-l border-white/20 pl-6"
+					>
+						Setting the standard for healthcare with advanced technology and unwavering compassion.
+					</motion.p>
 				</div>
 
-				<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
 					{features.map((feature, idx) => (
 						<motion.div
 							key={idx}
-							initial={{ opacity: 0, y: 20 }}
+							initial={{ opacity: 0, y: 30 }}
 							whileInView={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.5, delay: idx * 0.1 }}
 							viewport={{ once: true }}
-							className={cn(
-								"group relative overflow-hidden rounded-[2rem] bg-white p-10 h-full flex flex-col items-start",
-								"border border-slate-100 transition-all duration-300 ease-out",
-								"hover:border-primary/20 hover:shadow-2xl hover:shadow-primary/5 hover:-translate-y-2",
-								"cursor-pointer",
-								feature.span
-							)}
+							className="group relative h-full"
 						>
-							{/* Hover Gradient Overlay */}
-							<div className="absolute inset-0 bg-gradient-to-br from-transparent to-primary/0 group-hover:to-primary/5 transition-colors duration-500 pointer-events-none" />
-
-							{/* Icon */}
+							{/* Glass Card */}
 							<div className={cn(
-								"w-16 h-16 rounded-2xl flex items-center justify-center mb-6",
-								"bg-primary/5 text-primary transition-transform duration-500 group-hover:scale-110 relative z-10"
+								"h-full relative overflow-hidden rounded-[2rem] p-8",
+								"bg-white/5 backdrop-blur-sm border border-white/10",
+								"transition-all duration-500 ease-out",
+								"hover:bg-white/10 hover:border-white/20 hover:shadow-2xl hover:shadow-black/20 hover:-translate-y-2"
 							)}>
-								<feature.icon className="h-8 w-8" strokeWidth={1.5} />
-							</div>
+								{/* Hover Glow */}
+								<div className="absolute top-0 right-0 w-32 h-32 bg-secondary/20 rounded-full blur-[50px] -translate-y-1/2 translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-							{/* Content */}
-							<div className="relative z-10">
-								<h3 className="text-2xl font-bold font-heading text-slate-900 mb-4 group-hover:text-primary transition-colors">
-									{feature.title}
-								</h3>
-								<p className="text-slate-500 text-lg leading-relaxed font-medium">
-									{feature.description}
-								</p>
-							</div>
+								{/* Icon Header */}
+								<div className="flex justify-between items-start mb-8">
+									<div className={cn(
+										"w-14 h-14 rounded-2xl flex items-center justify-center",
+										"bg-white/5 border border-white/10 text-secondary",
+										"group-hover:scale-110 group-hover:bg-secondary group-hover:text-white transition-all duration-500"
+									)}>
+										<feature.icon className="h-7 w-7" strokeWidth={1.5} />
+									</div>
+									<ArrowUpRight className="text-white/30 w-6 h-6 group-hover:text-white group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" />
+								</div>
 
-							{/* Decorative Sparkle (Subtle) */}
-							<div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-all duration-500 transform rotate-45 group-hover:rotate-0">
-								<Sparkles className="w-6 h-6 text-secondary/40" />
+								{/* Content */}
+								<div className="relative z-10">
+									<h3 className="text-xl font-bold font-heading text-white mb-3 group-hover:text-secondary transition-colors duration-300">
+										{feature.title}
+									</h3>
+									<p className="text-blue-100/80 text-base leading-relaxed group-hover:text-white transition-colors duration-300">
+										{feature.description}
+									</p>
+								</div>
 							</div>
 						</motion.div>
 					))}

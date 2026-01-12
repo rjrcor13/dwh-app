@@ -18,8 +18,11 @@ const emailInfo = contactInfo.find((info) => info.title === 'Email');
 
 const TopWidget = () => {
 	return (
-		<div className="bg-primary text-blue-50 border-b border-white/10 relative z-50">
-			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-10 flex justify-between items-center text-xs font-medium tracking-wide">
+		<div className="bg-primary text-blue-50 border-b border-white/10 relative z-50 overflow-hidden">
+			{/* Dynamic Background Gradient */}
+			<div className="absolute inset-0 bg-gradient-to-br from-primary via-[#161270] to-[#0f0c50] pointer-events-none" />
+
+			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-10 flex justify-between items-center text-xs font-medium tracking-wide relative z-10">
 
 				{/* Left Side: Socials */}
 				<div className="flex items-center gap-6">

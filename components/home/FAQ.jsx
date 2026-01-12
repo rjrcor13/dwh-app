@@ -153,34 +153,34 @@ const FAQSection = () => {
 	};
 
 	return (
-		<section className="py-24 bg-slate-50 relative overflow-hidden" id="faq">
+		<section className="py-16 md:py-24 bg-primary relative overflow-hidden" id="faq">
 			{/* Background Atmosphere */}
 			<div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl pointer-events-none">
-				<div className="absolute top-[10%] left-[10%] w-[600px] h-[600px] bg-primary/2 rounded-full blur-[100px]" />
-				<div className="absolute bottom-[20%] right-[10%] w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[100px]" />
+				<div className="absolute top-[10%] left-[10%] w-[600px] h-[600px] bg-secondary/5 rounded-full blur-[100px]" />
+				<div className="absolute bottom-[20%] right-[10%] w-[500px] h-[500px] bg-blue-400/10 rounded-full blur-[100px]" />
 			</div>
 
 			<div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
 				{/* Modern Header */}
 				<div className="text-center mb-16 max-w-3xl mx-auto">
-					<div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-slate-200 shadow-sm mb-6">
+					<div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 shadow-sm mb-6 backdrop-blur-md">
 						<Sparkles className="w-4 h-4 text-secondary fill-secondary" />
-						<span className="text-xs font-bold uppercase tracking-widest text-slate-600">Smart Assistance</span>
+						<span className="text-xs font-bold uppercase tracking-widest text-blue-100">Smart Assistance</span>
 					</div>
-					<h2 className="text-4xl md:text-5xl font-bold font-heading text-slate-900 mb-6 tracking-tight">
+					<h2 className="text-4xl md:text-5xl font-bold font-heading text-white mb-6 tracking-tight">
 						How can we help?
 					</h2>
-					<p className="text-slate-500 text-xl leading-relaxed">
+					<p className="text-blue-100/80 text-xl leading-relaxed">
 						Ask us anything. Our smart assistant can find doctors, services, policies, and more.
 					</p>
 				</div>
 
 				{/* AI Search Bar */}
 				<div className="relative max-w-3xl mx-auto mb-20 transform transition-all duration-300 hover:-translate-y-1">
-					<div className="absolute left-6 top-1/2 -translate-y-1/2 text-primary">
+					<div className="absolute left-6 top-1/2 -translate-y-1/2 text-secondary z-10 pointer-events-none">
 						{isThinking ? (
-							<div className="w-6 h-6 border-2 border-primary/30 border-t-primary rounded-full animate-spin" />
+							<div className="w-6 h-6 border-2 border-secondary/30 border-t-secondary rounded-full animate-spin" />
 						) : (
 							<Search className="w-6 h-6" />
 						)}
@@ -190,12 +190,12 @@ const FAQSection = () => {
 						placeholder="Ask about cardiology, visiting hours, or check-ups..."
 						value={searchQuery}
 						onChange={handleSearch}
-						className="w-full pl-16 pr-14 py-6 rounded-[2rem] border border-slate-200 bg-white shadow-2xl shadow-slate-200/50 focus:ring-4 focus:ring-primary/10 focus:border-primary/50 outline-none transition-all placeholder:text-slate-400 text-slate-700 text-xl font-medium"
+						className="w-full pl-16 pr-14 py-6 rounded-[2rem] border border-white/20 bg-white/10 backdrop-blur-md shadow-2xl shadow-black/20 focus:bg-white/15 focus:ring-4 focus:ring-white/10 focus:border-white/30 outline-none transition-all placeholder:text-blue-200/50 text-white text-xl font-medium"
 					/>
 					{searchQuery && (
 						<button
 							onClick={() => setSearchQuery('')}
-							className="absolute right-6 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 bg-slate-100 rounded-full p-1"
+							className="absolute right-6 top-1/2 -translate-y-1/2 text-blue-200 hover:text-white bg-white/10 hover:bg-white/20 rounded-full p-1 transition-colors"
 						>
 							<X className="w-4 h-4" />
 						</button>
@@ -207,7 +207,7 @@ const FAQSection = () => {
 					{searchQuery.length > 1 ? (
 						// --- SEARCH RESULTS ---
 						<div className="max-w-4xl mx-auto space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-500">
-							<div className="flex items-center gap-2 mb-4 text-slate-400 text-sm font-medium px-4">
+							<div className="flex items-center gap-2 mb-4 text-blue-200 text-sm font-medium px-4">
 								<Sparkles className="w-4 h-4" />
 								{searchResults.length} results found
 							</div>
@@ -217,10 +217,10 @@ const FAQSection = () => {
 									<SearchResultCard key={index} item={item} />
 								))
 							) : (
-								<div className="text-center py-20 bg-white rounded-[2.5rem] border border-slate-200 border-dashed">
-									<HelpCircle className="mx-auto h-16 w-16 text-slate-300 mb-4" />
-									<p className="text-slate-500 text-xl font-medium">No matches found.</p>
-									<p className="text-slate-400">Try asking differently, e.g., "Heart doctor" or "X-ray"</p>
+								<div className="text-center py-20 bg-white/5 rounded-[2.5rem] border border-white/10 border-dashed backdrop-blur-sm">
+									<HelpCircle className="mx-auto h-16 w-16 text-white/20 mb-4" />
+									<p className="text-blue-100 text-xl font-medium">No matches found.</p>
+									<p className="text-blue-300">Try asking differently, e.g., "Heart doctor" or "X-ray"</p>
 								</div>
 							)}
 						</div>
@@ -230,15 +230,15 @@ const FAQSection = () => {
 							{staticFaqs.map((faq, index) => (
 								<div
 									key={index}
-									className="group bg-white p-8 rounded-[2.5rem] border border-slate-100 hover:border-primary/20 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 flex flex-col items-start h-full"
+									className="group bg-white/5 backdrop-blur-sm p-8 rounded-[2.5rem] border border-white/10 hover:bg-white/10 hover:border-white/20 hover:shadow-xl hover:shadow-black/20 transition-all duration-300 flex flex-col items-start h-full"
 								>
-									<div className="w-10 h-10 rounded-2xl bg-slate-50 flex items-center justify-center text-slate-400 mb-6 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+									<div className="w-10 h-10 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-secondary mb-6 group-hover:bg-secondary group-hover:text-white transition-all duration-300">
 										<Info className="w-5 h-5" />
 									</div>
-									<h3 className="text-lg font-bold font-heading text-slate-800 mb-3 group-hover:text-primary transition-colors">
+									<h3 className="text-lg font-bold font-heading text-white mb-3 group-hover:text-secondary transition-colors">
 										{faq.question}
 									</h3>
-									<p className="text-slate-500 text-base leading-relaxed">
+									<p className="text-blue-100/70 text-base leading-relaxed">
 										{faq.answer}
 									</p>
 								</div>
@@ -256,62 +256,62 @@ const SearchResultCard = ({ item }) => {
 	switch (item.type) {
 		case 'doctor':
 			return (
-				<div className="group flex items-center gap-6 p-6 bg-white rounded-[2rem] border border-slate-100 hover:border-primary/30 hover:shadow-xl transition-all cursor-pointer">
-					<div className="w-16 h-16 rounded-full bg-slate-100 overflow-hidden shrink-0 border-2 border-white shadow-sm">
+				<div className="group flex items-center gap-6 p-6 bg-white/5 backdrop-blur-md rounded-[2rem] border border-white/10 hover:bg-white/10 hover:border-white/20 hover:shadow-xl transition-all cursor-pointer">
+					<div className="w-16 h-16 rounded-full bg-white/10 overflow-hidden shrink-0 border-2 border-white/20 shadow-sm">
 						{/* Fallback avatar if no image */}
-						<div className="w-full h-full bg-slate-200 flex items-center justify-center text-slate-400">
+						<div className="w-full h-full flex items-center justify-center text-white/50">
 							<User className="w-8 h-8" />
 						</div>
 					</div>
 					<div className="flex-grow">
 						<div className="flex items-center gap-2 mb-1">
-							<span className="text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded-md">Doctor</span>
+							<span className="text-xs font-bold uppercase tracking-wider text-secondary bg-secondary/10 px-2 py-1 rounded-md">Doctor</span>
 						</div>
-						<h4 className="text-xl font-bold font-heading text-slate-900">{item.title}</h4>
-						<p className="text-slate-500">{item.subtitle}</p>
+						<h4 className="text-xl font-bold font-heading text-white">{item.title}</h4>
+						<p className="text-blue-200">{item.subtitle}</p>
 					</div>
-					<div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 group-hover:bg-primary group-hover:text-white transition-colors">
+					<div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white/50 group-hover:bg-secondary group-hover:text-white transition-colors">
 						<ArrowRight className="w-5 h-5" />
 					</div>
 				</div>
 			);
 		case 'service':
 			return (
-				<div className="group flex items-center gap-6 p-6 bg-white rounded-[2rem] border border-slate-100 hover:border-primary/30 hover:shadow-xl transition-all cursor-pointer">
-					<div className="w-16 h-16 rounded-2xl bg-blue-50 flex items-center justify-center text-primary shrink-0 group-hover:scale-110 transition-transform">
+				<div className="group flex items-center gap-6 p-6 bg-white/5 backdrop-blur-md rounded-[2rem] border border-white/10 hover:bg-white/10 hover:border-white/20 hover:shadow-xl transition-all cursor-pointer">
+					<div className="w-16 h-16 rounded-2xl bg-white/10 flex items-center justify-center text-secondary shrink-0 group-hover:scale-110 transition-transform">
 						<Stethoscope className="w-8 h-8" />
 					</div>
 					<div className="flex-grow">
 						<div className="flex items-center gap-2 mb-1">
-							<span className="text-xs font-bold uppercase tracking-wider text-secondary bg-secondary/10 px-2 py-1 rounded-md">Service</span>
+							<span className="text-xs font-bold uppercase tracking-wider text-blue-200 bg-white/10 px-2 py-1 rounded-md">Service</span>
 						</div>
-						<h4 className="text-xl font-bold font-heading text-slate-900">{item.title}</h4>
-						<p className="text-slate-500 line-clamp-1">{item.content}</p>
+						<h4 className="text-xl font-bold font-heading text-white">{item.title}</h4>
+						<p className="text-blue-200/70 line-clamp-1">{item.content}</p>
 					</div>
-					<div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 group-hover:bg-primary group-hover:text-white transition-colors">
+					<div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white/50 group-hover:bg-secondary group-hover:text-white transition-colors">
 						<ChevronRight className="w-5 h-5" />
 					</div>
 				</div>
 			);
 		case 'faq':
 			return (
-				<div className="group p-6 bg-white rounded-[2rem] border border-slate-100 hover:border-primary/30 hover:shadow-xl transition-all cursor-default">
+				<div className="group p-6 bg-white/5 backdrop-blur-md rounded-[2rem] border border-white/10 hover:bg-white/10 hover:border-white/20 hover:shadow-xl transition-all cursor-default">
 					<div className="flex items-start gap-4">
-						<div className="mt-1 w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 shrink-0">
+						<div className="mt-1 w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-secondary shrink-0">
 							<HelpCircle className="w-4 h-4" />
 						</div>
 						<div>
-							<h4 className="text-lg font-bold font-heading text-slate-800 mb-2">{item.title}</h4>
-							<p className="text-slate-600 leading-relaxed">{item.content}</p>
+							<h4 className="text-lg font-bold font-heading text-white mb-2">{item.title}</h4>
+							<p className="text-blue-100/80 leading-relaxed">{item.content}</p>
 						</div>
 					</div>
 				</div>
 			);
 		default:
 			return (
-				<div className="group p-6 bg-white rounded-[2rem] border border-slate-100 hover:border-primary/30 hover:shadow-xl transition-all">
-					<h4 className="text-lg font-bold text-slate-900">{item.title}</h4>
-					<p className="text-slate-500">{item.content}</p>
+				<div className="group p-6 bg-white/5 rounded-[2rem] border border-white/10 hover:bg-white/10 hover:shadow-xl transition-all">
+					<h4 className="text-lg font-bold text-white">{item.title}</h4>
+					<p className="text-blue-100">{item.content}</p>
 				</div>
 			);
 	}

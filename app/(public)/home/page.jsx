@@ -43,21 +43,15 @@ const HomePage = () => {
 			</div>
 
 			<main>
+				<WhyChooseUs />
+
+				<OurServicesSection />
 
 				<FeaturedDoctors />
 
-				<Services
-					label="What we Offer"
-					title="Our Services"
-					description="We offer a wide range of medical services to provide you and your family with the best possible care."
-					servicesData={servicesData}
-				/>
+				<AboutUs className="relative z-10 max-w-7xl mx-auto my-12 lg:mt-12 mt-0 min-h-[500px]" />
 
 				<Testimonials />
-
-				<WhyChooseUs />
-
-				<AboutUs className="relative z-10 max-w-7xl mx-auto my-12 lg:mt-12 mt-0 min-h-[500px]" />
 
 				<HMOLogos />
 

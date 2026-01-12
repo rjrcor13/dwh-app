@@ -36,6 +36,9 @@ const Footer = () => {
 
 	return (
 		<footer className="bg-primary mt-0 text-blue-100 relative overflow-hidden">
+			{/* Dynamic Background Gradient */}
+			<div className="absolute inset-0 bg-gradient-to-br from-primary via-[#161270] to-[#0f0c50] pointer-events-none" />
+
 			{/* Background Atmosphere */}
 			<div className="absolute inset-0 pointer-events-none">
 				<div className="absolute top-[-50%] left-[-10%] w-[600px] h-[600px] bg-white/5 rounded-full blur-[120px] opacity-20" />

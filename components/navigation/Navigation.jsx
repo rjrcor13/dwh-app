@@ -161,19 +161,19 @@ export default function NavigationMenuDemo({ menuItems, myClass }) {
 						{item.links ? (
 							<>
 								<div
-									className={`group inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-semibold font-heading transition-all duration-300 cursor-pointer ${openMenu === item.label
-										? 'text-primary bg-slate-100/60'
-										: 'text-slate-600 hover:text-primary hover:bg-slate-50'
+									className={`group inline-flex h-9 w-max items-center justify-center rounded-full px-4 py-2 text-sm font-semibold font-heading transition-all duration-300 cursor-pointer ${openMenu === item.label
+										? 'text-white bg-white/20'
+										: 'text-blue-100 hover:text-white hover:bg-white/10'
 										}`}
 								>
 									{item.label}
 									<motion.div
 										variants={caretVariants}
 										animate={openMenu === item.label ? 'hover' : 'rest'}
-										className={`ml-1.5 w-4 h-4 transition-colors ${openMenu === item.label ? 'text-primary' : 'text-slate-400 group-hover:text-primary'
+										className={`ml-1.5 w-4 h-4 transition-colors ${openMenu === item.label ? 'text-white' : 'text-blue-200 group-hover:text-white'
 											}`}
 									>
-										<ChevronDown className="w-full h-full opacity-60 group-hover:opacity-100" strokeWidth={2} />
+										<ChevronDown className="w-full h-full opacity-80 group-hover:opacity-100" strokeWidth={2} />
 									</motion.div>
 								</div>
 								<AnimatePresence>
@@ -185,15 +185,15 @@ export default function NavigationMenuDemo({ menuItems, myClass }) {
 											transition={{ duration: 0.2, ease: "circOut" }}
 											className="absolute left-0 top-full pt-3 z-50"
 										>
-											<div className="w-[340px] rounded-xl border border-slate-200/60 bg-white/95 backdrop-blur-3xl p-3 shadow-xl ring-1 ring-slate-900/5">
-												<ul className="grid gap-1">
+											<div className="w-[340px] rounded-[1.5rem] border border-white/10 bg-[#0f0c50]/95 backdrop-blur-2xl p-4 shadow-2xl ring-1 ring-black/20">
+												<ul className="grid gap-2">
 													{item.links.map((link) => (
 														<ListItem
 															key={link.title}
 															href={link.href}
 															title={link.title}
 														>
-															<span className="text-xs text-slate-500 font-medium tracking-wide">{link.description}</span>
+															<span className="text-xs text-blue-200/70 font-medium tracking-wide">{link.description}</span>
 														</ListItem>
 													))}
 												</ul>
@@ -204,7 +204,7 @@ export default function NavigationMenuDemo({ menuItems, myClass }) {
 							</>
 						) : (
 							<Link href={item.featured?.href || '#'} passHref>
-								<span className="inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-semibold font-heading text-slate-600 transition-all duration-300 hover:text-primary hover:bg-slate-50">
+								<span className="inline-flex h-9 w-max items-center justify-center rounded-full px-4 py-2 text-sm font-semibold font-heading text-blue-100 transition-all duration-300 hover:text-white hover:bg-white/10">
 									{item.label}
 								</span>
 							</Link>
@@ -220,9 +220,9 @@ function ListItem({ title, children, href, ...props }) {
 	return (
 		<li {...props}>
 			<Link href={href} passHref>
-				<div className="group block select-none space-y-1 rounded-lg p-3 leading-none no-underline outline-none transition-colors hover:bg-slate-50 hover:text-primary">
-					<div className="text-sm font-bold leading-none text-slate-800 group-hover:text-primary transition-colors">{title}</div>
-					<p className="line-clamp-2 text-xs leading-snug text-slate-500 group-hover:text-slate-600">
+				<div className="group block select-none space-y-1 rounded-2xl p-3 leading-none no-underline outline-none transition-colors hover:bg-white/10 hover:shadow-lg hover:shadow-black/10 border border-transparent hover:border-white/5">
+					<div className="text-sm font-bold leading-none text-white group-hover:text-secondary transition-colors">{title}</div>
+					<p className="line-clamp-2 text-xs leading-snug text-blue-100/60 group-hover:text-blue-100/90">
 						{children}
 					</p>
 				</div>
