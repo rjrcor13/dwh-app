@@ -4,9 +4,9 @@ import { Button } from '@/components/ui/button'; // Keeping Shadcn Button for co
 
 import { doctorsData } from '@/app/data/dummyDoctors';
 import debounce from 'lodash.debounce';
+import { Stethoscope } from 'lucide-react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { Stethoscope } from 'lucide-react';
 import DoctorCard from './DoctorCard';
 import FilterDoctor from './FilterDoctor';
 
@@ -304,24 +304,34 @@ const FindADoctor = () => {
 	}, [searchParams, filterDoctors]);
 
 	return (
-		<div className="min-h-screen bg-slate-50/50 py-16 lg:py-24">
-			<div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+		<div className="bg-primary min-h-screen relative overflow-hidden font-sans">
+			{/* Dynamic Background Gradient */}
+			<div className="absolute inset-0 bg-gradient-to-br from-primary via-[#161270] to-[#0f0c50] pointer-events-none" />
+
+			{/* Animated Background Elements */}
+			<div className="absolute inset-0 pointer-events-none overflow-hidden">
+				<div className="absolute top-0 right-0 w-[800px] h-[800px] bg-secondary/10 rounded-full blur-[120px] mix-blend-screen opacity-20" />
+				<div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-500/10 rounded-full blur-[100px] mix-blend-screen opacity-10" />
+			</div>
+
+			<div className="relative z-10 container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-24">
 
 				{/* Section Header */}
 				<div className="text-center mb-16 space-y-4">
-					<h2 className="text-secondary font-bold tracking-widest uppercase text-sm">
-						Our Medical Experts
-					</h2>
-					<h1 className="text-4xl lg:text-5xl font-bold font-heading text-primary">
+					<div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-blue-200 text-xs font-bold tracking-widest uppercase backdrop-blur-md mb-2">
+						<Stethoscope className="w-4 h-4 text-secondary" />
+						<span>Our Medical Experts</span>
+					</div>
+					<h1 className="text-4xl lg:text-5xl font-bold font-heading text-white">
 						Find Your Specialist
 					</h1>
-					<p className="text-slate-600 max-w-2xl mx-auto text-lg">
+					<p className="text-blue-100/70 max-w-2xl mx-auto text-lg font-light leading-relaxed">
 						Meet our team of dedicated doctors and healthcare professionals committed to providing you with world-class care.
 					</p>
 				</div>
 
 				{/* Filter Section */}
-				<div className="bg-white rounded-3xl p-6 lg:p-8 shadow-xl shadow-slate-200/50 border border-slate-100 mb-12">
+				<div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[2rem] p-6 lg:p-8 shadow-2xl shadow-black/10 mb-12">
 					<FilterDoctor
 						searchQuery={searchQuery}
 						selectedSpecialties={selectedSpecialties}
@@ -341,7 +351,7 @@ const FindADoctor = () => {
 				</div>
 
 				{/* Doctors List */}
-				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8">
 					{filteredDoctors.map((doctor) => (
 						<DoctorCard key={doctor.id} doctor={doctor} />
 					))}
@@ -350,11 +360,11 @@ const FindADoctor = () => {
 				{/* Empty State */}
 				{filteredDoctors.length === 0 && (
 					<div className="text-center py-24">
-						<div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-slate-100 mb-4">
-							<Stethoscope className="w-8 h-8 text-slate-400" />
+						<div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-white/5 border border-white/10 mb-6 backdrop-blur-md">
+							<Stethoscope className="w-10 h-10 text-white/20" />
 						</div>
-						<h3 className="text-xl font-bold text-slate-900 mb-2">No doctors found</h3>
-						<p className="text-slate-500">
+						<h3 className="text-2xl font-bold text-white mb-2 font-heading">No doctors found</h3>
+						<p className="text-blue-200/50">
 							Try adjusting your filters or search terms.
 						</p>
 					</div>
@@ -363,11 +373,11 @@ const FindADoctor = () => {
 				{/* Pagination (Example - Adapt to your needs with Shadcn UI components) */}
 				{filteredDoctors.length > 9 && (
 					<div className="mt-16 flex justify-center space-x-2">
-						<Button variant="outline" className="rounded-xl">Previous</Button>
-						<span className="flex items-center px-4 text-sm font-semibold text-slate-600 bg-white rounded-xl border">
+						<Button variant="outline" className="rounded-xl bg-white/5 border-white/10 text-blue-100 hover:bg-white/10 hover:text-white border-transparent">Previous</Button>
+						<span className="flex items-center px-4 text-sm font-semibold text-white bg-white/5 rounded-xl border border-white/10">
 							1-9 of {doctorsData.length}
 						</span>
-						<Button variant="outline" className="rounded-xl">Next</Button>
+						<Button variant="outline" className="rounded-xl bg-white/5 border-white/10 text-blue-100 hover:bg-white/10 hover:text-white border-transparent">Next</Button>
 					</div>
 				)}
 			</div>
