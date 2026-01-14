@@ -7,7 +7,9 @@ import AboutUs from '@/components/home/AboutUs';
 import ConnectWithUsSection from '@/components/home/ConnectWithUs';
 import EventsSection from '@/components/home/Events';
 import FAQSection from '@/components/home/FAQ';
+import FeaturedDoctors from '@/components/home/FeaturedDoctors';
 import OurServicesSection from '@/components/home/Services';
+import Testimonials from '@/components/home/Testimonials';
 import Services from '@/components/services/Services';
 import Stats from '@/components/stats/Stats';
 import WhyChooseUs from '@/components/whychooseus/WhyChooseUs';
@@ -32,8 +34,6 @@ export const Blob = () => {
 		</svg>
 	);
 };
-import FeaturedDoctors from '@/components/home/FeaturedDoctors';
-import Testimonials from '@/components/home/Testimonials';
 
 const HomePage = () => {
 	return (
@@ -48,9 +48,11 @@ const HomePage = () => {
 				<OurServicesSection />
 
 				<FeaturedDoctors />
+				<div className="bg-white m-0 p-0">
+					<AboutUs className="relative z-10 max-w-7xl mx-auto mt-0 min-h-[500px] " />
 
-				<AboutUs className="relative z-10 max-w-7xl mx-auto my-12 lg:mt-12 mt-0 min-h-[500px]" />
-
+				</div>
+				
 				<Testimonials />
 
 				<HMOLogos />
