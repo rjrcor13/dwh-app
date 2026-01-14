@@ -87,7 +87,7 @@ export const menuItems = [
 				title: 'Hospital Celebrations',
 				description:
 					'Commemorate significant milestones and institutional events that foster community and hospital culture.',
-				href: '/events/MAKAPAWA',
+				href: '/events/hospital-celebrations',
 			},
 		],
 	},

@@ -2,7 +2,7 @@
 // It will be a Server Component responsible for fetching data and
 // passing it to the client component.
 
-import { eucharisticEvents } from '@/app/data/eucharistivEvents';
+import { eucharisticEvents } from '@/app/data/eucharisticEvents';
 import { notFound } from 'next/navigation';
 import EventClientPage from './EventClientPage'; // Import the new client component
 

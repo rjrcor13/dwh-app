@@ -1,5 +1,5 @@
 
-import { makapawaEvents } from '@/app/data/makapawaEvents';
+import { hospitalCelebrations } from '@/app/data/hospitalCelebrations';
 import { Button } from '@/components/ui/button';
 import {
     Card,
@@ -14,7 +14,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
-export default function MakapawaEventsPage() {
+export default function HospitalCelebrationsPage() {
 	const renderMediaItemThumbnail = (mediaItem, index, className) => {
 		if (mediaItem.type === 'image') {
 			return (
@@ -49,7 +49,7 @@ export default function MakapawaEventsPage() {
 							Events
 						</Link>
 						<span className="mx-2">/</span>
-						<span className="text-gray-900 font-medium">Makapawa Events</span>
+						<span className="text-gray-900 font-medium">Hospital Celebrations</span>
 					</nav>
 				</div>
 			</div>
@@ -57,16 +57,15 @@ export default function MakapawaEventsPage() {
 			{/* Hero Section */}
 			<section className="bg-white pb-12 pt-8 border-b">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-					<div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full mb-6 text-green-600">
-                        <span className="font-bold text-2xl">M</span>
+					<div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-6 text-blue-600">
+						<CalendarIcon className="w-8 h-8" />
 					</div>
 					<h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 tracking-tight">
-						Makapawa Events
+						Hospital Celebrations
 					</h1>
 					<p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-						Community-focused healthcare programs designed to serve and support
-						our local Makapawa community with accessible health services and
-						education.
+						Commemorate significant milestones, institutional events, and community
+                        gatherings that foster our unique hospital culture and family spirit.
 					</p>
 				</div>
 			</section>
@@ -75,7 +74,7 @@ export default function MakapawaEventsPage() {
 			<section className="py-16">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-						{makapawaEvents.map((event) => (
+						{hospitalCelebrations.map((event) => (
 							<Card
 								key={event.id}
 								className="group overflow-hidden border-0 shadow-md hover:shadow-xl transition-all duration-300 bg-white"
@@ -94,21 +93,21 @@ export default function MakapawaEventsPage() {
                                 )}
 								<CardHeader className="pb-3">
 									<div className="flex justify-between items-start">
-										<CardTitle className="text-xl font-bold text-gray-900 line-clamp-1 group-hover:text-green-600 transition-colors">
+										<CardTitle className="text-xl font-bold text-gray-900 line-clamp-1 group-hover:text-blue-600 transition-colors">
 											{event.title}
 										</CardTitle>
 									</div>
 									<div className="space-y-2 mt-2">
 										<CardDescription className="flex items-center text-sm font-medium text-gray-600">
-											<CalendarIcon className="w-4 h-4 mr-2 text-green-500" />
+											<CalendarIcon className="w-4 h-4 mr-2 text-blue-500" />
 											{event.date}
 										</CardDescription>
 										<CardDescription className="flex items-center text-sm font-medium text-gray-600">
-											<ClockIcon className="w-4 h-4 mr-2 text-green-500" />
+											<ClockIcon className="w-4 h-4 mr-2 text-blue-500" />
 											{event.time}
 										</CardDescription>
                                         <CardDescription className="flex items-center text-sm font-medium text-gray-600">
-											<MapPinIcon className="w-4 h-4 mr-2 text-green-500" />
+											<MapPinIcon className="w-4 h-4 mr-2 text-blue-500" />
 											{event.location}
 										</CardDescription>
 									</div>
@@ -119,8 +118,8 @@ export default function MakapawaEventsPage() {
 									</p>
 								</CardContent>
 								<CardFooter className="pt-0 pb-6">
-									<Link href={`/events/makapawa/${event.id}`} className="w-full">
-										<Button className="w-full bg-white text-green-600 border border-green-200 hover:bg-green-50 hover:text-green-700 hover:border-green-300 transition-all shadow-sm">
+									<Link href={`/events/hospital-celebrations/${event.id}`} className="w-full">
+										<Button className="w-full bg-white text-blue-600 border border-blue-200 hover:bg-blue-50 hover:text-blue-700 hover:border-blue-300 transition-all shadow-sm">
 											Read More
 										</Button>
 									</Link>
@@ -163,16 +162,16 @@ export default function MakapawaEventsPage() {
 								</div>
 							</Link>
 
-							<Link href="/events/hospital-celebrations" className="group block h-full">
-								<div className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md border border-gray-100 transition-all duration-300 h-full flex flex-col items-center text-center group-hover:border-blue-200 bg-gradient-to-br from-white to-blue-50/30">
-									<div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-										<CalendarIcon className="w-6 h-6 text-blue-600" />
+							<Link href="/events/makapawa" className="group block h-full">
+								<div className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md border border-gray-100 transition-all duration-300 h-full flex flex-col items-center text-center group-hover:border-green-200 bg-gradient-to-br from-white to-green-50/30">
+									<div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+										<UsersIcon className="w-6 h-6 text-green-600" />
 									</div>
-									<h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-700">
-										Hospital Celebrations
+									<h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-green-700">
+										Makapawa Events
 									</h3>
 									<p className="text-gray-600 text-sm">
-										Special occasions, anniversaries, and milestone celebrations.
+										Community-focused healthcare programs and outreach services.
 									</p>
 								</div>
 							</Link>

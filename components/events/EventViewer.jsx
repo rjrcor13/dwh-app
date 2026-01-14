@@ -75,35 +75,49 @@ export default function MediaViewer({ event }) {
 		isOpen: false,
 		media: [],
 		type: 'image',
+        startIndex: 0
 	});
 
-	const openImageViewer = (images, startIndex = 0) => {
-		setMediaViewer({ isOpen: true, media: images, type: 'image' });
+    // Unified media array handling
+    // If event has 'media' array (new format), filter it.
+    // If event has 'images' and 'videos' (old format), combine them.
+    const images = event.media 
+        ? event.media.filter(m => m.type === 'image').map(m => m.src)
+        : (event.images || []);
+    
+    const videos = event.media 
+        ? event.media.filter(m => m.type === 'video').map(m => ({ url: m.src, thumbnail: '' })) // Thumbnail missing in new format, use placeholder or just video
+        : (event.videos || []);
+
+	const openImageViewer = (params, startIndex = 0) => {
+		setMediaViewer({ isOpen: true, media: params, type: 'image', startIndex });
 	};
 
-	const openVideoViewer = (videos, startIndex = 0) => {
-		setMediaViewer({ isOpen: true, media: videos, type: 'video' });
+	const openVideoViewer = (params, startIndex = 0) => {
+		setMediaViewer({ isOpen: true, media: params, type: 'video', startIndex });
 	};
 
 	return (
 		<>
-			{event.images.length > 0 && (
+			{images.length > 0 && (
 				<div className="mb-8">
-					<h3 className="text-xl font-semibold mb-4">Event Photos</h3>
+					<h3 className="text-xl font-semibold mb-4 text-gray-900">Event Photos</h3>
 					<div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-						{event.images.map((image, index) => (
+						{images.map((image, index) => (
 							<div
 								key={index}
-								className="relative cursor-pointer group"
-								onClick={() => openImageViewer(event.images, index)}
+								className="relative cursor-pointer group overflow-hidden rounded-lg shadow-sm hover:shadow-md transition-all"
+								onClick={() => openImageViewer(images, index)}
 							>
-								<img
-									src={image}
-									alt={`Event photo ${index + 1}`}
-									className="w-full h-48 object-cover rounded-lg"
-								/>
-								<div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all rounded-lg flex items-center justify-center">
-									<span className="text-white opacity-0 group-hover:opacity-100 transition-opacity">
+								<div className="aspect-video relative">
+                                    <img
+                                        src={image}
+                                        alt={`Event photo ${index + 1}`}
+                                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                    />
+                                </div>
+								<div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all flex items-center justify-center">
+									<span className="text-white opacity-0 group-hover:opacity-100 transition-opacity font-medium bg-black/50 px-3 py-1 rounded-full text-sm backdrop-blur-sm">
 										View Full Size
 									</span>
 								</div>
@@ -113,23 +127,36 @@ export default function MediaViewer({ event }) {
 				</div>
 			)}
 
-			{event.videos.length > 0 && (
+			{videos.length > 0 && (
 				<div className="mb-8">
-					<h3 className="text-xl font-semibold mb-4">Event Videos</h3>
+					<h3 className="text-xl font-semibold mb-4 text-gray-900">Event Videos</h3>
 					<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-						{event.videos.map((video, index) => (
+						{videos.map((video, index) => (
 							<div
 								key={index}
-								className="relative cursor-pointer group"
-								onClick={() => openVideoViewer(event.videos, index)}
+								className="relative cursor-pointer group overflow-hidden rounded-lg shadow-sm hover:shadow-md transition-all"
+								onClick={() => openVideoViewer(videos, index)}
 							>
-								<img
-									src={video.thumbnail}
-									alt={`Video thumbnail ${index + 1}`}
-									className="w-full h-48 object-cover rounded-lg"
-								/>
-								<div className="absolute inset-0 bg-black bg-opacity-30 rounded-lg flex items-center justify-center">
-									<Play className="w-12 h-12 text-white" />
+								<div className="aspect-video relative bg-black">
+                                     {/* If we had thumbnails for videos in new format we'd use them here. 
+                                        For now, maybe just a placeholder or the video element itself muted/paused? 
+                                        Let's stick to standard thumbnail if available, else a geometric placeholder */}
+                                    {video.thumbnail ? (
+                                        <img
+                                            src={video.thumbnail}
+                                            alt={`Video thumbnail ${index + 1}`}
+                                            className="w-full h-full object-cover opacity-80 group-hover:opacity-60 transition-opacity"
+                                        />
+                                    ) : (
+                                        <div className="w-full h-full bg-gray-900 flex items-center justify-center">
+                                            <Play className="w-12 h-12 text-white opacity-50" />
+                                        </div>
+                                    )}
+                                </div>
+								<div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                                    <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+									    <Play className="w-8 h-8 text-white fill-current" />
+                                    </div>
 								</div>
 							</div>
 						))}
