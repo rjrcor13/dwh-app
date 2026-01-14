@@ -9,7 +9,7 @@ import { ArrowRight, CheckCircle2 } from 'lucide-react';
 
 const AboutUs = ({ className }) => {
 	return (
-		<section className={cn("py-24 bg-white relative overflow-hidden", className)}>
+		<section className={cn("py-24 relative overflow-hidden", className)}>
 
 
 			<div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
