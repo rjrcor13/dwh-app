@@ -10,34 +10,36 @@ import {
 	ShieldAlert,
 	Users,
 	CheckCircle2,
-	MapPin
+	MapPin,
+	ArrowRight
 } from 'lucide-react';
 import React from 'react';
+import Image from 'next/image';
 
 // --- Components ---
 
 const InfoCard = ({ icon: Icon, title, children, className }) => (
-	<div className={cn("bg-white/5 border border-white/10 rounded-3xl p-6 md:p-8", className)}>
-		<div className="flex items-center gap-3 mb-4">
-			<div className="p-2 rounded-lg bg-white/5 text-secondary">
-				<Icon className="w-5 h-5" />
+	<div className={cn("bg-white/60 backdrop-blur-xl border border-white/40 rounded-[2.5rem] p-8 md:p-10 shadow-sm hover:shadow-xl transition-shadow duration-500", className)}>
+		<div className="flex items-center gap-4 mb-8">
+			<div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-50 to-white flex items-center justify-center text-primary border border-blue-100 shrink-0 shadow-sm">
+				<Icon className="w-6 h-6" />
 			</div>
-			<h3 className="font-bold text-lg text-white">{title}</h3>
+			<h3 className="text-2xl font-bold font-heading text-slate-900 tracking-tight">{title}</h3>
 		</div>
-		<div className="text-blue-100/70 leading-relaxed text-sm md:text-base space-y-4">
+		<div className="space-y-6">
 			{children}
 		</div>
 	</div>
 );
 
 const GuidelineItem = ({ icon: Icon, title, text }) => (
-	<div className="flex gap-4 items-start p-4 hover:bg-white/5 rounded-2xl transition-colors">
-		<div className="mt-1 w-8 h-8 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-400 shrink-0">
-			<Icon className="w-4 h-4" />
+	<div className="flex gap-4 items-start p-5 hover:bg-white/50 rounded-2xl transition-colors group">
+		<div className="mt-1 w-10 h-10 rounded-full bg-blue-50/80 flex items-center justify-center text-primary shrink-0 border border-blue-100 group-hover:bg-primary group-hover:text-white transition-all duration-300">
+			<Icon className="w-5 h-5" />
 		</div>
 		<div>
-			<h4 className="font-bold text-white text-sm uppercase tracking-wide mb-1">{title}</h4>
-			<p className="text-blue-100/60 text-sm leading-relaxed">{text}</p>
+			<h4 className="font-bold text-slate-800 text-sm uppercase tracking-wide mb-1 group-hover:text-primary transition-colors">{title}</h4>
+			<p className="text-slate-500 text-sm leading-relaxed">{text}</p>
 		</div>
 	</div>
 );
@@ -47,98 +49,113 @@ const GuidelineItem = ({ icon: Icon, title, text }) => (
 const VisitorsAndWatchers = () => {
 
 	return (
-		<div className="bg-primary min-h-screen relative font-sans selection:bg-secondary/30 selection:text-white pb-32 pt-32">
+		<div className="bg-slate-50/50 min-h-screen relative font-sans selection:bg-primary/20 selection:text-primary pb-32 pt-32">
 
-			{/* Background Effects */}
-			<div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a] via-primary to-primary pointer-events-none" />
-			<div className="fixed top-20 left-0 w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[100px] pointer-events-none" />
+			{/* --- Ambient Background Mesh --- */}
+			<div className="fixed inset-0 pointer-events-none">
+				{/* Top Left: Soft Blue Blob */}
+				<div className="absolute top-[-10%] left-[-10%] w-[900px] h-[900px] bg-gradient-to-br from-blue-100/30 to-indigo-50/30 rounded-full blur-[120px]" />
+				{/* Bottom Right: Clean White/Gold Glow */}
+				<div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-gradient-to-tl from-amber-50/40 to-white/40 rounded-full blur-[100px]" />
+			</div>
 
 			<div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
 				<div className="grid lg:grid-cols-12 gap-12 lg:gap-24 items-start">
 
 					{/* LEFT COLUMN: Sticky Info (4 cols) */}
-					<div className="lg:col-span-5 lg:sticky lg:top-32 space-y-8">
+					<div className="lg:col-span-4 lg:sticky lg:top-32 space-y-8">
 
 						{/* Header */}
 						<div>
-							<div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-blue-200 text-xs font-bold tracking-widest uppercase mb-4">
+							<div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/80 border border-blue-100 text-primary text-xs font-bold tracking-widest uppercase mb-4 backdrop-blur-sm shadow-sm">
 								<Users className="w-4 h-4 text-secondary" />
 								<span>Visitor Center</span>
 							</div>
-							<h1 className="text-4xl md:text-5xl font-bold font-heading text-white leading-tight mb-4">
+							<h1 className="text-4xl md:text-6xl font-bold font-heading text-slate-900 leading-tight mb-4 tracking-tight">
 								Plan Your<br />Visit
 							</h1>
-							<p className="text-blue-100/60 text-lg">
+							<p className="text-slate-600 text-lg font-light leading-relaxed">
 								We welcome visitors as partners in care. Please review our schedule and guidelines.
 							</p>
 						</div>
 
-						{/* Clock Widget */}
-						<div className="bg-gradient-to-br from-secondary/20 to-blue-900/10 border border-secondary/30 rounded-[2.5rem] p-8 relative overflow-hidden text-center">
-							<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 bg-secondary/20 rounded-full blur-[50px] pointer-events-none" />
+						{/* Clock Widget (Smart Watch Style) */}
+						<div className="relative bg-white/40 backdrop-blur-2xl border border-white/50 rounded-[3rem] p-10 overflow-hidden text-center shadow-2xl shadow-blue-900/5 group">
+							{/* Glossy Overlay */}
+							<div className="absolute inset-0 bg-gradient-to-b from-white/40 to-transparent pointer-events-none" />
 
 							<div className="relative z-10 flex flex-col items-center">
-								<h3 className="text-sm font-bold text-secondary uppercase tracking-widest mb-2">Visiting Hours</h3>
-								<div className="text-5xl font-bold text-white font-heading mb-1 tracking-tight">
-									3:00 <span className="text-2xl text-white/50">PM</span>
-								</div>
-								<div className="w-px h-8 bg-gradient-to-b from-white/20 to-transparent my-2" />
-								<div className="text-5xl font-bold text-white font-heading mb-6 tracking-tight">
-									6:00 <span className="text-2xl text-white/50">PM</span>
+								<div className="mb-6 p-3 bg-white rounded-full shadow-sm text-secondary">
+									<Clock className="w-6 h-6" />
 								</div>
 
-								<div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 text-green-400 text-xs font-bold border border-green-500/20">
-									<div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+								<h3 className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">Visiting Hours</h3>
+								<div className="text-5xl font-bold text-slate-900 font-heading mb-1 tracking-tight">
+									3:00 <span className="text-2xl text-slate-400">PM</span>
+								</div>
+								<div className="w-px h-8 bg-gradient-to-b from-slate-200 to-transparent my-2" />
+								<div className="text-5xl font-bold text-slate-900 font-heading mb-8 tracking-tight">
+									6:00 <span className="text-2xl text-slate-400">PM</span>
+								</div>
+
+								<div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold border border-emerald-100 shadow-sm">
+									<div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
 									Open Daily
 								</div>
 							</div>
 						</div>
 
 						{/* Quick Contacts */}
-						<div className="bg-white/5 border border-white/10 rounded-3xl p-6">
-							<h4 className="font-bold text-white mb-4 flex items-center gap-2">
+						<div className="bg-white/60 backdrop-blur-md border border-white/50 rounded-3xl p-8 shadow-sm hover:shadow-md transition-all">
+							<h4 className="font-bold text-slate-900 mb-6 flex items-center gap-2 uppercase tracking-wider text-xs border-b border-slate-100 pb-3">
 								<MapPin className="w-4 h-4 text-secondary" /> Locations
 							</h4>
-							<ul className="space-y-4 text-sm text-blue-100/60">
-								<li className="flex justify-between border-b border-white/5 pb-2">
+							<ul className="space-y-4 text-sm text-slate-600">
+								<li className="flex justify-between border-b border-slate-100 pb-2">
 									<span>Main Entrance</span>
-									<span className="text-white">Lobby, Ground Floor</span>
+									<span className="text-slate-900 font-bold">Lobby, G/F</span>
 								</li>
-								<li className="flex justify-between border-b border-white/5 pb-2">
+								<li className="flex justify-between border-b border-slate-100 pb-2">
 									<span>Admitting Section</span>
-									<span className="text-white">Ground Floor</span>
+									<span className="text-slate-900 font-bold">G/F</span>
 								</li>
 								<li className="flex justify-between">
 									<span>Claims Office</span>
-									<span className="text-white">2nd Floor</span>
+									<span className="text-slate-900 font-bold">2nd Floor</span>
 								</li>
 							</ul>
 						</div>
 
 					</div>
 
-					{/* RIGHT COLUMN: Scrolling Content (7 cols) */}
-					<div className="lg:col-span-7 space-y-8">
+					{/* RIGHT COLUMN: Scrolling Content (8 cols) */}
+					<div className="lg:col-span-8 space-y-8">
 
 						{/* COVID Alert */}
-						<div className="bg-red-950/30 border border-red-500/20 rounded-[2rem] p-8">
-							<div className="flex items-center gap-3 mb-6">
-								<ShieldAlert className="w-6 h-6 text-red-500" />
-								<h3 className="text-2xl font-bold text-white">Safety Protocols</h3>
-							</div>
-							<div className="space-y-4">
-								<div className="flex gap-4">
-									<CheckCircle2 className="w-5 h-5 text-red-500 shrink-0 mt-1" />
-									<p className="text-red-100/70 text-sm">Negative RT-PCR swab test (5 days validity) required for admission.</p>
+						<div className="bg-red-50/50 backdrop-blur-sm border border-red-100 rounded-[2.5rem] p-10 relative overflow-hidden">
+							<div className="absolute top-0 right-0 w-64 h-64 bg-red-100/50 rounded-full blur-[80px] pointer-events-none" />
+
+							<div className="relative z-10">
+								<div className="flex items-center gap-4 mb-8">
+									<div className="w-12 h-12 rounded-2xl bg-red-100 flex items-center justify-center text-red-600 shadow-sm shadow-red-100">
+										<ShieldAlert className="w-6 h-6" />
+									</div>
+									<h3 className="text-2xl font-bold text-slate-900">Safety Protocols</h3>
 								</div>
-								<div className="flex gap-4">
-									<CheckCircle2 className="w-5 h-5 text-red-500 shrink-0 mt-1" />
-									<p className="text-red-100/70 text-sm">Face masks are mandatory in all hospital areas.</p>
-								</div>
-								<div className="flex gap-4">
-									<Ban className="w-5 h-5 text-red-500 shrink-0 mt-1" />
-									<p className="text-red-100/70 text-sm">No visitors allowed in Inpatient Units. Strict "One Watcher" policy.</p>
+								<div className="space-y-4">
+									<div className="flex gap-4 p-4 bg-white/60 rounded-2xl border border-red-100/50">
+										<CheckCircle2 className="w-5 h-5 text-red-600 shrink-0 mt-0.5" />
+										<p className="text-slate-700 text-sm font-medium">Negative RT-PCR swab test (5 days validity) required for admission.</p>
+									</div>
+									<div className="flex gap-4 p-4 bg-white/60 rounded-2xl border border-red-100/50">
+										<CheckCircle2 className="w-5 h-5 text-red-600 shrink-0 mt-0.5" />
+										<p className="text-slate-700 text-sm font-medium">Face masks are mandatory in all hospital areas.</p>
+									</div>
+									<div className="flex gap-4 p-4 bg-white/60 rounded-2xl border border-red-100/50">
+										<Ban className="w-5 h-5 text-red-600 shrink-0 mt-0.5" />
+										<p className="text-slate-700 text-sm font-medium">No visitors allowed in Inpatient Units. Strict "One Watcher" policy.</p>
+									</div>
 								</div>
 							</div>
 						</div>

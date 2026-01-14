@@ -49,10 +49,11 @@
 :root {
 	--radius: 0.5rem;
 
-	/* Neutral Base */
-	--background: #FFFFFF;
+	/* Neutral Base - Medical Light */
+	--background: #F1F5F9;
+	/* Slate 100 - Soft Medical Grey */
 	--foreground: #0F172A;
-	/* Slate 900 */
+	/* Slate 900 for high contrast text */
 
 	/* Cards & Surfaces */
 	--card: #FFFFFF;
@@ -60,18 +61,19 @@
 	--popover: #FFFFFF;
 	--popover-foreground: #0F172A;
 
-	/* Brand Colors - Unified Premium Navy */
-	/* Primary: Deep Royal Blue (Matches Logo) */
+	/* Brand Colors - Divine Word Hospital */
+	/* Primary: Royal Blue (Brand Identity) - Used for headers, buttons, active states */
 	--primary: #1F1B99;
 	--primary-foreground: #FFFFFF;
 
-	/* Secondary: Gold/Amber - The premium contrast */
+	/* Secondary: Gold/Amber - Premium accents */
 	--secondary: #F59E0B;
 	--secondary-foreground: #FFFFFF;
 
-	/* Accent: Teal - For subtle details */
-	--accent: #14B8A6;
-	--accent-foreground: #FFFFFF;
+	/* Accent: Soft Blue - For backgrounds/highlights */
+	--accent: #F1F5F9;
+	/* Slate 100 */
+	--accent-foreground: #1E293B;
 
 	/* Functional Colors */
 	--muted: #F8FAFC;
@@ -86,7 +88,6 @@
 	/* Slate 200 */
 	--input: #E2E8F0;
 	--ring: #1F1B99;
-	/* Match Primary */
 
 	/* Charts */
 	--chart-1: #0F3D87;

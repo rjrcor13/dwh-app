@@ -1,8 +1,9 @@
 export const jobListings = [
 	{
+		id: 'consultant',
 		title: 'Apply to be DWH Consultant',
 		description: 'List of requirements for consultant application.',
-		image: '/assets/job-listing.webp', // Added image path
+		image: '/assets/job-listing.webp',
 		requirements: [
 			'Application Letter Addressed to: Sister Sarah R. Gocela, Hospital Administrator',
 			'Curriculum Vitae',
@@ -25,9 +26,10 @@ export const jobListings = [
 		},
 	},
 	{
+		id: 'residency',
 		title: 'Residency Training Application',
 		description: 'List of requirements for residency training application.',
-		image: '/assets/job-listing.webp', // Added image path
+		image: '/assets/job-listing.webp',
 		requirements: [
 			'Application Letter Addressed to: Sister Sarah R. Gocela, OSB, Hospital Administrator; Dr. Corazon A. Rubio MD, FPCP, Medical Director',
 			'For Department of Internal Medicine: Thru: Gemma R. Udtujan, MD, FPCP, FPSHBT, FPCHTM, Chairperson - Internal Medicine',
@@ -54,9 +56,10 @@ export const jobListings = [
 		},
 	},
 	{
+		id: 'nurses',
 		title: 'Nurses',
 		description: 'Benefits Upon Hiring and Regularization',
-		image: '/assets/job-listing.webp', // Added image path
+		image: '/assets/job-listing.webp',
 		benefits: {
 			hiring: [
 				'Basic Salary - ₱19,000',

@@ -1,8 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-// Manual scroll logic used instead of react-scroll
-import { ArrowLeft, CheckCircle2, ChevronRight, Phone, Mail, Facebook, User, Stethoscope, Microscope, Baby, Brain, Heart, GraduationCap } from 'lucide-react';
+import { ArrowLeft, CheckCircle2, ChevronRight, Phone, Mail, Facebook, User, Stethoscope, Microscope, Baby, Brain, Heart, GraduationCap, ArrowRight } from 'lucide-react';
 import { default as DynamicIcons } from '../dynamicIcons/DynamicIcons';
 import { cn } from '@/lib/utils';
 import { useEffect, useState } from 'react';
@@ -11,11 +10,11 @@ import { useEffect, useState } from 'react';
 const Section = ({ id, title, children, className }) => (
     <section id={id} className={cn("scroll-mt-32 mb-16", className)}>
         {title && (
-            <h2 className="text-2xl md:text-3xl font-bold font-heading text-white mb-6 border-l-4 border-secondary pl-4 flex items-center gap-3">
+            <h2 className="text-2xl md:text-3xl font-bold font-heading text-slate-900 mb-6 border-l-4 border-primary pl-4 flex items-center gap-3">
                 {title}
             </h2>
         )}
-        <div className="text-lg text-blue-100/80 leading-relaxed font-light space-y-4">
+        <div className="text-lg text-slate-600 leading-relaxed font-light space-y-4">
             {children}
         </div>
     </section>
@@ -23,8 +22,8 @@ const Section = ({ id, title, children, className }) => (
 
 const ListItem = ({ children }) => (
     <li className="flex items-start gap-3">
-        <CheckCircle2 className="w-5 h-5 text-secondary mt-1 shrink-0" />
-        <span className="text-sm md:text-base">{children}</span>
+        <CheckCircle2 className="w-5 h-5 text-primary mt-1 shrink-0" />
+        <span className="text-sm md:text-base text-slate-700 font-medium">{children}</span>
     </li>
 );
 
@@ -70,219 +69,62 @@ export default function DepartmentDetailsClient({ department }) {
     };
 
     return (
-        <div className="bg-primary min-h-screen relative overflow-hidden font-sans pb-32">
-            {/* Simple Ambient Background */}
-            <div className="absolute inset-0 bg-gradient-to-b from-primary via-[#161270] to-[#0f0c29] pointer-events-none" />
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[100px] pointer-events-none" />
+        <div className="bg-slate-50/50 min-h-screen relative font-sans pb-32 pt-24">
 
-            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12">
+            {/* --- Ambient Background Mesh --- */}
+            <div className="fixed inset-0 pointer-events-none">
+                <div className="absolute top-[-20%] left-[-10%] w-[1000px] h-[1000px] bg-gradient-to-br from-blue-100/40 to-indigo-100/30 rounded-full blur-[120px]" />
+                <div className="absolute bottom-[-10%] right-[-10%] w-[800px] h-[800px] bg-gradient-to-tr from-amber-50/50 to-orange-50/20 rounded-full blur-[100px]" />
+            </div>
+
+            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
 
                 {/* Header / Breadcrumb */}
                 <div className="flex items-center gap-4 mb-12">
                     <button
-                        onClick={() => router.back()} // Or router.push('/expertise/departments') to be safe
-                        className="p-2 rounded-full bg-white/5 hover:bg-white/10 text-white transition-colors"
+                        onClick={() => router.back()}
+                        className="p-2 rounded-full bg-white hover:bg-white/80 text-slate-600 hover:text-primary transition-colors shadow-sm border border-slate-200"
                     >
-                        <ArrowLeft className="w-6 h-6" />
+                        <ArrowLeft className="w-5 h-5" />
                     </button>
-                    <nav className="flex items-center gap-2 text-sm font-medium text-blue-200/60 flex-wrap">
+                    <nav className="flex items-center gap-2 text-sm font-medium text-slate-500 flex-wrap">
                         <span>Expertise</span>
                         <ChevronRight className="w-4 h-4" />
-                        <span className="hover:text-white cursor-pointer" onClick={() => router.push('/expertise/departments')}>Departments</span>
+                        <span className="hover:text-primary cursor-pointer transition-colors" onClick={() => router.push('/expertise/departments')}>Departments</span>
                         <ChevronRight className="w-4 h-4" />
-                        <span className="text-white truncate max-w-[200px] md:max-w-none">{name}</span>
+                        <span className="text-slate-900 font-bold truncate max-w-[200px] md:max-w-none">{name}</span>
                     </nav>
                 </div>
 
-                <div className="grid lg:grid-cols-12 gap-12">
+                <div className="grid lg:grid-cols-12 gap-12 items-start">
 
-                    {/* LEFT: MAIN CONTENT (8 cols) */}
-                    <div className="lg:col-span-8">
+                    {/* LEFT: STICKY NAVIGATION (4 cols) */}
+                    <div className="lg:col-span-4 lg:sticky lg:top-32 space-y-6">
 
-                        {/* Title Block */}
-                        <div className="mb-12 flex flex-col md:flex-row gap-6 md:items-center">
-                            <div className="w-24 h-24 rounded-2xl bg-secondary/10 flex items-center justify-center border border-secondary/20 shrink-0">
-                                {/* Assuming icon is passed as component or handled by DynamicIcons. 
-								    Since data/departments.js had imports, the 'icon' might be the component itself.
-									Safe fallback logic needed.
-								*/}
-                                {icon ? (
-                                    <DynamicIcons name={icon} className="w-12 h-12 text-secondary" />
-                                ) : (
-                                    <Stethoscope className="w-12 h-12 text-secondary" />
-                                )}
+                        {/* Mobile Title (visible only on small screens) */}
+                        <div className="lg:hidden mb-8">
+                            <div className="inline-block px-3 py-1 rounded-full bg-blue-50 text-primary text-xs font-bold tracking-widest uppercase mb-2 border border-blue-100">
+                                Department
                             </div>
-                            <div>
-                                <div className="inline-block px-3 py-1 rounded-full bg-blue-500/20 text-blue-200 text-xs font-bold tracking-widest uppercase mb-2">
-                                    Department
-                                </div>
-                                <h1 className="text-3xl md:text-5xl font-bold font-heading text-white leading-tight">
-                                    {name}
-                                </h1>
-                            </div>
+                            <h1 className="text-4xl font-bold font-heading text-slate-900 leading-tight">
+                                {name}
+                            </h1>
                         </div>
 
-                        {/* 1. Overview */}
-                        {description && (
-                            <Section id="overview" title="Overview">
-                                <p>{description}</p>
-                            </Section>
-                        )}
-
-                        {/* 2. Mission & Vision */}
-                        {(vision || mission) && (
-                            <Section id="mission" title="Mission & Vision">
-                                <div className="grid gap-6">
-                                    {vision && (
-                                        <div className="bg-white/5 p-6 rounded-2xl border border-white/5">
-                                            <h4 className="text-secondary font-bold text-sm uppercase mb-3 tracking-wider flex items-center gap-2">
-                                                <Brain className="w-4 h-4" /> Our Vision
-                                            </h4>
-                                            <p className="italic text-blue-100">&quot;{vision}&quot;</p>
-                                        </div>
-                                    )}
-                                    {mission && (
-                                        <div className="bg-white/5 p-6 rounded-2xl border border-white/5">
-                                            <h4 className="text-secondary font-bold text-sm uppercase mb-3 tracking-wider flex items-center gap-2">
-                                                <Heart className="w-4 h-4" /> Our Mission
-                                            </h4>
-                                            {Array.isArray(mission) ? (
-                                                <ul className="space-y-2">
-                                                    {mission.map((m, i) => (
-                                                        <li key={i} className="flex gap-2 text-sm text-blue-100/90">
-                                                            <span className="text-secondary">•</span> {m}
-                                                        </li>
-                                                    ))}
-                                                </ul>
-                                            ) : (
-                                                <p className="italic text-blue-100">&quot;{mission}&quot;</p>
-                                            )}
-                                        </div>
-                                    )}
-                                </div>
-                            </Section>
-                        )}
-
-                        {/* 3. Objectives */}
-                        {objectives && (
-                            <Section id="objectives" title="Our Objectives">
-                                {/* Check if objectives is an object with categories or just a list (not common in provided data but good safety) */}
-                                {typeof objectives === 'object' && !Array.isArray(objectives) ? (
-                                    <div className="space-y-6">
-                                        {Object.entries(objectives).map(([key, list]) => (
-                                            <div key={key}>
-                                                <h4 className="text-lg font-bold text-blue-200 mb-3 capitalize">
-                                                    {key.replace(/([A-Z])/g, ' $1').trim()}
-                                                </h4>
-                                                <ul className="grid gap-2">
-                                                    {list.map((item, i) => <ListItem key={i}>{item}</ListItem>)}
-                                                </ul>
-                                            </div>
-                                        ))}
-                                    </div>
+                        <div className="p-6 rounded-[2rem] bg-white/60 backdrop-blur-xl border border-white/50 shadow-sm relative overflow-hidden group">
+                            {/* Icon Background */}
+                            <div className="absolute -right-4 -top-4 opacity-10 scale-150 rotate-12 transition-transform duration-700 group-hover:rotate-45">
+                                {icon ? (
+                                    <DynamicIcons name={icon} className="w-32 h-32 text-primary" />
                                 ) : (
-                                    <p>Standard objectives display here if needed.</p>
+                                    <Stethoscope className="w-32 h-32 text-primary" />
                                 )}
-                            </Section>
-                        )}
-
-                        {/* Chairperson Info (Moved up or consolidated) - Let's put it in a Staff section */}
-                        {chairperson && (
-                            <Section id="staff" title="Leadership">
-                                <div className="bg-gradient-to-br from-white/10 to-white/5 border border-white/10 rounded-2xl p-6 flex items-center gap-4">
-                                    <div className="w-16 h-16 rounded-full bg-secondary/20 flex items-center justify-center">
-                                        <User className="w-8 h-8 text-secondary" />
-                                    </div>
-                                    <div>
-                                        <h3 className="text-xl font-bold text-white">{chairperson.name}</h3>
-                                        <p className="text-blue-200 uppercase text-xs tracking-wider mt-1">{chairperson.title}</p>
-                                    </div>
-                                </div>
-                            </Section>
-                        )}
-
-                        {/* 4. Services / Sections / Subspecialties */}
-                        {(services || sections || subspecialties || specialties) && (
-                            <Section id="services" title="Scope of Services">
-                                <div className="space-y-8">
-                                    {services && (
-                                        <div>
-                                            <h4 className="font-bold text-white mb-4">Key Services</h4>
-                                            <ul className="grid md:grid-cols-2 gap-3">
-                                                {services.map((s, i) => <ListItem key={i}>{s}</ListItem>)}
-                                            </ul>
-                                        </div>
-                                    )}
-                                    {subspecialties && (
-                                        <div>
-                                            <h4 className="font-bold text-white mb-4">Subspecialties</h4>
-                                            <ul className="grid md:grid-cols-2 gap-3">
-                                                {subspecialties.map((s, i) => <ListItem key={i}>{s}</ListItem>)}
-                                            </ul>
-                                        </div>
-                                    )}
-                                    {sections && (
-                                        <div>
-                                            <h4 className="font-bold text-white mb-4">Divisions</h4>
-                                            <ul className="grid md:grid-cols-2 gap-3">
-                                                {sections.map((s, i) => <ListItem key={i}>{s}</ListItem>)}
-                                            </ul>
-                                        </div>
-                                    )}
-                                    {specialties && (
-                                        <div>
-                                            <h4 className="font-bold text-white mb-4">Specialties</h4>
-                                            <ul className="grid md:grid-cols-2 gap-3">
-                                                {specialties.map((s, i) => <ListItem key={i}>{s}</ListItem>)}
-                                            </ul>
-                                        </div>
-                                    )}
-                                </div>
-                            </Section>
-                        )}
-
-                        {/* 5. Procedures */}
-                        {procedures && (
-                            <Section id="procedures" title="Procedures">
-                                {/* Usually an object in departments.js */}
-                                <div className="grid gap-8">
-                                    {Object.entries(procedures).map(([key, list]) => (
-                                        <div key={key} className="bg-white/5 rounded-xl p-6 border border-white/5">
-                                            <h4 className="text-lg font-bold text-secondary mb-4 capitalize border-b border-white/10 pb-2">
-                                                {key.replace(/([A-Z])/g, ' $1').trim()}
-                                            </h4>
-                                            <ul className="grid sm:grid-cols-2 gap-x-4 gap-y-2">
-                                                {list.map((item, i) => (
-                                                    <li key={i} className="text-sm text-blue-100/80 flex items-start gap-2">
-                                                        <span className="text-white/30 mt-1">•</span> {item}
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
-                                    ))}
-                                </div>
-                            </Section>
-                        )}
-
-                        {/* Concluding Statement */}
-                        {concludingStatement && (
-                            <div className="border-t border-white/10 pt-8 mt-12">
-                                <p className="text-blue-200/60 italic text-center text-lg font-light">
-                                    &quot;{concludingStatement}&quot;
-                                </p>
                             </div>
-                        )}
 
-                    </div>
-
-
-                    {/* RIGHT: STICKY NAVIGATION (4 cols) */}
-                    <div className="hidden lg:block lg:col-span-4 relative">
-                        <div className="sticky top-32 p-8 rounded-3xl bg-white/5 border border-white/5 backdrop-blur-md">
-                            <h3 className="text-sm font-bold text-blue-200/50 uppercase tracking-widest mb-6 border-b border-white/10 pb-4">
-                                Department Menu
+                            <h3 className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-6 border-b border-slate-200 pb-4">
+                                On This Page
                             </h3>
-                            <nav className="space-y-1">
+                            <nav className="space-y-1 relative z-10">
                                 {[
                                     { id: 'overview', label: 'Overview', show: !!description },
                                     { id: 'mission', label: 'Mission & Vision', show: !!(vision || mission) },
@@ -296,32 +138,224 @@ export default function DepartmentDetailsClient({ department }) {
                                             key={item.id}
                                             onClick={() => scrollToSection(item.id)}
                                             className={cn(
-                                                "w-full text-left py-2 px-4 rounded-lg transition-all text-sm font-medium border-l-2",
+                                                "w-full text-left py-2.5 px-4 rounded-xl transition-all text-sm font-bold flex items-center justify-between group/btn",
                                                 activeSection === item.id
-                                                    ? "bg-secondary/10 text-secondary border-secondary"
-                                                    : "text-blue-200/60 hover:text-white hover:bg-white/5 border-transparent"
+                                                    ? "bg-white text-primary shadow-sm ring-1 ring-slate-100"
+                                                    : "text-slate-500 hover:text-slate-900 hover:bg-white/50"
                                             )}
                                         >
                                             {item.label}
+                                            {activeSection === item.id && <div className="w-1.5 h-1.5 rounded-full bg-primary" />}
                                         </button>
                                     )
                                 ))}
                             </nav>
+                        </div>
 
-                            {/* Call to Action Box */}
-                            <div className="mt-10 p-6 rounded-2xl bg-gradient-to-br from-secondary to-blue-600 text-white shadow-xl">
-                                <h4 className="font-bold text-lg mb-2">Patient Care</h4>
-                                <p className="text-sm text-blue-100 mb-4">
-                                    Looking for a specialist in {name}?
+                        {/* Call to Action Box */}
+                        <div className="p-8 rounded-[2rem] bg-gradient-to-br from-primary to-blue-800 text-white shadow-xl shadow-blue-900/20 relative overflow-hidden">
+                            <div className="relative z-10">
+                                <h4 className="font-bold text-2xl mb-2 font-heading">Patient Care</h4>
+                                <p className="text-sm text-blue-100 mb-6 leading-relaxed">
+                                    Looking for a specialist in <br /><strong>{name}</strong>?
                                 </p>
                                 <button
                                     onClick={() => router.push('/doctors')}
-                                    className="w-full py-3 rounded-xl bg-white text-primary font-bold text-sm hover:shadow-lg transition-shadow"
+                                    className="w-full py-3.5 rounded-xl bg-white text-primary font-bold text-sm hover:shadow-lg hover:scale-[1.02] transition-all flex items-center justify-center gap-2"
                                 >
-                                    Find a Doctor
+                                    Find a Doctor <ArrowRight className="w-4 h-4" />
                                 </button>
                             </div>
+
+                            {/* Decor */}
+                            <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-white/10 rounded-full blur-2xl" />
                         </div>
+                    </div>
+
+
+                    {/* RIGHT: MAIN CONTENT (8 cols) */}
+                    <div className="lg:col-span-8">
+
+                        {/* Title Block (Desktop) */}
+                        <div className="hidden lg:flex mb-12 flex-col md:flex-row gap-6 md:items-center">
+                            <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-blue-50 to-white flex items-center justify-center border border-blue-100 shadow-sm shrink-0">
+                                {icon ? (
+                                    <DynamicIcons name={icon} className="w-10 h-10 text-primary" />
+                                ) : (
+                                    <Stethoscope className="w-10 h-10 text-primary" />
+                                )}
+                            </div>
+                            <div>
+                                <div className="inline-block px-3 py-1 rounded-full bg-white border border-blue-100 text-primary text-xs font-bold tracking-widest uppercase mb-2 shadow-sm">
+                                    Department
+                                </div>
+                                <h1 className="text-5xl font-bold font-heading text-slate-900 leading-tight tracking-tight">
+                                    {name}
+                                </h1>
+                            </div>
+                        </div>
+
+                        {/* 1. Overview */}
+                        {description && (
+                            <Section id="overview" title="Overview">
+                                <div className="bg-white/40 backdrop-blur-md rounded-[2rem] p-8 border border-white/60 shadow-sm">
+                                    <p className="text-slate-700">{description}</p>
+                                </div>
+                            </Section>
+                        )}
+
+                        {/* 2. Mission & Vision */}
+                        {(vision || mission) && (
+                            <Section id="mission" title="Mission & Vision">
+                                <div className="grid gap-6">
+                                    {vision && (
+                                        <div className="bg-gradient-to-br from-indigo-50/50 to-white p-8 rounded-[2rem] border border-indigo-50 shadow-sm">
+                                            <h4 className="text-primary font-bold text-sm uppercase mb-4 tracking-wider flex items-center gap-2">
+                                                <Brain className="w-4 h-4" /> Our Vision
+                                            </h4>
+                                            <p className="italic text-slate-700 font-medium">"{vision}"</p>
+                                        </div>
+                                    )}
+                                    {mission && (
+                                        <div className="bg-white/60 p-8 rounded-[2rem] border border-white/60 shadow-sm">
+                                            <h4 className="text-primary font-bold text-sm uppercase mb-4 tracking-wider flex items-center gap-2">
+                                                <Heart className="w-4 h-4" /> Our Mission
+                                            </h4>
+                                            {Array.isArray(mission) ? (
+                                                <ul className="space-y-3">
+                                                    {mission.map((m, i) => (
+                                                        <li key={i} className="flex gap-3 text-slate-700 text-base">
+                                                            <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0"></span> {m}
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            ) : (
+                                                <p className="italic text-slate-700 font-medium">"{mission}"</p>
+                                            )}
+                                        </div>
+                                    )}
+                                </div>
+                            </Section>
+                        )}
+
+                        {/* 3. Objectives */}
+                        {objectives && (
+                            <Section id="objectives" title="Our Objectives">
+                                {typeof objectives === 'object' && !Array.isArray(objectives) ? (
+                                    <div className="space-y-8">
+                                        {Object.entries(objectives).map(([key, list]) => (
+                                            <div key={key} className="bg-white/60 p-8 rounded-[2rem] border border-white/50 shadow-sm">
+                                                <h4 className="text-lg font-bold text-slate-900 mb-6 capitalize flex items-center gap-2">
+                                                    <span className="w-2 h-8 bg-secondary rounded-full" />
+                                                    {key.replace(/([A-Z])/g, ' $1').trim()}
+                                                </h4>
+                                                <ul className="grid gap-3 pl-2">
+                                                    {list.map((item, i) => <ListItem key={i}>{item}</ListItem>)}
+                                                </ul>
+                                            </div>
+                                        ))}
+                                    </div>
+                                ) : (
+                                    <p>Standard objectives display here if needed.</p>
+                                )}
+                            </Section>
+                        )}
+
+                        {/* Chairperson Info */}
+                        {chairperson && (
+                            <Section id="staff" title="Leadership">
+                                <div className="bg-white rounded-[2.5rem] p-4 pr-10 border border-slate-100 shadow-sm flex items-center gap-6 group hover:shadow-lg transition-all">
+                                    <div className="w-24 h-24 rounded-[2rem] bg-slate-100 overflow-hidden relative">
+                                        {/* Placeholder for Avatar if images exist later */}
+                                        <div className="absolute inset-0 flex items-center justify-center text-slate-300">
+                                            <User className="w-10 h-10" />
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h3 className="text-2xl font-bold text-slate-900 mb-1">{chairperson.name}</h3>
+                                        <p className="text-secondary font-bold uppercase text-xs tracking-widest">{chairperson.title}</p>
+                                    </div>
+                                </div>
+                            </Section>
+                        )}
+
+                        {/* 4. Services / Sections / Subspecialties */}
+                        {(services || sections || subspecialties || specialties) && (
+                            <Section id="services" title="Scope of Services">
+                                <div className="space-y-8">
+                                    {services && (
+                                        <div className="bg-white/60 p-8 rounded-[2rem] border border-white/50">
+                                            <div className="flex items-center gap-3 mb-6">
+                                                <div className="p-2 bg-blue-50 text-primary rounded-lg"><Stethoscope className="w-5 h-5" /></div>
+                                                <h4 className="font-bold text-slate-900 text-lg">Key Services</h4>
+                                            </div>
+                                            <ul className="grid md:grid-cols-2 gap-4">
+                                                {services.map((s, i) => <ListItem key={i}>{s}</ListItem>)}
+                                            </ul>
+                                        </div>
+                                    )}
+                                    {subspecialties && (
+                                        <div className="bg-white/60 p-8 rounded-[2rem] border border-white/50">
+                                            <div className="flex items-center gap-3 mb-6">
+                                                <div className="p-2 bg-indigo-50 text-indigo-600 rounded-lg"><Microscope className="w-5 h-5" /></div>
+                                                <h4 className="font-bold text-slate-900 text-lg">Subspecialties</h4>
+                                            </div>
+                                            <ul className="grid md:grid-cols-2 gap-4">
+                                                {subspecialties.map((s, i) => <ListItem key={i}>{s}</ListItem>)}
+                                            </ul>
+                                        </div>
+                                    )}
+                                    {sections && (
+                                        <div className="bg-white/60 p-8 rounded-[2rem] border border-white/50">
+                                            <h4 className="font-bold text-slate-900 text-lg mb-6">Divisions</h4>
+                                            <ul className="grid md:grid-cols-2 gap-4">
+                                                {sections.map((s, i) => <ListItem key={i}>{s}</ListItem>)}
+                                            </ul>
+                                        </div>
+                                    )}
+                                    {specialties && (
+                                        <div className="bg-white/60 p-8 rounded-[2rem] border border-white/50">
+                                            <h4 className="font-bold text-slate-900 text-lg mb-6">Specialties</h4>
+                                            <ul className="grid md:grid-cols-2 gap-4">
+                                                {specialties.map((s, i) => <ListItem key={i}>{s}</ListItem>)}
+                                            </ul>
+                                        </div>
+                                    )}
+                                </div>
+                            </Section>
+                        )}
+
+                        {/* 5. Procedures */}
+                        {procedures && (
+                            <Section id="procedures" title="Procedures">
+                                <div className="grid gap-6">
+                                    {Object.entries(procedures).map(([key, list]) => (
+                                        <div key={key} className="bg-white rounded-[2rem] p-8 border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+                                            <h4 className="text-lg font-bold text-primary mb-6 capitalize border-b border-slate-100 pb-3">
+                                                {key.replace(/([A-Z])/g, ' $1').trim()}
+                                            </h4>
+                                            <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-3">
+                                                {list.map((item, i) => (
+                                                    <li key={i} className="text-sm text-slate-600 flex items-start gap-2 font-medium">
+                                                        <span className="w-1.5 h-1.5 rounded-full bg-slate-300 mt-1.5 shrink-0"></span> {item}
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                    ))}
+                                </div>
+                            </Section>
+                        )}
+
+                        {/* Concluding Statement */}
+                        {concludingStatement && (
+                            <div className="bg-secondary/5 rounded-3xl p-8 mt-12 text-center border border-secondary/10">
+                                <p className="text-slate-600 italic text-lg font-medium">
+                                    "{concludingStatement}"
+                                </p>
+                            </div>
+                        )}
+
                     </div>
 
                 </div>

@@ -1,27 +1,20 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { motion } from 'framer-motion';
-import { ArrowLeft, CheckCircle2, ChevronRight, Phone, Mail, Facebook, Globe } from 'lucide-react';
+import { ArrowLeft, CheckCircle2, ChevronRight, Phone, Mail, Stethoscope, ArrowRight, Brain, Heart, Wrench, Microscope, Clock } from 'lucide-react';
 import { default as DynamicIcons } from '../dynamicIcons/DynamicIcons';
-import { Stethoscope } from 'lucide-react'; // Fallback icon
 import { cn } from '@/lib/utils';
-// We implement manual scroll below, so no external dependency needed.
 import { useEffect, useState } from 'react';
 
-// For simplicity and no external deps dependency if possible, let's implement basic id scrolling.
-// But `react-scroll` is standard. If not installed, I'll use standard anchor tags with offset logic or simple `document.getElementById`.
-// Let's stick to standard `a href="#id"` with CSS `scroll-margin-top` for now to avoid install errors if not present, 
-// OR simpler: `element.scrollIntoView`.
-
+// Reusable Section Component
 const Section = ({ id, title, children, className }) => (
 	<section id={id} className={cn("scroll-mt-32 mb-16", className)}>
 		{title && (
-			<h2 className="text-2xl md:text-3xl font-bold font-heading text-white mb-6 border-l-4 border-secondary pl-4">
+			<h2 className="text-2xl md:text-3xl font-bold font-heading text-slate-900 mb-6 border-l-4 border-primary pl-4 flex items-center gap-3">
 				{title}
 			</h2>
 		)}
-		<div className="text-lg text-blue-100/80 leading-relaxed font-light space-y-4">
+		<div className="text-lg text-slate-600 leading-relaxed font-light space-y-4">
 			{children}
 		</div>
 	</section>
@@ -29,8 +22,8 @@ const Section = ({ id, title, children, className }) => (
 
 const ListItem = ({ children }) => (
 	<li className="flex items-start gap-3">
-		<CheckCircle2 className="w-5 h-5 text-secondary mt-1 shrink-0" />
-		<span>{children}</span>
+		<CheckCircle2 className="w-5 h-5 text-primary mt-1 shrink-0" />
+		<span className="text-sm md:text-base text-slate-700 font-medium">{children}</span>
 	</li>
 );
 
@@ -78,163 +71,67 @@ export default function ServicesDetailClient({ service }) {
 	if (!fullContent) return null;
 
 	return (
-		<div className="bg-primary min-h-screen relative overflow-hidden font-sans pb-32">
-			{/* Simple Background */}
-			<div className="absolute inset-0 bg-gradient-to-b from-primary to-[#0f0c29] pointer-events-none" />
+		<div className="bg-slate-50/50 min-h-screen relative font-sans pb-32 pt-24">
 
-			<div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12">
+			{/* --- Ambient Background Mesh --- */}
+			<div className="fixed inset-0 pointer-events-none">
+				<div className="absolute top-[-20%] left-[-10%] w-[1000px] h-[1000px] bg-gradient-to-br from-blue-100/40 to-indigo-100/30 rounded-full blur-[120px]" />
+				<div className="absolute bottom-[-10%] right-[-10%] w-[800px] h-[800px] bg-gradient-to-tr from-amber-50/50 to-orange-50/20 rounded-full blur-[100px]" />
+			</div>
+
+			<div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
 
 				{/* Header / Breadcrumb */}
 				<div className="flex items-center gap-4 mb-12">
 					<button
 						onClick={() => router.back()}
-						className="p-2 rounded-full bg-white/5 hover:bg-white/10 text-white transition-colors"
+						className="p-2 rounded-full bg-white hover:bg-white/80 text-slate-600 hover:text-primary transition-colors shadow-sm border border-slate-200"
 					>
-						<ArrowLeft className="w-6 h-6" />
+						<ArrowLeft className="w-5 h-5" />
 					</button>
-					<nav className="flex items-center gap-2 text-sm font-medium text-blue-200/60">
+					<nav className="flex items-center gap-2 text-sm font-medium text-slate-500 flex-wrap">
 						<span>Expertise</span>
 						<ChevronRight className="w-4 h-4" />
-						<span>Services</span>
+						<span className="hover:text-primary cursor-pointer transition-colors" onClick={() => router.push('/expertise/services')}>Services</span>
 						<ChevronRight className="w-4 h-4" />
-						<span className="text-white">{title}</span>
+						<span className="text-slate-900 font-bold max-w-[150px] md:max-w-none truncate">{title}</span>
 					</nav>
 				</div>
 
-				<div className="grid lg:grid-cols-12 gap-12">
+				<div className="grid lg:grid-cols-12 gap-12 items-start">
 
-					{/* LEFT: MAIN CONTENT (8 cols) */}
-					<div className="lg:col-span-8">
+					{/* LEFT: STICKY NAVIGATION (4 cols) */}
+					<div className="lg:col-span-4 lg:sticky lg:top-32 space-y-6">
 
-						{/* Title Block */}
-						<div className="mb-12 flex items-center gap-6">
-							<div className="w-20 h-20 rounded-2xl bg-secondary/10 flex items-center justify-center border border-secondary/20 shrink-0">
-								{icon ? (
-									<DynamicIcons name={icon} className="w-10 h-10 text-secondary" />
-								) : (
-									<Stethoscope className="w-10 h-10 text-secondary" />
-								)}
+						{/* Mobile Title */}
+						<div className="lg:hidden mb-8">
+							<div className="inline-block px-3 py-1 rounded-full bg-blue-50 text-primary text-xs font-bold tracking-widest uppercase mb-2 border border-blue-100">
+								Service Unit
 							</div>
-							<h1 className="text-4xl md:text-5xl font-bold font-heading text-white leading-tight">
+							<h1 className="text-4xl font-bold font-heading text-slate-900 leading-tight">
 								{title}
 							</h1>
 						</div>
 
-						{/* 1. Overview */}
-						{fullContent.overview && (
-							<Section id="overview" title="Overview">
-								<p>{fullContent.overview}</p>
-							</Section>
-						)}
-
-						{/* 2. Mission & Vision */}
-						{fullContent.mission_vision && (
-							<Section id="mission" title="Mission & Vision">
-								<div className="grid md:grid-cols-2 gap-6">
-									{fullContent.mission_vision.mission && (
-										<div className="bg-white/5 p-6 rounded-2xl border border-white/5">
-											<h4 className="text-secondary font-bold text-sm uppercase mb-3 tracking-wider">Our Mission</h4>
-											<p className="italic">&quot;{fullContent.mission_vision.mission}&quot;</p>
-										</div>
-									)}
-									{fullContent.mission_vision.vision && (
-										<div className="bg-white/5 p-6 rounded-2xl border border-white/5">
-											<h4 className="text-secondary font-bold text-sm uppercase mb-3 tracking-wider">Our Vision</h4>
-											<p className="italic">&quot;{fullContent.mission_vision.vision}&quot;</p>
-										</div>
-									)}
-								</div>
-							</Section>
-						)}
-
-						{/* 3. Team */}
-						{(fullContent.leadership_staff || fullContent.staff || fullContent.team || fullContent.staffing) && (
-							<Section id="team" title="Our Team">
-								<p>{fullContent.leadership_staff || fullContent.staff || fullContent.team || fullContent.staffing}</p>
-							</Section>
-						)}
-
-						{/* 4. Services Offered */}
-						{(fullContent.services_offered || fullContent.services) && (
-							<Section id="services" title="Services Offered">
-								<ul className="grid sm:grid-cols-2 gap-4">
-									{(fullContent.services_offered || []).map((item, i) => (
-										<ListItem key={i}>{item}</ListItem>
-									))}
-									{/* Handle nested services object if simple array not present */}
-									{fullContent.services?.general_services?.map((item, i) => (
-										<ListItem key={`gen-${i}`}>{item}</ListItem>
-									))}
-								</ul>
-							</Section>
-						)}
-
-						{/* 5. Equipment */}
-						{fullContent.advanced_equipment && (
-							<Section id="equipment" title="Technology">
-								<p className="mb-4">We utilize state-of-the-art technology to ensure precision and safety.</p>
-								<ul className="grid sm:grid-cols-2 gap-4">
-									{fullContent.advanced_equipment.map((item, i) => (
-										<ListItem key={i}>{item}</ListItem>
-									))}
-								</ul>
-							</Section>
-						)}
-
-						{/* 6. Specialized / Other */}
-						{/* Catch-all for specialized lists not covered above */}
-						{fullContent.specialized_tests && (
-							<Section id="specialized" title="Specialized Procedures">
-								{Object.entries(fullContent.specialized_tests).map(([key, items]) => (
-									<div key={key} className="mb-6">
-										<h4 className="text-lg font-bold text-white mb-3 capitalize">{key.replace(/_/g, ' ')}</h4>
-										<ul className="grid sm:grid-cols-2 gap-4">
-											{items.map((item, i) => <ListItem key={i}>{item}</ListItem>)}
-										</ul>
-									</div>
-								))}
-							</Section>
-						)}
-
-
-						{/* 7. Contact Info (Main Body version) */}
-						<Section id="contact" title="Contact Us">
-							<div className="bg-secondary/10 border border-secondary/20 rounded-2xl p-8 flex flex-col md:flex-row gap-8 items-start md:items-center justify-between">
-								<div className="space-y-2">
-									<h4 className="text-xl font-bold text-white">Get in Touch</h4>
-									<p className="text-blue-100/70">Reach out to our {title} department directly.</p>
-								</div>
-								<div className="flex flex-col gap-3">
-									{fullContent.contact?.number && (
-										<a href={`tel:${fullContent.contact.number}`} className="flex items-center gap-3 text-white hover:text-secondary transition-colors">
-											<div className="p-2 bg-white/10 rounded-full"><Phone className="w-4 h-4" /></div>
-											<span className="font-medium">{fullContent.contact.number}</span>
-										</a>
-									)}
-									{fullContent.contact?.email && (
-										<a href={`mailto:${fullContent.contact.email}`} className="flex items-center gap-3 text-white hover:text-secondary transition-colors">
-											<div className="p-2 bg-white/10 rounded-full"><Mail className="w-4 h-4" /></div>
-											<span className="font-medium">{fullContent.contact.email}</span>
-										</a>
-									)}
-								</div>
+						<div className="p-6 rounded-[2rem] bg-white/60 backdrop-blur-xl border border-white/50 shadow-sm relative overflow-hidden group">
+							{/* Icon Background */}
+							<div className="absolute -right-4 -top-4 opacity-10 scale-150 rotate-12 transition-transform duration-700 group-hover:rotate-45">
+								{icon ? (
+									<DynamicIcons name={icon} className="w-32 h-32 text-primary" />
+								) : (
+									<Stethoscope className="w-32 h-32 text-primary" />
+								)}
 							</div>
-						</Section>
 
-					</div>
-
-
-					{/* RIGHT: STICKY NAVIGATION (4 cols) */}
-					<div className="hidden lg:block lg:col-span-4 relative">
-						<div className="sticky top-32 p-8 rounded-3xl bg-white/5 border border-white/5 backdrop-blur-md">
-							<h3 className="text-sm font-bold text-blue-200/50 uppercase tracking-widest mb-6 border-b border-white/10 pb-4">
+							<h3 className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-6 border-b border-slate-200 pb-4">
 								On This Page
 							</h3>
-							<nav className="space-y-1">
+
+							<nav className="space-y-1 relative z-10">
 								{[
 									{ id: 'overview', label: 'Overview', show: !!fullContent.overview },
 									{ id: 'mission', label: 'Mission & Vision', show: !!fullContent.mission_vision },
-									{ id: 'team', label: 'Leadership & Team', show: !!(fullContent.leadership_staff || fullContent.staff || fullContent.team) },
+									{ id: 'team', label: 'Leadership & Team', show: !!(fullContent.leadership_staff || fullContent.staff || fullContent.team || fullContent.staffing) },
 									{ id: 'services', label: 'Services Offered', show: !!(fullContent.services_offered || fullContent.services) },
 									{ id: 'equipment', label: 'Technology', show: !!fullContent.advanced_equipment },
 									{ id: 'specialized', label: 'Specialized Procedures', show: !!fullContent.specialized_tests },
@@ -245,27 +142,188 @@ export default function ServicesDetailClient({ service }) {
 											key={item.id}
 											onClick={() => scrollToSection(item.id)}
 											className={cn(
-												"w-full text-left py-2 px-4 rounded-lg transition-all text-sm font-medium border-l-2",
+												"w-full text-left py-2.5 px-4 rounded-xl transition-all text-sm font-bold flex items-center justify-between",
 												activeSection === item.id
-													? "bg-secondary/10 text-secondary border-secondary"
-													: "text-blue-200/60 hover:text-white hover:bg-white/5 border-transparent"
+													? "bg-white text-primary shadow-sm ring-1 ring-slate-100"
+													: "text-slate-500 hover:text-slate-900 hover:bg-white/50"
 											)}
 										>
 											{item.label}
+											{activeSection === item.id && <div className="w-1.5 h-1.5 rounded-full bg-primary" />}
 										</button>
 									)
 								))}
 							</nav>
+						</div>
 
-							{/* Call to Action Box */}
-							<div className="mt-10 p-6 rounded-2xl bg-gradient-to-br from-secondary to-blue-600 text-white shadow-xl">
-								<h4 className="font-bold text-lg mb-2">Need Assistance?</h4>
-								<p className="text-sm text-blue-100 mb-4">Our team is ready to help you with your health needs.</p>
-								<button className="w-full py-3 rounded-xl bg-white text-primary font-bold text-sm hover:shadow-lg transition-shadow">
-									Book Appointment
+						{/* Call to Action Box */}
+						<div className="p-8 rounded-[2rem] bg-gradient-to-br from-primary to-blue-800 text-white shadow-xl shadow-blue-900/20 relative overflow-hidden">
+							<div className="relative z-10">
+								<h4 className="font-bold text-2xl mb-2 font-heading">Need Assistance?</h4>
+								<p className="text-sm text-blue-100 mb-6 leading-relaxed">
+									Our team is ready to help you with your health needs.
+								</p>
+								<button className="w-full py-3.5 rounded-xl bg-white text-primary font-bold text-sm hover:shadow-lg hover:scale-[1.02] transition-all flex items-center justify-center gap-2">
+									Book Appointment <ArrowRight className="w-4 h-4" />
 								</button>
 							</div>
+
+							{/* Decor */}
+							<div className="absolute -bottom-10 -right-10 w-32 h-32 bg-white/10 rounded-full blur-2xl" />
 						</div>
+
+					</div>
+
+					{/* RIGHT: MAIN CONTENT (8 cols) */}
+					<div className="lg:col-span-8">
+
+						{/* Title Block (Desktop) */}
+						<div className="hidden lg:flex mb-12 flex-col md:flex-row gap-6 md:items-center">
+							<div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-blue-50 to-white flex items-center justify-center border border-blue-100 shadow-sm shrink-0">
+								{icon ? (
+									<DynamicIcons name={icon} className="w-10 h-10 text-primary" />
+								) : (
+									<Stethoscope className="w-10 h-10 text-primary" />
+								)}
+							</div>
+							<div>
+								<div className="inline-block px-3 py-1 rounded-full bg-white border border-blue-100 text-primary text-xs font-bold tracking-widest uppercase mb-2 shadow-sm">
+									Service Unit
+								</div>
+								<h1 className="text-5xl font-bold font-heading text-slate-900 leading-tight tracking-tight">
+									{title}
+								</h1>
+							</div>
+						</div>
+
+						{/* 1. Overview */}
+						{fullContent.overview && (
+							<Section id="overview" title="Overview">
+								<div className="bg-white/40 backdrop-blur-md rounded-[2rem] p-8 border border-white/60 shadow-sm">
+									<p className="text-slate-700">{fullContent.overview}</p>
+								</div>
+							</Section>
+						)}
+
+						{/* 2. Mission & Vision */}
+						{fullContent.mission_vision && (
+							<Section id="mission" title="Mission & Vision">
+								<div className="grid md:grid-cols-2 gap-6">
+									{fullContent.mission_vision.mission && (
+										<div className="bg-white/60 p-8 rounded-[2rem] border border-white/60 shadow-sm">
+											<h4 className="text-primary font-bold text-sm uppercase mb-4 tracking-wider flex items-center gap-2">
+												<Heart className="w-4 h-4" /> Our Mission
+											</h4>
+											<p className="italic text-slate-700 font-medium">"{fullContent.mission_vision.mission}"</p>
+										</div>
+									)}
+									{fullContent.mission_vision.vision && (
+										<div className="bg-gradient-to-br from-indigo-50/50 to-white p-8 rounded-[2rem] border border-indigo-50 shadow-sm">
+											<h4 className="text-primary font-bold text-sm uppercase mb-4 tracking-wider flex items-center gap-2">
+												<Brain className="w-4 h-4" /> Our Vision
+											</h4>
+											<p className="italic text-slate-700 font-medium">"{fullContent.mission_vision.vision}"</p>
+										</div>
+									)}
+								</div>
+							</Section>
+						)}
+
+						{/* 3. Team */}
+						{(fullContent.leadership_staff || fullContent.staff || fullContent.team || fullContent.staffing) && (
+							<Section id="team" title="Our Team">
+								<div className="bg-white/60 p-8 rounded-[2rem] border border-white/50 shadow-sm">
+									<p className="text-slate-700 leading-relaxed whitespace-pre-line">
+										{fullContent.leadership_staff || fullContent.staff || fullContent.team || fullContent.staffing}
+									</p>
+								</div>
+							</Section>
+						)}
+
+						{/* 4. Services Offered */}
+						{(fullContent.services_offered || fullContent.services) && (
+							<Section id="services" title="Services Offered">
+								<div className="bg-white/60 p-8 rounded-[2rem] border border-white/50">
+									<ul className="grid sm:grid-cols-2 gap-4">
+										{(fullContent.services_offered || []).map((item, i) => (
+											<ListItem key={i}>{item}</ListItem>
+										))}
+										{fullContent.services?.general_services?.map((item, i) => (
+											<ListItem key={`gen-${i}`}>{item}</ListItem>
+										))}
+									</ul>
+								</div>
+							</Section>
+						)}
+
+						{/* 5. Equipment */}
+						{fullContent.advanced_equipment && (
+							<Section id="equipment" title="Technology">
+								<div className="bg-white rounded-[2rem] p-8 border border-slate-100 shadow-sm">
+									<div className="flex items-center gap-3 mb-6">
+										<div className="p-2 bg-blue-50 text-primary rounded-lg">
+											<Wrench className="w-5 h-5" />
+										</div>
+										<p className="text-slate-900 font-bold">State-of-the-art Equipment</p>
+									</div>
+									<ul className="grid sm:grid-cols-2 gap-4">
+										{fullContent.advanced_equipment.map((item, i) => (
+											<ListItem key={i}>{item}</ListItem>
+										))}
+									</ul>
+								</div>
+							</Section>
+						)}
+
+						{/* 6. Specialized / Other */}
+						{fullContent.specialized_tests && (
+							<Section id="specialized" title="Specialized Procedures">
+								<div className="grid gap-6">
+									{Object.entries(fullContent.specialized_tests).map(([key, items]) => (
+										<div key={key} className="bg-white/60 p-8 rounded-[2rem] border border-white/50 shadow-sm">
+											<h4 className="text-lg font-bold text-slate-900 mb-6 capitalize border-b border-white/50 pb-3 flex items-center gap-2">
+												<Microscope className="w-5 h-5 text-secondary" />
+												{key.replace(/_/g, ' ')}
+											</h4>
+											<ul className="grid sm:grid-cols-2 gap-4">
+												{items.map((item, i) => <ListItem key={i}>{item}</ListItem>)}
+											</ul>
+										</div>
+									))}
+								</div>
+							</Section>
+						)}
+
+
+						{/* 7. Contact Info */}
+						<Section id="contact" title="Contact Us">
+							<div className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-[2.5rem] p-10 text-white shadow-xl relative overflow-hidden group">
+								{/* Decor */}
+								<div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-full blur-[80px]" />
+
+								<div className="relative z-10 flex flex-col md:flex-row gap-8 items-start md:items-center justify-between">
+									<div className="space-y-2">
+										<h4 className="text-2xl font-bold font-heading">Get in Touch</h4>
+										<p className="text-slate-300 font-light max-w-xs">Reach out to our {title} department directly.</p>
+									</div>
+									<div className="flex flex-col gap-4 w-full md:w-auto">
+										{fullContent.contact?.number && (
+											<a href={`tel:${fullContent.contact.number}`} className="flex items-center gap-4 bg-white/10 p-4 rounded-xl backdrop-blur-sm border border-white/10 hover:bg-white/20 transition-all group/link">
+												<div className="p-2 bg-white rounded-lg text-slate-900"><Phone className="w-5 h-5" /></div>
+												<span className="font-bold text-lg">{fullContent.contact.number}</span>
+											</a>
+										)}
+										{fullContent.contact?.email && (
+											<a href={`mailto:${fullContent.contact.email}`} className="flex items-center gap-4 bg-white/10 p-4 rounded-xl backdrop-blur-sm border border-white/10 hover:bg-white/20 transition-all group/link">
+												<div className="p-2 bg-white rounded-lg text-slate-900"><Mail className="w-5 h-5" /></div>
+												<span className="font-bold text-lg">{fullContent.contact.email}</span>
+											</a>
+										)}
+									</div>
+								</div>
+							</div>
+						</Section>
+
 					</div>
 
 				</div>

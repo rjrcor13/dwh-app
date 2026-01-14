@@ -5,75 +5,66 @@ import { AnimatePresence, motion } from 'framer-motion';
 import {
 	BedDouble,
 	CheckCircle2,
-	ChevronRight,
 	FileText,
 	ShieldAlert,
 	Stethoscope,
 	DoorOpen,
-	ArrowRight
+	Sparkles,
+	Phone,
+	Clock,
+	ChevronRight
 } from 'lucide-react';
 import React, { useState } from 'react';
 
 // --- Sub-Components ---
 
-// 1. Content Wrapper with Fade Transaction
 const ContentFade = ({ children, contentKey }) => (
 	<motion.div
 		key={contentKey}
-		initial={{ opacity: 0, y: 10, scale: 0.98 }}
-		animate={{ opacity: 1, y: 0, scale: 1 }}
-		exit={{ opacity: 0, y: -10, scale: 0.98 }}
-		transition={{ duration: 0.3, ease: "easeOut" }}
-		className="w-full"
+		initial={{ opacity: 0, x: 20 }}
+		animate={{ opacity: 1, x: 0 }}
+		exit={{ opacity: 0, x: -20 }}
+		transition={{ duration: 0.4, ease: "easeOut" }}
+		className="w-full relative z-10"
 	>
 		{children}
 	</motion.div>
 );
 
-// 2. Admission/Discharge View
+// 1. Admission/Discharge View
 const ProcessView = ({ data }) => (
-	<div className="space-y-8 max-w-4xl mx-auto">
-		<div className="text-center mb-12">
-			<h2 className="text-3xl font-bold font-heading text-white mb-4">{data.title}</h2>
-			{data.intro && <p className="text-blue-200/60 text-lg">{data.intro}</p>}
+	<div className="space-y-8">
+		<div className="mb-8 relative">
+			<h2 className="text-3xl font-bold font-heading text-slate-900 mb-4 tracking-tight">{data.title}</h2>
+			{data.intro && <p className="text-slate-500 text-lg leading-relaxed">{data.intro}</p>}
 		</div>
 
-		<div className="grid gap-6">
+		<div className="space-y-6">
 			{data.sections.map((section, idx) => (
 				<motion.div
 					key={idx}
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ delay: idx * 0.1 }}
-					className="group bg-white/5 border border-white/10 rounded-3xl p-6 md:p-8 hover:bg-white/10 transition-colors duration-300"
+					className="group relative bg-white/60 backdrop-blur-xl border border-white/40 rounded-[2rem] p-6 md:p-8 shadow-sm hover:shadow-xl transition-all duration-500 overflow-hidden"
 				>
-					<div className="flex gap-6">
-						<div className="hidden md:flex flex-col items-center gap-2 shrink-0">
-							<div className="w-10 h-10 rounded-full bg-secondary/20 border border-secondary/30 flex items-center justify-center text-secondary font-bold font-heading">
+					<div className="absolute inset-0 bg-gradient-to-br from-white/40 to-transparent pointer-events-none" />
+
+					<div className="relative z-10 space-y-4">
+						<div className="flex items-center gap-4">
+							<div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-blue-700 shadow-md shadow-primary/20 flex items-center justify-center text-white font-bold font-heading">
 								{idx + 1}
 							</div>
-							<div className="w-px h-full bg-white/5 group-last:hidden" />
-						</div>
-
-						<div className="space-y-3">
-							<div className="flex items-center gap-3 md:hidden mb-2">
-								<div className="w-8 h-8 rounded-full bg-secondary/20 border border-secondary/30 flex items-center justify-center text-sm text-secondary font-bold font-heading">
-									{idx + 1}
-								</div>
-								<h3 className={cn("text-lg font-bold", section.isPrimaryText ? "text-secondary" : "text-white")}>
-									{section.heading}
-								</h3>
-							</div>
-							<h3 className={cn("text-xl font-bold hidden md:block", section.isPrimaryText ? "text-secondary" : "text-white")}>
+							<h3 className={cn("text-xl font-bold", section.isPrimaryText ? "text-secondary" : "text-slate-900")}>
 								{section.heading}
 							</h3>
-
-							{section.paragraphs.map((p, pIdx) => (
-								<p key={pIdx} className="text-blue-100/70 leading-relaxed text-sm md:text-base">
-									{p}
-								</p>
-							))}
 						</div>
+
+						{section.paragraphs.map((p, pIdx) => (
+							<p key={pIdx} className="text-slate-600 leading-relaxed text-base pl-14">
+								{p}
+							</p>
+						))}
 					</div>
 				</motion.div>
 			))}
@@ -81,15 +72,15 @@ const ProcessView = ({ data }) => (
 	</div>
 );
 
-// 3. Rooms View
+// 2. Rooms View
 const RoomsView = ({ data }) => (
-	<div className="max-w-6xl mx-auto">
-		<div className="text-center mb-12">
-			<h2 className="text-3xl font-bold font-heading text-white mb-4">{data.title}</h2>
-			<p className="text-blue-200/60 text-lg">{data.intro}</p>
+	<div className="space-y-8">
+		<div className="mb-8">
+			<h2 className="text-3xl font-bold font-heading text-slate-900 mb-4 tracking-tight">{data.title}</h2>
+			<p className="text-slate-500 text-lg">{data.intro}</p>
 		</div>
 
-		<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+		<div className="grid sm:grid-cols-2 gap-5">
 			{data.listItems.map((item, idx) => (
 				<motion.div
 					key={idx}
@@ -97,59 +88,67 @@ const RoomsView = ({ data }) => (
 					animate={{ opacity: 1, scale: 1 }}
 					transition={{ delay: idx * 0.05 }}
 					whileHover={{ y: -5 }}
-					className="bg-white/5 border border-white/10 p-6 rounded-[2rem] hover:border-secondary/30 hover:bg-white/10 transition-all duration-300 group flex flex-col h-full"
+					className="relative bg-white/70 backdrop-blur-xl border border-white/50 p-6 rounded-[2rem] shadow-sm hover:shadow-xl hover:border-primary/20 transition-all duration-300 group overflow-hidden"
 				>
-					<div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-white/10 to-white/5 flex items-center justify-center mb-6 text-white group-hover:text-secondary transition-colors">
-						<DoorOpen className="w-6 h-6" />
+					<div className="absolute -right-10 -bottom-10 w-32 h-32 bg-primary/5 rounded-full blur-[50px] group-hover:bg-primary/10 transition-colors" />
+
+					<div className="flex items-start justify-between mb-4">
+						<div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-50 to-white border border-blue-100 flex items-center justify-center text-primary group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300 shadow-sm">
+							<DoorOpen className="w-6 h-6" />
+						</div>
 					</div>
-					<h4 className="text-xl font-bold text-white mb-2">{item.term.replace(':', '')}</h4>
-					<p className="text-blue-100/60 leading-relaxed text-sm flex-grow mb-6">{item.description}</p>
+
+					<h4 className="text-lg font-bold text-slate-900 mb-2">{item.term.replace(':', '')}</h4>
+					<p className="text-slate-600 leading-relaxed text-sm">{item.description}</p>
 				</motion.div>
 			))}
 		</div>
 
 		{data.concludingParagraph && (
-			<div className="mt-12 text-center text-blue-200/40 text-sm italic">
+			<div className="bg-blue-50/50 rounded-2xl p-4 flex items-center justify-center gap-2 text-sm text-slate-500 font-medium">
+				<Sparkles className="w-4 h-4 text-secondary" />
 				{data.concludingParagraph}
 			</div>
 		)}
 	</div>
 );
 
-// 4. Rights View (Clean List)
+// 3. Rights View
 const RightsView = ({ data }) => (
-	<div className="max-w-4xl mx-auto">
-		<div className="text-center mb-12">
-			<h2 className="text-3xl font-bold font-heading text-white mb-4">{data.title}</h2>
-			<p className="text-blue-200/60 text-lg">Knowing your rights leads to better care.</p>
+	<div className="space-y-8">
+		<div className="mb-8">
+			<h2 className="text-3xl font-bold font-heading text-slate-900 mb-4 tracking-tight">{data.title}</h2>
+			<p className="text-slate-500 text-lg">Knowing your rights leads to better care.</p>
 		</div>
 
-		<div className="space-y-12">
+		<div className="space-y-8">
 			{data.sections.map((section, sIdx) => (
 				<motion.div
 					key={sIdx}
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ delay: sIdx * 0.2 }}
-					className="bg-white/5 border border-white/10 rounded-3xl overflow-hidden"
+					className="bg-white/60 backdrop-blur-xl border border-white/50 rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500"
 				>
-					<div className="p-6 md:p-8 border-b border-white/10 bg-white/5">
-						<h3 className="text-xl md:text-2xl font-bold font-heading text-secondary">{section.heading}</h3>
+					<div className="p-6 md:p-8 border-b border-indigo-50/50 bg-gradient-to-r from-indigo-50/30 to-transparent">
+						<h3 className="text-xl font-bold font-heading text-primary">{section.heading}</h3>
 					</div>
 
-					<div className="divide-y divide-white/5">
+					<div className="divide-y divide-indigo-50/50">
 						{section.items.map((item, i) => (
 							<div
 								key={i}
-								className="p-6 md:p-8 flex gap-6 hover:bg-white/5 transition-colors group"
+								className="p-6 md:p-8 flex gap-5 hover:bg-white/40 transition-colors group"
 							>
-								<div className="shrink-0 w-8 h-8 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-400 group-hover:bg-secondary group-hover:text-white transition-colors duration-300">
-									<CheckCircle2 className="w-5 h-5" />
+								<div className="shrink-0 w-6 h-6 rounded-full bg-blue-50/80 border border-blue-100 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300 shadow-sm mt-1">
+									<CheckCircle2 className="w-3 h-3" />
 								</div>
 
 								<div>
-									<p className="text-white text-lg font-medium leading-relaxed mb-3">{item.text}</p>
-									<p className="text-blue-200/50 text-base italic font-serif leading-relaxed">"{item.tagalog}"</p>
+									<p className="text-slate-900 text-base font-bold leading-relaxed mb-2">{item.text}</p>
+									<p className="text-slate-500 text-sm leading-relaxed italic">
+										"{item.tagalog}"
+									</p>
 								</div>
 							</div>
 						))}
@@ -160,100 +159,137 @@ const RightsView = ({ data }) => (
 	</div>
 );
 
-
 // --- Main Component ---
 
 const PatientsPage = ({ patientsData }) => {
 	const [activeTab, setActiveTab] = useState('admission');
 
 	const tabs = [
-		{ id: 'admission', label: 'Admission', icon: FileText },
-		{ id: 'discharge', label: 'Discharge', icon: CheckCircle2 },
-		{ id: 'rooms', label: 'Rooms', icon: BedDouble },
-		{ id: 'rights', label: 'Rights', icon: ShieldAlert },
+		{ id: 'admission', label: 'Admission', icon: FileText, desc: 'Requirements & process' },
+		{ id: 'discharge', label: 'Discharge', icon: CheckCircle2, desc: 'Clearance & billing' },
+		{ id: 'rooms', label: 'Rooms', icon: BedDouble, desc: 'Rates & amenities' },
+		{ id: 'rights', label: 'Rights', icon: ShieldAlert, desc: 'Patient entitlement' },
 	];
 
 	if (!patientsData) return null;
 
 	return (
-		<div className="bg-primary min-h-screen relative font-sans selection:bg-secondary/30 selection:text-white pb-32 pt-32">
+		<div className="bg-slate-50/50 min-h-screen relative font-sans selection:bg-primary/20 selection:text-primary pb-32 pt-32">
 
-			{/* Background Effects */}
-			<div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a] via-primary to-primary pointer-events-none" />
-			<div className="fixed top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-secondary/10 rounded-full blur-[120px] pointer-events-none mix-blend-screen opacity-50" />
+			{/* --- Ambient Background Mesh --- */}
+			<div className="fixed inset-0 pointer-events-none">
+				<div className="absolute top-[-10%] right-[-10%] w-[800px] h-[800px] bg-gradient-to-br from-blue-100/40 to-indigo-100/40 rounded-full blur-[120px]" />
+				<div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-gradient-to-tr from-amber-50/60 to-orange-50/30 rounded-full blur-[100px]" />
+			</div>
 
 			<div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-				{/* Header */}
-				<div className="text-center mb-12">
-					<div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-blue-200 text-xs font-bold tracking-widest uppercase mb-6">
-						<Stethoscope className="w-4 h-4 text-secondary" />
-						<span>Patient Guide</span>
+				<div className="grid lg:grid-cols-12 gap-12 items-start">
+
+					{/* LEFT COLUMN: Sticky Navigation (4 cols) */}
+					<div className="lg:col-span-4 lg:sticky lg:top-32 space-y-8">
+
+						{/* Header */}
+						<div>
+							<div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/80 border border-blue-100 text-primary text-xs font-bold tracking-widest uppercase mb-4 shadow-sm">
+								<Stethoscope className="w-4 h-4 text-secondary" />
+								<span>Patient Guide</span>
+							</div>
+							<h1 className="text-4xl md:text-5xl font-bold font-heading text-slate-900 leading-tight mb-4 tracking-tight">
+								Patient<br />Information
+							</h1>
+							<p className="text-slate-600 text-lg font-light leading-relaxed">
+								Everything you need for a comfortable stay at Divine Word Hospital.
+							</p>
+						</div>
+
+						{/* Vertical Navigation Pills */}
+						<div className="flex flex-col gap-3">
+							{tabs.map((tab) => {
+								const isActive = activeTab === tab.id;
+								const Icon = tab.icon;
+								return (
+									<button
+										key={tab.id}
+										onClick={() => setActiveTab(tab.id)}
+										className={cn(
+											"group relative text-left p-4 rounded-2xl border transition-all duration-300 flex items-center justify-between",
+											isActive
+												? "bg-white border-blue-100 shadow-md ring-1 ring-blue-500/10"
+												: "bg-white/40 border-transparent hover:bg-white/80 hover:border-white hover:shadow-sm"
+										)}
+									>
+										<div className="flex items-center gap-4">
+											<div className={cn(
+												"w-10 h-10 rounded-xl flex items-center justify-center transition-colors duration-300",
+												isActive ? "bg-primary text-white shadow-md shadow-primary/20" : "bg-blue-50 text-slate-400 group-hover:bg-white group-hover:text-primary"
+											)}>
+												<Icon className="w-5 h-5" />
+											</div>
+											<div>
+												<span className={cn("block font-bold text-sm", isActive ? "text-slate-900" : "text-slate-500 group-hover:text-slate-800")}>
+													{tab.label}
+												</span>
+												<span className={cn("block text-xs", isActive ? "text-slate-500" : "text-slate-400")}>
+													{tab.desc}
+												</span>
+											</div>
+										</div>
+										{isActive && <ChevronRight className="w-5 h-5 text-primary opacity-50" />}
+									</button>
+								);
+							})}
+						</div>
+
+						{/* Admissions Contact Widget */}
+						<div className="bg-gradient-to-br from-blue-900 to-indigo-900 rounded-[2rem] p-8 text-white relative overflow-hidden shadow-xl shadow-blue-900/20">
+							<div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-[30px]" />
+							<div className="relative z-10">
+								<h3 className="font-bold text-lg mb-1">Need Assistance?</h3>
+								<p className="text-blue-200 text-sm mb-6">Our Admission Office is open daily.</p>
+
+								<div className="space-y-4">
+									<div className="flex items-center gap-3 bg-white/10 p-3 rounded-xl backdrop-blur-sm border border-white/10">
+										<Phone className="w-5 h-5 text-secondary" />
+										<span className="font-bold">0919-067-2673</span>
+									</div>
+									<div className="flex items-center gap-3 bg-white/10 p-3 rounded-xl backdrop-blur-sm border border-white/10">
+										<Clock className="w-5 h-5 text-secondary" />
+										<span className="font-bold text-sm">24/7 Service</span>
+									</div>
+								</div>
+							</div>
+						</div>
+
 					</div>
-					<h1 className="text-4xl md:text-6xl font-bold font-heading text-white mb-6">
-						Patient Information
-					</h1>
-					<p className="text-blue-100/60 max-w-2xl mx-auto text-lg leading-relaxed">
-						Quick access to everything you need for your stay at Divine Word Hospital.
-					</p>
-				</div>
 
-				{/* 1. Integrated Segmented Control (Apple-Style Pills) */}
-				<div className="sticky top-24 z-50 flex justify-center mb-16">
-					<div className="p-1.5 bg-white/5 backdrop-blur-xl border border-white/10 rounded-full flex gap-1 shadow-2xl overflow-x-auto max-w-full no-scrollbar">
-						{tabs.map((tab) => {
-							const isActive = activeTab === tab.id;
-							const Icon = tab.icon;
-							return (
-								<button
-									key={tab.id}
-									onClick={() => setActiveTab(tab.id)}
-									className={cn(
-										"relative px-6 py-2.5 rounded-full flex items-center gap-2 transition-all duration-300 shrink-0",
-										isActive ? "text-white" : "text-white/50 hover:text-white"
-									)}
-								>
-									{isActive && (
-										<motion.div
-											layoutId="pill-active"
-											className="absolute inset-0 bg-secondary rounded-full shadow-lg shadow-secondary/25"
-											transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-										/>
-									)}
-									<span className="relative z-10"><Icon className="w-4 h-4" /></span>
-									<span className="relative z-10 text-sm font-bold tracking-wide">{tab.label}</span>
-								</button>
-							);
-						})}
+					{/* RIGHT COLUMN: Active Content (8 cols) */}
+					<div className="lg:col-span-8 min-h-[500px]">
+						<AnimatePresence mode="wait">
+							{activeTab === 'admission' && (
+								<ContentFade contentKey="admission">
+									<ProcessView data={patientsData.admission} />
+								</ContentFade>
+							)}
+							{activeTab === 'discharge' && (
+								<ContentFade contentKey="discharge">
+									<ProcessView data={patientsData.discharge} />
+								</ContentFade>
+							)}
+							{activeTab === 'rooms' && (
+								<ContentFade contentKey="rooms">
+									<RoomsView data={patientsData.rooms} />
+								</ContentFade>
+							)}
+							{activeTab === 'rights' && (
+								<ContentFade contentKey="rights">
+									<RightsView data={patientsData.rights} />
+								</ContentFade>
+							)}
+						</AnimatePresence>
 					</div>
-				</div>
 
-				{/* 2. Content Area */}
-				<div className="min-h-[500px]">
-					<AnimatePresence mode="wait">
-						{activeTab === 'admission' && (
-							<ContentFade contentKey="admission">
-								<ProcessView data={patientsData.admission} />
-							</ContentFade>
-						)}
-						{activeTab === 'discharge' && (
-							<ContentFade contentKey="discharge">
-								<ProcessView data={patientsData.discharge} />
-							</ContentFade>
-						)}
-						{activeTab === 'rooms' && (
-							<ContentFade contentKey="rooms">
-								<RoomsView data={patientsData.rooms} />
-							</ContentFade>
-						)}
-						{activeTab === 'rights' && (
-							<ContentFade contentKey="rights">
-								<RightsView data={patientsData.rights} />
-							</ContentFade>
-						)}
-					</AnimatePresence>
 				</div>
-
 			</div>
 		</div>
 	);
