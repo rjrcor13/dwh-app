@@ -55,7 +55,12 @@ const WhyChooseUs = () => {
 							whileInView={{ opacity: 1, y: 0 }}
 							className="text-secondary font-bold tracking-widest uppercase text-sm mb-4"
 						>
-							Our Distinction
+							{/* Our Distinction */}
+							<div className="flex items-center gap-2 mb-4">
+								<div className="h-px w-10 bg-secondary"></div>
+								<span className="text-secondary font-bold tracking-widest uppercase text-sm">Our Distinction</span>
+							</div>
+
 						</motion.h2>
 						<motion.h2
 							initial={{ opacity: 0, y: 20 }}

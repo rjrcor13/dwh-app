@@ -18,7 +18,7 @@ const emailInfo = contactInfo.find((info) => info.title === 'Email');
 
 const TopWidget = () => {
 	return (
-		<div className="bg-primary text-blue-50 border-b border-white/10 relative z-50 overflow-hidden">
+		<div className="bg-primary text-blue-50 border-b border-white/10 relative z-50 overflow-hidden" suppressHydrationWarning>
 			{/* Dynamic Background Gradient */}
 			<div className="absolute inset-0 bg-gradient-to-br from-primary via-[#161270] to-[#0f0c50] pointer-events-none" />
 
@@ -64,6 +64,23 @@ const TopWidget = () => {
 							{phoneInfo.text}
 						</span>
 					</div>
+
+					{/* Divider */}
+					<div className="hidden md:block w-px h-3 bg-white/20" />
+
+					{/* Find a Doctor Link */}
+					<Link
+						href="/doctors"
+						className="flex items-center gap-1.5 text-secondary font-bold hover:text-white transition-colors"
+					>
+						<span>Find a Doctor</span>
+						<span className="bg-white/10 p-0.5 rounded-full">
+							<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+								<path d="M5 12h14" />
+								<path d="m12 5 7 7-7 7" />
+							</svg>
+						</span>
+					</Link>
 				</div>
 
 			</div>

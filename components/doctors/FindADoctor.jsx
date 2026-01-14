@@ -304,34 +304,36 @@ const FindADoctor = () => {
 	}, [searchParams, filterDoctors]);
 
 	return (
-		<div className="bg-primary min-h-screen relative overflow-hidden font-sans">
-			{/* Dynamic Background Gradient */}
-			<div className="absolute inset-0 bg-gradient-to-br from-primary via-[#161270] to-[#0f0c50] pointer-events-none" />
+		<div className="bg-slate-50 min-h-screen relative overflow-hidden font-sans selection:bg-blue-100">
 
 			{/* Animated Background Elements */}
 			<div className="absolute inset-0 pointer-events-none overflow-hidden">
-				<div className="absolute top-0 right-0 w-[800px] h-[800px] bg-secondary/10 rounded-full blur-[120px] mix-blend-screen opacity-20" />
-				<div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-500/10 rounded-full blur-[100px] mix-blend-screen opacity-10" />
+				<div className="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-500/5 rounded-full blur-[120px] mix-blend-multiply opacity-70" />
+				<div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-cyan-500/5 rounded-full blur-[100px] mix-blend-multiply opacity-70" />
 			</div>
 
 			<div className="relative z-10 container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-24">
 
 				{/* Section Header */}
 				<div className="text-center mb-16 space-y-4">
-					<div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-blue-200 text-xs font-bold tracking-widest uppercase backdrop-blur-md mb-2">
+					{/* <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-slate-100 text-primary text-xs font-bold tracking-widest uppercase shadow-sm mb-2">
+						<Stethoscope className="w-4 h-4 text-secondary" />
+						<span>Our Medical Experts</span>
+					</div> */}
+					<div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-primary text-xs font-bold tracking-widest uppercase mb-6 shadow-sm">
 						<Stethoscope className="w-4 h-4 text-secondary" />
 						<span>Our Medical Experts</span>
 					</div>
-					<h1 className="text-4xl lg:text-5xl font-bold font-heading text-white">
+					<h1 className="text-4xl lg:text-6xl font-bold font-heading text-slate-900 tracking-tight">
 						Find Your Specialist
 					</h1>
-					<p className="text-blue-100/70 max-w-2xl mx-auto text-lg font-light leading-relaxed">
+					<p className="text-slate-500 max-w-2xl mx-auto text-lg font-light leading-relaxed">
 						Meet our team of dedicated doctors and healthcare professionals committed to providing you with world-class care.
 					</p>
 				</div>
 
 				{/* Filter Section */}
-				<div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[2rem] p-6 lg:p-8 shadow-2xl shadow-black/10 mb-12">
+				<div className="relative z-30 bg-white/80 backdrop-blur-xl border border-white/50 rounded-[2rem] p-6 lg:p-10 shadow-xl shadow-slate-200/40 mb-12">
 					<FilterDoctor
 						searchQuery={searchQuery}
 						selectedSpecialties={selectedSpecialties}
@@ -360,11 +362,11 @@ const FindADoctor = () => {
 				{/* Empty State */}
 				{filteredDoctors.length === 0 && (
 					<div className="text-center py-24">
-						<div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-white/5 border border-white/10 mb-6 backdrop-blur-md">
-							<Stethoscope className="w-10 h-10 text-white/20" />
+						<div className="inline-flex items-center justify-center w-24 h-24 rounded-full bg-slate-100 mb-6">
+							<Stethoscope className="w-10 h-10 text-slate-300" />
 						</div>
-						<h3 className="text-2xl font-bold text-white mb-2 font-heading">No doctors found</h3>
-						<p className="text-blue-200/50">
+						<h3 className="text-2xl font-bold text-slate-900 mb-2 font-heading">No doctors found</h3>
+						<p className="text-slate-500">
 							Try adjusting your filters or search terms.
 						</p>
 					</div>
@@ -373,11 +375,11 @@ const FindADoctor = () => {
 				{/* Pagination (Example - Adapt to your needs with Shadcn UI components) */}
 				{filteredDoctors.length > 9 && (
 					<div className="mt-16 flex justify-center space-x-2">
-						<Button variant="outline" className="rounded-xl bg-white/5 border-white/10 text-blue-100 hover:bg-white/10 hover:text-white border-transparent">Previous</Button>
-						<span className="flex items-center px-4 text-sm font-semibold text-white bg-white/5 rounded-xl border border-white/10">
+						<Button variant="outline" className="rounded-xl bg-white border-slate-200 text-slate-600 hover:bg-slate-50 hover:text-primary">Previous</Button>
+						<span className="flex items-center px-4 text-sm font-bold text-slate-900 bg-white rounded-xl border border-slate-200 shadow-sm">
 							1-9 of {doctorsData.length}
 						</span>
-						<Button variant="outline" className="rounded-xl bg-white/5 border-white/10 text-blue-100 hover:bg-white/10 hover:text-white border-transparent">Next</Button>
+						<Button variant="outline" className="rounded-xl bg-white border-slate-200 text-slate-600 hover:bg-slate-50 hover:text-primary">Next</Button>
 					</div>
 				)}
 			</div>

@@ -5,6 +5,12 @@ export const menuItems = [
 			href: '/home',
 		},
 	},
+	{
+		label: 'Doctors',
+		featured: {
+			href: '/doctors',
+		},
+	},
 
 	{
 		label: 'Expertise',
@@ -32,7 +38,7 @@ export const menuItems = [
 		],
 	},
 	{
-		label: 'Patients & Visitors Guide',
+		label: 'Patient Center',
 		featured: {
 			title: 'Admissions & Visiting',
 			description:
@@ -62,7 +68,7 @@ export const menuItems = [
 		],
 	},
 	{
-		label: 'Religious Services & Hospital Events',
+		label: 'Ministry & Events',
 		featured: {
 			title: 'Faith & Community',
 			description:
@@ -103,10 +109,4 @@ export const menuItems = [
 			href: '/careers',
 		},
 	},
-	// {
-	// 	label: 'Contact Us',
-	// 	featured: {
-	// 		href: '/contact',
-	// 	},
-	// },
 ];

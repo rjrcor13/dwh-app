@@ -8,9 +8,9 @@ const PublicLayout = ({ children }) => {
 		<div className="relative">
 			<TopWidget />
 
-			<div className="  sticky top-0 z-40 bg-white  shadow-md">
+			<header className="sticky top-0 z-40 bg-white shadow-md">
 				<Header />
-			</div>
+			</header>
 			<main className="">{children}</main>
 			<footer className="relative bottom-0">
 				<Footer />

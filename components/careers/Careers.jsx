@@ -17,7 +17,7 @@ const Careers = ({ jobListings }) => {
 					className="inline-block"
 				>
 					<div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-primary text-xs font-bold tracking-widest uppercase mb-6 shadow-sm">
-						<Briefcase className="w-3.5 h-3.5" />
+						<Briefcase className="w-3.5 h-3.5 text-secondary" />
 						<span>Join Our Team</span>
 					</div>
 					<h1 className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight text-slate-900 font-heading mb-6">

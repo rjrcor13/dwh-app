@@ -16,7 +16,7 @@ const Banner = () => {
 	];
 
 	return (
-		<section className="relative min-h-[90vh] flex flex-col justify-center items-center overflow-hidden bg-slate-50">
+		<section className="relative min-h-[85vh] flex flex-col justify-center items-center overflow-hidden bg-slate-50">
 
 			{/* Background Image Area */}
 			<div className="absolute inset-0 z-0">
@@ -27,8 +27,14 @@ const Banner = () => {
 					fill
 					priority
 				/>
-				{/* Modern Light Overlay: Gradient from White (Left) to Transparent (Right) */}
-				<div className="absolute inset-0 bg-gradient-to-r from-slate-50 via-slate-50/90 to-slate-50/20 md:to-transparent" />
+
+				{/* Ambient Glow Orbs - Adds depth/color to the white */}
+				<div className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] bg-blue-400/20 rounded-full blur-[120px]" />
+				<div className="absolute bottom-[20%] right-[10%] w-[300px] h-[300px] bg-purple-400/10 rounded-full blur-[100px]" />
+
+				{/* Modern Light Overlay: Adjusted for more depth */}
+				<div className="absolute inset-0 bg-gradient-to-r from-slate-50 via-slate-50/80 to-slate-50/10 md:to-transparent" />
+
 				{/* Bottom Fade for smooth transition */}
 				<div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-slate-50 to-transparent" />
 			</div>
@@ -89,17 +95,20 @@ const Banner = () => {
 				initial={{ opacity: 0, y: 50 }}
 				animate={{ opacity: 1, y: 0 }}
 				transition={{ duration: 0.8, delay: 0.4 }}
-				className="absolute bottom-0 left-0 right-0 z-20 border-t border-slate-200 bg-white/60 backdrop-blur-xl shadow-lg"
+				className="absolute bottom-0 left-0 right-0 z-20 border-t border-white/50 bg-white/70 backdrop-blur-2xl shadow-[0_-10px_40px_-15px_rgba(30,58,138,0.1)]"
 			>
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-					<div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-slate-200">
+					<div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-slate-200/50">
 						{stats.map((stat, index) => (
-							<div key={index} className="py-8 px-6 flex flex-row items-center justify-start md:justify-center gap-6 text-left group hover:bg-white/50 transition-colors">
-								<div className="p-4 rounded-2xl bg-blue-50 text-primary border border-blue-100 group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all duration-300 shrink-0 shadow-sm">
-									<stat.icon className="h-6 w-6 md:h-8 md:w-8" aria-hidden="true" />
+							<div key={index} className="py-8 px-6 flex flex-row items-center justify-start md:justify-center gap-6 text-left group hover:bg-white/40 transition-colors">
+								<div className="relative">
+									<div className="absolute inset-0 bg-blue-400/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+									<div className="relative p-4 rounded-2xl bg-gradient-to-br from-blue-50 to-white text-primary border border-blue-100 group-hover:scale-110 group-hover:border-blue-200 transition-all duration-300 shrink-0 shadow-sm">
+										<stat.icon className="h-6 w-6 md:h-8 md:w-8" aria-hidden="true" />
+									</div>
 								</div>
 								<div>
-									<div className="text-3xl md:text-5xl font-bold font-heading text-slate-900">{stat.value}</div>
+									<div className="text-3xl md:text-5xl font-bold font-heading text-slate-900 tracking-tight">{stat.value}</div>
 									<div className="text-xs md:text-sm font-bold text-slate-500 uppercase tracking-widest mt-1">{stat.label}</div>
 								</div>
 							</div>

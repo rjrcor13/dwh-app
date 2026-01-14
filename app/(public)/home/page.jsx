@@ -52,7 +52,7 @@ const HomePage = () => {
 					<AboutUs className="relative z-10 max-w-7xl mx-auto mt-0 min-h-[500px] " />
 
 				</div>
-				
+
 				<Testimonials />
 
 				<HMOLogos />

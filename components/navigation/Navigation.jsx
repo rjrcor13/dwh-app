@@ -204,9 +204,15 @@ export default function NavigationMenuDemo({ menuItems, myClass }) {
 							</>
 						) : (
 							<Link href={item.featured?.href || '#'} passHref>
-								<span className="inline-flex h-9 w-max items-center justify-center rounded-full px-4 py-2 text-sm font-semibold font-heading text-blue-100 transition-all duration-300 hover:text-white hover:bg-white/10">
-									{item.label}
-								</span>
+								{item.label === 'Doctors' ? (
+									<span className="inline-flex h-9 items-center justify-center rounded-full px-5 py-2 text-sm font-bold font-heading bg-white text-primary shadow-lg shadow-blue-900/20 transition-all duration-300 hover:bg-blue-50 hover:scale-105 hover:shadow-xl">
+										{item.label}
+									</span>
+								) : (
+									<span className="inline-flex h-9 w-max items-center justify-center rounded-full px-4 py-2 text-sm font-semibold font-heading text-blue-100 transition-all duration-300 hover:text-white hover:bg-white/10">
+										{item.label}
+									</span>
+								)}
 							</Link>
 						)}
 					</li>

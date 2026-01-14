@@ -13,9 +13,13 @@ const OurServicesSection = () => {
 				{/* Section Header */}
 				<div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
 					<div className="max-w-2xl">
-						<h2 className="text-secondary font-bold tracking-wide uppercase text-sm mb-2">
+						{/* <h2 className="text-secondary font-bold tracking-wide uppercase text-sm mb-2">
 							WHAT WE OFFER
-						</h2>
+						</h2> */}
+						<div className="flex items-center gap-2 mb-4">
+							<div className="h-px w-10 bg-secondary"></div>
+							<span className="text-secondary font-bold tracking-widest uppercase text-sm">What We Offer</span>
+						</div>
 						<h2 className="text-4xl lg:text-5xl font-bold font-heading text-slate-900 mb-6">
 							Our Services
 						</h2>

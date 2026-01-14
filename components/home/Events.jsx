@@ -65,9 +65,13 @@ const Events = () => {
 
 				<div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
 					<div>
-						<h2 className="text-secondary font-bold tracking-widest uppercase text-sm mb-3">
+						{/* <h2 className="text-secondary font-bold tracking-widest uppercase text-sm mb-3">
 							Hospital News
-						</h2>
+						</h2> */}
+						<div className="flex items-center gap-2 mb-4">
+							<div className="h-px w-10 bg-secondary"></div>
+							<span className="text-secondary font-bold tracking-widest uppercase text-sm">Hospital News</span>
+						</div>
 						<h2 className="text-3xl md:text-5xl font-bold font-heading text-slate-900">
 							Latest Events & Updates
 						</h2>

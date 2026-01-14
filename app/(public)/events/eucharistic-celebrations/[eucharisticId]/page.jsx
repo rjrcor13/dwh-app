@@ -1,33 +1,48 @@
-// This file will NOT have 'use client' at the top.
-// It will be a Server Component responsible for fetching data and
-// passing it to the client component.
-
 import { eucharisticEvents } from '@/app/data/eucharisticEvents';
+import EventDetailsLayout from '@/components/events/EventDetailsLayout';
 import { notFound } from 'next/navigation';
-import EventClientPage from './EventClientPage'; // Import the new client component
 
-// generateStaticParams must stay in a server component file (like this page.jsx)
-// It runs at build time to pre-render paths.
 export async function generateStaticParams() {
 	return eucharisticEvents.map((event) => ({
-		eucharisticId: event.id,
+		eucharisticId: event.id.toString(),
 	}));
 }
 
-// This is a Server Component.
-// FIX: Make the component async and await params
-const EucharisticEventPage = async ({ params }) => {
-	// Await params here, even if it's typically synchronous for route params
-	const { eucharisticId } = await params; // <--- The fix is here
+export async function generateMetadata({ params }) {
+	const { eucharisticId } = await params;
+	const event = eucharisticEvents.find((e) => e.id.toString() === eucharisticId);
 
-	const event = eucharisticEvents.find((e) => e.id === eucharisticId);
+	if (!event) {
+		return {
+			title: 'Event Not Found | Divine Word Hospital',
+		};
+	}
+
+	return {
+		title: `${event.title} | Eucharistic Celebrations`,
+		description: event.description || event.fullDescription,
+		openGraph: {
+			title: event.title,
+			description: event.description,
+			images: event.media && event.media[0] ? [event.media[0].src] : [],
+		},
+	};
+}
+
+export default async function EucharisticEventDetailsPage({ params }) {
+	const { eucharisticId } = await params;
+	const event = eucharisticEvents.find((e) => e.id.toString() === eucharisticId);
 
 	if (!event) {
 		notFound();
 	}
 
-	// Render the client component and pass the fetched `event` data as a prop
-	return <EventClientPage event={event} />;
-};
-
-export default EucharisticEventPage;
+	return (
+		<EventDetailsLayout
+			event={event}
+			themeColor="purple"
+			parentHref="/events/eucharistic-celebrations"
+			parentLabel="Eucharistic Celebrations"
+		/>
+	);
+}

@@ -30,6 +30,12 @@ export const metadata = {
 	},
 	description: 'Divine Word Hospital provides world-class medical care with a compassionate Christian touch in Tacloban City. Offering 24/7 emergency services, specialized centers, and holistic healing since 1965.',
 	keywords: ['hospital tacloban', 'healthcare leyte', 'emergency room tacloban', 'divine word hospital', 'medical specialists', 'compassionate care'],
+	metadataBase: new URL('https://dwh.ph'),
+	viewport: {
+		width: 'device-width',
+		initialScale: 1,
+		maximumScale: 1,
+	},
 	openGraph: {
 		title: 'Divine Word Hospital - Premier Healthcare in Tacloban',
 		description: 'World-class medical care with a compassionate touch. Serving Region VIII since 1965.',

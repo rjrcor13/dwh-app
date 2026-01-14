@@ -40,9 +40,13 @@ const Testimonials = () => {
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div className="text-center mb-16">
-                    <h2 className="text-secondary font-bold tracking-wide uppercase text-sm mb-2">
+                    {/* <h2 className="text-secondary font-bold tracking-wide uppercase text-sm mb-2">
                         Patient Stories
-                    </h2>
+                    </h2> */}
+                    <div className="flex justify-center items-center gap-2 mb-4">
+                        <div className="h-px w-10 bg-secondary"></div>
+                        <span className="text-secondary font-bold tracking-widest uppercase text-sm">Patient Stories</span>
+                    </div>
                     <h2 className="text-3xl md:text-5xl font-bold font-heading text-white mb-6">
                         What Our Patients Say
                     </h2>

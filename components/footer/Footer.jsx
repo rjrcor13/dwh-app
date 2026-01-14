@@ -69,13 +69,18 @@ const Footer = () => {
 							Providing compassionate care and healing for all since 1965. We are dedicated to being a trusted partner in your health journey, finding God in all things.
 						</p>
 						<div className="flex gap-4 pt-2">
-							{[Facebook, Twitter, Instagram].map((Icon, i) => (
+							{[
+								{ Icon: Facebook, label: 'Visit our Facebook page' },
+								{ Icon: Twitter, label: 'Follow us on Twitter' },
+								{ Icon: Instagram, label: 'Follow us on Instagram' }
+							].map(({ Icon, label }, i) => (
 								<a
 									key={i}
 									href="#"
+									aria-label={label}
 									className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-blue-100 hover:bg-white hover:text-primary transition-all duration-300 hover:-translate-y-1"
 								>
-									<Icon className="h-5 w-5" />
+									<Icon className="h-5 w-5" aria-hidden="true" />
 								</a>
 							))}
 						</div>
