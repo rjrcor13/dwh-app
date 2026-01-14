@@ -1,10 +1,12 @@
 'use client';
 
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { ArrowLeft, CheckCircle2, ChevronRight, Phone, Mail, Facebook, User, Stethoscope, Microscope, Baby, Brain, Heart, GraduationCap, ArrowRight } from 'lucide-react';
+import { ArrowLeft, CheckCircle2, ChevronRight, Phone, Mail, Facebook, User, Stethoscope, Microscope, Baby, Brain, Heart, GraduationCap, ArrowRight, Home } from 'lucide-react';
+import { useEffect, useState } from 'react';
+
 import { default as DynamicIcons } from '../dynamicIcons/DynamicIcons';
 import { cn } from '@/lib/utils';
-import { useEffect, useState } from 'react';
 
 // Reusable Section Component
 const Section = ({ id, title, children, className }) => (
@@ -69,7 +71,7 @@ export default function DepartmentDetailsClient({ department }) {
     };
 
     return (
-        <div className="bg-slate-50/50 min-h-screen relative font-sans pb-32 pt-24">
+        <div className="bg-slate-50/50 min-h-screen relative font-sans pb-32">
 
             {/* --- Ambient Background Mesh --- */}
             <div className="fixed inset-0 pointer-events-none">
@@ -77,24 +79,31 @@ export default function DepartmentDetailsClient({ department }) {
                 <div className="absolute bottom-[-10%] right-[-10%] w-[800px] h-[800px] bg-gradient-to-tr from-amber-50/50 to-orange-50/20 rounded-full blur-[100px]" />
             </div>
 
+            {/* --- BREADCRUMBS (Sticky Top) --- */}
+            <div className="sticky top-[80px] z-30 bg-white/80 backdrop-blur-xl border-b border-white/50 shadow-sm transition-all mb-12">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center text-sm font-medium text-slate-500">
+                    <Link href="/home" className="hover:text-primary transition-colors flex items-center gap-2 group">
+                        <Home className="w-4 h-4 group-hover:text-secondary transition-colors" />
+                        <span className="hidden sm:inline">Home</span>
+                    </Link>
+                    <ChevronRight className="w-4 h-4 mx-2 text-slate-300" />
+                    <Link href="/expertise" className="hover:text-primary transition-colors">
+                        Expertise
+                    </Link>
+                    <ChevronRight className="w-4 h-4 mx-2 text-slate-300" />
+                    <Link href="/expertise/departments" className="hover:text-primary transition-colors">
+                        Departments
+                    </Link>
+                    <ChevronRight className="w-4 h-4 mx-2 text-slate-300" />
+                    <span className="text-slate-900 font-bold truncate max-w-[200px] sm:max-w-md bg-white/50 px-3 py-1 rounded-full border border-white/50">
+                        {name}
+                    </span>
+                </div>
+            </div>
+
             <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
 
-                {/* Header / Breadcrumb */}
-                <div className="flex items-center gap-4 mb-12">
-                    <button
-                        onClick={() => router.back()}
-                        className="p-2 rounded-full bg-white hover:bg-white/80 text-slate-600 hover:text-primary transition-colors shadow-sm border border-slate-200"
-                    >
-                        <ArrowLeft className="w-5 h-5" />
-                    </button>
-                    <nav className="flex items-center gap-2 text-sm font-medium text-slate-500 flex-wrap">
-                        <span>Expertise</span>
-                        <ChevronRight className="w-4 h-4" />
-                        <span className="hover:text-primary cursor-pointer transition-colors" onClick={() => router.push('/expertise/departments')}>Departments</span>
-                        <ChevronRight className="w-4 h-4" />
-                        <span className="text-slate-900 font-bold truncate max-w-[200px] md:max-w-none">{name}</span>
-                    </nav>
-                </div>
+                {/* Header / Breadcrumb - REMOVED */}
 
                 <div className="grid lg:grid-cols-12 gap-12 items-start">
 
