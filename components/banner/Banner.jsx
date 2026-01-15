@@ -25,6 +25,7 @@ const Banner = () => {
 					alt="Divine Word Hospital"
 					className="w-full h-full object-cover"
 					fill
+					sizes="100vw"
 					priority
 				/>
 
