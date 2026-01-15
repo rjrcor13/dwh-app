@@ -21,33 +21,39 @@ const EventCategoryLayout = ({
     // Theme Color configurations
     const themes = {
         blue: {
-            bg: 'bg-slate-50', // Cleaner neutral background
-            text: 'text-primary', // Brand Royal Blue
+            bg: 'bg-slate-50',
+            text: 'text-primary',
             border: 'border-slate-200',
             hoverBorder: 'hover:border-primary/30',
             iconBg: 'bg-blue-50 text-primary',
             gradient: 'from-primary via-blue-700 to-blue-600',
-            button: 'text-primary border-primary/20 hover:bg-primary hover:text-white',
+            linkText: 'text-primary group-hover:text-blue-700',
+            arrowBorder: 'border-blue-200',
+            arrowText: 'text-primary',
             blob: 'bg-primary/20'
         },
         green: {
             bg: 'bg-slate-50',
-            text: 'text-emerald-800', // Deeper, more medical green
+            text: 'text-emerald-800',
             border: 'border-emerald-100',
             hoverBorder: 'hover:border-emerald-500/30',
             iconBg: 'bg-emerald-50 text-emerald-700',
             gradient: 'from-emerald-700 to-teal-600',
-            button: 'text-emerald-700 border-emerald-200 hover:bg-emerald-700 hover:text-white',
+            linkText: 'text-emerald-700 group-hover:text-emerald-900',
+            arrowBorder: 'border-emerald-200',
+            arrowText: 'text-emerald-700',
             blob: 'bg-emerald-500/10'
         },
         purple: {
             bg: 'bg-slate-50',
-            text: 'text-violet-900', // Deep spiritual purple
+            text: 'text-violet-900',
             border: 'border-violet-100',
             hoverBorder: 'hover:border-violet-500/30',
             iconBg: 'bg-violet-50 text-violet-700',
             gradient: 'from-violet-800 to-purple-600',
-            button: 'text-violet-800 border-violet-200 hover:bg-violet-800 hover:text-white',
+            linkText: 'text-violet-700 group-hover:text-violet-900',
+            arrowBorder: 'border-violet-200',
+            arrowText: 'text-violet-700',
             blob: 'bg-violet-500/10'
         }
     };
@@ -184,9 +190,10 @@ const EventCategoryLayout = ({
                                                 </div>
                                             </div>
 
-                                            <div className="mt-auto">
-                                                <div className={`w-full py-4 rounded-xl border flex items-center justify-center font-bold text-sm tracking-wide transition-all duration-300 ${theme.button} group-hover:shadow-lg group-hover:scale-[1.02]`}>
-                                                    Read More
+                                            <div className="mt-6 flex items-center gap-2 font-bold text-sm tracking-wide transition-all duration-300 group-hover:gap-3 cursor-pointer">
+                                                <span className={`${theme.linkText} transition-colors duration-300`}>Read More</span>
+                                                <div className={`w-6 h-6 rounded-full flex items-center justify-center border ${theme.arrowBorder} ${theme.arrowText} group-hover:bg-current group-hover:text-white transition-all duration-300`}>
+                                                    <ArrowRight className="w-3 h-3" />
                                                 </div>
                                             </div>
                                         </div>

@@ -1,6 +1,7 @@
 'use client';
 
 import { departmentsData } from '@/app/data/departments';
+import PremiumBadge from '@/components/ui/PremiumBadge';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
 import { ArrowUpRight, Stethoscope, Sparkles } from 'lucide-react';
@@ -39,10 +40,7 @@ export default function DepartmentsLanding() {
 					transition={{ duration: 0.6 }}
 					className="text-center mb-20 max-w-4xl mx-auto"
 				>
-					<div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/80 border border-blue-100 text-primary text-xs font-bold tracking-widest uppercase mb-6 backdrop-blur-sm shadow-sm">
-						<Stethoscope className="w-4 h-4 text-secondary" />
-						<span>Centers of Excellence</span>
-					</div>
+					<PremiumBadge text="Centers of Excellence" icon={Stethoscope} className="mb-6" />
 					<h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-heading text-slate-900 mb-6 leading-tight tracking-tight">
 						Specialized Departments
 					</h1>

@@ -15,6 +15,7 @@ import {
 	ChevronRight
 } from 'lucide-react';
 import React, { useState } from 'react';
+import PremiumBadge from '@/components/ui/PremiumBadge';
 
 // --- Sub-Components ---
 
@@ -191,10 +192,7 @@ const PatientsPage = ({ patientsData }) => {
 
 						{/* Header */}
 						<div>
-							<div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/80 border border-blue-100 text-primary text-xs font-bold tracking-widest uppercase mb-4 shadow-sm">
-								<Stethoscope className="w-4 h-4 text-secondary" />
-								<span>Patient Guide</span>
-							</div>
+							<PremiumBadge text="Patient Guide" icon={Stethoscope} className="mb-4" />
 							<h1 className="text-4xl md:text-5xl font-bold font-heading text-slate-900 leading-tight mb-4 tracking-tight">
 								Patient<br />Information
 							</h1>

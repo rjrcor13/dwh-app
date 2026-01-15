@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 import React from 'react';
 import Image from 'next/image';
+import PremiumBadge from '@/components/ui/PremiumBadge';
 
 // --- Components ---
 
@@ -68,10 +69,7 @@ const VisitorsAndWatchers = () => {
 
 						{/* Header */}
 						<div>
-							<div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/80 border border-blue-100 text-primary text-xs font-bold tracking-widest uppercase mb-4 backdrop-blur-sm shadow-sm">
-								<Users className="w-4 h-4 text-secondary" />
-								<span>Visitor Center</span>
-							</div>
+							<PremiumBadge text="Visitor Center" icon={Users} className="mb-4" />
 							<h1 className="text-4xl md:text-6xl font-bold font-heading text-slate-900 leading-tight mb-4 tracking-tight">
 								Plan Your<br />Visit
 							</h1>

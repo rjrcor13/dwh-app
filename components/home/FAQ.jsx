@@ -20,6 +20,7 @@ import {
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useMemo, useState } from 'react';
+import AmbientBackground from '@/components/ui/AmbientBackground';
 
 // Static FAQs
 const staticFaqs = [
@@ -154,12 +155,7 @@ const FAQSection = () => {
 
 	return (
 		<section className="py-16 md:py-24 bg-primary relative overflow-hidden" id="faq">
-			<div className="absolute inset-0 bg-gradient-to-br from-primary via-[#161270] to-[#0f0c50] pointer-events-none" />
-			{/* Background Atmosphere */}
-			<div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl pointer-events-none">
-				<div className="absolute top-[10%] left-[10%] w-[600px] h-[600px] bg-secondary/5 rounded-full blur-[100px]" />
-				<div className="absolute bottom-[20%] right-[10%] w-[500px] h-[500px] bg-blue-400/10 rounded-full blur-[100px]" />
-			</div>
+			<AmbientBackground />
 
 			<div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 

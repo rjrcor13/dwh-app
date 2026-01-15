@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button'; // Keeping Shadcn Button for co
 import { doctorsData } from '@/app/data/dummyDoctors';
 import debounce from 'lodash.debounce';
 import { Stethoscope } from 'lucide-react';
+import PremiumBadge from '@/components/ui/PremiumBadge';
 import { useRouter, useSearchParams } from 'next/navigation';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import DoctorCard from './DoctorCard';
@@ -320,10 +321,7 @@ const FindADoctor = () => {
 						<Stethoscope className="w-4 h-4 text-secondary" />
 						<span>Our Medical Experts</span>
 					</div> */}
-					<div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-primary text-xs font-bold tracking-widest uppercase mb-6 shadow-sm">
-						<Stethoscope className="w-4 h-4 text-secondary" />
-						<span>Our Medical Experts</span>
-					</div>
+					<PremiumBadge text="Our Medical Experts" icon={Stethoscope} className="mb-6 bg-blue-50/80 border-blue-100" />
 					<h1 className="text-4xl lg:text-6xl font-bold font-heading text-slate-900 tracking-tight">
 						Find Your Specialist
 					</h1>

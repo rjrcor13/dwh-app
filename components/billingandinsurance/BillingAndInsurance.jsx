@@ -20,6 +20,8 @@ import Image from 'next/image';
 import React from 'react';
 import { hmoLogos } from '@/app/data/hmo';
 
+import PremiumBadge from '@/components/ui/PremiumBadge';
+
 // --- Components ---
 
 const SectionCard = ({ icon: Icon, title, children, className }) => (
@@ -89,10 +91,7 @@ const BillingAndInsurance = () => {
 
 						{/* Header */}
 						<div>
-							<div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/80 border border-blue-100 text-primary text-xs font-bold tracking-widest uppercase mb-4 backdrop-blur-sm shadow-sm">
-								<Banknote className="w-4 h-4 text-secondary" />
-								<span>Finance Center</span>
-							</div>
+							<PremiumBadge text="Finance Center" icon={Banknote} className="mb-4" />
 							<h1 className="text-4xl md:text-5xl font-bold font-heading text-slate-900 leading-tight mb-4 tracking-tight">
 								Billing &<br />Insurance
 							</h1>

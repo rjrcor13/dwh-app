@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 
 import { default as DynamicIcons } from '../dynamicIcons/DynamicIcons';
 import { cn } from '@/lib/utils';
+import AmbientBackground from '@/components/ui/AmbientBackground';
 
 // Reusable Section Component
 const Section = ({ id, title, children, className }) => (
@@ -77,8 +78,7 @@ export default function ServicesDetailClient({ service }) {
 
 			{/* --- Ambient Background Mesh --- */}
 			<div className="fixed inset-0 pointer-events-none">
-				<div className="absolute top-[-20%] left-[-10%] w-[1000px] h-[1000px] bg-gradient-to-br from-blue-100/40 to-indigo-100/30 rounded-full blur-[120px]" />
-				<div className="absolute bottom-[-10%] right-[-10%] w-[800px] h-[800px] bg-gradient-to-tr from-amber-50/50 to-orange-50/20 rounded-full blur-[100px]" />
+				<AmbientBackground variant="light" />
 			</div>
 
 			{/* --- BREADCRUMBS (Sticky Top) --- */}

@@ -18,7 +18,7 @@ export const menuItems = [
 			title: 'Areas of Care',
 			description:
 				'Comprehensive medical specialties and services dedicated to treating a wide range of health conditions.',
-			href: '/',
+			href: '/expertise',
 			image: '/assets/myimage.jpg', // <-- add image path
 		},
 

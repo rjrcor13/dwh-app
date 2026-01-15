@@ -37,7 +37,7 @@ const WhyChooseUs = () => {
 	];
 
 	return (
-		<section className="py-24 bg-primary relative overflow-hidden">
+		<section className="py-12 md:py-24 bg-primary relative overflow-hidden">
 			{/* Dynamic Background Gradient */}
 			<div className="absolute inset-0 bg-gradient-to-br from-primary via-[#161270] to-[#0f0c50] pointer-events-none" />
 
@@ -48,7 +48,7 @@ const WhyChooseUs = () => {
 			</div>
 
 			<div className="relative z-10 max-w-7xl mx-auto px-6">
-				<div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
+				<div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-16 gap-6 md:gap-8">
 					<div className="max-w-2xl">
 						<motion.h2
 							initial={{ opacity: 0, y: 20 }}
@@ -66,7 +66,7 @@ const WhyChooseUs = () => {
 							initial={{ opacity: 0, y: 20 }}
 							whileInView={{ opacity: 1, y: 0 }}
 							transition={{ delay: 0.1 }}
-							className="text-4xl lg:text-5xl font-bold font-heading text-white leading-tight"
+							className="text-3xl lg:text-5xl font-bold font-heading text-white leading-tight"
 						>
 							World-Class Care, <br />
 							<span className="text-blue-200">Right Here in Leyte.</span>
@@ -77,13 +77,13 @@ const WhyChooseUs = () => {
 						initial={{ opacity: 0, x: 20 }}
 						whileInView={{ opacity: 1, x: 0 }}
 						transition={{ delay: 0.2 }}
-						className="text-blue-100 text-lg max-w-sm border-l border-white/20 pl-6"
+						className="text-blue-100 text-base md:text-lg max-w-sm border-l border-white/20 pl-6"
 					>
 						Setting the standard for healthcare with advanced technology and unwavering compassion.
 					</motion.p>
 				</div>
 
-				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
 					{features.map((feature, idx) => (
 						<motion.div
 							key={idx}
@@ -95,7 +95,7 @@ const WhyChooseUs = () => {
 						>
 							{/* Glass Card */}
 							<div className={cn(
-								"h-full relative overflow-hidden rounded-[2rem] p-8",
+								"h-full relative overflow-hidden rounded-[2rem] p-6 md:p-8",
 								"bg-white/5 backdrop-blur-sm border border-white/10",
 								"transition-all duration-500 ease-out",
 								"hover:bg-white/10 hover:border-white/20 hover:shadow-2xl hover:shadow-black/20 hover:-translate-y-2"

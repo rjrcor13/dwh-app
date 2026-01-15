@@ -6,6 +6,7 @@ import { ArrowUpRight, Search, Stethoscope, Sparkles } from 'lucide-react';
 import Link from 'next/link';
 import { useRef, useState } from 'react';
 import { default as DynamicIcons } from '../dynamicIcons/DynamicIcons';
+import PremiumBadge from '@/components/ui/PremiumBadge';
 
 const Services = ({
 	title,
@@ -48,10 +49,8 @@ const Services = ({
 						whileInView={{ opacity: 1, y: 0 }}
 						viewport={{ once: true }}
 						transition={{ duration: 0.6 }}
-						className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/80 border border-blue-100 text-primary text-sm font-bold tracking-wide uppercase backdrop-blur-md mb-8 shadow-sm"
 					>
-						<Stethoscope className="w-4 h-4 text-secondary" />
-						<span>{label || 'Departmental Units'}</span>
+						<PremiumBadge text={label || 'Departmental Units'} icon={Stethoscope} className="mb-8" />
 					</motion.div>
 
 					<motion.h1

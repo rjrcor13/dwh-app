@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Briefcase, MapPin, Clock, ChevronRight, ArrowUpRight } from 'lucide-react';
+import PremiumBadge from '@/components/ui/PremiumBadge';
 
 const Careers = ({ jobListings }) => {
 	return (
@@ -16,10 +17,7 @@ const Careers = ({ jobListings }) => {
 					transition={{ duration: 0.6 }}
 					className="inline-block"
 				>
-					<div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-primary text-xs font-bold tracking-widest uppercase mb-6 shadow-sm">
-						<Briefcase className="w-3.5 h-3.5 text-secondary" />
-						<span>Join Our Team</span>
-					</div>
+					<PremiumBadge text="Join Our Team" icon={Briefcase} className="mb-6" />
 					<h1 className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight text-slate-900 font-heading mb-6">
 						Careers at Divine Word
 					</h1>
