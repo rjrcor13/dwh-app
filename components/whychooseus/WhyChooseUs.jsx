@@ -1,5 +1,6 @@
 'use client';
 
+import AmbientBackground from '@/components/ui/AmbientBackground';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
 import {
@@ -38,14 +39,7 @@ const WhyChooseUs = () => {
 
 	return (
 		<section className="py-12 md:py-24 bg-primary relative overflow-hidden">
-			{/* Dynamic Background Gradient */}
-			<div className="absolute inset-0 bg-gradient-to-br from-primary via-[#161270] to-[#0f0c50] pointer-events-none" />
-
-			{/* Luxury Atmosphere Elements */}
-			<div className="absolute inset-0 pointer-events-none">
-				<div className="absolute top-0 right-0 w-[800px] h-[800px] bg-secondary/10 rounded-full blur-[120px] mix-blend-screen opacity-50" />
-				<div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-400/10 rounded-full blur-[100px] mix-blend-screen opacity-30" />
-			</div>
+			<AmbientBackground />
 
 			<div className="relative z-10 max-w-7xl mx-auto px-6">
 				<div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-16 gap-6 md:gap-8">

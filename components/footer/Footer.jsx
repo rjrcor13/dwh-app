@@ -1,4 +1,5 @@
 'use client';
+import AmbientBackground from '@/components/ui/AmbientBackground';
 import { contactInfo } from '@/app/data/contactInfo';
 import logo from '@/public/assets/logo_w.png';
 import {
@@ -11,6 +12,7 @@ import {
 	ArrowRight
 } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 
 const addressInfo = contactInfo.find((info) => info.title === 'Location');
@@ -34,16 +36,28 @@ const Footer = () => {
 		}
 	}, []);
 
+	const companyLinks = [
+		{ name: 'Home', href: '/' },
+		{ name: 'About Us', href: '/about-us' },
+		{ name: 'Find a Doctor', href: '/doctors' },
+		{ name: 'Our Distinction', href: '/about-us' }, // Mapping to About Us for now
+		{ name: 'Events', href: '/events' },
+		{ name: 'Careers', href: '/careers' },
+		{ name: 'Contact Us', href: '/contact' },
+	];
+
+	const serviceLinks = [
+		{ name: 'Radiology', href: '/expertise/services/radiology' },
+		{ name: 'Pathology & Laboratory', href: '/expertise/services/pathology-laboratory' },
+		{ name: 'Pharmacy', href: '/expertise/services/pharmacy-service' },
+		{ name: 'Dialysis Center', href: '/expertise/services/hemo-dialysis' },
+		{ name: 'Emergency Care', href: '/emergency' },
+		{ name: 'Physical Therapy', href: '/expertise/services/physical-therapy' },
+	];
+
 	return (
 		<footer className="bg-primary mt-0 text-blue-100 relative overflow-hidden">
-			{/* Dynamic Background Gradient */}
-			<div className="absolute inset-0 bg-gradient-to-br from-primary via-[#161270] to-[#0f0c50] pointer-events-none" />
-
-			{/* Background Atmosphere */}
-			<div className="absolute inset-0 pointer-events-none">
-				<div className="absolute top-[-50%] left-[-10%] w-[600px] h-[600px] bg-white/5 rounded-full blur-[120px] opacity-20" />
-				<div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-secondary/20 rounded-full blur-[100px] opacity-30" />
-			</div>
+			<AmbientBackground />
 
 			<div className="mx-auto max-w-7xl px-8 pt-20 pb-8 relative z-10">
 				<div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 mb-16">
@@ -91,12 +105,12 @@ const Footer = () => {
 						<div>
 							<h4 className="mb-6 text-sm font-bold uppercase tracking-widest text-secondary">Company</h4>
 							<ul className="space-y-3 text-sm font-medium text-blue-100/90">
-								{['Home', 'About Us', 'Find a Doctor', 'Our Distinction', 'Events', 'Careers', 'Contact Us'].map((item) => (
-									<li key={item}>
-										<a href="#" className="flex items-center gap-2 hover:text-white hover:translate-x-1 transition-all duration-300 group">
+								{companyLinks.map((item) => (
+									<li key={item.name}>
+										<Link href={item.href} className="flex items-center gap-2 hover:text-white hover:translate-x-1 transition-all duration-300 group">
 											<span className="w-1.5 h-1.5 rounded-full bg-blue-400 group-hover:bg-secondary transition-colors" />
-											{item}
-										</a>
+											{item.name}
+										</Link>
 									</li>
 								))}
 							</ul>
@@ -104,12 +118,12 @@ const Footer = () => {
 						<div>
 							<h4 className="mb-6 text-sm font-bold uppercase tracking-widest text-secondary">Services</h4>
 							<ul className="space-y-3 text-sm font-medium text-blue-100/90">
-								{['Radiology', 'Emergency Care', 'Pharmacy', 'Laboratory', 'Check-ups', 'Pedia'].map((item) => (
-									<li key={item}>
-										<a href="#" className="flex items-center gap-2 hover:text-white hover:translate-x-1 transition-all duration-300 group">
+								{serviceLinks.map((item) => (
+									<li key={item.name}>
+										<Link href={item.href} className="flex items-center gap-2 hover:text-white hover:translate-x-1 transition-all duration-300 group">
 											<span className="w-1.5 h-1.5 rounded-full bg-blue-400 group-hover:bg-secondary transition-colors" />
-											{item}
-										</a>
+											{item.name}
+										</Link>
 									</li>
 								))}
 							</ul>
@@ -172,8 +186,8 @@ const Footer = () => {
 				<div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-blue-300/80">
 					<p>© 2025 Divine Word Hospital. Finding God in all things.</p>
 					<div className="flex items-center gap-6">
-						<a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-						<a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+						<Link href="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
+						<Link href="/terms-of-service" className="hover:text-white transition-colors">Terms of Service</Link>
 					</div>
 				</div>
 			</div>

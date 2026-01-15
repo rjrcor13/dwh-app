@@ -136,8 +136,8 @@ const ExpertisePage = () => {
 
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
                             {services.slice(0, 3).map((service, idx) => (
-                                <motion.div key={service.id} variants={itemVariants} className="h-full">
-                                    <Link href={`/expertise/services/${service.id}`} className="group block h-full">
+                                <motion.div key={service.slug} variants={itemVariants} className="h-full">
+                                    <Link href={`/expertise/services/${service.slug}`} className="group block h-full">
                                         <div className="relative h-full bg-white/40 backdrop-blur-xl rounded-[2rem] p-6 md:p-8 border border-white/60 shadow-sm hover:shadow-xl hover:shadow-blue-900/5 transition-all duration-500 hover:-translate-y-2 flex flex-col overflow-hidden">
                                             {/* Hover Gradient */}
                                             <div className="absolute inset-0 bg-gradient-to-br from-white/40 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -180,7 +180,7 @@ const ExpertisePage = () => {
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
                             {departments.slice(0, 4).map((dept, idx) => (
-                                <motion.div key={dept.id} variants={itemVariants} className="h-full">
+                                <motion.div key={dept.id || idx} variants={itemVariants} className="h-full">
                                     <Link href={`/expertise/departments/${dept.id}`} className="group block h-full">
                                         <div className="relative h-full bg-white/40 backdrop-blur-xl rounded-[2rem] p-6 md:p-8 border border-white/60 shadow-sm hover:shadow-xl hover:shadow-blue-900/5 transition-all duration-500 hover:-translate-y-2 overflow-hidden">
                                             {/* Hover Gradient */}
