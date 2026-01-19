@@ -41,7 +41,7 @@ const Banner = () => {
 			</div>
 
 			{/* Main Content */}
-			<div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:pt-20 md:pb-48 flex-grow flex items-center">
+			<div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12_ md:pt-12_ md:pb-48 flex-grow flex items-center">
 				<div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
 
 					{/* Text Content */}
