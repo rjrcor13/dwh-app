@@ -16,7 +16,7 @@ const Banner = () => {
 	];
 
 	return (
-		<section className="relative min-h-screen md:min-h-[85vh] flex flex-col justify-center items-center overflow-hidden bg-slate-50 pt-20">
+		<section className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden bg-slate-50 pt-28 md:pt-32">
 
 			{/* Background Image Area */}
 			<div className="absolute inset-0 z-0">
@@ -41,7 +41,7 @@ const Banner = () => {
 			</div>
 
 			{/* Main Content */}
-			<div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:pt-20 md:pb-32 flex-grow flex items-center">
+			<div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:pt-20 md:pb-48 flex-grow flex items-center">
 				<div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
 
 					{/* Text Content */}
@@ -56,7 +56,7 @@ const Banner = () => {
 							Premier Healthcare
 						</div>
 
-						<h1 className="text-4xl sm:text-6xl lg:text-8xl font-bold font-heading text-slate-900 leading-[1.1] tracking-tight">
+						<h1 className="text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold font-heading text-slate-900 leading-[1.1] tracking-tight">
 							Your health, <br />
 							<span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-600">
 								our calling.
@@ -101,7 +101,7 @@ const Banner = () => {
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-slate-200/50">
 						{stats.map((stat, index) => (
-							<div key={index} className="py-6 md:py-8 px-6 flex flex-row items-center justify-start md:justify-center gap-6 text-left group hover:bg-white/40 transition-colors">
+							<div key={index} className="py-6 md:py-8 px-6 flex flex-row items-center justify-start md:justify-center gap-4 lg:gap-6 text-left group hover:bg-white/40 transition-colors">
 								<div className="relative">
 									<div className="absolute inset-0 bg-blue-400/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 									<div className="relative p-3 md:p-4 rounded-2xl bg-gradient-to-br from-blue-50 to-white text-primary border border-blue-100 group-hover:scale-110 group-hover:border-blue-200 transition-all duration-300 shrink-0 shadow-sm">
