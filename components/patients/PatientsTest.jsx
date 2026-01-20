@@ -231,7 +231,7 @@ const PatientsTest = () => {
 				initial="hidden"
 				animate="visible"
 				variants={sectionVariants}
-				className="max-w-7xl mx-auto"
+				className="max-w-[1440px] mx-auto"
 			>
 				{/* Header Section */}
 				<motion.div variants={itemVariants} className="text-center mb-12">
@@ -253,11 +253,10 @@ const PatientsTest = () => {
 								<button
 									key={department.id}
 									onClick={() => setActiveTab(department.id)}
-									className={`py-3 px-4 text-left flex items-center rtransition gap-2 ${
-										activeTab === department.id
+									className={`py-3 px-4 text-left flex items-center rtransition gap-2 ${activeTab === department.id
 											? 'bg-primary text-white font-semibold'
 											: 'hover:bg-muted'
-									}`}
+										}`}
 								>
 									{department.icon && <department.icon className="w-8 h-8" />}
 									{department.name}
@@ -301,9 +300,8 @@ const PatientsTest = () => {
 							>
 								<AccordionTrigger className="text-left border-b text-md">
 									<div
-										className={`flex flex-row items-center gap-2 font-semibold text-primary pb-2 transition-all ${
-											department.value === activeTab ? 'pl-4' : ''
-										}`}
+										className={`flex flex-row items-center gap-2 font-semibold text-primary pb-2 transition-all ${department.value === activeTab ? 'pl-4' : ''
+											}`}
 									>
 										{department.icon && <department.icon className="w-6 h-6" />}
 										{department.name}

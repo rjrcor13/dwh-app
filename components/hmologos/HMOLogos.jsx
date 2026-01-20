@@ -9,7 +9,7 @@ const HMOLogos = () => {
 
 	return (
 		<section className="py-24 bg-white border-t border-slate-100 relative overflow-hidden">
-			<div className="max-w-7xl mx-auto px-6 mb-16 text-center">
+			<div className="max-w-[1440px] mx-auto px-6 mb-16 text-center">
 				{/* <h2 className="text-secondary font-bold tracking-widest uppercase text-sm mb-3">
 					Trusted Healthcare Partners
 				</h2> */}

@@ -35,7 +35,9 @@ export default function MakapawaEventsPage() {
 
 	return (
 		<EventCategoryLayout
-			title="Makapawa Events"
+			title="Makapawa"
+			titleHighlight="Events"
+			badgeText="Community Outreach"
 			description="Community-focused healthcare programs designed to serve and support our local Makapawa community with accessible health services and education."
 			icon={usersIcon}
 			themeColor="green"

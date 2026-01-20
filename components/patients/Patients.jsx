@@ -183,7 +183,7 @@ const PatientsPage = ({ patientsData }) => {
 				<div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-gradient-to-tr from-amber-50/60 to-orange-50/30 rounded-full blur-[100px]" />
 			</div>
 
-			<div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
 
 				<div className="grid lg:grid-cols-12 gap-12 items-start">
 

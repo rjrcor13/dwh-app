@@ -36,7 +36,9 @@ const Eucharistics = () => {
 
 	return (
 		<EventCategoryLayout
-			title="Eucharistic Celebrations"
+			title="Eucharistic"
+			titleHighlight="Celebrations"
+			badgeText="Spiritual Life"
 			description="Join us in spiritual communion. Discover our scheduled Masses, adoration sessions, and other sacred gatherings designed to nourish your faith."
 			icon={EucharistIcon}
 			themeColor="purple"

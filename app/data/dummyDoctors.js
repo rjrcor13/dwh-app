@@ -2,6 +2,7 @@ export const doctorsData = [
 	{
 		id: 1,
 		name: 'Dr. Eleanor Vance',
+		slug: 'dr-eleanor-vance',
 		specialties: 'Cardiology',
 		hospital: 'Tacloban Medical Center',
 		image: '/assets/avatar.jpg', // Replace with image URL
@@ -13,6 +14,7 @@ export const doctorsData = [
 	{
 		id: 2,
 		name: 'Dr. Ben Carter',
+		slug: 'dr-ben-carter',
 		specialties: 'Pediatrics',
 		hospital: 'Eastern Visayas Regional Medical Center',
 		image: '/assets/avatar.jpg', // Replace with image URL
@@ -24,6 +26,7 @@ export const doctorsData = [
 	{
 		id: 3,
 		name: 'Dr. Sarah Miller',
+		slug: 'dr-sarah-miller',
 		specialties: ['Neurology', 'Pedia'],
 		hospital: 'Divine Word Hospital',
 		image: '/assets/avatar.jpg', // Replace with image URL
@@ -35,6 +38,7 @@ export const doctorsData = [
 	{
 		id: 4,
 		name: 'Dr. Kenji Tanaka',
+		slug: 'dr-kenji-tanaka',
 		specialties: 'Oncology',
 		hospital: 'Tacloban Medical Center',
 		image: '/assets/avatar.jpg', // Replace with image URL

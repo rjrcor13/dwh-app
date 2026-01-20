@@ -22,7 +22,7 @@ export default function CareerDetailsClient({ job }) {
 
             {/* --- BREADCRUMBS (Sticky Top) --- */}
             <div className="sticky top-[80px] z-30 bg-white/80 backdrop-blur-xl border-b border-white/50 shadow-sm transition-all">
-                <div className="max-w-7xl mx-auto px-6 h-16 flex items-center text-sm font-medium text-slate-500">
+                <div className="max-w-[1440px] mx-auto px-6 h-16 flex items-center text-sm font-medium text-slate-500">
                     <Link href="/home" className="hover:text-primary transition-colors flex items-center gap-2 group">
                         <Home className="w-4 h-4 group-hover:text-secondary transition-colors" />
                         <span className="hidden sm:inline">Home</span>
@@ -38,7 +38,7 @@ export default function CareerDetailsClient({ job }) {
                 </div>
             </div>
 
-            <div className="relative z-10 max-w-7xl mx-auto px-6 pt-12">
+            <div className="relative z-10 max-w-[1440px] mx-auto px-6 pt-12">
 
                 {/* --- HEADER SECTION --- */}
                 <div className="max-w-5xl mb-16">

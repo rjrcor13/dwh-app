@@ -24,7 +24,7 @@ const AboutUs = ({ data }) => {
 				<div className="absolute bottom-[-10%] left-[-10%] w-[800px] h-[800px] bg-gradient-to-tr from-amber-50/50 to-orange-50/20 rounded-full blur-[100px]" />
 			</div>
 
-			<div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
 
 				{/* 1. HERO SECTION */}
 				<section className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center mb-32 pt-12">

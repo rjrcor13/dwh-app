@@ -21,7 +21,7 @@ const DoctorCard = ({ doctor, variant = 'default' }) => {
 	const router = useRouter();
 
 	const handleViewProfile = () => {
-		router.push(`/doctors/${doctor.id}`);
+		router.push(`/doctors/${doctor.slug}`);
 	};
 
 	const isGlass = variant === 'glass';

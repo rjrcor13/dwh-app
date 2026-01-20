@@ -1,15 +1,15 @@
 import Link from 'next/link';
 import { Home, Search, Calendar, Stethoscope, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import AmbientBackground from '@/components/ui/AmbientBackground';
 
 const NotFound = () => {
 	return (
 		<div className="min-h-screen bg-slate-50 flex items-center justify-center p-6 relative overflow-hidden">
 
 			{/* Ambient Background Elements */}
-			<div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-				<div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[100px]" />
-				<div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[100px]" />
+			<div className="absolute inset-0 overflow-hidden pointer-events-none">
+				<AmbientBackground variant="light" />
 			</div>
 
 			<div className="max-w-4xl w-full text-center relative z-10">

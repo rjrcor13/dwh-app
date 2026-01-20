@@ -33,7 +33,8 @@ export default function HospitalCelebrationsPage() {
 
 	return (
 		<EventCategoryLayout
-			title="Hospital Celebrations"
+			title="Hospital"
+			titleHighlight="Celebrations"
 			description="Commemorate significant milestones, institutional events, and community gatherings that foster our unique hospital culture and family spirit."
 			icon={CalendarIcon}
 			themeColor="blue"

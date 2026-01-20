@@ -1,11 +1,10 @@
-
 'use client';
 
 import { AnimatePresence, motion } from 'framer-motion';
 import {
 	ChevronDown,
 	ArrowRight,
-	Sparkles
+	Sparkles,
 } from 'lucide-react';
 import Link from 'next/link';
 import * as React from 'react';
@@ -77,7 +76,7 @@ export default function NavigationMenuDemo({ menuItems, myClass }) {
 						{item.links ? (
 							<>
 								<div
-									className={`group inline-flex h-10 w-max items-center justify-center rounded-full px-5 py-2 text-sm font-semibold font-heading transition-all duration-300 cursor-pointer ${openMenu === item.label
+									className={`group inline-flex h-10 w-max items-center justify-center rounded-full px-3.5 xl:px-5 py-2 text-sm font-semibold font-heading transition-all duration-300 cursor-pointer ${openMenu === item.label
 										? 'text-white bg-white/15'
 										: 'text-blue-100 hover:text-white hover:bg-white/10'
 										}`}
@@ -175,11 +174,11 @@ export default function NavigationMenuDemo({ menuItems, myClass }) {
 						) : (
 							<Link href={item.featured?.href || '#'} passHref>
 								{item.label === 'Doctors' ? (
-									<span className="inline-flex h-10 items-center justify-center rounded-full px-6 py-2 text-sm font-bold font-heading bg-gradient-to-r from-white to-blue-50 text-primary shadow-lg shadow-blue-900/30 transition-all duration-300 hover:scale-105 hover:shadow-blue-500/20 hover:from-white hover:to-white">
+									<span className="inline-flex h-10 items-center justify-center rounded-full px-5 xl:px-6 py-2 text-sm font-bold font-heading bg-gradient-to-r from-white to-blue-50 text-primary shadow-lg shadow-blue-900/30 transition-all duration-300 hover:scale-105 hover:shadow-blue-500/20 hover:from-white hover:to-white">
 										{item.label}
 									</span>
 								) : (
-									<span className="inline-flex h-10 w-max items-center justify-center rounded-full px-5 py-2 text-sm font-semibold font-heading text-blue-100 transition-all duration-300 hover:text-white hover:bg-white/10">
+									<span className="inline-flex h-10 w-max items-center justify-center rounded-full px-3.5 xl:px-5 py-2 text-sm font-semibold font-heading text-blue-100 transition-all duration-300 hover:text-white hover:bg-white/10">
 										{item.label}
 									</span>
 								)}

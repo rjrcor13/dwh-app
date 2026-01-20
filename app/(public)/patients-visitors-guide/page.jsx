@@ -91,7 +91,7 @@ const PatientsVisitorsGuidePage = () => {
             >
                 {/* Hero Section */}
                 <section className="pt-28 md:pt-40 pb-12 md:pb-20 px-4 md:px-6">
-                    <div className="max-w-7xl mx-auto text-center">
+                    <div className="max-w-[1440px] mx-auto text-center">
                         <motion.div variants={itemVariants}>
                             <PremiumBadge text="Helpful Resources" className="mb-6 md:mb-8" />
                         </motion.div>
@@ -114,7 +114,7 @@ const PatientsVisitorsGuidePage = () => {
 
                 {/* Quick Navigation Cards */}
                 <section className="px-4 md:px-6 mb-20 md:mb-32">
-                    <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                    <div className="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                         {mainGuides.map((guide, idx) => (
                             <motion.div key={idx} variants={itemVariants} className="group relative">
                                 <div className={`absolute inset-0 rounded-[2rem] md:rounded-[2.5rem] blur-2xl transition-colors duration-500 ${guide.bgVars}`} />
@@ -144,7 +144,7 @@ const PatientsVisitorsGuidePage = () => {
                 </section>
 
                 {/* Content Overview */}
-                <section className="px-6 max-w-7xl mx-auto">
+                <section className="px-6 max-w-[1440px] mx-auto">
                     {/* Patient Resources Preview */}
                     <div className="mb-20">
                         <motion.div variants={itemVariants} className="flex items-end justify-between mb-8 md:mb-12 px-2 border-b border-slate-200 pb-6 md:pb-8">

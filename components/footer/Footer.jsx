@@ -59,7 +59,7 @@ const Footer = () => {
 		<footer className="bg-primary mt-0 text-blue-100 relative overflow-hidden">
 			<AmbientBackground />
 
-			<div className="mx-auto max-w-7xl px-8 pt-20 pb-8 relative z-10">
+			<div className="mx-auto max-w-[1440px] px-8 pt-20 pb-8 relative z-10">
 				<div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 mb-16">
 
 					{/* Brand Column (Span 4) */}

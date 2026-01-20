@@ -4,7 +4,7 @@ export default function ServiceDetail({ params }) {
 	// ✅ Fallback to avoid crashing if `params` is undefined
 	if (!params || !params.slug) {
 		return (
-			<div className="max-w-7xl mx-auto py-16 text-center">
+			<div className="max-w-[1440px] mx-auto py-16 text-center">
 				<h1 className="text-4xl font-bold text-red-600">Invalid Service</h1>
 				<p className="text-gray-600 mt-4">
 					No service identifier found in the URL.
@@ -18,7 +18,7 @@ export default function ServiceDetail({ params }) {
 
 	if (!service) {
 		return (
-			<div className="max-w-7xl mx-auto py-16 text-center">
+			<div className="max-w-[1440px] mx-auto py-16 text-center">
 				<h1 className="text-4xl font-bold text-red-600">Service Not Found</h1>
 				<p className="text-gray-600 mt-4">
 					The service you are looking for does not exist.

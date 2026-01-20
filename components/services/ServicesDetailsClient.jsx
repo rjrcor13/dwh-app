@@ -83,7 +83,7 @@ export default function ServicesDetailClient({ service }) {
 
 			{/* --- BREADCRUMBS (Sticky Top) --- */}
 			<div className="sticky top-[80px] z-30 bg-white/80 backdrop-blur-xl border-b border-white/50 shadow-sm transition-all mb-12">
-				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center text-sm font-medium text-slate-500">
+				<div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center text-sm font-medium text-slate-500">
 					<Link href="/home" className="hover:text-primary transition-colors flex items-center gap-2 group">
 						<Home className="w-4 h-4 group-hover:text-secondary transition-colors" />
 						<span className="hidden sm:inline">Home</span>
@@ -103,7 +103,7 @@ export default function ServicesDetailClient({ service }) {
 				</div>
 			</div>
 
-			<div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+			<div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 pt-6">
 
 				<div className="grid lg:grid-cols-12 gap-12 items-start">
 

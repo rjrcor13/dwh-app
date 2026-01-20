@@ -50,7 +50,7 @@ const GuidelineItem = ({ icon: Icon, title, text }) => (
 const VisitorsAndWatchers = () => {
 
 	return (
-		<div className="bg-slate-50/50 min-h-screen relative font-sans selection:bg-primary/20 selection:text-primary pb-32 pt-32">
+		<div className=" bg-slate-50/50 min-h-screen relative font-sans selection:bg-primary/20 selection:text-primary pb-32 pt-32">
 
 			{/* --- Ambient Background Mesh --- */}
 			<div className="fixed inset-0 pointer-events-none">
@@ -60,7 +60,7 @@ const VisitorsAndWatchers = () => {
 				<div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-gradient-to-tl from-amber-50/40 to-white/40 rounded-full blur-[100px]" />
 			</div>
 
-			<div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
 
 				<div className="grid lg:grid-cols-12 gap-12 lg:gap-24 items-start">
 

@@ -67,7 +67,7 @@ export default function EventsLandingView() {
 
             {/* Hero Section */}
             <section className="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden" aria-labelledby="events-heading">
-                <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
+                <div className="max-w-[1440px] mx-auto px-6 relative z-10 text-center">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -87,7 +87,7 @@ export default function EventsLandingView() {
             </section>
 
             {/* Categories Grid */}
-            <section className="max-w-7xl mx-auto px-6 mb-20 md:mb-32 relative z-10" aria-label="Event Categories">
+            <section className="max-w-[1440px] mx-auto px-6 mb-20 md:mb-32 relative z-10" aria-label="Event Categories">
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                     {categories.map((category, idx) => (
                         <motion.div
@@ -131,7 +131,7 @@ export default function EventsLandingView() {
             </section>
 
             {/* Newsletter / CTA Section */}
-            <section className="max-w-7xl mx-auto px-6 pb-24 md:pb-32 relative z-10" aria-labelledby="newsletter-heading">
+            <section className="max-w-[1440px] mx-auto px-6 pb-24 md:pb-32 relative z-10" aria-labelledby="newsletter-heading">
                 <motion.div
                     initial={{ opacity: 0, scale: 0.95 }}
                     whileInView={{ opacity: 1, scale: 1 }}

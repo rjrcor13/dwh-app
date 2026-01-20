@@ -43,7 +43,7 @@ const EmergencyPage = () => {
             </div>
 
             <motion.div
-                className="relative z-10 pt-28 md:pt-40 px-4 md:px-8 max-w-7xl mx-auto"
+                className="relative z-10 pt-28 md:pt-40 px-4 md:px-8 max-w-[1440px] mx-auto"
                 initial="hidden"
                 animate="visible"
                 variants={containerVariants}

@@ -49,7 +49,7 @@ const HomePage = () => {
 
 				<FeaturedDoctors />
 				<div className="bg-white m-0 p-0">
-					<AboutUs className="relative z-10 max-w-7xl mx-auto mt-0 min-h-[500px] " />
+					<AboutUs className="relative z-10 max-w-[1440px] mx-auto mt-0 min-h-[500px] " />
 
 				</div>
 

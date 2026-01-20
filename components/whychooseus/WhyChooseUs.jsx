@@ -41,7 +41,7 @@ const WhyChooseUs = () => {
 		<section className="py-12 md:py-24 bg-primary relative overflow-hidden">
 			<AmbientBackground />
 
-			<div className="relative z-10 max-w-7xl mx-auto px-6">
+			<div className="relative z-10 max-w-[1440px] mx-auto px-6">
 				<div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-16 gap-6 md:gap-8">
 					<div className="max-w-2xl">
 						<motion.h2

@@ -313,7 +313,7 @@ const FindADoctor = () => {
 				<div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-cyan-500/5 rounded-full blur-[100px] mix-blend-multiply opacity-70" />
 			</div>
 
-			<div className="relative z-10 container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-24">
+			<div className="relative z-10 container max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-24">
 
 				{/* Section Header */}
 				<div className="text-center mb-16 space-y-4">

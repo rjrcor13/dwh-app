@@ -76,7 +76,7 @@ const EventDetailsLayout = ({
         <main className="min-h-screen bg-white selection:bg-slate-100" aria-label={`${event.title} Details`}>
             {/* Sticky Breadcrumb */}
             <nav className="sticky top-[80px] z-30 bg-white/80 backdrop-blur-md border-b border-slate-100" aria-label="Breadcrumb">
-                <div className="max-w-7xl mx-auto px-6 h-14 flex items-center text-sm font-medium text-slate-500">
+                <div className="max-w-[1440px] mx-auto px-6 h-14 flex items-center text-sm font-medium text-slate-500">
                     <Link href="/home" className="hover:text-primary transition-colors flex items-center gap-1">
                         <Home className="w-4 h-4" />
                         <span className="hidden sm:inline">Home</span>
@@ -96,7 +96,7 @@ const EventDetailsLayout = ({
                 </div>
             </nav>
 
-            <div className="max-w-7xl mx-auto px-6 py-12">
+            <div className="max-w-[1440px] mx-auto px-6 py-12">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
 
                     {/* Main Content */}

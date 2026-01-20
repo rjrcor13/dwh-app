@@ -41,7 +41,7 @@ const Banner = () => {
 			</div>
 
 			{/* Main Content */}
-			<div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12_ md:pt-12_ md:pb-48 flex-grow flex items-center">
+			<div className="relative z-10 w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-12_ md:pt-12_ md:pb-48 flex-grow flex items-center">
 				<div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
 
 					{/* Text Content */}
@@ -98,7 +98,7 @@ const Banner = () => {
 				transition={{ duration: 0.8, delay: 0.4 }}
 				className="relative md:absolute bottom-0 left-0 right-0 z-20 border-t border-white/50 bg-white/70 backdrop-blur-2xl shadow-[0_-10px_40px_-15px_rgba(30,58,138,0.1)] w-full"
 			>
-				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+				<div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-slate-200/50">
 						{stats.map((stat, index) => (
 							<div key={index} className="py-6 md:py-8 px-6 flex flex-row items-center justify-start md:justify-center gap-4 lg:gap-6 text-left group hover:bg-white/40 transition-colors">

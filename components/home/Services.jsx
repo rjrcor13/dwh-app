@@ -9,10 +9,10 @@ import { default as DynamicIcons } from '../dynamicIcons/DynamicIcons';
 const OurServicesSection = () => {
 	return (
 		<section className="py-12 md:py-24 bg-slate-50 relative overflow-hidden">
-			<div className="relative z-10 max-w-7xl mx-auto px-6">
+			<div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 pt-12">
 				{/* Section Header */}
 				<div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
-					<div className="max-w-2xl">
+					<div className="max-w-[1440px]">
 						{/* <h2 className="text-secondary font-bold tracking-wide uppercase text-sm mb-2">
 							WHAT WE OFFER
 						</h2> */}

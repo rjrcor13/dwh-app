@@ -19,7 +19,7 @@ const FeaturedDoctors = () => {
         <section className="py-12 md:py-24 bg-primary relative overflow-hidden">
             <AmbientBackground />
 
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div className="flex flex-col md:flex-row justify-between items-end mb-8 md:mb-12 gap-6">
                     <div className="max-w-2xl">
                         <div className="flex items-center gap-2 mb-3">

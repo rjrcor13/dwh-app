@@ -62,7 +62,7 @@ const Careers = ({ jobListings }) => {
 			</div>
 
 			{/* --- Hero Section --- */}
-			<div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 md:pt-32 mb-20 md:mb-32 text-center">
+			<div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 pt-12 md:pt-32 mb-20 md:mb-32 text-center">
 				<motion.div
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
@@ -80,7 +80,7 @@ const Careers = ({ jobListings }) => {
 			</div>
 
 			{/* --- Values / Why Join Us Section --- */}
-			<section className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24 md:mb-32">
+			<section className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 mb-24 md:mb-32">
 				<motion.div
 					variants={containerVariants}
 					initial="hidden"
@@ -107,7 +107,7 @@ const Careers = ({ jobListings }) => {
 			</section>
 
 			{/* --- Open Positions Header --- */}
-			<div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 flex flex-col md:flex-row items-end justify-between gap-6 border-b border-slate-200 pb-8">
+			<div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 mb-12 flex flex-col md:flex-row items-end justify-between gap-6 border-b border-slate-200 pb-8">
 				<div>
 					<h2 className="text-3xl md:text-5xl font-bold font-heading text-slate-900 mb-3">Open Positions</h2>
 					<p className="text-slate-500 text-lg">Current opportunities to join our medical and administrative teams.</p>
@@ -116,7 +116,7 @@ const Careers = ({ jobListings }) => {
 			</div>
 
 			{/* --- Job Listings Grid --- */}
-			<div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
 				<div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
 					{jobListings.map((job, index) => (
 						<Link href={`/careers/${job.id}`} key={index} className="block h-full">

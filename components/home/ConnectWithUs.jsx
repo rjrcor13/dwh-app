@@ -18,7 +18,7 @@ const ConnectWithUsSection = () => {
 		<section className="relative bg-primary py-24 overflow-hidden" id="connect-with-us">
 			<AmbientBackground />
 
-			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+			<div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 				<div className="flex flex-col lg:flex-row gap-8 lg:gap-16">
 
 					{/* Left Panel - Information */}

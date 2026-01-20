@@ -49,7 +49,7 @@ const ExpertisePage = () => {
             >
                 {/* Hero Section */}
                 <section className="pt-28 md:pt-40 pb-12 md:pb-20 px-4 md:px-6">
-                    <div className="max-w-7xl mx-auto text-center">
+                    <div className="max-w-[1440px] mx-auto text-center">
                         <motion.div variants={itemVariants}>
                             <PremiumBadge className="mb-6 md:mb-8" />
                         </motion.div>
@@ -121,7 +121,7 @@ const ExpertisePage = () => {
                 </section>
 
                 {/* Content Overview */}
-                <section className="px-6 max-w-7xl mx-auto">
+                <section className="px-6 max-w-[1440px] mx-auto">
                     {/* Services Preview */}
                     <div className="mb-20 md:mb-32">
                         <motion.div variants={itemVariants} className="flex items-end justify-between mb-8 md:mb-12 px-2 border-b border-slate-200 pb-6 md:pb-8">

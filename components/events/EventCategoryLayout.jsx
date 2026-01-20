@@ -10,7 +10,9 @@ import { motion } from 'framer-motion';
 
 const EventCategoryLayout = ({
     title,
+    titleHighlight,
     description,
+    badgeText,
     icon: Icon,
     themeColor = 'blue', // blue, green, purple
     events = [],
@@ -91,7 +93,7 @@ const EventCategoryLayout = ({
 
             {/* Sticky Breadcrumb */}
             <div className="sticky top-[80px] z-30 bg-white/80 backdrop-blur-md border-b border-slate-100">
-                <div className="max-w-7xl mx-auto px-6 h-14 flex items-center text-sm font-medium text-slate-500">
+                <div className="max-w-[1440px] mx-auto px-6 h-14 flex items-center text-sm font-medium text-slate-500">
                     <Link href="/home" className="hover:text-primary transition-colors flex items-center gap-1">
                         <Home className="w-4 h-4" />
                         <span className="hidden sm:inline">Home</span>
@@ -108,43 +110,49 @@ const EventCategoryLayout = ({
             </div>
 
             {/* Hero Header */}
-            <section className="relative pt-24 pb-28 overflow-hidden">
-                <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
+            <section className="relative pt-24 pb-20 overflow-hidden text-center">
+                <div className="max-w-[1440px] mx-auto px-6 relative z-10">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5 }}
-                        className={`inline-flex items-center justify-center p-5 rounded-3xl mb-10 ${theme.iconBg} ${theme.text} shadow-xl shadow-blue-900/5 backdrop-blur-sm border border-white/50`}
+                        className="flex justify-center mb-8"
                     >
-                        <Icon className="w-10 h-10" />
+                        {/* Custom Pill Badge Style */}
+                        <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white shadow-lg shadow-blue-900/5 ring-1 ring-black/5">
+                            <Icon className="w-4 h-4 text-amber-500" />
+                            <span className="text-xs font-bold tracking-widest uppercase text-blue-900">
+                                {badgeText || 'Community & Life'}
+                            </span>
+                        </div>
                     </motion.div>
 
                     <motion.h1
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.1 }}
-                        className="text-6xl md:text-8xl font-bold font-heading text-slate-900 mb-8 tracking-tighter leading-[0.9]"
+                        className="text-5xl md:text-7xl lg:text-8xl font-bold font-heading text-slate-900 mb-8 tracking-tighter leading-[0.9]"
                     >
-                        {title}
+                        {title} {titleHighlight && <span className={`text-transparent bg-clip-text bg-gradient-to-r ${theme.gradient}`}>{titleHighlight}</span>}
                     </motion.h1>
 
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.2 }}
-                        className="text-xl md:text-2xl text-slate-500 max-w-3xl mx-auto leading-relaxed font-light"
+                        className="text-lg md:text-xl text-slate-500 max-w-2xl mx-auto leading-relaxed font-light px-4"
                     >
                         {description}
                     </motion.p>
                 </div>
 
                 {/* Ambient Background */}
-                <div className={`absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] h-[800px] ${theme.blob} rounded-full blur-[140px] -z-10 opacity-40 mix-blend-multiply`} />
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-gradient-to-b from-blue-50/50 to-indigo-50/20 rounded-full blur-[120px] -z-10" />
             </section>
 
             {/* Events Grid */}
             <section className="pb-32">
-                <div className="max-w-7xl mx-auto px-6">
+                <div className="max-w-[1440px] mx-auto px-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {events.map((event, idx) => (
                             <motion.div

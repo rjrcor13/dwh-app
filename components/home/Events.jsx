@@ -56,12 +56,12 @@ const Events = () => {
 	return (
 		<section className="py-24 bg-white relative overflow-hidden">
 			{/* Background Blobs for Atmosphere */}
-			<div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl pointer-events-none">
+			<div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-[1440px] pointer-events-none">
 				<div className="absolute top-[20%] right-[5%] w-[500px] h-[500px] bg-primary/2 rounded-full blur-3xl" />
 				<div className="absolute bottom-[10%] left-[5%] w-[400px] h-[400px] bg-secondary/3 rounded-full blur-3xl border border-slate-100" />
 			</div>
 
-			<div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
+			<div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 ">
 
 				<div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
 					<div>

@@ -12,7 +12,7 @@ const AmbientBackground = ({ className, variant = 'dark' }) => {
             )}
 
             {/* Animated/Blurry Orbs */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl">
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-[1440px]">
                 {/* Top Left Orb */}
                 <div className={cn(
                     "absolute top-[-20%] left-[-10%] w-[1000px] h-[1000px] rounded-full blur-[120px]",

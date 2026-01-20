@@ -51,7 +51,7 @@ export default function ContactView() {
             <section className="relative bg-white pt-24 pb-20 overflow-hidden" aria-labelledby="contact-heading">
                 <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-500/5 rounded-full blur-[100px] -mr-40 -mt-40 pointer-events-none" aria-hidden="true" />
 
-                <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
+                <div className="max-w-[1440px] mx-auto px-6 relative z-10 text-center">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -71,7 +71,7 @@ export default function ContactView() {
                 </div>
             </section>
 
-            <div className="max-w-7xl mx-auto px-6 py-12">
+            <div className="max-w-[1440px] mx-auto px-6 py-12">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
 
                     {/* Contact Information & Map */}
