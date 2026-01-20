@@ -73,7 +73,7 @@ export const menuItems = [
 			title: 'Faith & Community',
 			description:
 				'Learn about our pastoral services, chapel activities, and community outreach programs that support holistic healing.',
-			href: '/events/MAKAPAWA',
+			href: '/events/',
 			image: '/assets/events.jpg',
 		},
 		links: [
