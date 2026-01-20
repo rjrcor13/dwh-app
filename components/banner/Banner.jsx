@@ -16,7 +16,7 @@ const Banner = () => {
 	];
 
 	return (
-		<section className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden bg-slate-50 pt-28 md:pt-32">
+		<section className="relative min-h-[calc(100vh-140px)] flex flex-col justify-center items-center overflow-hidden bg-slate-50 pt-28 md:pt-32">
 
 			{/* Background Image Area */}
 			<div className="absolute inset-0 z-0">
