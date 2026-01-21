@@ -13,6 +13,7 @@ const EventCategoryLayout = ({
     titleHighlight,
     description,
     badgeText,
+    basePath,
     icon: Icon,
     themeColor = 'blue', // blue, green, purple
     events = [],
@@ -162,7 +163,7 @@ const EventCategoryLayout = ({
                                 viewport={{ once: true }}
                                 transition={{ delay: idx * 0.1 }}
                             >
-                                <Link href={`/events/${breadcrumbLabel.toLowerCase().replace(/ /g, '-')}/${event.id}`} className="block h-full">
+                                <Link href={basePath ? `${basePath}/${event.id}` : `/events/${breadcrumbLabel.toLowerCase().replace(/ /g, '-')}/${event.id}`} className="block h-full">
                                     <div className="group h-full bg-white/60 backdrop-blur-md rounded-[2rem] border border-white/50 shadow-lg shadow-slate-200/50 overflow-hidden hover:shadow-2xl hover:shadow-blue-900/10 transition-all duration-500 hover:-translate-y-2">
 
                                         {/* Image Container */}

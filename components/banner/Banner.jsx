@@ -74,7 +74,7 @@ const Banner = () => {
 								size="lg"
 								className="h-12 md:h-14 px-6 md:px-8 text-base md:text-lg font-bold bg-primary text-white hover:bg-blue-800 transition-all shadow-xl shadow-blue-900/20 hover:scale-105"
 							>
-								<Link href="/find-care" className="flex items-center">
+								<Link href="/doctors" className="flex items-center">
 									Find a Doctor <ChevronRight className="ml-2 w-5 h-5" />
 								</Link>
 							</Button>

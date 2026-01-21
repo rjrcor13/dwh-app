@@ -10,12 +10,12 @@ export const makapawaEvents = [
 		attendees: 200,
 		description:
 			'Free comprehensive health screening for the community including blood pressure, diabetes, and cholesterol checks.',
-        media: [
-             {
-                type: 'image',
-                src: 'https://images.unsplash.com/photo-1576091160550-2187d80a18f7?q=80&w=2070&auto=format&fit=crop',
-            },
-        ]
+		media: [
+			{
+				type: 'image',
+				src: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=2070&auto=format&fit=crop',
+			},
+		]
 	},
 	{
 		id: 2,
@@ -27,12 +27,12 @@ export const makapawaEvents = [
 		attendees: 85,
 		description:
 			'Learn about proper nutrition, meal planning, and healthy cooking techniques for Filipino families.',
-        media: [
-            {
-               type: 'image',
-               src: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=2053&auto=format&fit=crop',
-           },
-       ]
+		media: [
+			{
+				type: 'image',
+				src: 'https://images.unsplash.com/photo-1498837167922-ddd27525d352?q=80&w=2070&auto=format&fit=crop',
+			},
+		]
 	},
 	{
 		id: 3,
@@ -44,11 +44,11 @@ export const makapawaEvents = [
 		attendees: 45,
 		description:
 			'Special healthcare program designed for senior citizens including health monitoring and wellness activities.',
-        media: [
-            {
-               type: 'image',
-               src: 'https://plus.unsplash.com/premium_photo-1661281350976-59b9514e5364?q=80&w=2069&auto=format&fit=crop',
-           },
-       ]
+		media: [
+			{
+				type: 'image',
+				src: 'https://images.unsplash.com/photo-1581579186913-45ac3e6e3ddc?q=80&w=2071&auto=format&fit=crop',
+			},
+		]
 	},
 ];

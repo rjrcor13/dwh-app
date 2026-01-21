@@ -43,6 +43,7 @@ export default function MakapawaEventsPage() {
 			themeColor="green"
 			events={makapawaEvents}
 			breadcrumbLabel="Makapawa Events"
+			basePath="/events/makapawa"
 			relatedLinks={relatedLinks}
 		/>
 	);

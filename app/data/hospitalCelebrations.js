@@ -8,12 +8,12 @@ export const hospitalCelebrations = [
 		category: 'Anniversary',
 		description:
 			'Celebrating 50 years of compassion and care. Join us for a night of reflection, awards, and gratitude.',
-        media: [
-             {
-                type: 'image',
-                src: 'https://images.unsplash.com/photo-1519750157634-b6d641d989a1?q=80&w=2070&auto=format&fit=crop',
-            },
-        ]
+		media: [
+			{
+				type: 'image',
+				src: 'https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=2069&auto=format&fit=crop',
+			},
+		]
 	},
 	{
 		id: 2,
@@ -24,14 +24,14 @@ export const hospitalCelebrations = [
 		category: 'Holiday',
 		description:
 			'Annual tradition of lighting the giant Christmas tree and hospital facade, accompanied by choir performances.',
-        media: [
-            {
-               type: 'image',
-               src: 'https://images.unsplash.com/photo-1576615570889-4084d5df3323?q=80&w=2071&auto=format&fit=crop',
-           },
-       ]
+		media: [
+			{
+				type: 'image',
+				src: 'https://images.unsplash.com/photo-1512389142860-9c449e58a543?q=80&w=2069&auto=format&fit=crop',
+			},
+		]
 	},
-    {
+	{
 		id: 3,
 		title: 'Doctor\'s Day Celebration',
 		date: '2025-03-30',
@@ -40,11 +40,11 @@ export const hospitalCelebrations = [
 		category: 'Staff Appreciation',
 		description:
 			'Honoring the dedication and hard work of our medical staff with a special luncheon and program.',
-        media: [
-            {
-               type: 'image',
-               src: 'https://images.unsplash.com/photo-1576091160550-2187d80a18f7?q=80&w=2070&auto=format&fit=crop',
-           },
-       ]
+		media: [
+			{
+				type: 'image',
+				src: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=2070&auto=format&fit=crop',
+			},
+		]
 	},
 ];
