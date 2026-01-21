@@ -2,7 +2,7 @@
 
 import { Button } from '@/components/ui/button'; // Keeping Shadcn Button for consistency
 
-import { doctorsData } from '@/app/data/dummyDoctors';
+import { doctorsData } from '@/app/data/doctors';
 import debounce from 'lodash.debounce';
 import { Stethoscope } from 'lucide-react';
 import PageHeader from '@/components/ui/PageHeader';

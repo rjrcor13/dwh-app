@@ -1,6 +1,6 @@
 'use client';
 
-import { doctorsData } from '@/app/data/dummyDoctors';
+import { doctorsData } from '@/app/data/doctors';
 import DoctorCard from '@/components/doctors/DoctorCard';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';

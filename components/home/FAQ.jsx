@@ -1,8 +1,9 @@
 'use client';
 
 import { contactInfo } from '@/app/data/contactInfo';
-import { doctorsData } from '@/app/data/dummyDoctors';
+import { doctorsData } from '@/app/data/doctors';
 import { servicesData } from '@/app/data/services';
+import { faqsData } from '@/app/data/faqs';
 import {
 	Activity,
 	ArrowRight,
@@ -21,55 +22,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React, { useMemo, useState } from 'react';
 import AmbientBackground from '@/components/ui/AmbientBackground';
-
-// Static FAQs
-const staticFaqs = [
-	{
-		question: "What are your operating hours?",
-		answer: "We are open 24/7. Outpatient services are available 8:00 AM - 5:00 PM.",
-		keywords: "time, open, close, schedule"
-	},
-	{
-		question: "Where are you located?",
-		answer: "Avenida Veteranos Street, Tacloban City, Leyte, 6500.",
-		keywords: "address, map, location, directions"
-	},
-	{
-		question: "Do you accept walk-ins?",
-		answer: "Yes! Emergency is 24/7. For specialists, we recommend booking, but walk-ins are welcome.",
-		keywords: "appointment, booking, emergency"
-	},
-	{
-		question: "Do you accept health insurance?",
-		answer: "We accept Maxicare, PhilHealth, and most major providers. Contact billing for specifics.",
-		keywords: "hmo, payment, card, insurance"
-	},
-	{
-		question: "How do I get my medical records?",
-		answer: "Request them at our HIMD (Health Information) department or download the form online.",
-		keywords: "records, result, lab, history"
-	},
-	{
-		question: "Do you offer MRI and CT Scans?",
-		answer: "Yes, our Radiology center offers 24/7 X-rays, CT Scans, and MRI services.",
-		keywords: "diagnostic, xray, scan, ultrasound"
-	},
-	{
-		question: "Can I visit a patient?",
-		answer: "Visiting hours are 9:00 AM - 11:00 AM and 4:00 PM - 8:00 PM daily.",
-		keywords: "visitor, guest, ward, room"
-	},
-	{
-		question: "Is there parking available?",
-		answer: "Yes, we have a dedicated parking lot for patients and visitors behind the main building.",
-		keywords: "car, park, vehicle"
-	},
-	{
-		question: "Do you have a cafeteria?",
-		answer: "Our cafeteria is located on the ground floor and serves healthy meals from 6:00 AM to 8:00 PM.",
-		keywords: "food, eat, lunch, dinner"
-	},
-];
 
 const FAQSection = () => {
 	const [searchQuery, setSearchQuery] = useState('');
@@ -108,7 +60,7 @@ const FAQSection = () => {
 		});
 
 		// 3. Index FAQs
-		staticFaqs.forEach(faq => {
+		faqsData.forEach(faq => {
 			kb.push({
 				type: 'faq',
 				title: faq.question,
@@ -224,7 +176,7 @@ const FAQSection = () => {
 					) : (
 						// --- DEFAULT KNOWLEDGE GRID (Top 9 FAQs) ---
 						<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-in fade-in duration-700">
-							{staticFaqs.map((faq, index) => (
+							{faqsData.map((faq, index) => (
 								<div
 									key={index}
 									className="group bg-white/5 backdrop-blur-sm p-8 rounded-[2.5rem] border border-white/10 hover:bg-white/10 hover:border-white/20 hover:shadow-xl hover:shadow-black/20 transition-all duration-300 flex flex-col items-start h-full"

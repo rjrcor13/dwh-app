@@ -31,12 +31,12 @@ const DoctorCard = ({ doctor, variant = 'default' }) => {
 			initial={{ opacity: 0, y: 20 }}
 			whileInView={{ opacity: 1, y: 0 }}
 			viewport={{ once: true }}
-			whileHover={{ y: -4 }}
-			transition={{ duration: 0.3 }}
+			whileHover={{ y: -6 }}
+			transition={{ duration: 0.4, ease: "easeOut" }}
 			className={cn(
-				"group relative rounded-[2rem] p-8 transition-all duration-300 ease-out cursor-pointer overflow-hidden border",
+				"group relative rounded-[2rem] p-6 sm:p-8 cursor-pointer overflow-hidden border transition-all duration-300",
 				// Default Variant
-				!isGlass && "bg-white border-slate-100 hover:border-slate-200 hover:shadow-xl hover:shadow-blue-900/5",
+				!isGlass && "bg-white border-slate-100 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_40px_-4px_rgba(31,27,153,0.1)] hover:border-blue-100",
 				// Glass Variant
 				isGlass && "bg-white/5 backdrop-blur-lg border-white/10 hover:bg-white/10 hover:border-white/20 hover:shadow-2xl hover:shadow-black/20"
 			)}
@@ -45,74 +45,72 @@ const DoctorCard = ({ doctor, variant = 'default' }) => {
 			{/* Hover Gradient Overlay */}
 			<div className={cn(
 				"absolute inset-0 bg-gradient-to-br transition-colors duration-500 pointer-events-none",
-				!isGlass && "from-transparent to-blue-50/0 group-hover:to-blue-50/30",
+				!isGlass && "from-transparent via-transparent to-blue-50/0 group-hover:to-blue-50/60",
 				isGlass && "from-transparent to-white/0 group-hover:to-white/5"
 			)} />
 
-			<div className="relative z-10 flex flex-col items-center text-center">
+			<div className="relative z-10 flex flex-col items-center text-center h-full">
 				{/* Minimalist Avatar */}
-				<div className="relative mb-5">
+				<div className="relative mb-6 group-hover:scale-105 transition-transform duration-500">
 					<Avatar className={cn(
-						"w-24 h-24 rounded-full border-4 shadow-lg transition-all duration-300",
-						!isGlass && "border-slate-50 group-hover:border-blue-100",
-						isGlass && "border-white/10 group-hover:border-white/30"
+						"w-28 h-28 rounded-2xl shadow-xl transition-all duration-300",
+						!isGlass && "border-4 border-white shadow-slate-200",
+						isGlass && "border-white/10"
 					)}>
 						<AvatarImage
 							src={doctor.image}
 							alt={doctor.name}
 							className="object-cover"
 						/>
-						<AvatarFallback className="bg-blue-50 text-blue-600 text-xl font-heading">
+						<AvatarFallback className="bg-blue-50 text-blue-600 text-3xl font-heading rounded-2xl">
 							{doctor.name.substring(0, 2).toUpperCase()}
 						</AvatarFallback>
 					</Avatar>
 					{/* Status Dot */}
-					<div className="absolute bottom-1 right-2 w-5 h-5 bg-emerald-500 border-4 border-white rounded-full" />
+					<div className="absolute -bottom-1 -right-1 w-6 h-6 bg-emerald-500 border-[3px] border-white rounded-full shadow-sm" />
 				</div>
 
 				{/* Name & Specialty */}
 				<h3 className={cn(
-					"text-xl font-bold font-heading mb-2 transition-colors",
+					"text-xl sm:text-2xl font-bold font-heading mb-1 transition-colors leading-tight",
 					!isGlass && "text-slate-900 group-hover:text-primary",
 					isGlass && "text-white"
 				)}>
 					{doctor.name}
 				</h3>
+				<p className={cn("text-sm font-medium mb-5 uppercase tracking-wide", !isGlass ? "text-slate-500" : "text-blue-200")}>
+					{Array.isArray(doctor.specialties) ? doctor.specialties.join(', ') : doctor.specialties}
+				</p>
 
-				<div className="flex flex-wrap justify-center gap-2 mb-6">
-					{(Array.isArray(doctor.specialties) ? doctor.specialties : [doctor.specialties]).map((spec, i) => (
-						<Badge
-							key={i}
-							variant="secondary"
-							className={cn(
-								"border-transparent font-medium px-3 py-1 rounded-lg transition-colors",
-								!isGlass && "bg-blue-50 text-blue-700 hover:bg-blue-100",
-								isGlass && "bg-white/10 text-blue-100 hover:bg-white/20"
-							)}
-						>
-							{spec}
-						</Badge>
-					))}
-				</div>
-
-				{/* Minimal Info List */}
-				<div className="w-full space-y-3 mb-6">
-					<div className={cn("flex items-center justify-center gap-2 text-sm", !isGlass ? "text-slate-500" : "text-blue-50")}>
-						<ClockIcon className={cn("w-4 h-4", !isGlass ? "text-slate-400" : "text-blue-200")} />
-						<span>{doctor.clinicHours}</span>
+				{/* Info Tags */}
+				<div className="flex flex-wrap justify-center gap-2 mb-8 w-full">
+					{/* Clinic Hours */}
+					<div className={cn(
+						"inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold",
+						!isGlass ? "bg-slate-50 text-slate-600" : "bg-white/10 text-white"
+					)}>
+						<ClockIcon className="w-3.5 h-3.5" />
+						{doctor.clinicHours}
 					</div>
-					<div className={cn("flex items-center justify-center gap-2 text-sm", !isGlass ? "text-slate-500" : "text-blue-50")}>
-						<CalendarIcon className={cn("w-4 h-4", !isGlass ? "text-slate-400" : "text-blue-200")} />
-						<span>{doctor.clinicDays.join(', ')}</span>
+					{/* Clinic Days */}
+					<div className={cn(
+						"inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold",
+						!isGlass ? "bg-slate-50 text-slate-600" : "bg-white/10 text-white"
+					)}>
+						<CalendarIcon className="w-3.5 h-3.5" />
+						{doctor.clinicDays.join(', ')}
 					</div>
 				</div>
 
-				{/* Minimalist Link Action */}
-				<div
+				{/* Spacer to push button to bottom if needed flex-grow */}
+				<div className="flex-grow" />
+
+				{/* Button Action */}
+				<button
 					className={cn(
-						"mt-2 inline-flex items-center gap-1 text-sm font-bold transition-colors cursor-pointer group/link",
-						!isGlass && "text-primary hover:text-blue-700",
-						isGlass && "text-white hover:text-blue-200"
+						"w-full py-3 rounded-xl flex items-center justify-center gap-2 text-sm font-bold transition-all duration-300 group/btn",
+						!isGlass && "bg-white border-2 border-slate-100 text-slate-600 hover:border-primary hover:bg-primary hover:text-white shadow-sm hover:shadow-md",
+						isGlass && "bg-white/10 border-white/10 text-white hover:bg-white hover:text-primary"
 					)}
 					onClick={(e) => {
 						e.stopPropagation();
@@ -120,8 +118,8 @@ const DoctorCard = ({ doctor, variant = 'default' }) => {
 					}}
 				>
 					View Profile
-					<ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-1" />
-				</div>
+					<ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
+				</button>
 			</div>
 		</motion.div>
 	);

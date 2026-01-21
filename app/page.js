@@ -1,12 +1,5 @@
-import HomePage from './(public)/home/page';
-import PublicLayout from './(public)/layout';
+import { redirect } from 'next/navigation';
 
 export default function Home() {
-	return (
-		<div>
-			<PublicLayout>
-				<HomePage />
-			</PublicLayout>
-		</div>
-	);
+	redirect('/home');
 }

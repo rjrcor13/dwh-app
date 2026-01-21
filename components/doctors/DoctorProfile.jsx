@@ -1,6 +1,6 @@
 'use client';
 
-import { doctorsData } from '@/app/data/dummyDoctors';
+import { doctorsData } from '@/app/data/doctors';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';

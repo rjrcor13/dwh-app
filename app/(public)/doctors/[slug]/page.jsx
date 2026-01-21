@@ -1,4 +1,4 @@
-import { doctorsData } from '@/app/data/dummyDoctors';
+import { doctorsData } from '@/app/data/doctors';
 import DoctorProfileWrapper from '../../../../components/doctors/DoctorWrapper';
 
 export const generateStaticParams = async () => {

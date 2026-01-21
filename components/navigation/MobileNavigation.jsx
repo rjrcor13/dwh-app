@@ -3,6 +3,7 @@
 
 import {
 	Sheet,
+	SheetClose,
 	SheetContent,
 	SheetTitle,
 	SheetTrigger,
@@ -37,12 +38,17 @@ const MobileNavigation = ({ menuItems }) => {
 				<SheetContent
 					side="left"
 					className="w-full sm:max-w-xs bg-[#0f0c50]/95 backdrop-blur-3xl border-r border-white/10 p-0 shadow-2xl"
+					closeClassName="hidden"
 				>
 					<SheetTitle className="sr-only">Mobile Navigation</SheetTitle>
 					<div className="flex flex-col h-full">
 						{/* Header with Brand and Close Button */}
 						<div className="flex items-center justify-between p-6 border-b border-white/10">
 							<Brand />
+							<SheetClose className="text-white/70 hover:text-white hover:bg-white/10 rounded-full p-2 transition-all">
+								<X className="w-8 h-8" strokeWidth={2.5} />
+								<span className="sr-only">Close</span>
+							</SheetClose>
 						</div>
 
 						{/* Navigation Links */}

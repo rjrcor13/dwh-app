@@ -22,7 +22,7 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 
 // Import Data Sources
-import { doctorsData } from '@/app/data/dummyDoctors';
+import { doctorsData } from '@/app/data/doctors';
 import { departmentsData } from '@/app/data/departments';
 import { servicesData } from '@/app/data/services';
 
