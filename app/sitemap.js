@@ -9,7 +9,7 @@ export default function sitemap() {
         '/expertise',
         '/expertise/services',
         '/expertise/departments',
-        '/contact',
+        '/contact-us',
         '/careers',
         '/emergency',
         '/patients-visitors-guide/patients',

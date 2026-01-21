@@ -15,12 +15,14 @@ import {
 } from 'lucide-react';
 import React from 'react';
 import Image from 'next/image';
-import PremiumBadge from '@/components/ui/PremiumBadge';
+import PageHeader from '@/components/ui/PageHeader';
+import GlassCard from '@/components/ui/GlassCard';
+import AmbientBackground from '@/components/ui/AmbientBackground';
 
 // --- Components ---
 
 const InfoCard = ({ icon: Icon, title, children, className }) => (
-	<div className={cn("bg-white/60 backdrop-blur-xl border border-white/40 rounded-[2.5rem] p-8 md:p-10 shadow-sm hover:shadow-xl transition-shadow duration-500", className)}>
+	<GlassCard className={cn("p-8 md:p-10", className)} hoverEffect={true}>
 		<div className="flex items-center gap-4 mb-8">
 			<div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-50 to-white flex items-center justify-center text-primary border border-blue-100 shrink-0 shadow-sm">
 				<Icon className="w-6 h-6" />
@@ -30,7 +32,7 @@ const InfoCard = ({ icon: Icon, title, children, className }) => (
 		<div className="space-y-6">
 			{children}
 		</div>
-	</div>
+	</GlassCard>
 );
 
 const GuidelineItem = ({ icon: Icon, title, text }) => (
@@ -50,33 +52,26 @@ const GuidelineItem = ({ icon: Icon, title, text }) => (
 const VisitorsAndWatchers = () => {
 
 	return (
-		<div className=" bg-slate-50/50 min-h-screen relative font-sans selection:bg-primary/20 selection:text-primary pb-32 pt-32">
+		<div className=" bg-slate-50/50 min-h-screen relative font-sans selection:bg-primary/20 selection:text-primary pb-32 pt-24">
 
 			{/* --- Ambient Background Mesh --- */}
-			<div className="fixed inset-0 pointer-events-none">
-				{/* Top Left: Soft Blue Blob */}
-				<div className="absolute top-[-10%] left-[-10%] w-[900px] h-[900px] bg-gradient-to-br from-blue-100/30 to-indigo-50/30 rounded-full blur-[120px]" />
-				{/* Bottom Right: Clean White/Gold Glow */}
-				<div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-gradient-to-tl from-amber-50/40 to-white/40 rounded-full blur-[100px]" />
-			</div>
+			<AmbientBackground variant="light" />
 
-			<div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+			<div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 pt-12">
+
+				{/* Header Section */}
+				<PageHeader
+					badgeIcon={Users}
+					badgeText="Visitor Center"
+					title="Plan Your"
+					highlightText="Visit"
+					description="We welcome visitors as partners in care. Please review our schedule and guidelines."
+				/>
 
 				<div className="grid lg:grid-cols-12 gap-12 lg:gap-24 items-start">
 
 					{/* LEFT COLUMN: Sticky Info (4 cols) */}
 					<div className="lg:col-span-4 lg:sticky lg:top-32 space-y-8">
-
-						{/* Header */}
-						<div>
-							<PremiumBadge text="Visitor Center" icon={Users} className="mb-4" />
-							<h1 className="text-4xl md:text-6xl font-bold font-heading text-slate-900 leading-tight mb-4 tracking-tight">
-								Plan Your<br />Visit
-							</h1>
-							<p className="text-slate-600 text-lg font-light leading-relaxed">
-								We welcome visitors as partners in care. Please review our schedule and guidelines.
-							</p>
-						</div>
 
 						{/* Clock Widget (Smart Watch Style) */}
 						<div className="relative bg-white/40 backdrop-blur-2xl border border-white/50 rounded-[3rem] p-10 overflow-hidden text-center shadow-2xl shadow-blue-900/5 group">

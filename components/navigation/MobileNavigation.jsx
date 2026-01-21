@@ -43,13 +43,6 @@ const MobileNavigation = ({ menuItems }) => {
 						{/* Header with Brand and Close Button */}
 						<div className="flex items-center justify-between p-6 border-b border-white/10">
 							<Brand />
-							<button
-								onClick={() => setIsOpen(false)}
-								className="text-white/50 hover:text-white transition-colors p-1 hover:bg-white/10 rounded-full"
-							>
-								<X className="h-6 w-6" />
-								<span className="sr-only">Close menu</span>
-							</button>
 						</div>
 
 						{/* Navigation Links */}

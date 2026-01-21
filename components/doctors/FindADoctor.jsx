@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button'; // Keeping Shadcn Button for co
 import { doctorsData } from '@/app/data/dummyDoctors';
 import debounce from 'lodash.debounce';
 import { Stethoscope } from 'lucide-react';
-import PremiumBadge from '@/components/ui/PremiumBadge';
+import PageHeader from '@/components/ui/PageHeader';
 import { useRouter, useSearchParams } from 'next/navigation';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import DoctorCard from './DoctorCard';
@@ -316,19 +316,13 @@ const FindADoctor = () => {
 			<div className="relative z-10 container max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-24">
 
 				{/* Section Header */}
-				<div className="text-center mb-16 space-y-4">
-					{/* <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-slate-100 text-primary text-xs font-bold tracking-widest uppercase shadow-sm mb-2">
-						<Stethoscope className="w-4 h-4 text-secondary" />
-						<span>Our Medical Experts</span>
-					</div> */}
-					<PremiumBadge text="Our Medical Experts" icon={Stethoscope} className="mb-6 bg-blue-50/80 border-blue-100" />
-					<h1 className="text-4xl lg:text-6xl font-bold font-heading text-slate-900 tracking-tight">
-						Find Your Specialist
-					</h1>
-					<p className="text-slate-500 max-w-2xl mx-auto text-lg font-light leading-relaxed">
-						Meet our team of dedicated doctors and healthcare professionals committed to providing you with world-class care.
-					</p>
-				</div>
+				<PageHeader
+					badgeText="Our Medical Experts"
+					title="Find Your"
+					highlightText="Specialist"
+					description="Meet our team of dedicated doctors and healthcare professionals committed to providing you with world-class care."
+					badgeIcon={Stethoscope}
+				/>
 
 				{/* Filter Section */}
 				<div className="relative z-30 bg-white/80 backdrop-blur-xl border border-white/50 rounded-[2rem] p-6 lg:p-10 shadow-xl shadow-slate-200/40 mb-12">

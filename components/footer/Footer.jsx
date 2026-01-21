@@ -43,7 +43,7 @@ const Footer = () => {
 		{ name: 'Our Distinction', href: '/about-us' }, // Mapping to About Us for now
 		{ name: 'Events', href: '/events' },
 		{ name: 'Careers', href: '/careers' },
-		{ name: 'Contact Us', href: '/contact' },
+		{ name: 'Contact Us', href: '/contact-us' },
 	];
 
 	const serviceLinks = [

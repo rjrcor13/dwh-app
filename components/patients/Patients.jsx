@@ -15,7 +15,9 @@ import {
 	ChevronRight
 } from 'lucide-react';
 import React, { useState } from 'react';
-import PremiumBadge from '@/components/ui/PremiumBadge';
+import PageHeader from '@/components/ui/PageHeader';
+import GlassCard from '@/components/ui/GlassCard';
+import AmbientBackground from '@/components/ui/AmbientBackground';
 
 // --- Sub-Components ---
 
@@ -47,26 +49,25 @@ const ProcessView = ({ data }) => (
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ delay: idx * 0.1 }}
-					className="group relative bg-white/60 backdrop-blur-xl border border-white/40 rounded-[2rem] p-6 md:p-8 shadow-sm hover:shadow-xl transition-all duration-500 overflow-hidden"
 				>
-					<div className="absolute inset-0 bg-gradient-to-br from-white/40 to-transparent pointer-events-none" />
-
-					<div className="relative z-10 space-y-4">
-						<div className="flex items-center gap-4">
-							<div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-blue-700 shadow-md shadow-primary/20 flex items-center justify-center text-white font-bold font-heading">
-								{idx + 1}
+					<GlassCard className="p-6 md:p-8" hoverEffect={false}>
+						<div className="relative z-10 space-y-4">
+							<div className="flex items-center gap-4">
+								<div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-blue-700 shadow-md shadow-primary/20 flex items-center justify-center text-white font-bold font-heading">
+									{idx + 1}
+								</div>
+								<h3 className={cn("text-xl font-bold", section.isPrimaryText ? "text-secondary" : "text-slate-900")}>
+									{section.heading}
+								</h3>
 							</div>
-							<h3 className={cn("text-xl font-bold", section.isPrimaryText ? "text-secondary" : "text-slate-900")}>
-								{section.heading}
-							</h3>
-						</div>
 
-						{section.paragraphs.map((p, pIdx) => (
-							<p key={pIdx} className="text-slate-600 leading-relaxed text-base pl-14">
-								{p}
-							</p>
-						))}
-					</div>
+							{section.paragraphs.map((p, pIdx) => (
+								<p key={pIdx} className="text-slate-600 leading-relaxed text-base pl-14">
+									{p}
+								</p>
+							))}
+						</div>
+					</GlassCard>
 				</motion.div>
 			))}
 		</div>
@@ -88,25 +89,24 @@ const RoomsView = ({ data }) => (
 					initial={{ opacity: 0, scale: 0.9 }}
 					animate={{ opacity: 1, scale: 1 }}
 					transition={{ delay: idx * 0.05 }}
-					whileHover={{ y: -5 }}
-					className="relative bg-white/70 backdrop-blur-xl border border-white/50 p-6 rounded-[2rem] shadow-sm hover:shadow-xl hover:border-primary/20 transition-all duration-300 group overflow-hidden"
+					className="h-full"
 				>
-					<div className="absolute -right-10 -bottom-10 w-32 h-32 bg-primary/5 rounded-full blur-[50px] group-hover:bg-primary/10 transition-colors" />
-
-					<div className="flex items-start justify-between mb-4">
-						<div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-50 to-white border border-blue-100 flex items-center justify-center text-primary group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300 shadow-sm">
-							<DoorOpen className="w-6 h-6" />
+					<GlassCard className="p-6 h-full flex flex-col" hoverEffect={true}>
+						<div className="flex items-start justify-between mb-4">
+							<div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-50 to-white border border-blue-100 flex items-center justify-center text-primary group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300 shadow-sm">
+								<DoorOpen className="w-6 h-6" />
+							</div>
 						</div>
-					</div>
 
-					<h4 className="text-lg font-bold text-slate-900 mb-2">{item.term.replace(':', '')}</h4>
-					<p className="text-slate-600 leading-relaxed text-sm">{item.description}</p>
+						<h4 className="text-lg font-bold text-slate-900 mb-2">{item.term.replace(':', '')}</h4>
+						<p className="text-slate-600 leading-relaxed text-sm flex-grow">{item.description}</p>
+					</GlassCard>
 				</motion.div>
 			))}
 		</div>
 
 		{data.concludingParagraph && (
-			<div className="bg-blue-50/50 rounded-2xl p-4 flex items-center justify-center gap-2 text-sm text-slate-500 font-medium">
+			<div className="bg-blue-50/50 rounded-2xl p-4 flex items-center justify-center gap-2 text-sm text-slate-500 font-medium border border-blue-100/50">
 				<Sparkles className="w-4 h-4 text-secondary" />
 				{data.concludingParagraph}
 			</div>
@@ -129,31 +129,32 @@ const RightsView = ({ data }) => (
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ delay: sIdx * 0.2 }}
-					className="bg-white/60 backdrop-blur-xl border border-white/50 rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500"
 				>
-					<div className="p-6 md:p-8 border-b border-indigo-50/50 bg-gradient-to-r from-indigo-50/30 to-transparent">
-						<h3 className="text-xl font-bold font-heading text-primary">{section.heading}</h3>
-					</div>
+					<GlassCard className="p-0 overflow-hidden" hoverEffect={true}>
+						<div className="p-6 md:p-8 border-b border-indigo-50/50 bg-gradient-to-r from-indigo-50/30 to-transparent">
+							<h3 className="text-xl font-bold font-heading text-primary">{section.heading}</h3>
+						</div>
 
-					<div className="divide-y divide-indigo-50/50">
-						{section.items.map((item, i) => (
-							<div
-								key={i}
-								className="p-6 md:p-8 flex gap-5 hover:bg-white/40 transition-colors group"
-							>
-								<div className="shrink-0 w-6 h-6 rounded-full bg-blue-50/80 border border-blue-100 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300 shadow-sm mt-1">
-									<CheckCircle2 className="w-3 h-3" />
-								</div>
+						<div className="divide-y divide-indigo-50/50">
+							{section.items.map((item, i) => (
+								<div
+									key={i}
+									className="p-6 md:p-8 flex gap-5 hover:bg-white/40 transition-colors group"
+								>
+									<div className="shrink-0 w-6 h-6 rounded-full bg-blue-50/80 border border-blue-100 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300 shadow-sm mt-1">
+										<CheckCircle2 className="w-3 h-3" />
+									</div>
 
-								<div>
-									<p className="text-slate-900 text-base font-bold leading-relaxed mb-2">{item.text}</p>
-									<p className="text-slate-500 text-sm leading-relaxed italic">
-										"{item.tagalog}"
-									</p>
+									<div>
+										<p className="text-slate-900 text-base font-bold leading-relaxed mb-2">{item.text}</p>
+										<p className="text-slate-500 text-sm leading-relaxed italic">
+											"{item.tagalog}"
+										</p>
+									</div>
 								</div>
-							</div>
-						))}
-					</div>
+							))}
+						</div>
+					</GlassCard>
 				</motion.div>
 			))}
 		</div>
@@ -175,31 +176,26 @@ const PatientsPage = ({ patientsData }) => {
 	if (!patientsData) return null;
 
 	return (
-		<div className="bg-slate-50/50 min-h-screen relative font-sans selection:bg-primary/20 selection:text-primary pb-32 pt-32">
+		<div className="bg-slate-50/50 min-h-screen relative font-sans selection:bg-primary/20 selection:text-primary pb-32 pt-24">
 
 			{/* --- Ambient Background Mesh --- */}
-			<div className="fixed inset-0 pointer-events-none">
-				<div className="absolute top-[-10%] right-[-10%] w-[800px] h-[800px] bg-gradient-to-br from-blue-100/40 to-indigo-100/40 rounded-full blur-[120px]" />
-				<div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-gradient-to-tr from-amber-50/60 to-orange-50/30 rounded-full blur-[100px]" />
-			</div>
+			<AmbientBackground variant="light" />
 
-			<div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+			<div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 pt-12">
+
+				{/* Header Section */}
+				<PageHeader
+					badgeIcon={Stethoscope}
+					badgeText="Patient Guide"
+					title="Patient"
+					highlightText="Information"
+					description="Everything you need for a comfortable stay at Divine Word Hospital."
+				/>
 
 				<div className="grid lg:grid-cols-12 gap-12 items-start">
 
 					{/* LEFT COLUMN: Sticky Navigation (4 cols) */}
 					<div className="lg:col-span-4 lg:sticky lg:top-32 space-y-8">
-
-						{/* Header */}
-						<div>
-							<PremiumBadge text="Patient Guide" icon={Stethoscope} className="mb-4" />
-							<h1 className="text-4xl md:text-5xl font-bold font-heading text-slate-900 leading-tight mb-4 tracking-tight">
-								Patient<br />Information
-							</h1>
-							<p className="text-slate-600 text-lg font-light leading-relaxed">
-								Everything you need for a comfortable stay at Divine Word Hospital.
-							</p>
-						</div>
 
 						{/* Vertical Navigation Pills */}
 						<div className="flex flex-col gap-3">

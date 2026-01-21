@@ -2,13 +2,12 @@
 
 import { cn } from '@/lib/utils';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowUpRight, Search, Stethoscope, Sparkles } from 'lucide-react';
+import { ArrowUpRight, Search } from 'lucide-react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import { useRef, useState } from 'react';
-import { Button } from '@/components/ui/button';
 import { default as DynamicIcons } from '../dynamicIcons/DynamicIcons';
-import PremiumBadge from '@/components/ui/PremiumBadge';
+import PageHeader from '@/components/ui/PageHeader';
+import SectionCTA from '@/components/ui/SectionCTA';
 
 const Services = ({
 	title,
@@ -16,7 +15,6 @@ const Services = ({
 	label,
 	servicesData,
 }) => {
-	const router = useRouter();
 	const [hoveredIndex, setHoveredIndex] = useState(null);
 	const [searchTerm, setSearchTerm] = useState('');
 
@@ -32,8 +30,6 @@ const Services = ({
 		offset: ["start end", "end start"]
 	});
 
-	const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
-
 	return (
 		<div ref={containerRef} className="bg-slate-50/50 min-h-screen relative overflow-hidden font-sans pb-32 pt-24">
 
@@ -46,51 +42,14 @@ const Services = ({
 			<div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 pt-12">
 
 				{/* Header Section */}
-				<div className="text-center max-w-4xl mx-auto mb-20">
-					<motion.div
-						initial={{ opacity: 0, y: 20 }}
-						whileInView={{ opacity: 1, y: 0 }}
-						viewport={{ once: true }}
-						transition={{ duration: 0.6 }}
-						className="flex justify-center mb-8"
-					>
-						{/* Custom Pill Badge Style */}
-						<div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white shadow-lg shadow-blue-900/5 ring-1 ring-black/5">
-							<Stethoscope className="w-4 h-4 text-amber-500" />
-							<span className="text-xs font-bold tracking-widest uppercase text-blue-900">
-								{label || 'Medical Excellence'}
-							</span>
-						</div>
-					</motion.div>
-
-					<motion.h1
-						initial={{ opacity: 0, y: 20 }}
-						whileInView={{ opacity: 1, y: 0 }}
-						viewport={{ once: true }}
-						transition={{ duration: 0.6, delay: 0.1 }}
-						className="text-5xl md:text-7xl lg:text-8xl font-bold font-heading text-slate-900 mb-8 leading-[0.9] tracking-tighter"
-					>
-						Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-blue-600 to-indigo-600">{title || 'Services'}</span>
-					</motion.h1>
-
-					<motion.p
-						initial={{ opacity: 0, y: 20 }}
-						whileInView={{ opacity: 1, y: 0 }}
-						viewport={{ once: true }}
-						transition={{ duration: 0.6, delay: 0.2 }}
-						className="text-slate-500 text-lg md:text-xl leading-relaxed font-light mb-12 max-w-2xl mx-auto"
-					>
-						{description}
-					</motion.p>
-
+				<PageHeader
+					badgeText={label || 'Medical Excellence'}
+					title="Our"
+					highlightText={title || 'Services'}
+					description={description}
+				>
 					{/* Search Bar */}
-					<motion.div
-						initial={{ opacity: 0, y: 20 }}
-						whileInView={{ opacity: 1, y: 0 }}
-						viewport={{ once: true }}
-						transition={{ duration: 0.6, delay: 0.3 }}
-						className="relative max-w-md mx-auto group"
-					>
+					<div className="relative max-w-md mx-auto group">
 						<div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400 group-focus-within:text-primary transition-colors z-10">
 							<Search className="w-5 h-5" />
 						</div>
@@ -101,8 +60,8 @@ const Services = ({
 							onChange={(e) => setSearchTerm(e.target.value)}
 							className="w-full pl-12 pr-4 py-4 rounded-2xl bg-white border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-primary/50 focus:ring-4 focus:ring-primary/10 transition-all shadow-md hover:shadow-lg"
 						/>
-					</motion.div>
-				</div>
+					</div>
+				</PageHeader>
 
 				{/* Grid Layout */}
 				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
@@ -176,23 +135,7 @@ const Services = ({
 				)}
 
 				{/* CTA Section */}
-				<section className="mt-20 md:mt-32">
-					<div className="max-w-5xl mx-auto bg-primary rounded-[2rem] md:rounded-[3rem] p-8 md:p-20 text-center relative overflow-hidden shadow-2xl shadow-blue-900/20">
-						{/* Background Decor */}
-						<div className="absolute top-0 right-0 w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-						<div className="absolute bottom-0 left-0 w-[300px] md:w-[400px] h-[300px] md:h-[400px] bg-blue-400/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
-
-						<div className="relative z-10">
-							<h2 className="text-3xl md:text-5xl font-bold text-white font-heading mb-4 md:mb-6">Need Specialist Care?</h2>
-							<p className="text-blue-100 text-base md:text-lg max-w-2xl mx-auto mb-8 md:mb-10 font-light px-2">
-								Our directory of board-certified doctors is ready to help you. Filter by specialty, schedule, or name to find the right fit for your needs.
-							</p>
-							<Button size="lg" className="bg-white text-primary hover:bg-blue-50 text-base md:text-lg px-8 py-6 h-auto rounded-xl font-bold shadow-xl shadow-blue-900/20" onClick={() => router.push('/doctors')}>
-								Find A Doctor
-							</Button>
-						</div>
-					</div>
-				</section>
+				<SectionCTA />
 
 			</div>
 		</div>

@@ -157,7 +157,7 @@ export default function EventsLandingView() {
                             Join our community mailing list to receive updates about upcoming medical missions, celebrations, and hospital news.
                         </p>
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                            <Link href="/contact" tabIndex={-1}>
+                            <Link href="/contact-us" tabIndex={-1}>
                                 <Button size="lg" className="bg-white text-primary hover:bg-blue-50 border-0 text-base md:text-lg font-bold h-14 px-8 rounded-xl shadow-xl shadow-black/10 hover:shadow-black/20 focus:ring-4 focus:ring-white/50 transition-all hover:scale-105">
                                     Contact Us
                                 </Button>

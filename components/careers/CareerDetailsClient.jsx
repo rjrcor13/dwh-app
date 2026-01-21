@@ -230,7 +230,7 @@ export default function CareerDetailsClient({ job }) {
                                 <p className="text-slate-500 text-sm leading-relaxed mb-4">
                                     Contact our HR department directly if you have specific questions about this role.
                                 </p>
-                                <Link href="/contact" className="text-primary text-sm font-bold hover:underline flex items-center gap-1">
+                                <Link href="/contact-us" className="text-primary text-sm font-bold hover:underline flex items-center gap-1">
                                     Contact Support <ArrowRight className="w-3 h-3" />
                                 </Link>
                             </div>
