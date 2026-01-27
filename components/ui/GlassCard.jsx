@@ -1,7 +1,5 @@
-'use client';
-
+import { Card } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
-import React from 'react';
 
 const GlassCard = ({
     children,
@@ -10,8 +8,8 @@ const GlassCard = ({
     glowEffect = true
 }) => {
     return (
-        <div className={cn(
-            "bg-white/70 backdrop-blur-2xl border border-white/50 rounded-[2.5rem] p-8 h-full flex flex-col relative overflow-hidden transition-all duration-500",
+        <Card variant="glass" className={cn(
+            "rounded-[2.5rem] p-8 h-full relative overflow-hidden transition-all duration-500",
             hoverEffect && "hover:bg-white/90 hover:border-blue-200/50 hover:shadow-[0_20px_40px_-15px_rgba(31,27,153,0.15)] hover:-translate-y-2",
             className
         )}>
@@ -27,7 +25,7 @@ const GlassCard = ({
             )}
 
             {children}
-        </div>
+        </Card>
     );
 };
 

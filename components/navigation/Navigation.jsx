@@ -77,7 +77,17 @@ export default function NavigationMenuDemo({ menuItems, myClass }) {
 					>
 						{item.links ? (
 							<>
-								<div
+								<button
+									type="button"
+									onClick={() => openMenu === item.label ? setOpenMenu(null) : handleMenuHover(item.label)}
+									onKeyDown={(e) => {
+										if (e.key === 'Enter' || e.key === ' ') {
+											e.preventDefault();
+											openMenu === item.label ? setOpenMenu(null) : handleMenuHover(item.label);
+										}
+									}}
+									aria-expanded={openMenu === item.label}
+									aria-haspopup="true"
 									className={`group inline-flex h-10 w-max items-center justify-center rounded-full px-3.5 xl:px-5 py-2 text-sm font-semibold font-heading transition-all duration-300 cursor-pointer ${openMenu === item.label
 										? 'text-white bg-white/15'
 										: 'text-blue-100 hover:text-white hover:bg-white/10'
@@ -92,7 +102,7 @@ export default function NavigationMenuDemo({ menuItems, myClass }) {
 									>
 										<ChevronDown className="w-full h-full opacity-80 group-hover:opacity-100" strokeWidth={2.5} />
 									</motion.div>
-								</div>
+								</button>
 								<AnimatePresence>
 									{openMenu === item.label && (
 										<motion.div

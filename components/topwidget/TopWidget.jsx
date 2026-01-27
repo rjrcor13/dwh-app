@@ -29,15 +29,16 @@ const TopWidget = () => {
 					<span className="hidden md:inline opacity-70">Connect with us:</span>
 					<div className="flex items-center gap-3">
 						{[
-							{ icon: Facebook, href: "https://www.facebook.com/dwhtofficial" },
-							{ icon: Instagram, href: "https://www.instagram.com/dwhtofficial" },
-							{ icon: Youtube, href: "https://www.youtube.com/@divinewordhospital" },
-							{ icon: Mail, href: `mailto:${emailInfo.text}` }
+							{ icon: Facebook, href: "https://www.facebook.com/dwhtofficial", label: "Facebook" },
+							{ icon: Instagram, href: "https://www.instagram.com/dwhtofficial", label: "Instagram" },
+							{ icon: Youtube, href: "https://www.youtube.com/@divinewordhospital", label: "YouTube" },
+							{ icon: Mail, href: `mailto:${emailInfo.text}`, label: "Email" }
 						].map((item, index) => (
 							<Link
 								key={index}
 								href={item.href}
 								target="_blank"
+								aria-label={item.label}
 								className="opacity-80 hover:opacity-100 hover:text-white transition-all duration-300 hover:-translate-y-0.5"
 							>
 								<item.icon className="w-3.5 h-3.5" />

@@ -31,9 +31,9 @@ const MobileNavigation = ({ menuItems }) => {
 		<>
 			<Sheet open={isOpen} onOpenChange={setIsOpen}>
 				<SheetTrigger asChild>
-					<div className="lg:hidden cursor-pointer text-white hover:text-white/80 transition-all duration-300 p-2">
+					<button aria-label="Toggle mobile menu" className="lg:hidden cursor-pointer text-white hover:text-white/80 transition-all duration-300 p-2">
 						<Menu className="w-8 h-8" strokeWidth={1.5} />
-					</div>
+					</button>
 				</SheetTrigger>
 				<SheetContent
 					side="left"
@@ -47,7 +47,7 @@ const MobileNavigation = ({ menuItems }) => {
 							<Brand />
 							<SheetClose className="text-white/70 hover:text-white hover:bg-white/10 rounded-full p-2 transition-all">
 								<X className="w-8 h-8" strokeWidth={2.5} />
-								<span className="sr-only">Close</span>
+								<span className="sr-only">Close menu</span>
 							</SheetClose>
 						</div>
 
