@@ -7,6 +7,7 @@ import {
 	Sparkles,
 } from 'lucide-react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import * as React from 'react';
 import { useRef, useState } from 'react';
 
@@ -47,6 +48,7 @@ const itemVariants = {
 };
 
 export default function NavigationMenuDemo({ menuItems, myClass }) {
+	const pathname = usePathname();
 	const [openMenu, setOpenMenu] = useState(null);
 	const timeoutRef = useRef(null);
 
@@ -173,7 +175,7 @@ export default function NavigationMenuDemo({ menuItems, myClass }) {
 							</>
 						) : (
 							<Link href={item.featured?.href || '#'} passHref>
-								{item.label === 'Doctors' ? (
+								{pathname === item.featured?.href ? (
 									<span className="inline-flex h-10 items-center justify-center rounded-full px-5 xl:px-6 py-2 text-sm font-bold font-heading bg-gradient-to-r from-white to-blue-50 text-primary shadow-lg shadow-blue-900/30 transition-all duration-300 hover:scale-105 hover:shadow-blue-500/20 hover:from-white hover:to-white">
 										{item.label}
 									</span>
