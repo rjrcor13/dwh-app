@@ -1,14 +1,12 @@
 'use client';
 import AmbientBackground from '@/components/ui/AmbientBackground';
 import { contactInfo } from '@/app/data/contactInfo';
+import { companyLinks, serviceLinks, socialLinks } from '@/app/data/siteConfig';
 import logo from '@/public/assets/logo_w.png';
 import {
-	Facebook,
-	Instagram,
 	Mail,
 	MapPin,
 	Phone,
-	Twitter,
 	ArrowRight
 } from 'lucide-react';
 import Image from 'next/image';
@@ -35,25 +33,6 @@ const Footer = () => {
 			);
 		}
 	}, []);
-
-	const companyLinks = [
-		{ name: 'Home', href: '/' },
-		{ name: 'About Us', href: '/about-us' },
-		{ name: 'Find a Doctor', href: '/doctors' },
-		{ name: 'Our Distinction', href: '/about-us' }, // Mapping to About Us for now
-		{ name: 'Events', href: '/events' },
-		{ name: 'Careers', href: '/careers' },
-		{ name: 'Contact Us', href: '/contact-us' },
-	];
-
-	const serviceLinks = [
-		{ name: 'Radiology', href: '/expertise/services/radiology' },
-		{ name: 'Pathology & Laboratory', href: '/expertise/services/pathology-laboratory' },
-		{ name: 'Pharmacy', href: '/expertise/services/pharmacy-service' },
-		{ name: 'Dialysis Center', href: '/expertise/services/hemo-dialysis' },
-		{ name: 'Emergency Care', href: '/emergency' },
-		{ name: 'Physical Therapy', href: '/expertise/services/physical-therapy' },
-	];
 
 	return (
 		<footer className="bg-primary mt-0 text-blue-100 relative overflow-hidden">
@@ -83,14 +62,10 @@ const Footer = () => {
 							Providing compassionate care and healing for all since 1965. We are dedicated to being a trusted partner in your health journey, finding God in all things.
 						</p>
 						<div className="flex gap-4 pt-2">
-							{[
-								{ Icon: Facebook, label: 'Visit our Facebook page' },
-								{ Icon: Twitter, label: 'Follow us on Twitter' },
-								{ Icon: Instagram, label: 'Follow us on Instagram' }
-							].map(({ Icon, label }, i) => (
+							{socialLinks.map(({ Icon, label, href }, i) => (
 								<a
 									key={i}
-									href="#"
+									href={href}
 									aria-label={label}
 									className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-blue-100 hover:bg-white hover:text-primary transition-all duration-300 hover:-translate-y-1"
 								>
@@ -182,6 +157,8 @@ const Footer = () => {
 					</div>
 				</div>
 
+
+
 				{/* Copyright */}
 				<div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-blue-300/80">
 					<p>© 2025 Divine Word Hospital. Finding God in all things.</p>
@@ -190,8 +167,9 @@ const Footer = () => {
 						<Link href="/terms-of-service" className="hover:text-white transition-colors">Terms of Service</Link>
 					</div>
 				</div>
+
 			</div>
-		</footer>
+		</footer >
 	);
 };
 

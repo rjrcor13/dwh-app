@@ -1,5 +1,6 @@
 import { doctorsData } from '@/app/data/doctors';
 import DoctorProfileWrapper from '../../../../components/doctors/DoctorWrapper';
+import StructuredData from '@/components/seo/StructuredData';
 
 export const generateStaticParams = async () => {
     return doctorsData.map((doctor) => ({
@@ -30,5 +31,12 @@ export async function generateMetadata({ params }) {
 
 export default async function DoctorProfilePage({ params }) {
     const { slug } = await params;
-    return <DoctorProfileWrapper slug={slug} />;
+    const doctor = doctorsData.find((doc) => doc.slug === slug);
+
+    return (
+        <>
+            {doctor && <StructuredData type="Person" data={doctor} />}
+            <DoctorProfileWrapper slug={slug} />
+        </>
+    );
 }

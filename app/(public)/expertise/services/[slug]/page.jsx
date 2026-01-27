@@ -52,6 +52,7 @@
 // app/expertise/services/[slug]/page.jsx
 import { servicesData } from '@/app/data/services';
 import ServicesDetailClient from '@/components/services/ServicesDetailsClient';
+import StructuredData from '@/components/seo/StructuredData';
 // Import all lucide icons here if you plan to render them in the server component
 import {
 	BedIcon,
@@ -92,14 +93,50 @@ export default async function ServiceDetail({ params }) {
 	const service = servicesData.find((s) => s.slug === resolvedParams.slug);
 
 	if (!service) {
-		return (
-			<div className="container mx-auto py-16 text-center">
-				<h1 className="text-4xl font-bold text-red-600">Service Not Found</h1>
-				<p className="text-gray-600 mt-4">
-					The service you are looking for does not exist.
-				</p>
-			</div>
-		);
+		if (!service) {
+			const { SearchX, ArrowLeft, Stethoscope } = await import('lucide-react');
+			const { Button } = await import('@/components/ui/button');
+			const AmbientBackground = (await import('@/components/ui/AmbientBackground')).default;
+			const Link = (await import('next/link')).default;
+
+			return (
+				<div className="relative min-h-[60vh] flex items-center justify-center p-6 overflow-hidden bg-slate-50/50">
+					<AmbientBackground variant="light" />
+
+					<div className="relative z-10 max-w-md w-full text-center">
+						<div className="bg-white/60 backdrop-blur-xl border border-white/60 rounded-[2.5rem] p-10 shadow-xl shadow-slate-200/50">
+							<div className="w-20 h-20 bg-rose-50 rounded-full flex items-center justify-center mx-auto mb-6 text-rose-500 shadow-sm border border-rose-100">
+								<SearchX className="w-10 h-10" />
+							</div>
+
+							<h1 className="text-2xl md:text-3xl font-bold font-heading text-slate-900 mb-3">
+								Service Not Found
+							</h1>
+
+							<p className="text-slate-500 mb-8 leading-relaxed">
+								The medical service you are looking for isn't available or may have been moved.
+							</p>
+
+							<div className="space-y-3">
+								<Link href="/expertise/services" className="block w-full">
+									<Button className="w-full bg-primary hover:bg-blue-800 text-white rounded-xl h-12 text-base font-bold shadow-lg shadow-blue-900/20">
+										<Stethoscope className="w-4 h-4 mr-2" />
+										View All Services
+									</Button>
+								</Link>
+
+								<Link href="/home" className="block w-full">
+									<Button variant="ghost" className="w-full text-slate-500 hover:text-slate-900 hover:bg-slate-100/50 rounded-xl h-12">
+										<ArrowLeft className="w-4 h-4 mr-2" />
+										Back to Home
+									</Button>
+								</Link>
+							</div>
+						</div>
+					</div>
+				</div>
+			);
+		}
 	}
 
 	// IMPORTANT: Render the icon directly here in the Server Component
@@ -117,6 +154,7 @@ export default async function ServiceDetail({ params }) {
 
 		// Option A: Render icon in Server Component, pass other data to Client Component
 		<div className="container_ mx-auto_ py-16_ px-4_ sm:px-6_ lg:px-8_">
+			<StructuredData type="Service" data={service} />
 			{/* Render the icon here */}
 			{/* {IconComponent && (
 				<IconComponent size={48} className="mb-4 text-indigo-600" />

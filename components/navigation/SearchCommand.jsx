@@ -25,6 +25,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { doctorsData } from '@/app/data/doctors';
 import { departmentsData } from '@/app/data/departments';
 import { servicesData } from '@/app/data/services';
+import { hospitalCelebrations } from '@/app/data/hospitalCelebrations';
 
 const SearchCommand = ({ open, setOpen }) => {
     const router = useRouter();
@@ -124,6 +125,25 @@ const SearchCommand = ({ open, setOpen }) => {
                                                 <page.icon className="w-4 h-4" />
                                             </div>
                                             <span className="text-sm font-medium">{page.name}</span>
+                                        </Command.Item>
+                                    ))}
+                                </Command.Group>
+
+                                <div className="h-px bg-slate-100 my-2 mx-2" />
+
+                                {/* EVENTS */}
+                                <Command.Group heading="Events" className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2 px-2">
+                                    {hospitalCelebrations.map((event) => (
+                                        <Command.Item
+                                            key={event.id}
+                                            value={event.title}
+                                            onSelect={() => runCommand(() => router.push(`/events/hospital-celebrations/${event.id}`))}
+                                            className="flex items-center px-3 py-3 rounded-xl text-slate-700 hover:bg-slate-50 hover:text-primary cursor-pointer transition-all group aria-selected:bg-blue-50 aria-selected:text-primary"
+                                        >
+                                            <div className="w-8 h-8 rounded-lg bg-red-50 flex items-center justify-center mr-3 text-red-500 group-hover:bg-red-100/50 group-hover:text-primary transition-all group-aria-selected:bg-red-100/50 group-aria-selected:text-primary">
+                                                <Calendar className="w-4 h-4" />
+                                            </div>
+                                            <span className="text-sm font-medium">{event.title}</span>
                                         </Command.Item>
                                     ))}
                                 </Command.Group>

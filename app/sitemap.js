@@ -1,5 +1,7 @@
 export default function sitemap() {
     const baseUrl = 'https://dwh.ph';
+    const { hospitalCelebrations } = require('./data/hospitalCelebrations');
+    const { doctorsData } = require('./data/doctors');
 
     // Static routes
     const routes = [
@@ -22,5 +24,21 @@ export default function sitemap() {
         priority: route === '' ? 1 : 0.8,
     }));
 
-    return [...routes];
+    // Dynamic routes for Events
+    const eventRoutes = hospitalCelebrations.map((event) => ({
+        url: `${baseUrl}/events/hospital-celebrations/${event.id}`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly',
+        priority: 0.7,
+    }));
+
+    // Dynamic routes for Doctors
+    const doctorRoutes = doctorsData.map((doctor) => ({
+        url: `${baseUrl}/doctors/${doctor.slug}`,
+        lastModified: new Date(),
+        changeFrequency: 'monthly',
+        priority: 0.6,
+    }));
+
+    return [...routes, ...eventRoutes, ...doctorRoutes];
 }

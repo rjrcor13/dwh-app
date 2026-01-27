@@ -12,30 +12,11 @@ import {
 	ShieldCheck
 } from 'lucide-react';
 
+import { featuresData } from '@/app/data/features';
+
 const WhyChooseUs = () => {
 	// Linear features for a clean, professional grid
-	const features = [
-		{
-			icon: Microscope,
-			title: 'Advanced Innovation',
-			description: 'Region VIII’s first MRI & Digital Mammography.',
-		},
-		{
-			icon: ShieldCheck,
-			title: 'Certified Safety',
-			description: 'Level 3 Tertiary care adhering to global protocols.',
-		},
-		{
-			icon: Heart,
-			title: 'Compassionate Care',
-			description: 'Inclusive service treating every patient as sacred.',
-		},
-		{
-			icon: GraduationCap,
-			title: 'Top Tier Training',
-			description: 'Accredited Residency in Medicine & Pediatrics.',
-		},
-	];
+	const features = featuresData;
 
 	return (
 		<section className="py-12 md:py-24 bg-primary relative overflow-hidden">

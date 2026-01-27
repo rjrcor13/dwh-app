@@ -1,5 +1,7 @@
 'use client';
 import { servicesData } from '@/app/data/services';
+import StructuredData from '@/components/seo/StructuredData';
+import { faqsData } from '@/app/data/faqs';
 import Banner from '@/components/banner/Banner';
 import Footer from '@/components/footer/Footer';
 import HMOLogos from '@/components/hmologos/HMOLogos';
@@ -40,6 +42,7 @@ const HomePage = () => {
 		<div className="overflow-x-hidden">
 			<div>
 				<Banner />
+				<StructuredData type="FAQPage" data={faqsData} />
 			</div>
 
 			<main>
