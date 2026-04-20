@@ -35,6 +35,7 @@ export default function MainNavigation({ menuItems }) {
 
 						{/* Search Trigger */}
 						<button
+							suppressHydrationWarning={true}
 							onClick={() => setSearchOpen(true)}
 							className="p-2.5 text-blue-100 hover:text-white hover:bg-white/10 rounded-full transition-all duration-300 group flex items-center gap-2 border border-transparent hover:border-white/20"
 							aria-label="Search"

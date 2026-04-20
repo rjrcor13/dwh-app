@@ -2,6 +2,7 @@
 import AmbientBackground from '@/components/ui/AmbientBackground';
 import { contactInfo } from '@/app/data/contactInfo';
 import { companyLinks, serviceLinks, socialLinks } from '@/app/data/siteConfig';
+import { useCookieConsent } from '@/app/hooks/use-cookie-consent';
 import logo from '@/public/assets/logo_w.png';
 import {
 	Mail,
@@ -19,6 +20,7 @@ const emailInfo = contactInfo.find((info) => info.title === 'Email');
 
 const Footer = () => {
 	const [googleMapsEmbedUrl, setGoogleMapsEmbedUrl] = useState('');
+	const { consent } = useCookieConsent();
 
 	useEffect(() => {
 		const googleMapsApiKey = process.env.NEXT_PUBLIC_Maps_API_KEY;
@@ -139,20 +141,29 @@ const Footer = () => {
 						</ul>
 
 						{/* Mini Map */}
-						<div className="rounded-2xl overflow-hidden border border-white/10 shadow-xl h-32 relative group">
-							<div className="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-colors z-10 pointer-events-none" />
-							{googleMapsEmbedUrl && (
-								<iframe
-									src={googleMapsEmbedUrl}
-									width="100%"
-									height="100%"
-									style={{ border: 0, filter: 'grayscale(1) contrast(1.1) brightness(0.8)' }}
-									allowFullScreen=""
-									loading="lazy"
-									className="group-hover:filter-none transition-all duration-500"
-									referrerPolicy="no-referrer-when-downgrade"
-								></iframe>
-							)}
+						<div className="rounded-2xl overflow-hidden border border-white/10 shadow-xl h-32 relative group bg-white/5 flex flex-col items-center justify-center">
+							{consent === 'accepted' ? (
+                                <>
+                                    <div className="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-colors z-10 pointer-events-none" />
+                                    {googleMapsEmbedUrl && (
+                                        <iframe
+                                            src={googleMapsEmbedUrl}
+                                            width="100%"
+                                            height="100%"
+                                            style={{ border: 0, filter: 'grayscale(1) contrast(1.1) brightness(0.8)' }}
+                                            allowFullScreen=""
+                                            loading="lazy"
+                                            className="group-hover:filter-none transition-all duration-500 relative z-0"
+                                            referrerPolicy="no-referrer-when-downgrade"
+                                        ></iframe>
+                                    )}
+                                </>
+                            ) : (
+                                <div className="text-center p-4">
+                                    <MapPin className="w-6 h-6 text-slate-400 mx-auto mb-2 opacity-50" />
+                                    <p className="text-[10px] text-blue-200/80 font-medium">Map disabled. Please Accept All cookies to view interactive maps.</p>
+                                </div>
+                            )}
 						</div>
 					</div>
 				</div>
@@ -161,9 +172,9 @@ const Footer = () => {
 
 				{/* Copyright */}
 				<div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-blue-300/80">
-					<p>© 2025 Divine Word Hospital. Finding God in all things.</p>
+					<p>© {new Date().getFullYear()} Divine Word Hospital. Finding God in all things.</p>
 					<div className="flex items-center gap-6">
-						<Link href="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
+						<Link href="/privacy-policy" className="hover:text-white transition-colors">Data Privacy Statement</Link>
 						<Link href="/terms-of-service" className="hover:text-white transition-colors">Terms of Service</Link>
 					</div>
 				</div>

@@ -47,8 +47,7 @@
 }
 
 :root {
-	--radius: 0.5rem;
-
+	--radius: .05rem;
 	/* Neutral Base - Medical Light */
 	--background: #F1F5F9;
 	/* Slate 100 - Soft Medical Grey */

@@ -78,6 +78,7 @@ export default function NavigationMenuDemo({ menuItems, myClass }) {
 						{item.links ? (
 							<>
 								<button
+									suppressHydrationWarning={true}
 									type="button"
 									onClick={() => openMenu === item.label ? setOpenMenu(null) : handleMenuHover(item.label)}
 									onKeyDown={(e) => {
@@ -162,7 +163,7 @@ export default function NavigationMenuDemo({ menuItems, myClass }) {
 														{item.links.map((link) => (
 															<motion.li key={link.title} variants={itemVariants}>
 																<Link href={link.href} passHref>
-																	<div className="group/item flex items-start gap-3 rounded-xl p-3 transition-all hover:bg-blue-50/80 hover:shadow-sm border border-transparent hover:border-blue-100/50">
+																	<div className="group/item flex items-start gap-3 rounded-xl p-3 transition-all hover:bg-slate-50 hover:shadow-sm border border-transparent hover:border-blue-100/50">
 																		<div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-slate-200 group-hover/item:bg-primary transition-colors" />
 																		<div>
 																			<div className="text-sm font-bold text-slate-700 group-hover/item:text-primary transition-colors leading-none mb-1.5">

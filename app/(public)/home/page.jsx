@@ -16,26 +16,7 @@ import Services from '@/components/services/Services';
 import Stats from '@/components/stats/Stats';
 import WhyChooseUs from '@/components/whychooseus/WhyChooseUs';
 import Image from 'next/image';
-import React from 'react';
-const classNames = 'my-24';
-export const Blob = () => {
-	return (
-		<svg
-			className="absolute -top-20 right-0 w-[600px] h-[600px] -z-10 opacity-20"
-			xmlns="http://www.w3.org/2000/svg"
-			viewBox="0 0 327.53 303.49"
-		>
-			<defs>
-				<style>{`.cls-1{fill:#4553a4;}`}</style>
-			</defs>
-			<path
-				className="cls-1"
-				d="M285.35,0c0,1.74-15.84,75,87.07,106.4s113.48,57,118.64,102.81c7.85,69.58,72.64,94.28,72.64,94.28H612V0H285.35Z"
-				transform="translate(-284.47)"
-			/>
-		</svg>
-	);
-};
+import React, { Suspense } from 'react';
 
 const HomePage = () => {
 	return (
@@ -43,6 +24,7 @@ const HomePage = () => {
 			<div>
 				<Banner />
 				<StructuredData type="FAQPage" data={faqsData} />
+				<StructuredData type="Hospital" />
 			</div>
 
 			<main>
@@ -50,13 +32,21 @@ const HomePage = () => {
 
 				<OurServicesSection />
 
-				<FeaturedDoctors />
+				<Suspense fallback={
+					<div className="w-full flex justify-center py-24"><div className="w-full max-w-[1440px] h-[400px] bg-slate-100 animate-pulse rounded-[2rem]" /></div>
+				}>
+					<FeaturedDoctors />
+				</Suspense>
+
 				<div className="bg-white m-0 p-0">
 					<AboutUs className="relative z-10 max-w-[1440px] mx-auto mt-0 min-h-[500px] " />
-
 				</div>
 
-				<Testimonials />
+				<Suspense fallback={
+					<div className="w-full flex justify-center py-24"><div className="w-full max-w-[1440px] h-[400px] bg-slate-100 animate-pulse rounded-[2rem]" /></div>
+				}>
+					<Testimonials />
+				</Suspense>
 
 				<HMOLogos />
 

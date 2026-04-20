@@ -48,7 +48,7 @@ export default function ContactView() {
     ];
 
     return (
-        <main className="min-h-screen bg-slate-50/50 selection:bg-blue-100/50 relative overflow-hidden font-sans pb-32 pt-24" aria-label="Contact Us Page">
+        <main className="min-h-screen bg-slate-50 selection:bg-blue-100/50 relative overflow-hidden font-sans pb-16" aria-label="Contact Us Page">
 
             {/* --- Ambient Background Mesh --- */}
             <AmbientBackground variant="light" />

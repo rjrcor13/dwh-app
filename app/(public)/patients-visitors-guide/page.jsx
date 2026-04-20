@@ -77,7 +77,7 @@ const PatientsVisitorsGuidePage = () => {
     ];
 
     return (
-        <div className="bg-slate-50/50 min-h-screen relative font-sans selection:bg-blue-100 pb-32 overflow-hidden">
+        <div className="bg-slate-50 min-h-screen relative font-sans selection:bg-blue-100 pb-16 overflow-hidden">
             {/* Light Mode Ambient Background */}
             <div className="fixed inset-0 pointer-events-none">
                 <AmbientBackground variant="light" />
@@ -90,7 +90,7 @@ const PatientsVisitorsGuidePage = () => {
                 variants={containerVariants}
             >
                 {/* Hero Section */}
-                <section className="pt-28 md:pt-40 pb-12 md:pb-20 px-4 md:px-6">
+                <section className="pt-10 md:pt-16 pb-12 md:pb-20 px-4 md:px-6">
                     <div className="max-w-[1440px] mx-auto text-center">
                         <motion.div variants={itemVariants}>
                             <PremiumBadge text="Helpful Resources" className="mb-6 md:mb-8" />

@@ -37,7 +37,7 @@ const AboutUs = ({ className }) => {
 						{/* Interactive Badge/Card Overlay */}
 						<div className="absolute -bottom-10 -right-4 md:-right-10 z-20 bg-white p-6 rounded-[2rem] shadow-xl border border-slate-100 max-w-[260px] hidden md:block animate-in slide-in-from-bottom-6 fade-in duration-1000 delay-300">
 							<div className="flex items-center gap-4 mb-3">
-								<div className="bg-primary/5 p-3 rounded-2xl text-primary font-bold text-xl">55+</div>
+								<div className="bg-primary/5 p-3 rounded-2xl text-primary font-bold text-xl">60+</div>
 								<div>
 									<div className="text-slate-900 font-bold leading-tight">Years of Excellence</div>
 									<div className="text-slate-500 text-xs">Since 1965</div>
@@ -64,18 +64,15 @@ const AboutUs = ({ className }) => {
 
 							<h2 className="text-4xl lg:text-5xl font-bold font-heading text-slate-900 leading-tight mb-6">
 								A Sanctuary of Healing <br />
-								<span className="text-slate-400">Guided by Faith.</span>
+								<span className="text-slate-500">Guided by Faith.</span>
 							</h2>
 
 							<div className="space-y-6 text-lg text-slate-600 leading-relaxed font-light">
 								<p>
-									Divine Word Hospital is a premier Catholic tertiary institution in Tacloban City.
-									More than just a hospital, we are a community committed to holistic wellness—healing
-									the body, mind, and spirit.
+									Equipped with advanced medical facilities and backed by a highly skilled team of medical experts, Divine Word Hospital delivers quality, reliable services. 
 								</p>
 								<p>
-									Since 1965, we have combined state-of-the-art medical technology with the
-									compassionate values of our Christian heritage to serve the people of Region VIII.
+									With a healing environment and hospitable staff, it continues to uphold excellence in service—bringing healing grounded in faith, care, and service to the community.
 								</p>
 							</div>
 

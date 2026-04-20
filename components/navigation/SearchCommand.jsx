@@ -60,6 +60,19 @@ const SearchCommand = ({ open, setOpen }) => {
         { name: 'Billing & Insurance', icon: FileText, href: '/patients-visitors-guide/billing-insurance' },
     ];
 
+    // Symptom-to-Department Intelligent Mapping
+    // This allows patients to search by how they feel rather than medical nomenclature
+    const symptomMap = {
+        'Cardiology': 'heart attack chest pain palpitations blood pressure stroke',
+        'Pediatrics': 'baby child kids infant toddler fever cries',
+        'Emergency Medicine': 'urgent accident trauma blood broken bone crash severe',
+        'Neurology': 'headache brain seziure nerve memory spine',
+        'Orthopedics': 'bones joints muscle back pain fracture arthritis',
+        'Oncology': 'cancer tumor lump chemo mass radiation',
+        'Obstetrics & Gynecology': 'pregnancy pregnant maternity women reproductive baby',
+        'General Surgery': 'operation appendix gall bladder hernia',
+    };
+
     // Helper to get icon component if it's a string in data
     const getIcon = (iconName) => {
         // Only needed if you have string icon names in your data, 
@@ -177,14 +190,20 @@ const SearchCommand = ({ open, setOpen }) => {
                                     {departmentsData.map((dept) => (
                                         <Command.Item
                                             key={dept.id}
-                                            value={dept.name}
+                                            value={`${dept.name} ${symptomMap[dept.name] || ''}`}
                                             onSelect={() => runCommand(() => router.push(`/expertise/departments?tab=${dept.id}`))}
                                             className="flex items-center px-3 py-3 rounded-xl text-slate-700 hover:bg-slate-50 hover:text-primary cursor-pointer transition-all group aria-selected:bg-blue-50 aria-selected:text-primary"
                                         >
                                             <div className="w-8 h-8 rounded-lg bg-amber-50 flex items-center justify-center mr-3 text-amber-500 group-hover:bg-amber-100/50 group-hover:text-primary transition-all group-aria-selected:bg-amber-100/50 group-aria-selected:text-primary">
                                                 <Building2 className="w-4 h-4" />
                                             </div>
-                                            <span className="text-sm font-medium">{dept.name}</span>
+                                            <div className="flex flex-col">
+                                                <span className="text-sm font-medium">{dept.name}</span>
+                                                <span className="text-[10px] text-slate-400 group-aria-selected:text-blue-400/80 md:hidden">Medical Dept</span>
+                                            </div>
+                                            
+                                            {/* Hidden keywords so that CMDK registers symptom queries without cluttering UI */}
+                                            <span className="hidden">{symptomMap[dept.name] || ''}</span>
                                         </Command.Item>
                                     ))}
                                 </Command.Group>

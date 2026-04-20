@@ -82,8 +82,7 @@ const DoctorCard = ({ doctor, variant = 'default' }) => {
 					{Array.isArray(doctor.specialties) ? doctor.specialties.join(', ') : doctor.specialties}
 				</p>
 
-				{/* Info Tags */}
-				<div className="flex flex-wrap justify-center gap-2 mb-8 w-full">
+				<div className="flex flex-col items-center gap-2 mb-8 w-full">
 					{/* Clinic Hours */}
 					<div className={cn(
 						"inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold",

@@ -17,9 +17,6 @@ const Testimonials = () => {
 
             <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div className="text-center mb-16">
-                    {/* <h2 className="text-secondary font-bold tracking-wide uppercase text-sm mb-2">
-                        Patient Stories
-                    </h2> */}
                     <div className="flex justify-center items-center gap-2 mb-4">
                         <div className="h-px w-10 bg-secondary"></div>
                         <span className="text-secondary font-bold tracking-widest uppercase text-sm">Patient Stories</span>
@@ -40,7 +37,7 @@ const Testimonials = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: idx * 0.1 }}
                             viewport={{ once: true }}
-                            className="bg-white/10 backdrop-blur-md border border-white/10 rounded-[2rem] p-8 flex flex-col relative"
+                            className="bg-white/10 backdrop-blur-md border border-white/10 rounded-[2rem] p-8 flex flex-col h-full relative"
                         >
                             <Quote className="absolute top-6 right-6 text-secondary/20 h-10 w-10 rotate-180" />
 

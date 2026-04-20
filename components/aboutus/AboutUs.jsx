@@ -16,7 +16,7 @@ const AboutUs = ({ data }) => {
 	};
 
 	return (
-		<div className="bg-slate-50/50 min-h-screen relative overflow-hidden font-sans pb-32 pt-24">
+		<div className="bg-slate-50 min-h-screen relative overflow-hidden font-sans pb-16">
 
 			{/* --- Ambient Background Mesh --- */}
 			<div className="fixed inset-0 pointer-events-none">

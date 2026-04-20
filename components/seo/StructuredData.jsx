@@ -4,6 +4,30 @@ const StructuredData = ({ type, data }) => {
     let schema = {};
 
     switch (type) {
+        case 'Hospital':
+            schema = {
+                '@context': 'https://schema.org',
+                '@type': 'MedicalOrganization', // Or 'Hospital'
+                name: 'Divine Word Hospital',
+                url: 'https://dwh.ph',
+                logo: 'https://dwh.ph/assets/logo_w.png',
+                description: 'Divine Word Hospital provides world-class medical care with a compassionate Christian touch in Tacloban City. Offering 24/7 emergency services and specialized centers.',
+                contactPoint: {
+                    '@type': 'ContactPoint',
+                    telephone: '+1-234-567-8900', // Replace with real one if available
+                    contactType: 'customer service'
+                },
+                address: {
+                    '@type': 'PostalAddress',
+                    streetAddress: 'Avenida Veteranos',
+                    addressLocality: 'Tacloban City',
+                    addressRegion: 'Leyte',
+                    postalCode: '6500',
+                    addressCountry: 'PH'
+                }
+            };
+            break;
+
         case 'Person': // For Doctors
             schema = {
                 '@context': 'https://schema.org',
