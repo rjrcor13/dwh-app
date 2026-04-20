@@ -76,6 +76,7 @@ const Banner = () => {
 					alt="Divine Word Hospital"
 					className="w-full h-full object-cover"
 					fill sizes="100vw" priority
+					placeholder="blur"
 				/>
 				<div className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] bg-blue-400/20 rounded-full blur-[120px]" />
 				<div className="absolute bottom-[20%] right-[10%] w-[300px] h-[300px] bg-purple-400/10 rounded-full blur-[100px]" />
@@ -85,22 +86,26 @@ const Banner = () => {
 
 			{/* Hero text */}
 			<div className="relative z-10 w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 md:pb-44 flex-grow flex items-center">
-				<div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
+				<div className="grid lg:grid-cols-1 gap-8 md:gap-12 items-center">
 					<motion.div
 						initial={{ opacity: 0, y: 30 }}
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.8, ease: 'circOut' }}
 						className="space-y-6 md:space-y-8"
 					>
-						<h1 className="text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold font-heading text-slate-900 leading-[1.1] tracking-tight">
-							Serving, Caring, <br />
+						<h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold font-heading text-slate-900 leading-[1.15] tracking-tight">
+							In Faith We Serve,{' '}
+							<br className="hidden sm:block" />
+							In Compassion We Care,{' '}
+							<br className="hidden sm:block" />
 							<span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-600">
-								Healing.
+								In Excellence We Heal.
 							</span>
 						</h1>
 
-						<p className="text-base md:text-lg lg:text-xl text-slate-600 leading-relaxed max-w-2xl font-light">
-							In Faith We Serve, In Compassion We Care, In Excellence We Heal. Experience trusted, faith-driven healthcare at Divine Word Hospital since 1965.
+						<p className="text-base md:text-lg text-slate-600 leading-relaxed max-w-3xl font-light ">
+							Equipped with advanced medical facilities and backed by a highly skilled team of medical experts, it delivers quality, reliable services. With a healing environment and hospitable staff, it continues to uphold excellence in service—bringing healing grounded in faith, care, and service to the community.{' '}
+							<span className="font-semibold text-primary italic">Since 1965.</span>
 						</p>
 
 						<div className="flex flex-col sm:flex-row gap-4 pt-4">

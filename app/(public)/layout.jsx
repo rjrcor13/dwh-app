@@ -5,6 +5,7 @@ import MobileActionBar from '@/components/ui/MobileActionBar';
 import CookieConsent from '@/components/ui/CookieConsent';
 import ScrollToTop from '@/components/ui/ScrollToTop';
 import FloatingContactForm from '@/components/ui/FloatingContactForm';
+import EmergencyBanner from '@/components/ui/EmergencyBanner';
 import React from 'react';
 
 const PublicLayout = ({ children }) => {
@@ -14,6 +15,9 @@ const PublicLayout = ({ children }) => {
 				Skip to Main Content
 			</a>
 			<TopWidget />
+
+			{/* Live operational alert ticker */}
+			<EmergencyBanner />
 
 			<header className="sticky top-0 z-40 bg-white shadow-md">
 				<Header />

@@ -66,7 +66,7 @@ export default function NavigationMenuDemo({ menuItems, myClass }) {
 	};
 
 	return (
-		<nav className={`${myClass} hidden lg:flex items-center space-x-2`}>
+		<nav className={`${myClass} hidden lg:flex items-center space-x-2`} aria-label="Main Navigation">
 			<ul className="flex items-center space-x-2">
 				{menuItems.map((item) => (
 					<li
@@ -113,7 +113,11 @@ export default function NavigationMenuDemo({ menuItems, myClass }) {
 											exit="exit"
 											className="absolute left-1/2 -translate-x-1/2 top-full pt-4 z-50 w-max"
 										>
-											<div className="flex w-[650px] overflow-hidden rounded-[2rem] border border-slate-100 bg-white/95 backdrop-blur-2xl shadow-[0_20px_50px_-12px_rgba(30,58,138,0.15)] ring-1 ring-black/5">
+											<div
+												role="menu"
+												aria-label={`${item.label} submenu`}
+												className="flex w-[650px] overflow-hidden rounded-[2rem] border border-slate-100 bg-white/95 backdrop-blur-2xl shadow-[0_20px_50px_-12px_rgba(30,58,138,0.15)] ring-1 ring-black/5"
+											>
 
 												{/* Left Column: Featured Section */}
 												<div className="w-[260px] bg-slate-50/80 p-6 flex flex-col justify-between relative overflow-hidden group/featured border-r border-slate-100">

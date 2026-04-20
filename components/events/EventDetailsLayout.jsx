@@ -77,7 +77,7 @@ const EventDetailsLayout = ({
             {/* Sticky Breadcrumb */}
             <nav className="sticky top-[80px] z-30 bg-white/80 backdrop-blur-md border-b border-slate-100" aria-label="Breadcrumb">
                 <div className="max-w-[1440px] mx-auto px-6 h-14 flex items-center text-sm font-medium text-slate-500">
-                    <Link href="/home" className="hover:text-primary transition-colors flex items-center gap-1">
+                    <Link href="/" className="hover:text-primary transition-colors flex items-center gap-1">
                         <Home className="w-4 h-4" />
                         <span className="hidden sm:inline">Home</span>
                     </Link>

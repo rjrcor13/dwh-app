@@ -13,24 +13,43 @@ const FloatingContactForm = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
+    const [subjectValue, setSubjectValue] = useState('');
+    const [error, setError] = useState(null);
 
-    // Mock submission logic
-    const handleSubmit = (e) => {
+    // Real submit — posts to /api/contact
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setIsSubmitting(true);
-        
-        // Faking a network request
-        setTimeout(() => {
-            setIsSubmitting(false);
+        setError(null);
+
+        const form = e.currentTarget;
+        const data = {
+            name:    form['fc-name'].value,
+            email:   form['fc-email'].value,
+            subject: subjectValue,
+            message: form['fc-msg'].value,
+        };
+
+        try {
+            const res = await fetch('/api/contact', {
+                method:  'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body:    JSON.stringify(data),
+            });
+            const json = await res.json();
+
+            if (!res.ok) throw new Error(json.error || 'Failed to send message.');
+
             setIsSuccess(true);
-            
-            // Automatically close the modal after 2.5 seconds of showing success
             setTimeout(() => {
                 setIsOpen(false);
-                // Reset form state seamlessly in the background after closing
-                setTimeout(() => setIsSuccess(false), 300);
+                setTimeout(() => { setIsSuccess(false); setSubjectValue(''); }, 300);
             }, 2500);
-        }, 1500);
+        } catch (err) {
+            setError(err.message);
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     return (
@@ -97,7 +116,7 @@ const FloatingContactForm = () => {
                                         </div>
                                         <div className="space-y-1.5 relative z-20">
                                             <Label htmlFor="fc-subject" className="text-xs font-bold text-slate-500 uppercase">Subject</Label>
-                                            <Select required name="subject">
+                                            <Select required name="subject" value={subjectValue} onValueChange={setSubjectValue}>
                                                 <SelectTrigger id="fc-subject" className="bg-white rounded-xl border-slate-200 focus:ring-primary/20 h-10 w-full text-slate-700">
                                                     <SelectValue placeholder="Reason for contacting" />
                                                 </SelectTrigger>
@@ -120,8 +139,8 @@ const FloatingContactForm = () => {
                                         </div>
                                         <Button 
                                             type="submit" 
-                                            disabled={isSubmitting}
-                                            className="w-full mt-2 rounded-xl bg-primary hover:bg-blue-800 text-white font-bold h-12 transition-all shadow-md shadow-primary/20 group relative overflow-hidden"
+                                            disabled={isSubmitting || !subjectValue}
+                                            className="w-full mt-2 rounded-xl bg-primary hover:bg-blue-800 text-white font-bold h-12 transition-all shadow-md shadow-primary/20 group relative overflow-hidden disabled:opacity-60 disabled:cursor-not-allowed"
                                         >
                                             <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
                                             {isSubmitting ? (
@@ -132,6 +151,9 @@ const FloatingContactForm = () => {
                                                 </span>
                                             )}
                                         </Button>
+                                        {error && (
+                                            <p className="text-xs text-red-500 text-center mt-1 font-medium">{error}</p>
+                                        )}
                                     </motion.form>
                                 )}
                             </AnimatePresence>
@@ -146,6 +168,7 @@ const FloatingContactForm = () => {
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setIsOpen(!isOpen)}
                 aria-label="Open contact form"
+                suppressHydrationWarning={true}
                 className={`w-12 h-12 lg:w-14 lg:h-14 rounded-full flex items-center justify-center text-white shadow-[0_8px_30px_rgb(0,0,0,0.2)] border border-transparent hover:border-blue-100/50 hover:shadow-[0_8px_30px_rgb(31,27,153,0.4)] transition-all ${isOpen ? 'bg-slate-800' : 'bg-primary'}`}
             >
                 {isOpen ? <X className="w-5 h-5 lg:w-6 lg:h-6" /> : <MessageCircle className="w-5 h-5 lg:w-6 lg:h-6" />}

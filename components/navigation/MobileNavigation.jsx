@@ -31,7 +31,11 @@ const MobileNavigation = ({ menuItems }) => {
 		<>
 			<Sheet open={isOpen} onOpenChange={setIsOpen}>
 				<SheetTrigger asChild>
-					<button aria-label="Toggle mobile menu" className="lg:hidden cursor-pointer text-white hover:text-white/80 transition-all duration-300 p-2">
+					<button
+						aria-label="Toggle mobile menu"
+						className="lg:hidden cursor-pointer text-white hover:text-white/80 transition-all duration-300 p-2"
+						suppressHydrationWarning={true}
+					>
 						<Menu className="w-8 h-8" strokeWidth={1.5} />
 					</button>
 				</SheetTrigger>

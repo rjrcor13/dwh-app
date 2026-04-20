@@ -140,6 +140,7 @@ const FAQSection = () => {
 						value={searchQuery}
 						onChange={handleSearch}
 						className="w-full pl-16 pr-14 py-6 rounded-[2rem] border border-white/20 bg-white/10 backdrop-blur-md shadow-2xl shadow-black/20 focus:bg-white/15 focus:ring-4 focus:ring-white/10 focus:border-white/30 outline-none transition-all placeholder:text-blue-200/50 text-white text-xl font-medium"
+						suppressHydrationWarning={true}
 					/>
 					{searchQuery && (
 						<button

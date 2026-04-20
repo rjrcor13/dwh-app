@@ -50,7 +50,7 @@ const SearchCommand = ({ open, setOpen }) => {
     // --- Data Mapping ---
 
     const pages = [
-        { name: 'Home', icon: FileText, href: '/home' },
+        { name: 'Home', icon: FileText, href: '/' },
         { name: 'About Us', icon: Info, href: '/about-us' },
         { name: 'Events', icon: Calendar, href: '/events' },
         { name: 'Careers', icon: Briefcase, href: '/careers' },

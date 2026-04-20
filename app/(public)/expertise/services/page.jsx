@@ -4,11 +4,13 @@ import Services from '@/components/services/Services';
 import React from 'react';
 
 export const metadata = {
-	title: 'Servicing Units',
-	description: 'Explore our wide range of medical services including Radiology, ICU, NICU, Dialysis, and more. Committed to quality healthcare in Region VIII.',
+	title: 'Medical Services & Servicing Units',
+	description: 'Explore our wide range of medical services including Radiology, ICU, NICU, Dialysis, and more at Divine Word Hospital, Tacloban City.',
+	alternates: { canonical: 'https://dwh.ph/expertise/services' },
 	openGraph: {
-		title: 'Our Medical Services | Divine Word Hospital',
-		description: 'Comprehensive healthcare services for you and your family. From Critical Care into Diagnostic Imaging.',
+		title: 'Medical Services — Divine Word Hospital',
+		description: 'Comprehensive healthcare services for you and your family. From Critical Care to Diagnostic Imaging.',
+		url: 'https://dwh.ph/expertise/services',
 	},
 };
 

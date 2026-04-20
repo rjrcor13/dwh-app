@@ -2,7 +2,7 @@ export const menuItems = [
 	{
 		label: 'Home',
 		featured: {
-			href: '/home',
+			href: '/',
 		},
 	},
 	{

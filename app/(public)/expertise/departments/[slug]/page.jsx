@@ -1,5 +1,6 @@
 import { departmentsData } from '@/app/data/departments';
 import DepartmentDetailsClient from '@/components/departments/DepartmentDetailsClient';
+import StructuredData from '@/components/seo/StructuredData';
 
 export async function generateMetadata({ params }) {
     const resolvedParams = await params;
@@ -12,11 +13,15 @@ export async function generateMetadata({ params }) {
     }
 
     return {
-        title: `${department.name} | Divine Word Hospital`,
+        title: `${department.name} | Departments`,
         description: department.description,
+        alternates: {
+            canonical: `https://dwh.ph/expertise/departments/${resolvedParams.slug}`,
+        },
         openGraph: {
-            title: `${department.name} - Centers of Excellence`,
+            title: `${department.name} — Divine Word Hospital`,
             description: department.description,
+            url: `https://dwh.ph/expertise/departments/${resolvedParams.slug}`,
         },
     };
 }
@@ -62,5 +67,10 @@ export default async function DepartmentDetailPage({ params }) {
     // OR maintain a mapping in the client component.
     // For now, I'll pass the safe object.
 
-    return <DepartmentDetailsClient department={safeDepartment} />;
+    return (
+        <>
+            <StructuredData type="Department" data={safeDepartment} />
+            <DepartmentDetailsClient department={safeDepartment} />
+        </>
+    );
 }

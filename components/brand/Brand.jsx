@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 const Brand = () => {
 	return (
-		<Link href="/home">
+		<Link href="/">
 			<div className="flex items-center gap-2 sm:gap-4 justify-center">
 				<Image
 					src={logo}

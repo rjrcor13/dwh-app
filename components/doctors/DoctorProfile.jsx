@@ -73,7 +73,7 @@ const DoctorProfile = ({ slug: propSlug }) => {
 			{/* Sticky Breadcrumb */}
 			<nav className="sticky top-[88px] z-30 bg-white/80 backdrop-blur-md border-b border-slate-200/60 transition-all duration-300">
 				<div className="max-w-[1440px] mx-auto px-6 h-14 flex items-center text-sm font-medium text-slate-500">
-					<Link href="/home" className="hover:text-primary transition-colors flex items-center gap-2">
+					<Link href="/" className="hover:text-primary transition-colors flex items-center gap-2">
 						<Home className="w-4 h-4" />
 						<span>Home</span>
 					</Link>
