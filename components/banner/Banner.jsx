@@ -105,7 +105,7 @@ const Banner = () => {
 
 						<p className="text-base md:text-lg text-slate-600 leading-relaxed max-w-3xl font-light ">
 							Equipped with advanced medical facilities and backed by a highly skilled team of medical experts, it delivers quality, reliable services. With a healing environment and hospitable staff, it continues to uphold excellence in service—bringing healing grounded in faith, care, and service to the community.{' '}
-							<span className="font-semibold text-primary italic">Since 1965.</span>
+							<span className="font-semibold text-primary_ italic">Since 1965.</span>
 						</p>
 
 						<div className="flex flex-col sm:flex-row gap-4 pt-4">
@@ -116,7 +116,7 @@ const Banner = () => {
 								</Link>
 							</Button>
 							<Button asChild variant="outline" size="lg"
-								className="rounded-2xl  h-12 md:h-14 px-6 md:px-8 text-base md:text-lg font-bold border-2 border-slate-200 bg-white/50 text-slate-700 hover:bg-white hover:text-primary hover:border-primary transition-all backdrop-blur-sm">
+								className="rounded-2xl  h-12 md:h-14 px-6 md:px-8 text-base md:text-lg font-bold border-2 border-red-500 bg-white/50 text-red-500 hover:bg-red-700 hover:text-white hover:border-red-500 transition-all backdrop-blur-sm">
 								<Link href="/emergency">Emergency Services</Link>
 							</Button>
 						</div>
@@ -125,71 +125,83 @@ const Banner = () => {
 			</div>
 
 			{/* Stats bar */}
-			<motion.div
-				ref={statsRef}
-				initial={{ opacity: 0, y: 24 }}
-				animate={{ opacity: 1, y: 0 }}
-				transition={{ duration: 0.7, delay: 0.35 }}
-				className="relative md:absolute bottom-0 left-0 right-0 z-20 w-full"
+		<motion.div
+			ref={statsRef}
+			initial={{ opacity: 0, y: 24 }}
+			animate={{ opacity: 1, y: 0 }}
+			transition={{ duration: 0.7, delay: 0.35 }}
+			className="relative md:absolute bottom-0 left-0 right-0 z-20 w-full"
+		>
+			<div
+				className="relative overflow-hidden"
+				style={{ background: 'linear-gradient(105deg, #080640 0%, #1F1B99 45%, #0d0b6b 100%)' }}
 			>
-				<div
-					className="relative overflow-hidden"
-					style={{ background: 'linear-gradient(90deg, #0c0950 0%, #1a1680 50%, #0c0950 100%)' }}
-				>
-					{/* Top border glow */}
-					<div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent" />
+				{/* Top shimmer line */}
+				<div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent" />
 
-					<div className="relative max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-						<div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/10">
-							{stats.map((stat, i) => (
-								<motion.div
-									key={i}
-									initial={{ opacity: 0, y: 16 }}
-									animate={isInView ? { opacity: 1, y: 0 } : {}}
-									transition={{ duration: 0.55, delay: 0.4 + i * 0.12 }}
-									className="group flex items-center gap-5 px-6 md:px-10 py-7 md:py-8
-										hover:bg-white/[0.04] transition-colors duration-300 cursor-default"
-								>
-									{/* Icon */}
-									<div className={`shrink-0 flex items-center justify-center w-12 h-12 rounded-xl ${stat.iconBg} ${stat.iconColor}
-										group-hover:scale-110 transition-transform duration-300`}>
-										<stat.icon className="w-6 h-6" strokeWidth={1.75} />
-									</div>
+				{/* Ambient glow blobs */}
+				<div className="absolute -top-10 left-1/4 w-64 h-32 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
+				<div className="absolute -top-10 right-1/4 w-48 h-28 bg-indigo-400/10 rounded-full blur-3xl pointer-events-none" />
 
-									{/* Text */}
-									<div>
-										<div className="text-3xl md:text-4xl font-bold font-heading text-white leading-none tracking-tight">
-											{stat.numericValue !== null ? (
-												<AnimatedCounter
-													end={stat.numericValue}
-													suffix={stat.suffix}
-													inView={isInView}
-													duration={stat.numericValue > 100 ? 2200 : 1800}
-												/>
-											) : stat.value}
-										</div>
-										<div className="mt-1.5 flex flex-col">
-											<span className="text-[11px] font-semibold uppercase tracking-[0.16em] text-white/50">
-												{stat.label}
-											</span>
-											<span className="text-xs text-white/30 font-light mt-0.5 hidden lg:block">
-												{stat.description}
-											</span>
-										</div>
+				<div className="relative max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+					<div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/[0.07]">
+						{stats.map((stat, i) => (
+							<motion.div
+								key={i}
+								initial={{ opacity: 0, y: 16 }}
+								animate={isInView ? { opacity: 1, y: 0 } : {}}
+								transition={{ duration: 0.55, delay: 0.4 + i * 0.13 }}
+								className="group flex items-center gap-5 px-6 md:px-10 py-8 md:py-9 hover:bg-white/[0.035] transition-colors duration-300 cursor-default"
+							>
+								{/* Icon with glow ring */}
+								<div className="relative shrink-0">
+									{/* Outer glow ring */}
+									<div className={`absolute inset-0 rounded-2xl blur-[6px] opacity-40 group-hover:opacity-70 transition-opacity duration-300 ${stat.iconBg}`} />
+									<div className={`relative flex items-center justify-center w-14 h-14 rounded-2xl border border-white/10 ${stat.iconBg} ${stat.iconColor} group-hover:scale-105 transition-transform duration-300`}>
+										{/* Live pulse ring for 24/7 stat */}
+										{stat.numericValue === null && (
+											<span className="absolute inset-0 rounded-2xl animate-ping opacity-20 bg-rose-500" />
+										)}
+										<stat.icon className="w-6 h-6 relative z-10" strokeWidth={1.75} />
 									</div>
-								</motion.div>
-							))}
-						</div>
+								</div>
+
+								{/* Text */}
+								<div>
+									<div className="text-3xl md:text-[2.5rem] font-extrabold font-heading text-white leading-none tracking-tight tabular-nums">
+										{stat.numericValue !== null ? (
+											<AnimatedCounter
+												end={stat.numericValue}
+												suffix={stat.suffix}
+												inView={isInView}
+												duration={stat.numericValue > 100 ? 2200 : 1800}
+											/>
+										) : (
+											<span className="bg-gradient-to-r from-rose-300 to-rose-400 bg-clip-text text-transparent">
+												{stat.value}
+											</span>
+										)}
+									</div>
+									<div className="mt-2 flex flex-col gap-0.5">
+										<span className="text-[11px] font-bold uppercase tracking-[0.18em] text-white/60 group-hover:text-white/80 transition-colors">
+											{stat.label}
+										</span>
+										<span className="text-xs text-white/30 font-light hidden lg:block leading-snug">
+											{stat.description}
+										</span>
+									</div>
+								</div>
+							</motion.div>
+						))}
 					</div>
-
-					{/* Bottom accent */}
-					<div className="h-[3px] bg-gradient-to-r from-primary via-amber-400 to-primary" />
 				</div>
-			</motion.div>
+
+				{/* Bottom accent bar — brand primary → amber → primary */}
+				<div className="h-[3px] bg-gradient-to-r from-primary via-amber-400 to-primary" />
+			</div>
+		</motion.div>
 		</section>
 	);
 };
 
 export default Banner;
-
-

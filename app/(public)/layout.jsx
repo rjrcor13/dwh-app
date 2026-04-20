@@ -17,7 +17,7 @@ const PublicLayout = ({ children }) => {
 			<TopWidget />
 
 			{/* Live operational alert ticker */}
-			<EmergencyBanner />
+			{/* <EmergencyBanner /> */}
 
 			<header className="sticky top-0 z-40 bg-white shadow-md">
 				<Header />
@@ -29,11 +29,11 @@ const PublicLayout = ({ children }) => {
 
 			{/* Sticky Mobile Action Bar */}
 			<MobileActionBar />
-            
-            {/* Global UX Overlays */}
-            <CookieConsent />
-            <ScrollToTop />
-            <FloatingContactForm />
+
+			{/* Global UX Overlays */}
+			<CookieConsent />
+			<ScrollToTop />
+			<FloatingContactForm />
 		</div>
 	);
 };
