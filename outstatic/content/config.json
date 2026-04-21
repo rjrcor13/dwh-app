@@ -1,0 +1,8 @@
+{
+    "siteName": "Hospital Website",
+    "collections": [
+        "doctors",
+        "faqs",
+        "services"
+    ]
+}

@@ -47,6 +47,7 @@ const FindADoctor = ({ doctors = [] }) => {
 		() => ['Male', 'Female', 'Other'].map((g) => ({ value: g, label: g })),
 		[]
 	);
+	const hmoOptions = useMemo(
 		() =>
 			Array.from(new Set((doctors || []).flatMap((doctor) => doctor.hmo || []))).map(
 				(h) => ({ value: h, label: h })
