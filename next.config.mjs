@@ -50,6 +50,7 @@ const securityHeaders = [
 			"form-action 'self'",
 			"block-all-mixed-content",
 			"upgrade-insecure-requests",
+			"connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://vitals.vercel-insights.com https://api.github.com"
 		].join('; '),
 	},
 ];

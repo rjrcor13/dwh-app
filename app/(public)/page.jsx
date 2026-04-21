@@ -29,7 +29,7 @@ const HomePage = async () => {
 	const faqsData = await getDocuments('faqs', ['title', 'content', 'slug', 'keywords']);
 	// map back to old property names if necessary: question = title, answer = content
 	const faqs = faqsData.map(f => ({ question: f.title, answer: f.content, keywords: f.keywords }));
-	
+
 	const doctorsData = await getDocuments('doctors', ['title', 'slug', 'specialties', 'hospital', 'clinicDays', 'clinicHours', 'image']);
 	const doctors = doctorsData.map(d => ({ ...d, name: d.title }));
 
