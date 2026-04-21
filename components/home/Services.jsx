@@ -1,12 +1,13 @@
 'use client';
 
-import { servicesData } from '@/app/data/services';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { default as DynamicIcons } from '../dynamicIcons/DynamicIcons';
 
-const OurServicesSection = () => {
+const OurServicesSection = ({ services = [] }) => {
+	const servicesData = services.length > 0 ? services : [];
+
 	return (
 		<section className="py-12 md:py-24 bg-slate-50 relative overflow-hidden">
 			<div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 pt-12">

@@ -1,5 +1,4 @@
-import { servicesData } from '@/app/data/services';
-import OurServicesSection from '@/components/home/Services';
+import { getDocuments } from 'outstatic/server';
 import Services from '@/components/services/Services';
 import React from 'react';
 
@@ -14,7 +13,9 @@ export const metadata = {
 	},
 };
 
-const ServicingUnitsPage = () => {
+const ServicingUnitsPage = async () => {
+	const servicesData = await getDocuments('services', ['title', 'slug', 'description', 'icon', 'content']);
+	
 	return (
 		<div>
 			<Services

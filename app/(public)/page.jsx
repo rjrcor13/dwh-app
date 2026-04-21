@@ -46,7 +46,7 @@ const HomePage = async () => {
 			<main>
 				<WhyChooseUs />
 
-				<OurServicesSection />
+				<OurServicesSection services={services} />
 
 				<ErrorBoundary>
 					<Suspense fallback={<div className="w-full max-w-[1440px] mx-auto px-4 py-12"><DoctorGridSkeleton count={4} /></div>}>

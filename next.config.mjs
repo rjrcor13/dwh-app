@@ -33,24 +33,21 @@ const securityHeaders = [
 		value: 'on',
 	},
 	{
-		// Content Security Policy
-		// NOTE: Adjust 'unsafe-inline' once you move to CSS-in-JS nonces or hash-based CSP.
 		key: 'Content-Security-Policy',
 		value: [
 			"default-src 'self'",
 			"script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com",
 			"style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
 			"font-src 'self' https://fonts.gstatic.com",
-			"img-src 'self' data: blob: https://images.unsplash.com https://res.cloudinary.com https://www.google-analytics.com",
-			"connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://vitals.vercel-insights.com",
+			"img-src 'self' data: blob: https://images.unsplash.com https://res.cloudinary.com https://www.google-analytics.com https://avatars.githubusercontent.com https://raw.githubusercontent.com",
+			"connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://vitals.vercel-insights.com https://api.github.com",
 			"frame-src 'self' https://www.google.com https://maps.google.com",
 			"media-src 'self'",
 			"object-src 'none'",
 			"base-uri 'self'",
 			"form-action 'self'",
 			"block-all-mixed-content",
-			"upgrade-insecure-requests",
-			"connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://vitals.vercel-insights.com https://api.github.com"
+			"upgrade-insecure-requests"
 		].join('; '),
 	},
 ];
