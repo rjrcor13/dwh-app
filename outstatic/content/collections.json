@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Doctors",
+    "slug": "doctors",
+    "path": "outstatic/content/doctors",
+    "children": []
+  },
+  {
+    "title": "Faqs",
+    "slug": "faqs",
+    "path": "outstatic/content/faqs",
+    "children": []
+  },
+  {
+    "title": "Services",
+    "slug": "services",
+    "path": "outstatic/content/services",
+    "children": []
+  }
+]
