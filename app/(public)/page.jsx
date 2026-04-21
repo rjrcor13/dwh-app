@@ -1,4 +1,4 @@
-import { faqsData } from '@/app/data/faqs';
+import { getDocuments } from 'outstatic/server';
 import Banner from '@/components/banner/Banner';
 import AbousUs from '@/components/home/AboutUs';
 import ConnectWithUsSection from '@/components/home/ConnectWithUs';
@@ -25,12 +25,21 @@ export const metadata = {
 	}
 };
 
-const HomePage = () => {
+const HomePage = async () => {
+	const faqsData = await getDocuments('faqs', ['title', 'content', 'slug', 'keywords']);
+	// map back to old property names if necessary: question = title, answer = content
+	const faqs = faqsData.map(f => ({ question: f.title, answer: f.content, keywords: f.keywords }));
+	
+	const doctorsData = await getDocuments('doctors', ['title', 'slug', 'specialties', 'hospital', 'clinicDays', 'clinicHours', 'image']);
+	const doctors = doctorsData.map(d => ({ ...d, name: d.title }));
+
+	const servicesData = await getDocuments('services', ['title', 'slug', 'description', 'icon', 'content']);
+	const services = servicesData.map(s => ({ ...s, description: s.content || s.description }));
 	return (
 		<div className="overflow-x-hidden">
 			<div>
 				<Banner />
-				<StructuredData type="FAQPage" data={faqsData} />
+				<StructuredData type="FAQPage" data={faqs} />
 				<StructuredData type="Hospital" />
 			</div>
 
@@ -41,7 +50,7 @@ const HomePage = () => {
 
 				<ErrorBoundary>
 					<Suspense fallback={<div className="w-full max-w-[1440px] mx-auto px-4 py-12"><DoctorGridSkeleton count={4} /></div>}>
-						<FeaturedDoctors />
+						<FeaturedDoctors doctors={doctors} />
 					</Suspense>
 				</ErrorBoundary>
 
@@ -59,7 +68,7 @@ const HomePage = () => {
 
 				<HMOLogos />
 
-				<FAQSection />
+				<FAQSection faqs={faqs} doctors={doctors} services={services} />
 
 				<EventsSection />
 

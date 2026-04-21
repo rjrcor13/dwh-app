@@ -2,6 +2,6 @@
 
 import DoctorProfile from './DoctorProfile';
 
-export default function DoctorProfileWrapper({ slug }) {
-	return <DoctorProfile slug={slug} />;
+export default function DoctorProfileWrapper({ doctor }) {
+	return <DoctorProfile doctor={doctor} />;
 }

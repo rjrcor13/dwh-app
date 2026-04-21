@@ -1,16 +1,18 @@
-import { doctorsData } from '@/app/data/doctors';
+import { getDocuments, getDocumentBySlug } from 'outstatic/server';
 import DoctorProfileWrapper from '../../../../components/doctors/DoctorWrapper';
 import StructuredData from '@/components/seo/StructuredData';
 
 export const generateStaticParams = async () => {
-    return doctorsData.map((doctor) => ({
+    const doctors = await getDocuments('doctors', ['slug']);
+    return doctors.map((doctor) => ({
         slug: doctor.slug,
     }));
 };
 
 export async function generateMetadata({ params }) {
     const { slug } = await params;
-    const doctor = doctorsData.find((doc) => doc.slug === slug);
+    const document = await getDocumentBySlug('doctors', slug, ['title', 'specialties', 'content', 'image', 'clinicDays', 'clinicHours', 'hospital', 'hmo', 'contactNumber', 'clinicRoom', 'gender']);
+    const doctor = document ? { ...document, name: document.title, bio: document.content } : null;
 
     if (!doctor) {
         return {
@@ -31,12 +33,13 @@ export async function generateMetadata({ params }) {
 
 export default async function DoctorProfilePage({ params }) {
     const { slug } = await params;
-    const doctor = doctorsData.find((doc) => doc.slug === slug);
+    const document = await getDocumentBySlug('doctors', slug, ['title', 'specialties', 'content', 'image', 'clinicDays', 'clinicHours', 'hospital', 'hmo', 'contactNumber', 'clinicRoom', 'gender']);
+    const doctor = document ? { ...document, name: document.title, bio: document.content } : null;
 
     return (
         <>
             {doctor && <StructuredData type="Person" data={doctor} />}
-            <DoctorProfileWrapper slug={slug} />
+            <DoctorProfileWrapper doctor={doctor} />
         </>
     );
 }

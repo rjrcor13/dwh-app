@@ -1,0 +1,11 @@
+---
+title: "Physical Therapy"
+status: "published"
+author: '{"name":"Admin","picture":"https://avatars.githubusercontent.com/u/1?v=4"}'
+publishedAt: "2026-04-21T01:35:11.995Z"
+description: "Aiding individuals to regain mobility and function through tailored physical therapy programs."
+fullContentData: '{"overview":"Physical therapy is a vital healthcare discipline focused on aiding individuals of all ages coping with medical conditions, illnesses, or injuries that hinder their normal mobility and functionality. Its primary objective is to assess and optimize both the quality of life and movement capabilities across various domains, including promotion, prevention, treatment/intervention, habilitation, and rehabilitation. Through tailored physical therapy programs, individuals are empowered to regain their former levels of function, while also being guided towards activities and lifestyle modifications that can mitigate the risk of future injuries, enhance overall health, and promote well-being.","staff":"A Physical Therapy treatment or program is given and conducted by Licensed Physical Therapists who are recognized by the Professional Regulation Commission (PRC) in the Philippines.","benefits":["Alleviates pain and discomfort.","Enhances respiratory and cardiovascular endurance.","Restores mobility for everyday activities.","Facilitates faster wound healing.","Supports optimal recovery post-surgery, major illnesses, or disabilities.","Educates on the correct use of assistive devices.","Enhances joint flexibility and reduces injury risk.","Offers a non-surgical, non-medication treatment option.","Improves coordination, balance, and muscle strength.","Boosts performance in physical and sports activities.","Reduces joint swelling and inflammation.","Enhances mental well-being."],"services":["PT MODALITIES + EXERCISE","PT MODALITIES + EX + (CERVICAL OR LUMBAR) TRACTION","PT MODALITIES + EX + CRYOTHERAPY","PT MODALITIES + EX + HI LASER","PT MODALITIES + EX + SHOCKWAVE + CRYOTHERAPY","DYSPHAGIA UNIT","HIGH INTENSITY LASER","TARGETED RADIOFREQUENCY THERAPY (TRT)","SUPER INDUCTIVE SYSTEM (SIS)","SHOCKWAVE THERAPY"],"contact":{"number":"0948 433 8444","email":"divinewordhospptdept@gmail.com"}}'
+icon: "PhysicalTherapy"
+---
+
+Aiding individuals to regain mobility and function through tailored physical therapy programs.

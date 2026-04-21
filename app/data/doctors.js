@@ -10,6 +10,8 @@ export const doctorsData = [
 		clinicHours: '9:00 AM - 5:00 PM',
 		gender: 'Female',
 		hmo: ['Maxicare', 'PhilHealth'],
+		clinicRoom: 'Room 204',
+		contactNumber: '+63 917 123 4567',
 	},
 	{
 		id: 2,
@@ -22,6 +24,8 @@ export const doctorsData = [
 		clinicHours: '10:00 AM - 6:00 PM',
 		gender: 'Male',
 		hmo: ['PhilHealth'],
+		clinicRoom: 'Suite 301',
+		contactNumber: '(053) 832 9999',
 	},
 	{
 		id: 3,

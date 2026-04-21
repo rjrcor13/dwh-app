@@ -1,6 +1,5 @@
 'use client';
 
-import { doctorsData } from '@/app/data/doctors';
 import DoctorCard from '@/components/doctors/DoctorCard';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
@@ -10,10 +9,10 @@ import React from 'react';
 import AmbientBackground from '@/components/ui/AmbientBackground';
 // ... other imports
 
-const FeaturedDoctors = () => {
+const FeaturedDoctors = ({ doctors = [] }) => {
     // Select top 3 or 4 doctors to feature
     // Ensuring we have valid data, otherwise use an empty array
-    const featured = doctorsData ? doctorsData.slice(0, 4) : [];
+    const featured = doctors ? doctors.slice(0, 4) : [];
 
     return (
         <section className="py-12 md:py-24 bg-primary relative overflow-hidden">

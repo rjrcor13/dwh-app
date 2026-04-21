@@ -1,9 +1,6 @@
 'use client';
 
-import { contactInfo } from '@/app/data/contactInfo';
-import { doctorsData } from '@/app/data/doctors';
-import { servicesData } from '@/app/data/services';
-import { faqsData } from '@/app/data/faqs';
+import { contactInfo as staticContactInfo } from '@/app/data/contactInfo';
 import {
 	Activity,
 	ArrowRight,
@@ -23,7 +20,7 @@ import Link from 'next/link';
 import React, { useMemo, useState } from 'react';
 import AmbientBackground from '@/components/ui/AmbientBackground';
 
-const FAQSection = () => {
+const FAQSection = ({ doctors = [], services = [], faqs = [], contactInfo = staticContactInfo }) => {
 	const [searchQuery, setSearchQuery] = useState('');
 	const [isThinking, setIsThinking] = useState(false);
 
@@ -32,7 +29,7 @@ const FAQSection = () => {
 		let kb = [];
 
 		// 1. Index Doctors
-		doctorsData.forEach(doc => {
+		(doctors || []).forEach(doc => {
 			kb.push({
 				type: 'doctor',
 				title: doc.name,
@@ -44,7 +41,7 @@ const FAQSection = () => {
 		});
 
 		// 2. Index Services
-		servicesData.forEach(svc => {
+		(services || []).forEach(svc => {
 			// Handle Lucide icon (component) vs String
 			let iconLabel = 'Service';
 			// Simple check if it's a function (component) or string
@@ -60,7 +57,7 @@ const FAQSection = () => {
 		});
 
 		// 3. Index FAQs
-		faqsData.forEach(faq => {
+		(faqs || []).forEach(faq => {
 			kb.push({
 				type: 'faq',
 				title: faq.question,
@@ -177,7 +174,7 @@ const FAQSection = () => {
 					) : (
 						// --- DEFAULT KNOWLEDGE GRID (Top 9 FAQs) ---
 						<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-in fade-in duration-700">
-							{faqsData.map((faq, index) => (
+							{(faqs || []).map((faq, index) => (
 								<div
 									key={index}
 									className="group bg-white/5 backdrop-blur-sm p-8 rounded-[2.5rem] border border-white/10 hover:bg-white/10 hover:border-white/20 hover:shadow-xl hover:shadow-black/20 transition-all duration-300 flex flex-col items-start h-full"

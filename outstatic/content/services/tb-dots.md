@@ -1,0 +1,11 @@
+---
+title: "TB DOTS"
+status: "published"
+author: '{"name":"Admin","picture":"https://avatars.githubusercontent.com/u/1?v=4"}'
+publishedAt: "2026-04-21T01:35:12.000Z"
+description: "DOH-partnered center for TB screening, diagnosis, treatment, and adherence."
+fullContentData: '{"mission_goal":"As a partner of the Department of Health in its vision for a Tuberculosis-Free Philippines, Divine Word Hospital proudly inaugurates its TB DOTS (Tuberculosis Directly Observed Treatment, Short-Course) Center. Dedicated to screening, diagnosing, treating, and ensuring treatment adherence for tuberculosis patients, our center serves as a beacon of hope. Beyond treating patients, DWH’s goal is to use the center as a hub to help encourage people at possible risk to seek consultation and eventually take their medications religiously to stop the spread of the disease.","free_services":["Screening, assessment and sputum collection for new and retreatment tb cases.","Sputum examination through GENEXPERT Machine.","Identification and referral of Presumptive, Susceptible and Confirmed Drug Resistant TB patients.","Screening of household contacts for confirmed TB patients.","Provision of pre-treatment evaluation such as Blood Chemistry, Chest X-ray and sputum examinations.","Provision of Patient Initiated Counselling and Testing on TB HIV.","Initiation and supervision of daily treatment through Directly Observed Treatment Short Course (DOTS) or \"tutok gamutan\" on both regular and Drug Resistant TB.","Regular monitoring occurrences of possible clinical problems during treatment.","Clinical Management for Adverse Drug Reactions and provision of ancillary medications.","Provision of Health Education through monthly Group discussion and General Assembly."],"services_offered":["Direct Sputum Smear Collection for new and retreatment TB cases.","Sputum screening through a GENEXPERT Machine.","Provision of FREE anti-TB medications for adults and children.","Support and education to help patients and their relatives adhere to the medication and treatment.","Contact tracing of the household for confirmed TB patients."]}'
+icon: "Tb"
+---
+
+DOH-partnered center for TB screening, diagnosis, treatment, and adherence.

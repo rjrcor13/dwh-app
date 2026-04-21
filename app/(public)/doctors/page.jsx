@@ -8,7 +8,12 @@ export const metadata = {
 	description: 'Search our directory of highly skilled medical professionals, surgeons, and specialists dedicated to your health at Divine Word Hospital.',
 };
 
-const DoctorsPage = () => {
+import { getDocuments } from 'outstatic/server';
+
+const DoctorsPage = async () => {
+	const doctorsData = await getDocuments('doctors', ['title', 'slug', 'specialties', 'hospital', 'clinicDays', 'clinicHours', 'gender', 'hmo', 'image', 'content', 'clinicRoom', 'contactNumber']);
+	const doctors = doctorsData.map(d => ({ ...d, name: d.title }));
+
 	return (
 		<ErrorBoundary>
 			<Suspense fallback={
@@ -16,7 +21,7 @@ const DoctorsPage = () => {
 					<DoctorGridSkeleton count={8} />
 				</div>
 			}>
-				<FindADoctor />
+				<FindADoctor doctors={doctors} />
 			</Suspense>
 		</ErrorBoundary>
 	);

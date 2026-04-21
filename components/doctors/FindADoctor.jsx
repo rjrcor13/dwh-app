@@ -2,7 +2,6 @@
 
 import { Button } from '@/components/ui/button'; // Keeping Shadcn Button for consistency
 
-import { doctorsData } from '@/app/data/doctors';
 import debounce from 'lodash.debounce';
 import { Stethoscope } from 'lucide-react';
 import PageHeader from '@/components/ui/PageHeader';
@@ -13,7 +12,7 @@ import FilterDoctor from './FilterDoctor';
 
 // Dummy doctor data (replace with your actual data fetching)
 
-const FindADoctor = () => {
+const FindADoctor = ({ doctors = [] }) => {
 	const searchParams = useSearchParams(); // Get access to URL query parameters
 	const router = useRouter();
 	const initialSearchTerm = searchParams.get('q') || ''; // Get the 'q' parameter, default to empty string
@@ -22,11 +21,11 @@ const FindADoctor = () => {
 	const [selectedDays, setSelectedDays] = useState([]);
 	const [selectedGenders, setSelectedGenders] = useState([]);
 	const [selectedHMOs, setSelectedHMOs] = useState([]);
-	const [filteredDoctors, setFilteredDoctors] = useState(doctorsData);
+	const [filteredDoctors, setFilteredDoctors] = useState(doctors);
 
 	const specialtyOptions = useMemo(() => {
 		// First, extract all specialties into a single array
-		const allSpecialties = doctorsData.flatMap(
+		const allSpecialties = doctors.flatMap(
 			(doctor) => doctor.specialties || []
 		);
 
@@ -35,7 +34,7 @@ const FindADoctor = () => {
 
 		// Map the unique specialties to the format expected by react-select
 		return uniqueSpecialties.map((s) => ({ value: s, label: s }));
-	}, [doctorsData]);
+	}, [doctors]);
 	const dayOptions = useMemo(
 		() =>
 			['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map((d) => ({
@@ -48,17 +47,16 @@ const FindADoctor = () => {
 		() => ['Male', 'Female', 'Other'].map((g) => ({ value: g, label: g })),
 		[]
 	);
-	const hmoOptions = useMemo(
 		() =>
-			Array.from(new Set(doctorsData.flatMap((doctor) => doctor.hmo))).map(
+			Array.from(new Set((doctors || []).flatMap((doctor) => doctor.hmo || []))).map(
 				(h) => ({ value: h, label: h })
 			),
-		[doctorsData]
+		[doctors]
 	);
 
 	const filterDoctors = useCallback(
 		(query, specialties, days, genders, hmos) => {
-			let results = doctorsData;
+			let results = doctors;
 			if (query) {
 				const lowerCaseQuery = query.toLowerCase();
 				results = results.filter(
@@ -95,7 +93,7 @@ const FindADoctor = () => {
 			}
 			setFilteredDoctors(results);
 		},
-		[doctorsData]
+		[doctors]
 	);
 
 	// Debounced filter function
@@ -369,7 +367,7 @@ const FindADoctor = () => {
 					<div className="mt-16 flex justify-center space-x-2">
 						<Button variant="outline" className="rounded-xl bg-white border-slate-200 text-slate-600 hover:bg-slate-50 hover:text-primary">Previous</Button>
 						<span className="flex items-center px-4 text-sm font-bold text-slate-900 bg-white rounded-xl border border-slate-200 shadow-sm">
-							1-9 of {doctorsData.length}
+							1-9 of {doctors.length}
 						</span>
 						<Button variant="outline" className="rounded-xl bg-white border-slate-200 text-slate-600 hover:bg-slate-50 hover:text-primary">Next</Button>
 					</div>

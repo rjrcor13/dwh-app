@@ -1,0 +1,11 @@
+---
+title: "Radiology"
+status: "published"
+author: '{"name":"Admin","picture":"https://avatars.githubusercontent.com/u/1?v=4"}'
+publishedAt: "2026-04-21T01:35:11.984Z"
+description: "Precise, high-quality diagnostic imaging & interventional radiology services."
+fullContentData: '{"mission_vision":{"mission":"The Department of Radiology is dedicated to delivering precise and high-quality diagnostic imaging and interventional radiology services to all patients. Our team of professionals is committed to providing timely and efficient radiology care infused with compassion.","vision":"Aligned with DWH’s core values, we aspire to lead the Region in diagnostic imaging and interventional radiology, ensuring that both patients and referring physicians receive comprehensive radiologic evaluations that offer the clearest insights into patient health in the Region."},"leadership_staff":"The Department is led and staffed by board-certified Radiologist, and six (6) active visiting consultants.","advanced_equipment":["Computed Tomography (CT) Scan 64 and 32 slices.","1.5-Tesla MRI Scanners","General Radiography","Digital Radiography","Portable (Mobile)","Fluoroscopy","Mobile C-Arm","Mobile Transport","Digital Mammography","Ultrasound","Dental Panoramic / Cephalometric"],"general_radiography":{"non_contrast":["CHEST FOR HEART & LUNGS","EXTREMITIES","SKULL","VERTEBRAL COLUMN","LOCALIZATION OF FOREIGN BODY","PELVIS","SHOULDER GIRDLE","THORACIC CAGE","ABDOMEN"],"non_contrast_and_contrast":["UPPER G.I. SERIES","SMALL INTESTINAL SERIES","BARIUM ENEMA","HYSTEROSALPINGOGRAPHY","ESOPHAGOGRAPHY (Ba. Swallow)","PELVIMETRY","MYELOGRAPHY","PARANASAL SINUSES","SCOLIOTIC SERIES","SKELETAL SURVEY","IMPERFORATED ANUS","INTRAVENOUS PYELOGRAPHY"]},"invasive_procedures":["SINUGRAPHY","FISTULOGRAPHY","SIALOGRAPHY","BRONCHOGRAPHY","RETROGRADE UROGRAPHY","PACEMAKER IMPLANTS","RETROGRADE CYSTOGRAPHY","OPERATIVE & POST-OPERATIVE CHOLANGIOGRAPHY","ENDOSCOPIC RETRO. CHOLANGIO. PANCREATOGRAPHY"],"specialized_services":["COMPUTED TOMOGRAPHY (CT) SCAN -HELICAL SYSTEM (PLAIN & CONTRAST STUDY, GUIDED PROCEDURES)","MAGNETIC RESONANCE IMAGING (MRI)","MAMMOGRAPHY"],"dental_panoramic_cephalometric":["PANORAMIC RADIOGRAPH","CEPHALOMETRIC RADIOGRAPH"]}'
+icon: "Radiology"
+---
+
+Precise, high-quality diagnostic imaging & interventional radiology services.

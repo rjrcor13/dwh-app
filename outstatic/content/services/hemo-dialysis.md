@@ -1,0 +1,11 @@
+---
+title: "Hemo-dialysis"
+status: "published"
+author: '{"name":"Admin","picture":"https://avatars.githubusercontent.com/u/1?v=4"}'
+publishedAt: "2026-04-21T01:35:11.988Z"
+description: "Comprehensive inpatient & outpatient dialysis services for end-stage kidney disease."
+fullContentData: '{"mission_vision":{"mission":"The Divine Word Hospital Hemodialysis Unit is equipped to provide comprehensive treatment services for patients who are required long-term or ongoing care.","vision":"Manned by competent doctors and nurses to ensure utmost comfort and safety for our patients. Our hemodialysis unit delivers inpatient and outpatient dialysis services and follow-up care to patients with end-stage kidney disease, from a standard hemodialysis to continuous ambulatory peritoneal dialysis."},"bcm_info":{"title":"Body Composition Monitor (BCM)","description":"As part of our commitment to provide quality kidney care and ensure the health and safety of our patients, our staff utilizes BCM to ensure that the patient’s body composition, particularly fluid level, are at a normal level throughout the dialysis."},"admission_procedure":{"title":"HEMODIALYSIS ADMISSION PROCEDURE FOR OUT-PATIENTS","new_out_patients":["HD Endorsement Sheet","List of Prescribed Medications","Philhealth Forms (MDR/Philhealth Database (PDD), Proof of Contribution, CF1, CF2, SOA)","Latest Laboratory Result","Blood Composition Monitoring (BCM) Result.","Latest 3 Treatment Sheets (if applicable)"],"regular_patients":["Charge Slip","Prescription for Erythropoietin Injection (if needed)","Monthly Laboratory Results/Prescription"]},"session_schedule":{"title":"HEMODIALYSIS SESSION SCHEDULE:","times":["1st Session: 7:00am – 11:00am","2nd Session: 12:00nn – 4:00pm","3rd Session: 5:00pm – 9:00pm","4th Session: 10:00pm – 2:00am"],"note":"HD Treatment on Monday to Saturday. NO HD Treatment for Outpatients on SUNDAYS. Strictly follow your respective HD Schedule."},"contact":{"inquiries":"For inquiries and appointments, please contact and visit us at:","facebook":"Hemodialysis Únit","email":"dwhhemodialysis@gmail.com"}}'
+icon: "BloodTransfusion"
+---
+
+Comprehensive inpatient & outpatient dialysis services for end-stage kidney disease.

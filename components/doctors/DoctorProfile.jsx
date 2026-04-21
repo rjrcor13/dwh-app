@@ -1,6 +1,6 @@
 'use client';
 
-import { doctorsData } from '@/app/data/doctors';
+
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -14,7 +14,9 @@ import {
 	Building2,
 	ChevronLeft,
 	Home,
-	MapPin
+	MapPin,
+	Phone,
+	DoorOpen
 } from 'lucide-react';
 
 import Link from 'next/link';
@@ -24,39 +26,15 @@ import { motion } from 'framer-motion';
 import AmbientBackground from '@/components/ui/AmbientBackground';
 import PremiumBadge from '@/components/ui/PremiumBadge';
 
-const DoctorProfile = ({ slug: propSlug }) => {
+const DoctorProfile = ({ doctor }) => {
 	const router = useRouter();
-	const params = useParams();
 
-	// Determine effective slug from prop or params (fallback)
-	const slug = propSlug || (params?.slug);
-
-	const doctor = useMemo(() => {
-		if (!slug) return null;
-
-		// 1. Try finding by slug
-		const bySlug = doctorsData.find((doc) => doc.slug === slug);
-		if (bySlug) return bySlug;
-
-		// 2. Fallback: Try finding by ID (for backward compatibility if user visits /doctors/1)
-		const id = Number(slug);
-		if (!isNaN(id)) {
-			return doctorsData.find((doc) => doc.id === id);
-		}
-
-		return null;
-	}, [slug]);
-
-	if (!slug || !doctor) {
+	if (!doctor) {
 		return (
 			<div className="min-h-screen flex items-center justify-center bg-slate-50">
 				<div className="text-center">
 					<div className="w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-4" />
 					<p className="text-slate-500 font-medium">Locating doctor...</p>
-					<p className="text-xs text-slate-400 mt-2">
-						Slug: {String(slug)} <br />
-						Data: {doctorsData?.length}
-					</p>
 				</div>
 			</div>
 		);
@@ -200,6 +178,28 @@ const DoctorProfile = ({ slug: propSlug }) => {
 										<div>
 											<p className="text-xs font-bold text-slate-400 uppercase tracking-wide mb-2">Gender</p>
 											<p className="font-bold text-slate-900 text-lg">{doctor.gender}</p>
+										</div>
+									</div>
+
+									{/* Clinic Room */}
+									<div className="flex items-start gap-5 p-6 rounded-3xl bg-slate-50 border border-slate-100 h-full group hover:border-blue-100 transition-colors">
+										<div className="p-3.5 bg-white rounded-2xl shadow-sm border border-slate-100 shrink-0 group-hover:scale-110 transition-transform">
+											<DoorOpen className="w-6 h-6 text-orange-500" />
+										</div>
+										<div>
+											<p className="text-xs font-bold text-slate-400 uppercase tracking-wide mb-2">Clinic Room</p>
+											<p className="font-bold text-slate-900 text-lg leading-snug">{doctor.clinicRoom || 'N/A'}</p>
+										</div>
+									</div>
+
+									{/* Contact Number */}
+									<div className="flex items-start gap-5 p-6 rounded-3xl bg-slate-50 border border-slate-100 h-full group hover:border-blue-100 transition-colors">
+										<div className="p-3.5 bg-white rounded-2xl shadow-sm border border-slate-100 shrink-0 group-hover:scale-110 transition-transform">
+											<Phone className="w-6 h-6 text-green-500" />
+										</div>
+										<div>
+											<p className="text-xs font-bold text-slate-400 uppercase tracking-wide mb-2">Contact Number</p>
+											<p className="font-bold text-slate-900 text-lg">{doctor.contactNumber || 'N/A'}</p>
 										</div>
 									</div>
 								</div>
