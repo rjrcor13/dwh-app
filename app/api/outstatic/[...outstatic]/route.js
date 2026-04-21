@@ -1,7 +1,7 @@
-// import { OutstaticApi } from 'outstatic';
+import { OutstaticApi } from 'outstatic';
 
-// export const GET = OutstaticApi.GET;
-// export const POST = OutstaticApi.POST;
+export const GET = OutstaticApi.GET;
+export const POST = OutstaticApi.POST;
 // import { Outstatic } from "outstatic";
 
 // export async function GET(req) {
@@ -14,9 +14,9 @@
 //     return handler.POST(req);
 // }
 
-import { Outstatic } from "outstatic";
+// import { Outstatic } from "outstatic";
 
-const outstatic = Outstatic();
+// const outstatic = Outstatic();
 
-export const GET = outstatic;
-export const POST = outstatic;
+// export const GET = outstatic;
+// export const POST = outstatic;
