@@ -6,7 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '../ui/button';
 import { motion, useInView } from 'framer-motion';
-import { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 
 /* ─── Animated number counter ─────────────────────────────────────── */
 const AnimatedCounter = ({ end, suffix = '', duration = 2000, inView }) => {
@@ -30,9 +30,14 @@ const AnimatedCounter = ({ end, suffix = '', duration = 2000, inView }) => {
 };
 
 /* ─── Main Banner ─────────────────────────────────────────────────── */
-const Banner = () => {
+const Banner = ({ title, subtitle, image }) => {
 	const statsRef = useRef(null);
 	const isInView = useInView(statsRef, { once: true, margin: '-60px' });
+
+	// Fallback content if props are missing
+	const displayTitle = title || "In Faith We Serve, In Compassion We Care, In Excellence We Heal.";
+	const displaySubtitle = subtitle || "Equipped with advanced medical facilities and backed by a highly skilled team of medical experts, it delivers quality, reliable services. With a healing environment and hospitable staff, it continues to uphold excellence in service—bringing healing grounded in faith, care, and service to the community. Since 1965.";
+	const displayImage = image || dwh;
 
 	const stats = [
 		{
@@ -72,11 +77,11 @@ const Banner = () => {
 			{/* Background */}
 			<div className="absolute inset-0 z-0">
 				<Image
-					src={dwh}
+					src={displayImage}
 					alt="Divine Word Hospital"
 					className="w-full h-full object-cover"
 					fill sizes="100vw" priority
-					placeholder="blur"
+					placeholder={typeof displayImage === 'string' ? 'empty' : 'blur'}
 				/>
 				<div className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] bg-blue-400/20 rounded-full blur-[120px]" />
 				<div className="absolute bottom-[20%] right-[10%] w-[300px] h-[300px] bg-purple-400/10 rounded-full blur-[100px]" />
@@ -94,18 +99,24 @@ const Banner = () => {
 						className="space-y-6 md:space-y-8"
 					>
 						<h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold font-heading text-slate-900 leading-[1.15] tracking-tight">
-							In Faith We Serve,{' '}
-							<br className="hidden sm:block" />
-							In Compassion We Care,{' '}
-							<br className="hidden sm:block" />
-							<span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-600">
-								In Excellence We Heal.
-							</span>
+							{displayTitle.split(',').map((part, index, array) => (
+								<React.Fragment key={index}>
+									{index === array.length - 1 ? (
+										<span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-600">
+											{part.trim()}
+										</span>
+									) : (
+										<>
+											{part.trim()},{' '}
+											<br className="hidden sm:block" />
+										</>
+									)}
+								</React.Fragment>
+							))}
 						</h1>
 
 						<p className="text-base md:text-lg text-slate-600 leading-relaxed max-w-3xl font-light ">
-							Equipped with advanced medical facilities and backed by a highly skilled team of medical experts, it delivers quality, reliable services. With a healing environment and hospitable staff, it continues to uphold excellence in service—bringing healing grounded in faith, care, and service to the community.{' '}
-							<span className="font-semibold text-primary_ italic">Since 1965.</span>
+							{displaySubtitle}
 						</p>
 
 						<div className="flex flex-col sm:flex-row gap-4 pt-4">

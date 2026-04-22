@@ -58,7 +58,7 @@ const DoctorCard = ({ doctor, variant = 'default' }) => {
 						isGlass && "border-white/10"
 					)}>
 						<AvatarImage
-							src={doctor.image}
+							src={doctor.image && doctor.image !== '/assets/avatar.jpg' ? doctor.image : (doctor.gender === 'Female' ? '/assets/doctor-female.png' : '/assets/doctor-male.png')}
 							alt={doctor.name}
 							className="object-cover"
 						/>
@@ -66,8 +66,6 @@ const DoctorCard = ({ doctor, variant = 'default' }) => {
 							{doctor.name.substring(0, 2).toUpperCase()}
 						</AvatarFallback>
 					</Avatar>
-					{/* Status Dot */}
-					<div className="absolute -bottom-1 -right-1 w-6 h-6 bg-emerald-500 border-[3px] border-white rounded-full shadow-sm" />
 				</div>
 
 				{/* Name & Specialty */}

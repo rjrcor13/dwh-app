@@ -31,14 +31,24 @@ const HomePage = async () => {
 	const faqs = faqsData.map(f => ({ question: f.title, answer: f.content, keywords: f.keywords }));
 
 	const doctorsData = await getDocuments('doctors', ['title', 'slug', 'specialties', 'hospital', 'clinicDays', 'clinicHours', 'image']);
-	const doctors = doctorsData.map(d => ({ ...d, name: d.title }));
+	const doctors = Array.from(new Map(doctorsData.map(d => [d.slug, d])).values())
+		.map(d => ({ ...d, name: d.title }));
 
 	const servicesData = await getDocuments('services', ['title', 'slug', 'description', 'icon', 'content']);
-	const services = servicesData.map(s => ({ ...s, description: s.content || s.description }));
+	const services = Array.from(new Map(servicesData.map(s => [s.slug, s])).values())
+		.map(s => ({ ...s, description: s.content || s.description }));
+		
+	const bannersData = await getDocuments('banners', ['title', 'subtitle', 'image', 'slug']);
+	const banner = bannersData[0] || {};
+
 	return (
 		<div className="overflow-x-hidden">
 			<div>
-				<Banner />
+				<Banner
+					title={banner.title}
+					subtitle={banner.subtitle}
+					image={banner.image}
+				/>
 				<StructuredData type="FAQPage" data={faqs} />
 				<StructuredData type="Hospital" />
 			</div>

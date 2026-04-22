@@ -20,13 +20,15 @@ export async function generateMetadata({ params }) {
         };
     }
 
+    const primarySpecialty = Array.isArray(doctor.specialties) ? doctor.specialties[0] : doctor.specialties;
+
     return {
-        title: `${doctor.name} - ${doctor.specialty} | Divine Word Hospital`,
-        description: doctor.bio ? doctor.bio.substring(0, 160) : `Schedule an appointment with ${doctor.name}, ${doctor.specialty} at Divine Word Hospital.`,
+        title: `${doctor.name} - ${primarySpecialty || 'Specialist'} | Divine Word Hospital`,
+        description: doctor.bio ? doctor.description : `Schedule an appointment with ${doctor.name}, ${primarySpecialty || 'Specialist'} at Divine Word Hospital.`,
         openGraph: {
-            title: `${doctor.name} - ${doctor.specialty}`,
-            description: doctor.bio || `Specialist in ${doctor.specialty}`,
-            images: doctor.image ? [doctor.image] : [],
+            title: `${doctor.name} - ${primarySpecialty || 'Specialist'}`,
+            description: doctor.description || `Specialist in ${primarySpecialty || 'Healthcare'}`,
+            images: (doctor.image && doctor.image !== '/assets/avatar.jpg' ? [doctor.image] : [(doctor.gender === 'Female' ? '/assets/doctor-female.png' : '/assets/doctor-male.png')]),
         },
     };
 }

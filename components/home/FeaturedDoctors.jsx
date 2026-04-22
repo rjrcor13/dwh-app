@@ -45,8 +45,8 @@ const FeaturedDoctors = ({ doctors = [] }) => {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    {featured.map((doctor) => (
-                        <DoctorCard key={doctor.id} doctor={doctor} variant="glass" />
+                    {featured.map((doctor, index) => (
+                        <DoctorCard key={doctor.slug || `featured-${index}`} doctor={doctor} variant="glass" />
                     ))}
                 </div>
             </div>

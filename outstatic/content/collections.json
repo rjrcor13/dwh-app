@@ -16,5 +16,11 @@
     "slug": "services",
     "path": "outstatic/content/services",
     "children": []
+  },
+  {
+    "title": "Banners",
+    "slug": "banners",
+    "path": "outstatic/content/banners",
+    "children": []
   }
 ]

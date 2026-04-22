@@ -12,7 +12,9 @@ import { getDocuments } from 'outstatic/server';
 
 const DoctorsPage = async () => {
 	const doctorsData = await getDocuments('doctors', ['title', 'slug', 'specialties', 'hospital', 'clinicDays', 'clinicHours', 'gender', 'hmo', 'image', 'content', 'clinicRoom', 'contactNumber']);
-	const doctors = doctorsData.map(d => ({ ...d, name: d.title }));
+	// Deduplicate by slug to prevent key errors
+	const uniqueDoctors = Array.from(new Map(doctorsData.map(d => [d.slug, d])).values());
+	const doctors = uniqueDoctors.map(d => ({ ...d, name: d.title }));
 
 	return (
 		<ErrorBoundary>
