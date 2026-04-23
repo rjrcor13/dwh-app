@@ -1,5 +1,5 @@
 ---
-title: "In Faith We Serve, In Compassion We Care, In Excellence We Heal."
+title: "In Excellence We Heal."
 status: "published"
 author:
   name: ""
