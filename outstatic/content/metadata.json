@@ -1,11 +1,11 @@
 {
-  "commit": "",
-  "generated": "2026-04-23T03:13:40.703Z",
+  "commit": "a7b47daf7436d3e2d23ecd6f73600c2c57396f58",
+  "generated": "2026-04-23T03:19:53.712Z",
   "metadata": [
     {
       "__outstatic": {
-        "commit": "",
-        "hash": "4105949720",
+        "commit": "a7b47daf7436d3e2d23ecd6f73600c2c57396f58",
+        "hash": "2720944474",
         "path": "outstatic/content/banners/home-banner.md"
       },
       "author": {
@@ -18,7 +18,7 @@
       "slug": "home-banner",
       "status": "published",
       "subtitle": "Equipped with advanced medical facilities and backed by a highly skilled team of medical experts, it delivers quality, reliable services. With a healing environment and hospitable staff, it continues to uphold excellence in service—bringing healing grounded in faith, care, and service to the community. Since 1965.",
-      "title": "Excellence We Heal."
+      "title": "In Faith We Serve, In Compassion We Care, In Excellence We Heal."
     }
   ]
 }
