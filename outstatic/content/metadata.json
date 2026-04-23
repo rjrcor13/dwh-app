@@ -1,0 +1,24 @@
+{
+  "commit": "",
+  "generated": "2026-04-23T03:13:40.703Z",
+  "metadata": [
+    {
+      "__outstatic": {
+        "commit": "",
+        "hash": "4105949720",
+        "path": "outstatic/content/banners/home-banner.md"
+      },
+      "author": {
+        "name": "",
+        "picture": "https://avatars.githubusercontent.com/u/56808455?v=4"
+      },
+      "collection": "banners",
+      "image": "/assets/dwh.jpg",
+      "publishedAt": "2026-04-22T10:15:00.000Z",
+      "slug": "home-banner",
+      "status": "published",
+      "subtitle": "Equipped with advanced medical facilities and backed by a highly skilled team of medical experts, it delivers quality, reliable services. With a healing environment and hospitable staff, it continues to uphold excellence in service—bringing healing grounded in faith, care, and service to the community. Since 1965.",
+      "title": "Excellence We Heal."
+    }
+  ]
+}
