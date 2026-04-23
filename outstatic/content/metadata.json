@@ -1,6 +1,6 @@
 {
-  "commit": "6b74529cd260b336f0f479a400690c391fb93877",
-  "generated": "2026-04-23T03:20:03.313Z",
+  "commit": "3eaa4bdc54788a8623c71aaf30daf3f3fa2c29c9",
+  "generated": "2026-04-23T03:22:16.979Z",
   "metadata": [
     {
       "__outstatic": {
@@ -19,6 +19,41 @@
       "status": "published",
       "subtitle": "Equipped with advanced medical facilities and backed by a highly skilled team of medical experts, it delivers quality, reliable services. With a healing environment and hospitable staff, it continues to uphold excellence in service—bringing healing grounded in faith, care, and service to the community. Since 1965.",
       "title": "In Excellence We Heal."
+    },
+    {
+      "__outstatic": {
+        "commit": "3eaa4bdc54788a8623c71aaf30daf3f3fa2c29c9",
+        "hash": "4113343429",
+        "path": "outstatic/content/doctors/dr-ben-carter.md"
+      },
+      "author": {
+        "name": "",
+        "picture": "https://avatars.githubusercontent.com/u/56808455?v=4"
+      },
+      "clinicDays": [
+        "Tue",
+        "Thu",
+        "Sat"
+      ],
+      "clinicHours": "10:00 AM - 6:00 PM",
+      "clinicRoom": "Suite 301",
+      "collection": "doctors",
+      "contactNumber": [
+        "(053) 832 9999",
+        "+63 918 765 4321"
+      ],
+      "gender": "Male",
+      "hmo": [
+        "PhilHealth"
+      ],
+      "hospital": "Eastern Visayas Regional Medical Center",
+      "publishedAt": "2026-04-21T01:35:11.947Z",
+      "slug": "dr-ben-carter",
+      "specialties": [
+        "Pediatrics"
+      ],
+      "status": "published",
+      "title": "Dr. John Doe"
     }
   ]
 }
